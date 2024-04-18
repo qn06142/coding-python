@@ -1,0 +1,1 @@
+print('SONTRA'[int(input())%6 - 1])
