@@ -1,18 +1,16 @@
-n = int(input())
-
-a = tuple(int(i) for i in input().split())
-def yeag(arr, n):
+#works, but faster version in c++ (doesn't work?)
+def count_beautiful_subarrays(A, N):
     count = 0
-    for l in range(n):
-        freq = {}
-        for r in range(l, n):
-            if arr[r] in freq:
-                freq[arr[r]] += 1
-            else:
-                freq[arr[r]] = 1
-            if freq[arr[r]] > 2:
-                break
-            else:
-                count += 1
+    freq = [0] * (max(A) + 1)
+
+    l = 0
+    for r in range(N):
+        freq[A[r]] += 1
+        while freq[A[r]] > 2:
+            freq[A[l]] -= 1
+            l += 1
+        count += r - l + 1
     return count
-print(yeag(a, n))
+N = int(input())
+A = [int(i) for i in input().split()]
+print(count_beautiful_subarrays(A, N))
