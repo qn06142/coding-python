@@ -1,23 +1,22 @@
-import math
+import bisect
 
-def calculate_marble_difference(M, N, U, V, R):
-    total_marble = M * N
-    marble_inside_circle = 0
+def solve(N, M, U, V, R, X, Y):
+    # Sort the coordinates
+    X.sort()
+    Y.sort()
 
-    for i in range(1, N+1):
-        for j in range(1, M+1):
-            distance = math.sqrt((i-U)**2 + (j-V)**2)
-            if distance <= R:
-                marble_inside_circle += 1
+    outside_x = bisect.bisect_left(X, U - R) + N - bisect.bisect_right(X, U + R)
+    outside_y = bisect.bisect_left(Y, V - R) + M - bisect.bisect_right(Y, V + R)
 
-    marble_outside_circle = total_marble - marble_inside_circle
-    marble_difference = abs(marble_outside_circle - marble_inside_circle)
+    total_beads = N * M
 
-    return marble_difference
-M = 10
-N = 10
-U = 5
-V = 5
-R = 3
+    inside = total_beads - outside_x * M - outside_y * N + outside_x * outside_y
 
-print(calculate_marble_difference(M, N, U, V, R))
+    diff = abs(inside - (total_beads - inside))
+
+    return diff
+
+M, N, U, V, R = tuple(int(i) for i in input().split())
+X = list(int(i) for i in input().split())
+Y = list(int(i) for i in input().split())
+print(solve(N, M, U, V, R, X, Y))

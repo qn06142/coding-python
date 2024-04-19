@@ -1,38 +1,28 @@
 #include <iostream>
-#include <vector>
-#include <sstream>
-#include <string>
+#include <algorithm>
+int a[10000005];
 using namespace std;
-int main() {
-    int n, k;
-    string input;
-    getline(cin, input);
-    istringstream iss(input);
-    iss >> n >> k;
 
-    vector<int> a(n + 1, 0);
-    getline(cin, input);
-    istringstream iss2(input);
-    string token;
-    int i = 1;
-    while (iss2 >> token) {
-        int count = 0;
-        for (char c : token) {
-            if (c == '3') {
-                count++;
-            }
-        }
-        a[i++] = count;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int n, k;
+    cin >> n >> k;
+
+
+    for (int i = 1; i <= n; ++i) {
+        string s;
+        cin >> s;
+        a[i] = count(s.begin(), s.end(), '3');
     }
 
-    int ans = 0;
-    int curr = 0;
-    int j = 1;
-    for (i = 1; i <= n; i++) {
+    long long ans = 0, curr = 0, j = 1;
+    for (int i = 1; i <= n; ++i) {
         curr += a[i];
         while (curr >= k) {
             curr -= a[j];
-            j++;
+            ++j;
         }
         if (i >= j) {
             ans += i - j + 1;
@@ -40,6 +30,6 @@ int main() {
     }
 
     cout << ans << endl;
+
     return 0;
 }
-
