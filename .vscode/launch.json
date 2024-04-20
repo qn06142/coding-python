@@ -35,7 +35,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/run/media/NewVolume/coding python",
-      "program": "/run/media/NewVolume/coding python/build/Release/outRelease",
+      "program": "/run/media/NewVolume/coding python/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
