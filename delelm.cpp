@@ -1,31 +1,30 @@
 #include<iostream>
-#include<set>
-#include<map>
+#include<deque>
+#include<algorithm>
 using namespace std;
-set<int> a;
-int b[(int) 1e5 + 5];
-map<int, int> c;
+deque<int> a;
+
 int main() {
-    int n;
+    int n, sum = 0;
     cin >> n;
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n; i++) {
         int tmp;
         cin >> tmp;
-        a.insert(tmp);
-        b[i] = tmp;
-        c[tmp]++;
+        a.push_back(tmp);
+        sum += a.front();
     }
-    if(a.size() > 2) {
-        cout << 0;
-        return 0;
-    } else {
-        for(int i = 0; i < n; i++) {
-            if(c[b[i]] == 1) {
-                cout << i+1;
-                return 0;
-            }
+    sort(a.begin(), a.end());
+    int ans = 0;
+    while(sum != 0) {
+        ans++;
+        if(sum > 0) {
+            sum -= a.front();
+            a.pop_back();
+        }
+        else {
+            sum -= a.back();
+            a.pop_front();
         }
     }
-    cout << 0;
-    return 0;
+    cout << ans;
 }
