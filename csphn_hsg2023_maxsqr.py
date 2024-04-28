@@ -1,46 +1,30 @@
 m, n, k = tuple(int(i) for i in input().split())
 
-a = list(list(0 for i in range(0, n)) for i in range(0, m))
-def largestKSubmatrix(a):
-    dp = [[0 for x in range(n)]
-             for y in range(m)]
- 
-    result = 0
+matrix = [[0 for _ in range(n)] for _ in range(m)]
+
+def calcsquare(matrix):
+    dp = [[0 for _ in range(n + 5)] for _ in range(m + 5)]
+
+    for i in range(m):
+        dp[i][0] = matrix[i][0]
     for i in range(n):
-        for j in range(m):
-             
-            # If elements is at top 
-            # m or first numn, 
-            # it wont form a square
-            # matrix's bottom-right
-            if (i == 0 or j == 0):
-                dp[i][j] = 1
- 
+        dp[0][i] = matrix[0][i]
+
+    for i in range(1, m):
+        for j in range(1, n):
+            if matrix[i][j] == matrix[i][j - 1] == matrix[i - 1][j] == matrix[i - 1][j - 1]:
+                dp[i][j] = min(dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1]) + 1
             else:
-                 
-                # Check if adjacent 
-                # elements are equal
-                if (a[i][j] == a[i - 1][j] and
-                    a[i][j] == a[i][j - 1] and
-                    a[i][j] == a[i - 1][j - 1]):
-                     
-                    dp[i][j] = min(min(dp[i - 1][j], 
-                                       dp[i][j - 1]),
-                                       dp[i - 1][j - 1] ) + 1
- 
-                # If not equal, then  
-                # it will form a 1x1
-                # submatrix
-                else:
-                    dp[i][j] = 1
- 
-            # Update result at each (i,j)
-            result = max(result, dp[i][j])
-             
-    return result
-for i in range(0, k):
+                dp[i][j] = 0
+
+    maxdp = max(max(row) for row in dp)
+    return maxdp
+
+for _ in range(k):
     t, l, b, r = tuple(int(i) - 1 for i in input().split())
     for i in range(t, b + 1):
         for j in range(l, r + 1):
-            a[i][j] += 1
-print(largestKSubmatrix(a))
+            matrix[i][j] += 1
+for i in matrix:
+    print(*i)
+print(calcsquare(matrix))
