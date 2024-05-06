@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 long long solve2(long long a[], int n, int k){
@@ -31,6 +32,7 @@ long long solve2(long long a[], int n, int k){
         r++;
     }
     return Max;
+}
 int main()
 {
 	int n, k;
