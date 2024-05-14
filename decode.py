@@ -8,5 +8,5 @@ def decode(msg):
         res += abc[new_pos]
     return res
 
-msg = 'S1F2Y2M1E3L2I0A4K3' * 100000
-decode(msg)
+msg = input()
+print(decode(msg))
