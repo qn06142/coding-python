@@ -1,0 +1,102 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define int long long
+#define task "CAU4"
+#define fi first
+#define se second
+#define pb push_back
+#define pii pair<int, int>
+#define pll pair<ll, ll>
+using namespace std;
+const int maxN = 1e6+1;
+const int mod = 1e9+7;
+const ll inf = 1e18;
+int n, m, a[maxN], f[maxN], st[4*maxN], lazy[4*maxN], sum[maxN];
+
+void down(int id)
+{
+    int t = lazy[id];
+    lazy[id] = 0;
+    st[id * 2] += t;
+    st[id * 2 + 1] += t;
+    lazy[id * 2] += t;
+    lazy[id * 2 + 1 ] += t;
+}
+
+void Update(int id, int l, int r, int u, int v, int val)
+{
+    if(l > v || r < u) return;
+    if(l >= u && r <= v)
+    {
+        st[id] += val;
+        lazy[id] += val;
+        return;
+    }
+    down(id);
+    int mid = (l + r) / 2;
+    Update(id * 2, l, mid, u, v, val);
+    Update(id * 2 + 1, mid + 1, r, u, v, val);
+    st[id] = min(st[id * 2], st[id * 2 + 1]);
+}
+
+int Get(int id, int l, int r, int u, int v)
+{
+    if(l > v || r < u) return inf;
+    if(l >= u && r <= v) return st[id];
+    down(id);
+    int mid = (l + r) / 2;
+    return min(Get(id * 2, l, mid, u, v), Get(id * 2 + 1, mid + 1, r, u, v));
+}
+
+void Input()
+{
+    cin >> n >> m;
+    fill(st, st+4*maxN, 0);
+    fill(lazy, lazy+4*maxN, 0);
+    fill(f, f+maxN, 0);
+    for(int i=1; i<=n; i++)
+    {
+        cin >> a[i];
+        sum[i] = sum[i - 1] + a[i];
+    }
+}
+
+void Solve()
+{
+    int p = 0;
+    stack<pair<int, int>> s;
+    s.push({0, 0});
+    for(int i=1; i<=n; i++)
+    {
+        while(!s.empty() && a[s.top().se] < a[i])
+        {
+            Update(1, 0, n, s.top().fi, s.top().se, a[i] - a[s.top().se]);
+            s.pop();
+        }
+        if(s.empty()) s.push({0, i});
+        else s.push({s.top().se + 1, i});
+        while(p <= i && sum[i] - sum[max(0ll, p - 1)] > m) p++;
+        f[i] = Get(1, 0, n, p, i - 1);
+        if(a[i] <= m) f[i] = min(f[i], f[i - 1] + a[i]);
+        Update(1, 0, n, i, i, f[i - 1] + a[i]);
+    }
+    cout << (f[n] < inf ? f[n] : -1) << '\n';
+}
+
+signed main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    if (fopen(task".INP","r"))
+    {
+        freopen(task".INP","r",stdin);
+        freopen(task".OUT","w",stdout);
+    }
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        Input();
+        Solve();
+    }
+}
