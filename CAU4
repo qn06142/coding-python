@@ -87,11 +87,6 @@ signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    if (fopen(task".INP","r"))
-    {
-        freopen(task".INP","r",stdin);
-        freopen(task".OUT","w",stdout);
-    }
     int t;
     cin >> t;
     while(t--)
