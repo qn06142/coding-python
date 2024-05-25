@@ -3,7 +3,7 @@
 #include <algorithm>
 
 using namespace std;
-
+#define int long long
 vector<int> get_subset_sums(const vector<int>& a, int l, int r) {
     int len = r - l + 1;
     vector<int> res;
@@ -22,7 +22,7 @@ vector<int> get_subset_sums(const vector<int>& a, int l, int r) {
     return res;
 }
 
-int main() {
+signed main() {
     int n, x;
     cin >> n >> x;
     vector<int> a(n);
