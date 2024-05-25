@@ -1,23 +1,10 @@
 n, m = (int(i) for i in input().split())
-a = [int(i) for i in input().split()]
-
-def check(x):
-    max_ = 0
-    min_ = 1e18
-    ans = 0
-    for i in a:
-        max_ = max(max_, min(x, i))
-        min_ = min(min_, min(x, i))
-        ans += min(x, i)
-    print(ans, max_ - min_)
-    return ans
-
-l = 0
-r = sum(a)
-while l <= r:
-    mid = (l + r) // 2
-    if(check(mid) >= m):
-        r = mid - 1
-    else:
-        l = mid + 1
-print(l, r)
+a = [(int(i[1]), i[0]) for i in enumerate(input().split())]
+arr = [(0, 0) for i in range(0, n + 1)]
+a.sort()
+currm = m
+for i in range(1, n + 1):
+    arr[i] = (a[i - 1][1], min(a[i - 1][0], (currm) // (n - i + 1)))
+    currm -= arr[i][1]
+arr.sort()
+print(*(i[1] for i in arr[1:]))

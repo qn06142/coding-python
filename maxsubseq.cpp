@@ -1,36 +1,36 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+#include<numeric>
+#include<climits>
+
 using namespace std;
-
-set<int> subsets[2];
-int numElements, modulo, elements[44];
-
-void generateSubsets(int sum, int leftIndex, int rightIndex) {
-    if (leftIndex == rightIndex) {
-        subsets[rightIndex == numElements].insert(sum);
-        return;
-    }
-    generateSubsets((sum + elements[leftIndex]) % modulo, leftIndex + 1, rightIndex);
-    generateSubsets(sum, leftIndex + 1, rightIndex);
-}
-
+long long a[(int) 5e3 + 5], b[(int) 5e3 + 5], dp [(int) 5e3 + 5] [(int) 5e3 + 5];
 int main() {
-    cin >> numElements >> modulo;
-    for (int i = 0; i < numElements; i++) {
-        cin >> elements[i];
+    int n;
+    cin >> n;
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
     }
-    generateSubsets(0, 0, numElements / 2);
-    generateSubsets(0, numElements / 2, numElements);
-    subsets[0].insert(0);
-    subsets[1].insert(0);
-    int maximumSum = 0;
-    for (int sum : subsets[0]) {
-        int complement = modulo - sum - 1;
-        auto it = subsets[1].upper_bound(complement);
-        it--;
-        maximumSum = max(maximumSum, *it + sum);
+    for(int i = 1; i <= n; i++) {
+        cin >> b[i];
     }
-    cout << maximumSum << endl;
-    return 0;
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            dp[i][j] = 0;
+        }
+    }
+    dp[0][0] = 0;
+    long long ans = INT_MIN;
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            dp[i][j] = max(dp[i - 1][j - 1] + a[i] * b[j], a[i] * b[j]);
+            
+        }
+    }
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            ans = max(ans, dp[i][j]);
+        }
+    }
+    cout << ans;
 }
-
-	  		   					  		   	  			  	
