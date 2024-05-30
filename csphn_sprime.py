@@ -16,4 +16,4 @@ def generate_superprimes(start, end):
                 superprimes.append(i)
     return superprimes
 
-print(generate_superprimes(2, 19))
+print(generate_superprimes(3, 57))
