@@ -1,10 +1,24 @@
 #include<iostream>
+#include<string.h>
 using namespace std;
 
 int main() {
-    string s;
+    char s[(int) 1e6];
     cin >> s;
-    for(int i = 1; i < s.length(); i++) {
-        if
+    long long count = 0, ans = 0;
+    for(int i = 1; i < strlen(s); i++) {
+        if(s[i] == ')' and s[i + 1] == ')') {
+            count += 1;
+        }
     }
+    for(int i = 1; i < strlen(s); i++) {
+        if(s[i] == '(' and s[i + 1] == '(') {
+            ans += count;
+        } else {
+            if(s[i] == ')' and s[i + 1] == ')') {
+                count--;
+            }
+        }
+    }
+    cout << ans;
 }
