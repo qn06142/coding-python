@@ -1,29 +1,32 @@
 #include<iostream>
-#include<cmath>
+#include<math.h>
 #include<climits>
 #include<unordered_map>
+#include<bit>
+#include<algorithm>
+#include<numeric>
+#include<cmath>
+
 using namespace std;
 
 unordered_map<long long, long long> factors;
 void primeFactorization(int n) {
-    while (n % 2 == 0) {
-        factors[2]++;
-        n = n/2;
-    }
-
-    for (int i = 3; i <= sqrt(n); i = i + 2) {
-        while (n % i == 0) {
-            factors[i]++;
-            n = n/i;
+    for(int i = 2; i * i <= n; i++) {
+        long long cnt = 0;
+        while(n % i == 0) {
+            cnt++;
+            n /= i;
         }
+        factors[i] = max(factors[i], cnt);
     }
-
-    if (n > 2)
-        factors[n]++;
+    if (n > 1) {
+        factors[n] = max(factors[n], 1LL);
+    }
 }
-long long pow(long long base, long long exp, int mod = (int) 1e9 + 7) {
+
+long long pow(long long base, long long exp) {
     long long ans = 1;
-    for(int i = 1; i <= exp; i++) ans = (ans * base) % mod;
+    for(int i = 1; i <= exp; i++) ans = (ans * base);
     return ans;
 }
 int main() {
@@ -32,10 +35,10 @@ int main() {
     primeFactorization(a);
     primeFactorization(b);
     primeFactorization(c);
-    long long ans = LONG_LONG_MAX;
+    long long ans = 1;
     for(auto i:factors) {
-        ans = min(ans, i.second);
-        cout << i.first << ':' << i.second << endl;;
+        ans = ans * pow(i.first, (i.second + i.second % 2) / 2);
+        //cout << i.first << ':' << i.second << endl;;
     }
     cout << ans;
 }

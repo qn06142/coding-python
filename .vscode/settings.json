@@ -2,6 +2,11 @@
     "files.associations": {
         "sstream": "cpp",
         "regex": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "*.tcc": "cpp",
+        "complex": "cpp",
+        "random": "cpp",
+        "numbers": "cpp"
     }
 }
