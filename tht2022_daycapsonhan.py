@@ -1,29 +1,20 @@
-from collections import defaultdict
-
 MOD = 10**9 + 7
+def count_subsequences(n, q, a):
+    count = [0]*n
+    dp = [0]*n
+    if a[0] == 1:
+        dp[0] = 1
+    for i in range(1, n):
+        dp[i] = dp[i-1]
+        if a[i] % q == 0:
+            j = a[i] // q
+            if j < n:
+                dp[i] += count[j]
+                dp[i] %= MOD
+        count[a[i]] += 1
+    return dp
 
-def count_sequences(a, q):
-    n = len(a)
-    count = [0] * n
-    dp = [defaultdict(int) for _ in range(n)]
-
-    for i in range(n):
-        for j in range(i):
-            if a[i] % a[j] == 0:
-                r = a[i] // a[j]
-                if r % q == 0:
-                    dp[i][r] += dp[j][r // q]
-                if r == q:
-                    dp[i][r] += 1
-        count[i] = dp[i][q]
-
-    return count
-
-# Read input
-n, q = map(int, input().split())
-a = list(map(int, input().split()))
-
-# Calculate and print the result
-result = count_sequences(a, q)
-for i in range(1, n):
-    print(result[i] % MOD, end=' ')
+# Test the function
+n, q = 5, 2
+a = [1, 2, 8, 4, 2]
+print(count_subsequences(n, q, a))
