@@ -1,86 +1,64 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
-typedef long long ll;
-const int N = 5e4 + 5; // Maximum length of the string
-const ll base = 27; // Base for the polynomial hash
-const ll mod = 1e9 + 9; // Modulo value for the hash
+const long long mod = 1e9 + 7;
+const long long base = 373;
+vector<long long> hashs, powmod;
 
-int n, ans;
-ll p[N];
-string s, t;
-vector<ll> S, T;
-
-// Function to compute hash values for the string s
-vector<ll> getHash(const string &s) {
-    vector<ll> h(s.size(), 0);
-    h[0] = s[0] - 'a' + 1;
-    for (int i = 1; i < s.size(); i++) {
-        h[i] = (h[i - 1] * base + s[i] - 'a' + 1) % mod;
+void calcpow(int n) {
+    powmod.resize(n + 1);
+    powmod[0] = 1;
+    for(int i = 1; i <= n; i++) {
+        powmod[i] = (base * powmod[i - 1]) % mod;
     }
-    return h;
 }
 
-// Function to get the hash of the substring s[l:r]
-ll getSubstringHash(const vector<ll> &h, int l, int r) {
-    if (l == 0) return h[r];
-    ll ans = (h[r] - h[l - 1] * p[r - l + 1] % mod + mod) % mod;
-    return ans;
+void calchash(const string &S, int n) {
+    hashs.resize(n + 1);
+    for(int i = 1; i <= n; i++) {
+        hashs[i] = (hashs[i - 1] * base + S[i - 1]) % mod;
+    }
 }
 
-// Function to check if there exists a palindrome of length len
-bool check(int len) {
-    for (int i = 0; i <= n - len; i++) {
+long long gethash(int l, int r) {
+    long long hash_value = (hashs[r + 1] - (hashs[l] * powmod[r - l + 1]) % mod + mod) % mod;
+    return hash_value;
+}
+
+bool is_palindrome(const string &S, int len) {
+    for(int i = 0; i <= S.size() - len; i++) {
         int j = i + len - 1;
-        if (getSubstringHash(S, i, j) == getSubstringHash(T, n - j - 1, n - i - 1)) {
+        int mid = (i + j) / 2;
+        if(gethash(i, mid) == gethash(j - mid + i, j)) {
             return true;
         }
     }
     return false;
 }
 
-// Binary search to find the longest palindromic substring
-void solve(int L, int R, int k) {
-    while (L <= R) {
-        int mid = (L + R) / 2;
-        int len = 2 * mid + k;
-        if (check(len)) {
-            ans = max(ans, len);
-            L = mid + 1;
+int main() {
+    int n;
+    string S;
+    cin >> n >> S;
+
+    calcpow(n);
+    calchash(S, n);
+
+    int l = 1, r = n, result = 1;
+
+    while(l <= r) {
+        int mid = (l + r) / 2;
+        if(is_palindrome(S, mid)) {
+            result = mid;
+            l = mid + 1;
         } else {
-            R = mid - 1;
+            r = mid - 1;
         }
     }
-}
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    cin >> n;
-    cin.ignore();
-    getline(cin, s);
-
-    // Prepare the reversed string t
-    t = s;
-    reverse(t.begin(), t.end());
-
-    // Compute the hashes for the string s and its reverse t
-    S = getHash(s);
-    T = getHash(t);
-
-    // Precompute powers of base % mod
-    p[0] = 1;
-    for (int i = 1; i < n; i++) {
-        p[i] = p[i - 1] * base % mod;
-    }
-
-    // Solve for odd and even length palindromes
-    solve(0, (n - 1) / 2, 1);
-    solve(1, n / 2, 0);
-
-    // Output the length of the longest palindromic substring
-    cout << ans << '\n';
+    cout << result << endl;
 
     return 0;
 }

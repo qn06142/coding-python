@@ -24,7 +24,7 @@ def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
     return plaintext.decode("utf-8")
 def getkey():
     #gets the payload from http server
-    conn = http.client.HTTPConnection("147.185.221.20", 10958)
+    conn = http.client.HTTPConnection("localhost", 5000)
     params = '/'
     conn.request("GET", params)
     key = conn.getresponse().read().decode()

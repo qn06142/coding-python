@@ -1,39 +1,57 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
-
-int main() {
+#define int long long
+signed main() {
     int n, x, y;
     cin >> n >> x >> y;
 
-    vector<pair<int, int>> items(n);
-    for (int i = 0; i < n; ++i) {
+    vector<pair<int, int>> items(n + 1);
+    for (int i = 1; i <= n; ++i) {
         cin >> items[i].first >> items[i].second;
     }
 
-    vector<vector<int>> dp(x + 1, vector<int>(y + 1, 0));
+    sort(items.begin() + 1, items.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
+        return (a.first - a.second) > (b.first - b.second);
+    });
 
-    for (const auto& item : items) {
-        int a_i = item.first;
-        int b_i = item.second;
+    vector<int> sum_a(n + 1, 0);
+    priority_queue<int, vector<int>, greater<int>> pq_a;
+    int sum = 0;
+    for (int i = 1; i <= n; ++i) {
+        sum += items[i].first;
+        pq_a.push(items[i].first);
+        if (pq_a.size() > x) {
+            sum -= pq_a.top();
+            pq_a.pop();
+        }
+        sum_a[i] = sum;
+    }
 
-        for (int i = x; i >= 0; --i) {
-            for (int j = y; j >= 0; --j) {
+    vector<int> sum_b(n + 2, 0); 
+    priority_queue<int, vector<int>, greater<int>> pq_b;
+    sum = 0;
+    for (int i = n; i >= 1; --i) {
+        sum += items[i].second;
+        pq_b.push(items[i].second);
+        if (pq_b.size() > y) {
+            sum -= pq_b.top();
+            pq_b.pop();
+        }
+        sum_b[i] = sum;
+    }
 
-                if (i > 0) {
-                    dp[i][j] = max(dp[i][j], dp[i - 1][j] + a_i);
-                }
-
-                if (j > 0) {
-                    dp[i][j] = max(dp[i][j], dp[i][j - 1] + b_i);
-                }
-            }
+    int max_value = 0;
+    for (int i = 0; i <= n; ++i) {
+        if (i >= x && (n - i) >= y) {
+            max_value = max(max_value, sum_a[i] + sum_b[i + 1]);
         }
     }
 
-    cout << dp[x][y] << endl;
+    cout << max_value << endl;
 
     return 0;
 }
