@@ -1,63 +1,40 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <climits>
+#include <cmath>
 
 using namespace std;
 
-const int maxn = 2005;
-int a[maxn], pref[maxn];
-
-int max_two_subarrays(int n) {
-
-    for (int i = 1; i <= n; ++i) {
-        pref[i] = pref[i - 1] + a[i];
-    }
-
-    vector<int> maxSumEndingBefore(n + 1, INT_MIN);
-    vector<int> maxSumStartingAfter(n + 1, INT_MIN);
-    vector<int> prefixminsum(n + 5, INT_MAX);
-    for (int len = 3; len <= n; len += 3) {
-        for (int i = len; i <= n; ++i) {
-            int sum = pref[i] - pref[i - len];
-            maxSumEndingBefore[i] = max(maxSumEndingBefore[i], sum);
-        }
-    }
-
-    for (int i = 1; i <= n; ++i) {
-        maxSumEndingBefore[i] = max(maxSumEndingBefore[i], maxSumEndingBefore[i - 1]);
-    }
-
-    for (int len = 3; len <= n; len += 3) {
-        for (int i = n - len + 1; i >= 1; --i) {
-            int sum = pref[i + len - 1] - pref[i - 1];
-            maxSumStartingAfter[i] = max(maxSumStartingAfter[i], sum);
-        }
-    }
-
-    for (int i = n - 1; i >= 1; --i) {
-        maxSumStartingAfter[i] = max(maxSumStartingAfter[i], maxSumStartingAfter[i + 1]);
-    }
-
-    int maxSum = INT_MIN;
-    for (int i = 3; i <= n - 3; ++i) {
-        if (maxSumEndingBefore[i] != INT_MIN && maxSumStartingAfter[i + 1] != INT_MIN) {
-            maxSum = max(maxSum, maxSumEndingBefore[i] + maxSumStartingAfter[i + 1]);
-        }
-    }
-
-    return maxSum;
-}
+typedef long long LL;
 
 int main() {
     int n;
+    LL MAX = -9999999999;
+
+    vector<LL> a, t3, T1, T2, T1MAX;
+
     cin >> n;
 
-    for (int i = 1; i <= n; ++i) {
-        cin >> a[i];
-    }
+    a.resize(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
 
-    cout << max_two_subarrays(n) << endl;
+    t3.resize(n);
+    for (int i = 2; i < n; i++) t3[i] = a[i] + a[i - 1] + a[i - 2];
+
+    T1.resize(n);
+    T1[2] = t3[2];
+    for (int i = 3; i < n; i++) T1[i] = max(t3[i], T1[i - 3] + t3[i]);
+
+    T2.resize(n);
+    T2[n - 3] = t3[n - 1];  // = a[n-3] + a[n-2] + a[n-1];
+    for (int i = n - 4; i >= 0; i--) T2[i] = max(t3[i + 2], T2[i + 3] + t3[i + 2]);
+
+    T1MAX.resize(n);
+    T1MAX[2] = T1[2];
+    for (int i = 3; i < n; i++) T1MAX[i] = max(T1MAX[i - 1], T1[i]);
+
+    for (int j = 3; j <= n - 3; j++) MAX = max(MAX, T2[j] + T1MAX[j - 1]);
+
+    cout << MAX << endl;
 
     return 0;
 }
