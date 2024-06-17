@@ -1,56 +1,130 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
+#define task "QUIZZ"
+#define ll long long
+#define ld long double
+#define fi first
+#define se second
+#define pb push_back
 using namespace std;
-int a[(int) 2e5 + 5];
-map<int, vector<int>> divs2;
+const int MAXN = 2e5 + 5;
+const ll INF = 1e18 + 5;
+const ll MOD = 1e9 + 7;
 
-void factorize(int x) {
-    for(int i = 2; i <= sqrt(x); i++) {
-        int cnt = 0;
-        while(x % i == 0) {
-            cnt++;
-            x /= i;
-        }
-        divs2[i].push_back(cnt);
-    }
-    if(x > 1) divs2[x].push_back(1);
-}
-long long findmaxsum(int n, int div) {
-    vector<int> a(divs2[div].begin(), divs2[div].end());
-    vector<int> L(n + 5), R(n + 5);
-    stack<int> stacc;
-    for(int i = 0; i < n; i++) {
-        while(!stacc.empty() and a[stacc.top()] <= a[i]) {
-            L[i] += L[stacc.top()] + 1;
-            stacc.pop();
-        }
-        stacc.push(i);
-    }
-    while(!stacc.empty()) stacc.pop();
-    for(int i = n - 1; i >= 0; i--) {
-        while(!stacc.empty() and a[stacc.top()] < a[i]) {
-            R[i] += R[stacc.top()] + 1;
-            stacc.pop();
-        }
-        stacc.push(i);
-    }
-    long long ans = 0;
-    for(int i = 0; i < n; i++) {
-        ans += (L[i] + 1) * (R[i] + 1) * a[i];
-    }
-    return ans;
-}
-int main() {
-    int n;
+int n, a[MAXN];
+
+void Input()
+{
     cin >> n;
-    for(int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++)
         cin >> a[i];
-        factorize(a[i]);
+}
+
+vector<pair<int, int>> Adj[MAXN];
+ll cnt[MAXN];
+
+ll power(ll a, ll b)
+{
+    ll res = 1;
+    for (; b; b /= 2)
+    {
+        if (b & 1)
+        {
+            res *= a;
+            res %= MOD;
+        }
+        a *= a;
+        a %= MOD;
     }
-    long long ans = 1;
-    for(auto i:divs2) {
-        ans *= pow(i.first, findmaxsum(n, i.first));
-        ans %= (long long) 1e9 + 7;
+    return res;
+}
+
+int sang[MAXN];
+ll L[MAXN], R[MAXN];
+
+void Solve()
+{
+    for (int i = 2; i * i <= 2e5; i++)
+    {
+        if (!sang[i])
+            for (int j = i * i; j <= 2e5; j += i)
+            {
+                if (!sang[j])
+                    sang[j] = i;
+            }
     }
-    cout << ans << endl;
+
+    vector<int> snt;
+    for (int i = 2; i <= 2e5; i++)
+        if (!sang[i])
+        {
+            snt.pb(i);
+            sang[i] = i;
+        }
+
+    for (int i = 1; i <= n; i++)
+    {
+        int num = a[i];
+        while (num > 1)
+        {
+            int p = sang[num];
+            int sl = 0;
+            while (sang[num] == p)
+            {
+                num /= p;
+                sl++;
+            }
+            Adj[p].pb({sl, i});
+        }
+    }
+
+    ll ans = 1;
+    for (int x : snt)
+    {
+        stack<pair<int, int>> S;
+        for (int i = 0; i < Adj[x].size(); i++)
+        {
+            while (!S.empty() && S.top().fi < Adj[x][i].fi)
+            {
+                S.pop();
+            }
+
+            if (S.empty())
+                L[i] = 0;
+            else
+                L[i] = S.top().se;
+            S.push(Adj[x][i]);
+        }
+
+        while (!S.empty())
+            S.pop();
+        //assert(1 < 0);
+        for (int i = (int)Adj[x].size() - 1; i >= 0; i--)
+        {
+            while (!S.empty() && S.top().fi <= Adj[x][i].fi)
+            {
+                S.pop();
+            }
+            if (S.empty())
+                R[i] = n + 1;
+            else
+                R[i] = S.top().se;
+            S.push(Adj[x][i]);
+        }
+
+        for (int i = 0; i < Adj[x].size(); i++)
+        {
+            ans *= power(power(x, Adj[x][i].fi), (Adj[x][i].se - L[i]) * (R[i] - Adj[x][i].se));
+            ans %= MOD;
+        }
+    }
+
+    cout << ans;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    Input();
+    Solve();
 }
