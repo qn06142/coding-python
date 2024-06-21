@@ -51,7 +51,7 @@ pair<int, int> findVthPair(int n, int k, int v) {
 
 int main() {
     int n, k, v;
-    cin >> n >> k >> v;
+    cin >> n >> v >> k;
 
     pair<int, int> result = findVthPair(n, k, v);
     cout << result.first << " " << result.second << endl;
