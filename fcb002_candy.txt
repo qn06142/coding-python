@@ -1,0 +1,21 @@
+def minimize_candy_difference(N, A):
+
+    total_sum = sum(A)
+
+    min_diff = float('inf')
+    sum_k = 0
+
+    for i in range(N-1):
+        sum_k += A[i]
+        sum_remaining = total_sum - sum_k
+        diff = abs(sum_k - sum_remaining)
+        if diff < min_diff:
+            min_diff = diff
+
+    return min_diff
+
+N = int(input().strip())
+A = list(map(int, input().strip().split()))
+
+result = minimize_candy_difference(N, A)
+print(result)

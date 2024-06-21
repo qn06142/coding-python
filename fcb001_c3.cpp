@@ -1,21 +1,24 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
     int n, k;
-    vector<int> a(n + 1);
-    map<int, int> mapp;
     cin >> n >> k;
+    vector<int> a(n + 1);
     for(int i = 1; i <= n; i++) {
         cin >> a[i];
     }
-    for(int i = 1; i <= n; i++) {
-        mapp[a[i] * a[i]] += 1;
-    }
+
     int count = 0;
-    for(int i = 1; i <= n; i++) {
-        count += mapp[k - a[i]];
+    map<int, int> mapp;
+    for(int j = 1; j <= n; j++) {
+        int aj2 = a[j] * a[j];
+        if (mapp.find(k - aj2) != mapp.end()) {
+            count += mapp[k - aj2];
+        }
+        mapp[a[j]]++;
     }
+
     cout << count;
+    return 0;
 }
