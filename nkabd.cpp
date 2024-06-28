@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#define MAX 100000
+#define MAX 1000000
 
 int s[MAX+5];
 
