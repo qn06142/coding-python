@@ -1,68 +1,67 @@
-import random
-from typing import List, Tuple
+def calculate_divisor_sums(limit):
+    divisor_sum = [0] * (limit + 1)
+    for i in range(1, limit + 1):
+        for j in range(2 * i, limit + 1, i):
+            divisor_sum[j] += i
+    return divisor_sum
 
-# Define constants
-ll = int
-MAX = 100005
-BIT = [0] * MAX
-sum_arr = [0] * MAX
-res = [0] * MAX
-q = 0
+def preprocess_special_numbers(limit, max_x):
+    divisor_sum = calculate_divisor_sums(limit)
+    special_count = [[0] * (max_x + 1) for _ in range(limit + 1)]
+    
+    for x in range(1, max_x + 1):
+        count = 0
+        for n in range(1, limit + 1):
+            if divisor_sum[n] > x:
+                count += 1
+            special_count[n][x] = count
+    
+    return special_count, divisor_sum
 
-class Node:
-    def __init__(self, l: int, r: int, x: int, i: int):
-        self.l = l
-        self.r = r
-        self.x = x
-        self.i = i
+def count_special_numbers_in_range(L, R, X, special_count, divisor_sum):
+    if X <= 10:
+        if L == 1:
+            return special_count[R][X]
+        else:
+            return special_count[R][X] - special_count[L-1][X]
+    else:
+        count = 0
+        for i in range(L, R + 1):
+            if divisor_sum[i] > X:
+                count += 1
+        return count
 
-query: List[Node] = []
-save: List[Tuple[int, int]] = []
+def process_queries(queries, special_count, divisor_sum):
+    results = []
+    for L, R, X in queries:
+        results.append(count_special_numbers_in_range(L, R, X, special_count, divisor_sum))
+    return results
 
-def cmp(a: Tuple[int, int], b: Tuple[int, int]) -> bool:
-    return a[1] > b[1]
+# Input processing
+import sys
+input = sys.stdin.read
+data = input().split()
 
-def dk(a: Node, b: Node) -> bool:
-    return a.x > b.x
+Q = int(data[0])
+queries = []
+index = 1
+for _ in range(Q):
+    L = int(data[index])
+    R = int(data[index + 1])
+    X = int(data[index + 2])
+    queries.append((L, R, X))
+    index += 3
 
-def build():
-    for i in range(1, MAX // 2 + 1):
-        for j in range(i * 2, MAX, i):
-            sum_arr[j] += i
-    for i in range(1, MAX + 1):
-        save.append((i, sum_arr[i]))
-    save.sort(key=lambda x: x[1], reverse=True)
+# Constants
+LIMIT = 10 ** 5
+MAX_X = 10
 
-def update(vt: int):
-    while vt < MAX:
-        BIT[vt] += 1
-        vt += vt & -vt
+# Preprocess special numbers
+special_count, divisor_sum = preprocess_special_numbers(LIMIT, MAX_X)
 
-def get(vt: int) -> int:
-    s = 0
-    while vt > 0:
-        s += BIT[vt]
-        vt -= vt & -vt
-    return s
+# Process the queries
+results = process_queries(queries, special_count, divisor_sum)
 
-def inp():
-    global q
-    build()
-    q = int(input())
-    for _ in range(q):
-        l, r, x = map(int, input().split())
-        query.append(Node(l, r, x, len(query) + 1))
-    query.sort(key=dk)
-    vt = 0
-    for x in save:
-        while vt < q and query[vt].x >= x[1]:
-            tmp = query[vt]
-            res[tmp.i] = get(tmp.r) - get(tmp.l - 1)
-            vt += 1
-        update(x[0])
-    for i in range(1, q + 1):
-        print(res[i])
-
-
-inp()
-
+# Output the results
+for result in results:
+    print(result)
