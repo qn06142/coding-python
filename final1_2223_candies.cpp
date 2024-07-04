@@ -1,41 +1,43 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#pragma GCC optimize("Ofast,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#include <bits/stdc++.h>
 
 using namespace std;
 
-const int MAX_N = 100005; // Số lượng hộp kẹo tối đa
-const int MAX_M = 100005; // Số lượng bạn tối đa
-
+const int MAX_N = 500005;
 int a[MAX_N]; // Mảng chứa số lượng kẹo trong mỗi hộp
-int b[MAX_M]; // Mảng chứa độ tế nhị của mỗi bạn
-int result[MAX_M]; // Mảng chứa kết quả số kẹo mà mỗi bạn đã ăn
-int fenwick_tree[MAX_N]; // Fenwick Tree để quản lý số lượng kẹo
+int b[MAX_N]; // Mảng chứa độ tế nhị của mỗi bạn
+int bit[MAX_N]; // Fenwick Tree để quản lý số lượng kẹo
 
-// Cập nhật Fenwick Tree
+// Update a Fenwick Tree at a specific index by a delta
 void update(int index, int delta, int n) {
     while (index <= n) {
-        fenwick_tree[index] += delta;
+        bit[index] += delta;
         index += index & -index;
     }
 }
 
-// Lấy tổng số kẹo từ hộp 1 đến hộp index
+// Query the sum from start to a specific index in a Fenwick Tree
 int query(int index) {
     int sum = 0;
     while (index > 0) {
-        sum += fenwick_tree[index];
+        sum += bit[index];
         index -= index & -index;
     }
     return sum;
 }
 
-// Tìm vị trí đầu tiên mà tổng số kẹo >= x
+// Update the range [l, r] by adding value v
+void range_update(int l, int r, int n) {
+    update(l, 1, n);
+    update(r + 1, -1, n);
+}
+
 int find_first_ge(int x, int n) {
     int low = 1, high = n, pos = -1;
     while (low <= high) {
         int mid = (low + high) / 2;
-        if (query(mid) >= x) {
+        if ((a[mid] - query(mid)) >= x) {
             pos = mid;
             high = mid - 1;
         } else {
@@ -46,52 +48,30 @@ int find_first_ge(int x, int n) {
 }
 
 int main() {
-    int n, m;
-    // Đọc số lượng hộp kẹo
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    int n;
     cin >> n;
-    vector<pair<int, int>> candy(n);
-    // Đọc số lượng kẹo trong mỗi hộp và lưu kèm theo chỉ số ban đầu
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        candy[i] = {a[i], i + 1}; // Lưu giá trị kẹo và chỉ số 1-based
-    }
+    for (int i = 1; i <= n; i++) cin >> a[i];
 
-    // Sắp xếp danh sách candy theo số lượng kẹo
-    sort(candy.begin(), candy.end());
-
-    // Khởi tạo Fenwick Tree
-    for (int i = 0; i < n; ++i) {
-        update(candy[i].second, candy[i].first, n);
-    }
-
-    // Đọc số lượng bạn tới dự tiệc
+    int m;
     cin >> m;
-    // Đọc độ tế nhị của mỗi bạn
-    for (int i = 0; i < m; ++i) {
-        cin >> b[i];
-    }
+    for (int i = 1; i <= m; i++) cin >> b[i];
 
-    // Xử lý từng bạn một
-    for (int j = 0; j < m; ++j) {
+    sort(a + 1, a + 1 + n);
+
+    for (int j = 1; j <= m; ++j) {
         int bi = b[j];
-        int count = 0;
-        while (true) {
-            int index = find_first_ge(bi, n);
-            if (index == -1) break; // Không còn hộp nào phù hợp
-            int delta = query(index) - query(index - 1);
-            if (delta >= bi) {
-                count++;
-                update(index, -1, n); // Giảm một viên kẹo từ hộp này
-            } else {
-                break;
-            }
-        }
-        result[j] = count;
-    }
+        int pos = find_first_ge(bi, n);
 
-    // Xuất kết quả
-    for (int j = 0; j < m; ++j) {
-        cout << result[j] << endl;
+        if (pos == -1) {
+            cout << 0 << "\n";
+        } else {
+            int count = n - pos + 1;
+            range_update(pos, n, n);
+            cout << count << "\n";
+        }
     }
 
     return 0;

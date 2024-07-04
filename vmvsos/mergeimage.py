@@ -8,7 +8,7 @@ def median_images(directory):
     modes = set()
     for filename in os.listdir(directory):
         if filename.endswith(".jepg") or filename.endswith(".png"):
-            img = Image.open(os.path.join(directory, filename)).convert('L')
+            img = Image.open(os.path.join(directory, filename))
             images.append(np.array(img))
             sizes.add(img.size)
             modes.add(img.mode)
@@ -25,13 +25,12 @@ def median_images(directory):
     median_img_pil = Image.fromarray(np.uint8(median_img))
 
     # Convert to black and white
-    bw_img = median_img_pil.point(lambda x: 0 if x<128 else 255, '1')
 
     # Save the median image
-    bw_img.save(os.path.join(directory, 'median_image.jpg'))
+    median_img_pil.save(os.path.join(directory, 'median_image.jpg'))
 
 def main():
-    directory = '/run/media/wheatley/NewVolume/coding python/vmvsos/images/'  # replace with your directory
+    directory = 'images/'  # replace with your directory
     median_images(directory)
 
 if __name__ == "__main__":

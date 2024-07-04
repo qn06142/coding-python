@@ -54,7 +54,6 @@ int findMin(int k, int l, int r, int L, int R) {
 
 int main() {
 
-
 	cin >> n >> q;
 	FOR(i,1,n) scanf("%d", a+i);
 
@@ -64,7 +63,7 @@ int main() {
 		int l, r;
 		scanf("%d%d", &l, &r);
 		int res = findMax(1,1,n,l,r) - findMin(1,1,n,l,r);
-		printf("%d ", res);
+		printf("%d\n", res);
 	}
 
 	return 0;

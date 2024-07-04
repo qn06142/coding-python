@@ -1,26 +1,54 @@
+from bisect import bisect_left, bisect_right
+import sys
 
-n, m = map(int, input().split())
+def maxSubarraySum(sum, k, row):
 
-a = []
-for i in range(n):
-    a.append(list(map(int, input().split())))
+	curSum, curMax = 0, -sys.maxsize - 1
 
-for i in range(n):
-    for j in range(1, m):
-        a[i][j] += a[i][j-1]
+	sumSet = {}
 
-max_sum = -1e18
-for l in range(m):
-    for r in range(l, m):
-        sum = [0]*n
-        for i in range(n):
-            sum[i] = a[i][r] - (a[i][l-1] if l > 0 else 0)
+	sumSet[0] = 1
 
-        max_ending_here = max_ending_so_far = sum[0]
-        for i in range(1, n):
-            max_ending_here = max(sum[i], max_ending_here + sum[i])
-            max_ending_so_far = max(max_ending_so_far, max_ending_here)
+	for r in range(row):
 
-        max_sum = max(max_sum, max_ending_so_far)
+		curSum += sum[r]
 
-print(max_sum)
+		arr = list(sumSet.keys())
+
+		it = bisect_left(arr, curSum - k)
+
+		if (it != len(arr)):
+			curMax = max(curMax, curSum - it)
+
+		sumSet[curSum] = 1
+
+	return curMax
+
+def maxSumSubmatrix(matrix, k):
+
+	row = len(matrix)
+	col = len(matrix[0])
+
+	ret = -sys.maxsize - 1
+
+	for i in range(col):
+		sum = [0] * (row)
+
+		for j in range(i, col):
+
+			for r in range(row):
+				sum[r] += matrix[r][j]
+
+			curMax = maxSubarraySum(sum, k, row)
+
+			ret = max(ret, curMax)
+
+	print(ret)
+
+if __name__ == '__main__':
+
+	matrix = [ [10, 8, 6, 8, 10]]
+	K = 9
+
+	maxSumSubmatrix(matrix, K)
+
