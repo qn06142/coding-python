@@ -6,22 +6,26 @@ def generate_test_case():
     # Generate a random test case
     # For simplicity, let's assume the test case is a string of random letters
     length = random.randint(1, 10)  # Random length between 1 and 100
-    return str(length) + ' ' + str(random.randint(1, 100)) + '\n' + ' '.join((str(random.randint(1, 10)) for _ in range(0, length)))
+    return str(random.randint(1, 10)) + '\n' + ''.join((str(random.randint(1, 10)) for _ in range(0, random.randint(1, 30))))
 
 def run_program(executable, input_data):
     # Run the executable with the given input data
     process = subprocess.Popen([executable], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate(input=input_data.encode())
     return stdout.decode().strip()
-
+def run_program_py(executable, input_data):
+    # Run the executable with the given input data
+    process = subprocess.Popen(executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate(input=input_data.encode())
+    return stdout.decode().strip()
 def main():
-    executable1 = './fc017_mowlawn.exe'
-    executable2 = './fc017_mowlawn_slow.exe'
+    executable1 = './codefunp097'
+    executable2 = ['python', '/run/media/wheatley/NewVolume/coding python/codefunp097.py']
     
     while True:
         test_case = generate_test_case()
         output1 = run_program(executable1, test_case)
-        output2 = run_program(executable2, test_case)
+        output2 = run_program_py(executable2, test_case)
         
         if output1 != output2:
             print(f"Test case: {test_case}")
