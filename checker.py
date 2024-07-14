@@ -6,7 +6,7 @@ def generate_test_case():
     # Generate a random test case
     # For simplicity, let's assume the test case is a string of random letters
     length = random.randint(1, 10)  # Random length between 1 and 100
-    return str(random.randint(1, 10)) + '\n' + ''.join((str(random.randint(1, 10)) for _ in range(0, random.randint(1, 30))))
+    return str(length) + ' ' + str(random.randint(1, 10)) + '\n' + ' '.join((str(random.randint(1, 10)) for _ in range(0, length))) + '\n' + ' '.join((str(random.randint(1, 10)) for _ in range(0, length)))
 
 def run_program(executable, input_data):
     # Run the executable with the given input data
@@ -19,8 +19,8 @@ def run_program_py(executable, input_data):
     stdout, stderr = process.communicate(input=input_data.encode())
     return stdout.decode().strip()
 def main():
-    executable1 = './codefunp097'
-    executable2 = ['python', '/run/media/wheatley/NewVolume/coding python/codefunp097.py']
+    executable1 = './csphn_sleddogs.exe'
+    executable2 = ['python', 'csphn_sleddogs.py']
     
     while True:
         test_case = generate_test_case()

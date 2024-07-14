@@ -82,7 +82,19 @@
     "valarray": "cpp",
     "variant": "cpp",
     "hash_map": "cpp",
-    "stacktrace": "cpp"
+    "stacktrace": "cpp",
+    "barrier": "cpp",
+    "expected": "cpp",
+    "source_location": "cpp",
+    "format": "cpp",
+    "generator": "cpp",
+    "latch": "cpp",
+    "print": "cpp",
+    "semaphore": "cpp",
+    "spanstream": "cpp",
+    "stdfloat": "cpp",
+    "syncstream": "cpp",
+    "text_encoding": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
@@ -141,5 +153,5 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "C_Cpp.errorSquiggles": "enabled"
+  "C_Cpp.errorSquiggles": "disabled"
 }
