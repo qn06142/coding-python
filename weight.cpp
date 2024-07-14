@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N = 4e5 + 7;
+const int N = 4e6 + 7;
 
 int a[N], n, pos_max[N], pos_min[N];
 typedef long long ll;
