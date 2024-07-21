@@ -1,7 +1,7 @@
 def find_len(arr, n, m):
 	# Define the maximum values for maxN and maxM
-	maxN = 1000
-	maxM = 1000
+	maxN = 100000
+	maxM = 10
 
 	# To store the states of DP
 	dp = [[0 for _ in range(maxM)] for _ in range(n + 1)]
@@ -28,7 +28,7 @@ def find_len(arr, n, m):
 	else:
 		return dp[0][0]
 
-n, m = tuple(int(i) for i in input().split())
-arr = [int(i) for i in input().split()]
-# Function call
-print(n - find_len(arr, n, m))
+arr = [int(i) for i in input()]
+n = len(arr)
+m = 3
+print(find_len(arr, n, m))
