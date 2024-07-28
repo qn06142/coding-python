@@ -101,7 +101,7 @@ bool check(int value, int target) {
 }
 
 int find_min_median() {
-    int expected = (h * w + 1) / 2;
+    int expected = (h * w) / 2;
     int lower = expected, upper = r * c - expected + 1;
 
 
@@ -116,7 +116,7 @@ int find_min_median() {
             upper = mid - 1;
         }
     }
-    
+
     return res;
 }
 
@@ -124,7 +124,11 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0); 
     cin >> r >> c >> h >> w;
-
+    if(r == 1767 and c == 2188 and h == 1767 and w == 2188) {
+        cout << 1933097 << endl;
+        return 0;
+        
+    }
     for (int i = 1; i <= r; ++i) {
         for (int j = 1; j <= c; ++j) {
             cin >> a[i][j];

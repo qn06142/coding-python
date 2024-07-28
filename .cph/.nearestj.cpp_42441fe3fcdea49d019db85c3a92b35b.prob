@@ -1,0 +1,1 @@
+{"name":"Local: nearestj","url":"/run/media/wheatley/NewVolume/coding python/nearestj.cpp","tests":[{"id":1722087100487,"input":"2\n5\n2 3 1 9 4\n7\n5 7 9 3 2 1 4","output":"3 9 9 -1 -1 \n7 9 -1 4 4 4 -1 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/nearestj.cpp","group":"local","local":true}

@@ -77,71 +77,43 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-
-#define int long long
-
-const int MAXN = (int)1e6 + 5;
-int a[MAXN];
-long long dp[MAXN], pref[MAXN];
-int n, k;
-int prev_[MAXN]; 
-
-int cal_value(int i) {
-    return (i == 1 ? 0 : dp[i - 2]) - pref[i - 1];
-}
-
-signed main() {
+#pragma GCC optimize("Ofast,fast-math,unroll-loops")
+#pragma GCC target("avx,avx2")
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-
-    cin >> n >> k;
-    k--;
-    for(int i = 1; i <= n; i++) {
-        cin >> a[i];
-        pref[i] = pref[i - 1] + a[i];
+    int n, k, x;
+    cin >> n >> k >> x;
+    vector<pair<int, pair<int, int>>> operations(x);
+    for (int i = 0; i < x; ++i) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        operations[i] = make_pair(a, make_pair(b, c));
     }
 
-    dp[0] = 0;
-    deque<int> dq;
-    for(int i = 1; i <= n; i++) {
-        int val = cal_value(i);
-        while(!dq.empty() && dq.front() < i - k + 1) dq.pop_front();
-        while(!dq.empty() && cal_value(dq.back()) < val) dq.pop_back();
-        dq.push_back(i);
+    vector<int> pos(n);
+    for (int i = 0; i < n; ++i) {
+        pos[i] = i + 1;
+    }
 
-        dp[i] = dp[i - 1];
-        prev_[i] = i - 1; 
-        if (!dq.empty()) {
-            int opt = cal_value(dq.front()) + pref[i];
-            if (dp[i] < opt) {
-                dp[i] = opt;
-                prev_[i] = dq.front() - 1; 
-                #ifdef DEBUG
-                cout << dq.front() << ' ' << i << endl;
-                #endif
-            }
+    for (auto op : operations) {
+        int i = op.first, m = op.second.first, j = op.second.second;
+        i--; j--; 
+
+        vector<int> extracted(pos.begin() + i, pos.begin() + i + m);
+
+        pos.erase(pos.begin() + i, pos.begin() + i + m);
+
+        if (j == n - m) {
+            pos.insert(pos.end(), extracted.begin(), extracted.end());
+        } else {
+            pos.insert(pos.begin() + j, extracted.begin(), extracted.end());
         }
     }
 
-    long long ans = dp[n];
-    
-    vector<int> chosen;
-    int idx = n;
-    while(idx > 0) {
-        int p = prev_[idx];
-        chosen.push_back(idx);
-        idx = p;
+    vector<int> result(pos.begin(), pos.begin() + k);
+    for (int num : result) {
+        cout << num << " ";
     }
-    #ifdef DEBUG
-    cout << endl;
-    #endif
-    cout << chosen.size() << ' '<< ans << endl;
-    for(auto i:chosen) {
-        cout << i << ' ';
-    }
-    #ifdef DEBUG
-    cout << endl;
-    for(int i = 1; i <= n; i++) cout << prev_[i] << ' ';
-    #endif
     return 0;
 }

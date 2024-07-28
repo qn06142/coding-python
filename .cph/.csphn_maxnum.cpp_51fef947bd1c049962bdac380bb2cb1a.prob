@@ -1,0 +1,1 @@
+{"name":"Local: csphn_maxnum","url":"/run/media/wheatley/NewVolume/coding python/csphn_maxnum.cpp","tests":[{"id":1722067142202,"input":"5\n224 96 9 22 68","output":"9966822422"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_maxnum.cpp","group":"local","local":true}

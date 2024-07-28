@@ -1,0 +1,1 @@
+{"name":"Local: 526185G","url":"/run/media/wheatley/NewVolume/coding python/526185G.py","tests":[{"id":1721971034598,"input":"5 5 3 3\n5 11 12 16 25\n17 18 2 7 10\n4 23 20 3 1\n24 21 19 14 9\n6 22 8 13 15\n","output":"20\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/526185G.py","group":"local","local":true}

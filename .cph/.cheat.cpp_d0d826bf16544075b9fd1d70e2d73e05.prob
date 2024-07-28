@@ -1,0 +1,1 @@
+{"name":"Local: cheat","url":"/run/media/wheatley/NewVolume/coding python/cheat.cpp","tests":[{"id":1722057865603,"input":"3\n3\n1\n2 ","output":"YES\n"},{"id":1722057897924,"input":"6\n1\n3\n5\n6\n4\n2 ","output":"NO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/cheat.cpp","group":"local","local":true}

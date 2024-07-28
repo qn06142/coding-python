@@ -77,104 +77,63 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
+struct Key {
+    int month;
+    int workers;
+    bool operator==(const Key &other) const {
+        return month == other.month && workers == other.workers;
+    }
+};
 
-long long sumrange(long long n) {
-    return (n * (n + 1)) / 2;
+namespace std {
+    template <>
+    struct hash<Key> {
+        size_t operator()(const Key &k) const {
+            return hash<int>()(k.month) ^ hash<int>()(k.workers);
+        }
+    };
 }
 
-long long getsumrange(long long l, long long r) {
-    return sumrange(r) - sumrange(l - 1);
-}
+unordered_map<Key, long long> memo;
 
-long long countvalid(long long a, long long min_b, long long max_b, long long min_c, long long max_c) {
-    long long min_b_req = min_c - a;
-    long long max_b_req = max_c - a;
-
-    if (min_b_req < min_b) min_b_req = min_b;
-    if (max_b_req > max_b) max_b_req = max_b;
-
-    if (min_b_req <= max_b_req) {
-        return max_b_req - min_b_req + 1;
-    }
-    return 0;
-}
-
-string find(int A, int B, int C, long long k) {
-    long long min_a = pow(10, A - 1);
-    long long max_a = pow(10, A) - 1;
-    long long min_b = pow(10, B - 1);
-    long long max_b = pow(10, B) - 1;
-    long long min_c = pow(10, C - 1);
-    long long max_c = pow(10, C) - 1;
-
-    long long left_a = min_a, right_a = max_a;
-
-    while (left_a <= right_a) {
-        long long mid_a = left_a + (right_a - left_a) / 2;
-
-        long long count = 0;
-        for (long long a = min_a; a <= mid_a; ++a) {
-            count += countvalid(a, min_b, max_b, min_c, max_c);
-            if (count >= k) break;
-        }
-
-        if (count >= k) {
-            right_a = mid_a - 1;
-        } else {
-            left_a = mid_a + 1;
-        }
+long long minCost(int n, long long H, long long S, long long D, const vector<int> &a, int month, int workers) {
+    if (month == n) {
+        return workers * D; 
     }
 
-    long long a = left_a;
-    if (a > max_a) return "-1";
-
-    long long remaining_k = k;
-
-    for (long long i = min_a; i < a; ++i) {
-        remaining_k -= countvalid(i, min_b, max_b, min_c, max_c);
+    Key currentKey = {month, workers};
+    if (memo.find(currentKey) != memo.end()) {
+        return memo[currentKey];
     }
 
-    long long min_b_req = min_c - a;
-    long long max_b_req = max_c - a;
+    long long cost = LLONG_MAX;
 
-    if (min_b_req < min_b) min_b_req = min_b;
-    if (max_b_req > max_b) max_b_req = max_b;
-
-    long long left_b = min_b_req, right_b = max_b_req;
-    while (left_b <= right_b) {
-        long long mid_b = left_b + (right_b - left_b) / 2;
-
-        long long c = a + mid_b;
-        if (c >= min_c && c <= max_c && mid_b >= min_b && mid_b <= max_b) {
-            remaining_k--;
-        }
-
-        if (remaining_k == 0) {
-            return to_string(a) + " + " + to_string(mid_b) + " = " + to_string(c);
-        } else if (remaining_k > 0) {
-            left_b = mid_b + 1;
-        } else {
-            right_b = mid_b - 1;
-        }
+    for (int hire = max(0, a[month] - workers); hire <= a[month]; ++hire) {
+        int new_workers = workers + hire;
+        long long current_cost = hire * H + new_workers * S + minCost(n, H, S, D, a, month + 1, new_workers);
+        cost = min(cost, current_cost);
     }
 
-    return "-1";
+    memo[currentKey] = cost;
+    return cost;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    int n;
+    cin >> n;
 
-    int q;
-    cin >> q;
+    long long H, S, D;
+    cin >> H >> S >> D;
 
-    while(q--) {
-        int A, B, C;
-        long long k;
-        cin >> A, B, C, k;
-        cout << find(A, B, C, k) << '\n';
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
     }
+
+    memo.clear();
+    long long total_cost = minCost(n, H, S, D, a, 0, 0);
+
+    cout << total_cost << endl;
 
     return 0;
 }
