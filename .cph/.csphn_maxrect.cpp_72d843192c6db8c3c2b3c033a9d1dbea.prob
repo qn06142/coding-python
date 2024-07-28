@@ -1,0 +1,1 @@
+{"name":"Local: csphn_maxrect","url":"/run/media/wheatley/NewVolume/coding python/csphn_maxrect.cpp","tests":[{"id":1722065275586,"input":"4 6\nBBWWBB\nBWWWWB\nBWWWWB\nBBWBBB","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_maxrect.cpp","group":"local","local":true}

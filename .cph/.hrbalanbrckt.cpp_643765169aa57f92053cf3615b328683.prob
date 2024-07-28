@@ -1,0 +1,1 @@
+{"name":"Local: hrbalanbrckt","url":"/run/media/wheatley/NewVolume/coding python/hrbalanbrckt.cpp","tests":[{"id":1722057444339,"input":"3\n{[()]}\n{[(])}\n{{[[(())]]}}","output":"YES\nNO\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hrbalanbrckt.cpp","group":"local","local":true}

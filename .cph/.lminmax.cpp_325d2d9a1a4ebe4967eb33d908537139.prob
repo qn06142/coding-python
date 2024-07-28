@@ -1,0 +1,1 @@
+{"name":"Local: lminmax","url":"/run/media/wheatley/NewVolume/coding python/lminmax.cpp","tests":[{"id":1722011141875,"input":"10 6\n10 5 4 3 2 1 9 8 7 6","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/lminmax.cpp","group":"local","local":true}

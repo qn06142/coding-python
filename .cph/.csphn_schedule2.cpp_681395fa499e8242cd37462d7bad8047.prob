@@ -1,0 +1,1 @@
+{"name":"Local: csphn_schedule2","url":"/run/media/wheatley/NewVolume/coding python/csphn_schedule2.cpp","tests":[{"id":1722067391471,"input":"4\n1 3 4 2\n3 2 3 1","output":"44"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_schedule2.cpp","group":"local","local":true}

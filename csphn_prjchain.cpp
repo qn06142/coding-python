@@ -77,104 +77,56 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
+#define int long long
+struct Task {
+    long long invest, return_, profit, type, index;
+};
 
-long long sumrange(long long n) {
-    return (n * (n + 1)) / 2;
+bool cmp(const Task& t1, const Task& t2) {
+    if (t1.type != t2.type) return t1.type < t2.type;
+    if (t1.type == 1 && t2.type == 1) return t1.profit > t2.profit;
+    if (t1.type == 2 && t2.type == 2) return t1.return_ > t2.return_;
+    return false; 
 }
 
-long long getsumrange(long long l, long long r) {
-    return sumrange(r) - sumrange(l - 1);
-}
-
-long long countvalid(long long a, long long min_b, long long max_b, long long min_c, long long max_c) {
-    long long min_b_req = min_c - a;
-    long long max_b_req = max_c - a;
-
-    if (min_b_req < min_b) min_b_req = min_b;
-    if (max_b_req > max_b) max_b_req = max_b;
-
-    if (min_b_req <= max_b_req) {
-        return max_b_req - min_b_req + 1;
-    }
-    return 0;
-}
-
-string find(int A, int B, int C, long long k) {
-    long long min_a = pow(10, A - 1);
-    long long max_a = pow(10, A) - 1;
-    long long min_b = pow(10, B - 1);
-    long long max_b = pow(10, B) - 1;
-    long long min_c = pow(10, C - 1);
-    long long max_c = pow(10, C) - 1;
-
-    long long left_a = min_a, right_a = max_a;
-
-    while (left_a <= right_a) {
-        long long mid_a = left_a + (right_a - left_a) / 2;
-
-        long long count = 0;
-        for (long long a = min_a; a <= mid_a; ++a) {
-            count += countvalid(a, min_b, max_b, min_c, max_c);
-            if (count >= k) break;
-        }
-
-        if (count >= k) {
-            right_a = mid_a - 1;
-        } else {
-            left_a = mid_a + 1;
-        }
-    }
-
-    long long a = left_a;
-    if (a > max_a) return "-1";
-
-    long long remaining_k = k;
-
-    for (long long i = min_a; i < a; ++i) {
-        remaining_k -= countvalid(i, min_b, max_b, min_c, max_c);
-    }
-
-    long long min_b_req = min_c - a;
-    long long max_b_req = max_c - a;
-
-    if (min_b_req < min_b) min_b_req = min_b;
-    if (max_b_req > max_b) max_b_req = max_b;
-
-    long long left_b = min_b_req, right_b = max_b_req;
-    while (left_b <= right_b) {
-        long long mid_b = left_b + (right_b - left_b) / 2;
-
-        long long c = a + mid_b;
-        if (c >= min_c && c <= max_c && mid_b >= min_b && mid_b <= max_b) {
-            remaining_k--;
-        }
-
-        if (remaining_k == 0) {
-            return to_string(a) + " + " + to_string(mid_b) + " = " + to_string(c);
-        } else if (remaining_k > 0) {
-            left_b = mid_b + 1;
-        } else {
-            right_b = mid_b - 1;
-        }
-    }
-
-    return "-1";
-}
-
-int main() {
-    ios_base::sync_with_stdio(false);
+signed main() {
+    ios_base::sync_with_stdio(0);
     cin.tie(0);
-    cout.tie(0);
 
-    int q;
-    cin >> q;
+    long long n;
+    cin >> n;
 
-    while(q--) {
-        int A, B, C;
-        long long k;
-        cin >> A, B, C, k;
-        cout << find(A, B, C, k) << '\n';
+    vector<Task> tasks(n + 1); 
+    vector<long long> pos(n + 1);
+
+    for (long long i = 1; i <= n; ++i) {
+        cin >> tasks[i].invest;
+        tasks[i].index = i;
     }
+
+    for (long long i = 1; i <= n; ++i) {
+        cin >> tasks[i].return_;
+    }
+
+    for (long long i = 1; i <= n; ++i) {
+        tasks[i].profit = tasks[i].return_ - tasks[i].invest;
+        tasks[i].type = tasks[i].profit >= 0 ? 1 : 2;
+    }
+
+    stable_sort(tasks.begin() + 1, tasks.end(), cmp);
+
+    long long curr = 0;
+    for (long long i = 1; i <= n; ++i) {
+        pos[i] = curr - tasks[i].invest;
+        curr = pos[i] + tasks[i].return_;
+    }
+
+    long long minn = LLONG_MAX;
+    for (long long i = 1; i <= n; ++i) {
+        minn = min(minn, pos[i]);
+    }
+
+    cout << -minn << '\n';
 
     return 0;
 }

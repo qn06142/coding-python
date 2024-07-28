@@ -77,104 +77,58 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-
-long long sumrange(long long n) {
-    return (n * (n + 1)) / 2;
-}
-
-long long getsumrange(long long l, long long r) {
-    return sumrange(r) - sumrange(l - 1);
-}
-
-long long countvalid(long long a, long long min_b, long long max_b, long long min_c, long long max_c) {
-    long long min_b_req = min_c - a;
-    long long max_b_req = max_c - a;
-
-    if (min_b_req < min_b) min_b_req = min_b;
-    if (max_b_req > max_b) max_b_req = max_b;
-
-    if (min_b_req <= max_b_req) {
-        return max_b_req - min_b_req + 1;
-    }
-    return 0;
-}
-
-string find(int A, int B, int C, long long k) {
-    long long min_a = pow(10, A - 1);
-    long long max_a = pow(10, A) - 1;
-    long long min_b = pow(10, B - 1);
-    long long max_b = pow(10, B) - 1;
-    long long min_c = pow(10, C - 1);
-    long long max_c = pow(10, C) - 1;
-
-    long long left_a = min_a, right_a = max_a;
-
-    while (left_a <= right_a) {
-        long long mid_a = left_a + (right_a - left_a) / 2;
-
-        long long count = 0;
-        for (long long a = min_a; a <= mid_a; ++a) {
-            count += countvalid(a, min_b, max_b, min_c, max_c);
-            if (count >= k) break;
+int rect(vector<int>& heights) {
+    stack<int> s;
+    heights.push_back(0); 
+    int maxArea = 0;
+    for (int i = 0; i < heights.size(); ++i) {
+        while (!s.empty() && heights[s.top()] <= heights[i]) {
+            int h = heights[s.top()];
+            cerr << s.top() << ' ';
+            s.pop();
+            int w = s.empty() ? i : i - s.top() - 1;
+            maxArea = max(maxArea, (h + w) * 2);
         }
-
-        if (count >= k) {
-            right_a = mid_a - 1;
-        } else {
-            left_a = mid_a + 1;
-        }
+        s.push(i);
     }
-
-    long long a = left_a;
-    if (a > max_a) return "-1";
-
-    long long remaining_k = k;
-
-    for (long long i = min_a; i < a; ++i) {
-        remaining_k -= countvalid(i, min_b, max_b, min_c, max_c);
-    }
-
-    long long min_b_req = min_c - a;
-    long long max_b_req = max_c - a;
-
-    if (min_b_req < min_b) min_b_req = min_b;
-    if (max_b_req > max_b) max_b_req = max_b;
-
-    long long left_b = min_b_req, right_b = max_b_req;
-    while (left_b <= right_b) {
-        long long mid_b = left_b + (right_b - left_b) / 2;
-
-        long long c = a + mid_b;
-        if (c >= min_c && c <= max_c && mid_b >= min_b && mid_b <= max_b) {
-            remaining_k--;
-        }
-
-        if (remaining_k == 0) {
-            return to_string(a) + " + " + to_string(mid_b) + " = " + to_string(c);
-        } else if (remaining_k > 0) {
-            left_b = mid_b + 1;
-        } else {
-            right_b = mid_b - 1;
-        }
-    }
-
-    return "-1";
+    heights.pop_back(); 
+    return maxArea;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    int N, M;
+    cin >> N >> M;
+    vector<vector<int>> matrix(N, vector<int>(M));
+    vector<int> heights(M, 0);
 
-    int q;
-    cin >> q;
-
-    while(q--) {
-        int A, B, C;
-        long long k;
-        cin >> A, B, C, k;
-        cout << find(A, B, C, k) << '\n';
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            char val;
+            cin >> val;
+            matrix[i][j] = val - '0';
+        }
     }
+
+    int ans = 0;
+
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            if (matrix[i][j] == 0) {
+                heights[j]++;
+            } else {
+                heights[j] = 0;
+            }
+        }
+
+        int perimeter = rect(heights);
+        ans = max(ans, perimeter);
+        #if defined DEBUG && !defined ONLINE_JUDGE
+        for(int i = 0; i < M; i++) cout << heights[i] << ' ';
+        cout << endl;
+        #endif
+    }
+
+    cout << ans << endl;
 
     return 0;
 }
