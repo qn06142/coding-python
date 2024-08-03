@@ -1,0 +1,1 @@
+{"name":"Local: hades_lktohop","url":"/run/media/wheatley/NewVolume/coding python/hades_lktohop.cpp","tests":[{"id":1722527349231,"input":"3 2","output":"1 2\n1 3\n2 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_lktohop.cpp","group":"local","local":true}

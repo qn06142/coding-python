@@ -1,0 +1,1 @@
+{"name":"Local: hades_binary","url":"/run/media/wheatley/NewVolume/coding python/hades_binary.cpp","tests":[{"id":1722528494581,"input":"3","output":"010\n011\n101\n110\n111"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_binary.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: hades_lkbracket","url":"/run/media/wheatley/NewVolume/coding python/hades_lkbracket.cpp","tests":[{"id":1722528700784,"input":"2","output":"(())\n()()"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_lkbracket.cpp","group":"local","local":true}

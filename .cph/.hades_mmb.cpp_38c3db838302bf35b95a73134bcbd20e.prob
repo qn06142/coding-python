@@ -1,0 +1,1 @@
+{"name":"Local: hades_mmb","url":"/run/media/wheatley/NewVolume/coding python/hades_mmb.cpp","tests":[{"id":1722271912725,"input":"3\n3 1 2\n2 3 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_mmb.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: hades_chinhhop2","url":"/run/media/wheatley/NewVolume/coding python/hades_chinhhop2.cpp","tests":[{"id":1722528203869,"input":"3 2","output":"1 2\n1 3\n2 1\n2 3\n3 1\n3 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_chinhhop2.cpp","group":"local","local":true}

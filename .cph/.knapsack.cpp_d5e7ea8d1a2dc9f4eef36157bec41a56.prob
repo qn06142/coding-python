@@ -1,0 +1,1 @@
+{"name":"Local: knapsack","url":"/run/media/wheatley/NewVolume/coding python/knapsack.cpp","tests":[{"id":1722649662112,"input":"3 10\n4 5 7\n3 4 8","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/knapsack.cpp","group":"local","local":true}

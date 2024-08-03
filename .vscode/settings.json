@@ -94,7 +94,8 @@
     "spanstream": "cpp",
     "stdfloat": "cpp",
     "syncstream": "cpp",
-    "text_encoding": "cpp"
+    "text_encoding": "cpp",
+    "hash_set": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
