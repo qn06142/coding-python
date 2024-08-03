@@ -1,0 +1,1 @@
+{"name":"Local: hades_lkhoanvi","url":"/run/media/wheatley/NewVolume/coding python/hades_lkhoanvi.cpp","tests":[{"id":1722586714368,"input":"3","output":"123\n132\n213\n231\n312\n321"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_lkhoanvi.cpp","group":"local","local":true}

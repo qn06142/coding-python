@@ -1,0 +1,1 @@
+{"name":"Local: hades_lkbin","url":"/run/media/wheatley/NewVolume/coding python/hades_lkbin.cpp","tests":[{"id":1722525968496,"input":"3","output":"000\n001\n010\n011\n100\n101\n110\n111"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_lkbin.cpp","group":"local","local":true}

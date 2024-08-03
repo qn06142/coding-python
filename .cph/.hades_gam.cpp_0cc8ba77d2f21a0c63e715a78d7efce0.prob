@@ -1,0 +1,1 @@
+{"name":"Local: hades_gam","url":"/run/media/wheatley/NewVolume/coding python/hades_gam.cpp","tests":[{"id":1722244431751,"input":"4\n3 4 3 1","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_gam.cpp","group":"local","local":true}

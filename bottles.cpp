@@ -115,33 +115,26 @@ signed main() {
             int opt = cal_value(dq.front()) + pref[i];
             if (dp[i] < opt) {
                 dp[i] = opt;
-                prev_[i] = dq.front() - 1; 
-                #ifdef DEBUG
-                cout << dq.front() << ' ' << i << endl;
-                #endif
+                prev_[i] = dq.front() - 2;
             }
         }
     }
-
-    long long ans = dp[n];
-    
-    vector<int> chosen;
-    int idx = n;
+    int ans = LLONG_MIN;
+    int ansind;
+    for(int i = 1; i <= n; i++) {
+        if(ans < dp[i]) {
+            ans = max(ans, dp[i]);
+            ansind = i;
+        }
+    }
+    vector<int> out;
+    int idx = ansind;
     while(idx > 0) {
-        int p = prev_[idx];
-        chosen.push_back(idx);
-        idx = p;
+        for(int i = idx; i >= prev_[idx] + 2; i--)
+        out.push_back(i);
+        idx = prev_[idx];
     }
-    #ifdef DEBUG
-    cout << endl;
-    #endif
-    cout << chosen.size() << ' '<< ans << endl;
-    for(auto i:chosen) {
-        cout << i << ' ';
-    }
-    #ifdef DEBUG
-    cout << endl;
-    for(int i = 1; i <= n; i++) cout << prev_[i] << ' ';
-    #endif
-    return 0;
+    cout << out.size() << ' ' << ans << endl;;
+    reverse(out.begin(), out.end());
+    for(auto i:out) cout << i << ' ';
 }

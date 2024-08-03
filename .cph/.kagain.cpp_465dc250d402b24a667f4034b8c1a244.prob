@@ -1,0 +1,1 @@
+{"name":"Local: kagain","url":"/run/media/wheatley/NewVolume/coding python/kagain.cpp","tests":[{"id":1722140501868,"input":"2\n4\n3 4 3 1\n4\n1 2 1 3\n","output":"9 1 3\n4 1 4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/kagain.cpp","group":"local","local":true}

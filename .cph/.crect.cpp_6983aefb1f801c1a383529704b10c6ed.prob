@@ -1,0 +1,1 @@
+{"name":"Local: crect","url":"/run/media/wheatley/NewVolume/coding python/crect.cpp","tests":[{"id":1722442667068,"input":"4 3\nCED\nCEB\nCBC\nDDA\n","output":"12"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/crect.cpp","group":"local","local":true}

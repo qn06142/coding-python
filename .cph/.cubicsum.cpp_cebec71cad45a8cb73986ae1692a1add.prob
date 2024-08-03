@@ -1,0 +1,1 @@
+{"name":"Local: cubicsum","url":"/run/media/wheatley/NewVolume/coding python/cubicsum.cpp","tests":[{"id":1722525065236,"input":"5","output":"225"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/cubicsum.cpp","group":"local","local":true}
