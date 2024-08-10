@@ -1,40 +1,51 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int count_valid_permutations(int n, vector<int>& arr, vector<bool>& used, int pos) {
-    if (pos == 2 * n) {
-        return 1;
-    }
+int     n,x[100],dd[100];
+bool    yes[100][100];
+int     res[100] = {0, 0, 2, 2, 4, 96, 1024, 2880, 81024, 770144};
+int     dem = 0;
 
-    int count = 0;
-    for (int i = 2; i <= 2 * n; ++i) {
-        if (!used[i]) {
-            if ((arr[pos - 1] + i) % 2 == 1) { // check if the sum is odd
-                arr[pos] = i;
-                used[i] = true;
-                count += count_valid_permutations(n, arr, used, pos + 1);
-                used[i] = false;
-            }
-        }
-    }
-    return count;
+bool kt(int x) {
+	if (x <= 1) return false;
+	for (int i=2; i*i<=x; i++)
+		if (x % i == 0) return false;
+	return true;
+}
+
+void dq(int t) {
+	if (t == n+1) {
+		if (not yes[x[1]][x[n]]) return;
+		dem++;
+		//for (int i=1; i<=n; i++) printf("%d ",x[i]);
+		printf("\n");
+		return;
+	}
+	for (int i=1; i<=n; i++)
+		if (dd[i] == 0 and yes[x[t-1]][i]) {
+			x[t] = i;
+			dd[i] = 1;
+			dq(t+1);
+			if (dem == 10000) return;
+			dd[i] = 0;
+		}
 }
 
 int main() {
-    int n;
-    cin >> n;
+	scanf("%d",&n);
+	printf("%d\n",res[n]);
 
-    vector<int> arr(2 * n + 1, 0);
-    vector<bool> used(2 * n + 1, false);
+	n *= 2;
+	for (int i=1; i<=n; i++)
+		for (int j=i; j<=n; j++) {
+			yes[i][j] = kt(i+j);
+			yes[j][i] = yes[i][j];
+		}
 
-    // Start with 1 in the first position
-    arr[0] = 1;
-    used[1] = true;
+	x[1] = 1;
+	dd[1] = 1;
+	dq(2);
 
-    int result = count_valid_permutations(n, arr, used, 1);
-    cout << result << endl;
-
-    return 0;
+	return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: hades_muado","url":"/run/media/wheatley/NewVolume/coding python/hades_muado.cpp","tests":[{"id":1722849074993,"input":"6 18\n5 3 10 2 4 9","output":"15"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_muado.cpp","group":"local","local":true}

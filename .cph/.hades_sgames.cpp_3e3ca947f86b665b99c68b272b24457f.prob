@@ -1,0 +1,1 @@
+{"name":"Local: hades_sgames","url":"/run/media/wheatley/NewVolume/coding python/hades_sgames.cpp","tests":[{"id":1722849740540,"input":"2\n1 -2\n2 3","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_sgames.cpp","group":"local","local":true}

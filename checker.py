@@ -18,17 +18,17 @@ def run_program_py(executable, input_data):
     stdout, stderr = process.communicate(input=input_data.encode())
     return stdout.decode().strip()
 def main():
-    executable1 = './csphn_lm'
-    executable2 = '/csphn_lm'
+    executable1 = './csphn_thhv24_team'
+    executable2 = './csphn_thhv24_team1'
     
     while True:
         test_case = generate_test_case()
         output1 = run_program(executable1, test_case)
-        output2 = run_program_py(executable2, test_case)
+        output2 = run_program(executable2, test_case)
         print("PASSED")
         if output1 != output2:
             print(f"Test case: {test_case}")
-            print(f"Output of {executable1}: {output1}")
+            print(f"Output of correct: {output1}")
             print(f"Output of {executable2}: {output2}")
             break
 

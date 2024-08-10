@@ -77,11 +77,49 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+double max_score(vector<int> a) {
+    int n = a.size();
+    if (n == 1) return 0.0;
+
+    double best = 0.0;
+
+    for (int i = 0; i < n; ++i) {
+        double score = 0.0;
+
+        if (i > 0 && i < n - 1) {
+            score = (a[i - 1] + a[i + 1]) / 2.0;
+        } else if (i == 0 && n > 1) {
+            score = a[1];
+        } else if (i == n - 1 && n > 1) {
+            score = a[n - 2];
+        }
+
+        vector<int> b = a;
+        b.erase(b.begin() + i);
+        score += max_score(b); // Accumulate the score
+        best = max(best, score);
+    }
+
+    return best;
+}
+
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-
-
-
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> a[i];
+        }
+        cout << fixed << setprecision(1) << max_score(a) << endl;
+    }
+    return 0;
 }

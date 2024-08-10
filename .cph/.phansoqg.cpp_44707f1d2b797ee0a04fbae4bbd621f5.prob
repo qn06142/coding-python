@@ -1,0 +1,1 @@
+{"name":"Local: phansoqg","url":"/run/media/wheatley/NewVolume/coding python/phansoqg.cpp","tests":[{"id":1722688557296,"input":"1/2 1/3 3/4\n1/4 ","output":"-X\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/phansoqg.cpp","group":"local","local":true}

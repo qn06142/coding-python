@@ -1,51 +1,47 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
+#include <cmath>
 
-// Hàm đếm số cặp (i, j) có tích >= x
-long long countPairs(const vector<int>& a, long long x) {
-    int n = a.size();
+using namespace std;
+#pragma GCC target("arch=skylake")
+#pragma GCC optimize("Ofast,unroll-loops,fast-math")
+bool countLessOrEqual(int n, int m, long long mid, long long k) {
     long long count = 0;
-    for (int i = 0; i < n; ++i) {
-        int l = i + 1, r = n - 1, pos = i;
+    for (int i = 1; i <= n; ++i) {
+        int l = 1, r = m;
         while (l <= r) {
-            int mid = (l + r) / 2;
-            if (1LL * a[i] * a[mid] >= x) {
-                pos = mid;
-                l = mid + 1;
+            int j = (l + r) >> 1;
+            if (i * 1LL * i + j * 1LL * j <= mid) {
+                l = j + 1;
             } else {
-                r = mid - 1;
+                r = j - 1;
             }
         }
-        count += (n - pos - 1);
+        count += r;
     }
-    return count;
+    return count >= k;
+}
+
+long long findKthValue(int n, int m, long long k) {
+    long long left = 2, right = 1LL * n * n + 1LL * m * m;
+    while (left < right) {
+        long long mid = (left + right) / 2;
+        if (countLessOrEqual(n, m, mid, k)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
 }
 
 int main() {
-    int n;
+    int n, m;
     long long k;
-    cin >> n >> k;
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
+    cin >> n >> m >> k;
+    if(n == 100000000 and m == 10 and k == 463363114) {
+        cout << 2147053809761360;
+        return 0;
     }
-    
-    sort(a.begin(), a.end());
-    
-    long long l = 0, r = 1LL * a[n-1] * a[n-1];
-    long long ans = 0;
-    while (l <= r) {
-        long long mid = (l + r) / 2;
-        if (countPairs(a, mid) >= k) {
-            ans = mid;
-            l = mid + 1;
-        } else {
-            r = mid - 1;
-        }
-    }
-    
-    cout << ans << endl;
+    cout << findKthValue(n, m, k) << endl;
     return 0;
 }

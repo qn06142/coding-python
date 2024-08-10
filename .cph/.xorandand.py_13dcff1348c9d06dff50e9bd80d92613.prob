@@ -1,0 +1,1 @@
+{"name":"Local: xorandand","url":"/run/media/wheatley/NewVolume/coding python/xorandand.py","tests":[{"id":1722655519115,"input":"3\n42 27 38","output":"44"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/xorandand.py","group":"local","local":true}

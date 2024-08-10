@@ -1,0 +1,1 @@
+{"name":"Local: hades_seq","url":"/run/media/wheatley/NewVolume/coding python/hades_seq.cpp","tests":[{"id":1722848377786,"input":"7 88\n11 33 55 99 33 77 99","output":"7 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_seq.cpp","group":"local","local":true}

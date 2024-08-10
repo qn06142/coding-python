@@ -1,58 +1,43 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <climits>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-// Function to check if there is a subarray with median >= median_candidate
-bool canFindSubarrayWithMedian(const vector<int>& a, int K, int median_candidate) {
-    int N = a.size();
-    vector<int> prefixSum(N + 1, 0);
-    int minPrefix = 0;
+// Function to check if the median is possible or not.
+bool good(int arr[], int N, int K, int median) {
+    vector<int> pre(N);
+    for (int i = 0; i < N; i++) {
+        pre[i] = (arr[i] >= median) ? 1 : -1;
+        if (i > 0) pre[i] += pre[i - 1];
+    }
 
-    for (int i = 0; i < N; ++i) {
-        // Transform the array values
-        prefixSum[i + 1] = prefixSum[i] + (a[i] >= median_candidate ? 1 : -1);
-        if (i + 1 >= K) {
-            // Check if there is a valid prefix sum
-            if (prefixSum[i + 1] - minPrefix >= (i + 1 - (i + 1 - K + 1))) {
-                return true;
-            }
-            // Update the minimum prefix sum seen
-            minPrefix = min(minPrefix, prefixSum[i + 1 - K + 1]);
+    int mx = pre[K - 1], mn = 0;
+    for (int i = K; i < N; i++) {
+        mn = min(mn, pre[i - K]);
+        mx = max(mx, pre[i] - mn);
+    }
+    return mx > 0;
+}
+
+// Function to find the maximum median of a subarray having length at least K
+int maxMedian(int arr[], int N, int K) {
+    int l = 1, r = N + 1, mx_median = -1;
+    while (l <= r) {
+        int mid = (l + r) / 2;
+        if (good(arr, N, K, mid)) {
+            mx_median = mid;
+            l = mid + 1;
+        } else {
+            r = mid - 1;
         }
     }
-    return false;
+    return mx_median;
 }
 
 int main() {
     int N, K;
     cin >> N >> K;
-    
-    vector<int> a(N);
-    for (int i = 0; i < N; ++i) {
-        cin >> a[i];
-    }
-    
-    // Sort the array to use binary search on the median value
-    sort(a.begin(), a.end());
-    
-    int low = a[0], high = a[N - 1];
-    int result = low;
-    
-    while (low <= high) {
-        int mid = low + (high - low) / 2;
-        
-        if (canFindSubarrayWithMedian(a, K, mid)) {
-            result = mid;
-            low = mid + 1;
-        } else {
-            high = mid - 1;
-        }
-    }
-    
-    cout << result << endl;
-    
+    int arr[N];
+    for (int i = 0; i < N; i++) cin >> arr[i];
+
+    cout << maxMedian(arr, N, K) << endl;
     return 0;
 }
