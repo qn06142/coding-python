@@ -77,29 +77,25 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-void generate(int n, vector<int>& current, int start) {
-    if (n == 0) {
-        for (size_t i = 0; i < current.size(); ++i) {
-            cout << current[i];
-            if (i != current.size() - 1) cout << "+";
-        }
-        cout << endl;
+
+vector<string> ans;
+
+void generate(string s, int sum, int last, int n) {
+    if (sum == n) {
+        ans.push_back(s);
         return;
     }
-
-    for (int i = start; i <= n; ++i) {
-        current.push_back(i);
-        generate(n - i, current, i);
-        current.pop_back();
+    for (int j = 1; j <= n - sum; ++j) {
+        generate(s + (s.empty() ? "" : "+") + to_string(j), sum + j, j, n);
     }
 }
 
 int main() {
     int n;
     cin >> n;
-
-    vector<int> current;
-    generate(n, current, 1);
-
+    generate("", 0, 1, n);
+    for (const auto &i : ans) {
+        cout << i << '\n';
+    }
     return 0;
 }
