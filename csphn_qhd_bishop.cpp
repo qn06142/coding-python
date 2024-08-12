@@ -77,20 +77,45 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
+#define int long long
+const int MOD = 1e9 + 7;
+int dp[(int) 4e3 + 5][(int) 2e3 + 5];
+
+long long squares(long long i) {
+    if (i % 2 == 0) {
+        return i / 4 * 2 + 1;
+    } else {
+        return (i - 1) / 4 * 2 + 1;
     }
 }
-int main() {
+
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    int n, k;
+    cin >> n >> k;
+    if(k > 2 * n - 1) {
+        cout << 0;
+        return 0;
+    }
+    for (int i = 0; i < n * 2; i++) {
+        dp[i][0] = 1;
+    }
+    dp[1][1] = 1;
 
+    for (int i = 2; i < n * 2; i++) {
+        for (int j = 1; j <= k; j++) {
+            dp[i][j] = (dp[i - 2][j] + dp[i - 2][j - 1] * (squares(i) - j + 1)) % MOD;
+        }
+    }
 
+    int ans = 0;
+    for (int i = 0; i <= k; i++) {
+        ans = (ans + (dp[n * 2 - 1][i] * dp[n * 2 - 2][k - i]) % MOD) % MOD;
+    }
+    cout << ans << endl;
 
+    return 0;
 }
+

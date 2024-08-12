@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_josephus","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_josephus.cpp","tests":[{"id":1723274858152,"input":"7 3\n0 2","output":"3 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_josephus.cpp","group":"local","local":true}

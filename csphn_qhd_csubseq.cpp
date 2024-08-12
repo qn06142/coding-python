@@ -77,20 +77,45 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
+#define int long long
+const int mod = 123456789;
+int add(int a, int b) {
+    int ans = a + b;
+    if(ans >= mod) {
+        ans -= mod;
     }
+    return ans;
 }
-int main() {
+int sub(int a, int b) {
+    int ans = a - b;
+    if(ans < 0) {
+        ans += mod;
+    }
+    return ans;
+}
+int last[(int) 1e6 + 5];
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-
-
-
+    int n;
+    cin >> n;
+    vector<int> a(n + 1);
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    vector<int> dp(n + 1);
+    dp[0] = 1;
+    for(int i = 1; i <= n; i++) {
+        dp[i] = add(dp[i - 1], dp[i - 1]);
+        if(last[a[i]] != 0) {
+            dp[i] = sub(dp[i], dp[last[a[i]] - 1]);
+        }
+        last[a[i]] = i;
+    }
+    #ifndef ONLINE_JUDGE
+    for(auto i:dp) cout << i << ' ';
+    cout << endl;
+    #endif
+    cout << dp[n];
 }

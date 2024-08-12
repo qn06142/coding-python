@@ -77,20 +77,50 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
+pair<int, char> dp[(int) 3e3 + 5][(int) 3e3 + 5];
+pair<int, char> res = {0, 'a'};
+string solve(string X, string Y) {
+    int m = (int) X.size();
+    int n = (int) Y.size();
+    X += ' ';
+    Y += ' ';
+    for (int i = m; i >= 1; i--) {
+        for (int j = n; j >= 1; j--) {
+            if (X[i-1] == Y[j-1]) {
+                dp[i][j].first = dp[i+1][j+1].first + 1;
+                dp[i][j].second = X[i-1];
+                if(X[i-1] != '0') {
+                    res = max(res, dp[i][j]);
+                }
+            } else {
+                dp[i][j] = max(dp[i+1][j],dp[i][j+1]);
+            }
+        }
     }
+
+    string lcs;
+    char c = res.second;
+    int i = 1, j = 1;
+    cout << c;
+    while(X[i - 1] != c) i++;
+    while(Y[j - 1] != c) j++;
+    i ++;
+    j ++;
+    while(dp[i][j].first > 0) {
+        assert(i <= m and j <= n);
+        c = dp[i][j].second;
+        cout << c;
+        while(X[i - 1] != c) i++;
+        while(Y[j - 1] != c) j++;
+        i ++;
+        j ++;
+    }
+    return lcs;
 }
+
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-
-
-
+    string X, Y;
+    cin >> X >> Y;
+    cout << solve(X, Y) << endl;
+    return 0;
 }

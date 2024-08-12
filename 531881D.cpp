@@ -77,20 +77,28 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
-    }
-}
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    const int MOD = 1e9 + 7;
+    int H, W;
+    cin >> H >> W;
+    vector<string> grid(H + 1);
+    vector<vector<int>> dp(H + 1, vector<int>(W + 1, 0));
 
+    for (int i = 1; i <= H; i++) {
+        cin >> grid[i];
+        grid[i] = "." + grid[i];  // Add a dummy character to make grid 1-based
+    }
 
+    dp[1][1] = 1;  // Starting point
 
+    for (int i = 1; i <= H; i++) {
+        for (int j = 1; j <= W; j++) {
+            if (grid[i][j] == '#') continue;  // Skip obstacles
+            if (i > 1) dp[i][j] += dp[i-1][j];
+            if (j > 1) dp[i][j] += dp[i][j-1];
+            dp[i][j] %= MOD;
+        }
+    }
+
+    cout << dp[H][W] << endl;
 }

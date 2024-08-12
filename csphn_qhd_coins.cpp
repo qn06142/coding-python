@@ -77,20 +77,37 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
-    }
-}
+const int mod = 123456789;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    int n;
+    cin >> n;
+    //dp coinchange
 
-
-
+    vector<int> dp(n + 1);
+    dp[0] = 1;
+    for(int i = 1; i <= 100; i++) {
+        for(int j = i * i; j <= n; j++) {
+            dp[j] += dp[j - i * i];
+            dp[j] %= mod;
+        }
+    }
+    cout << dp[n] << endl;;
+    //bin packing time :D
+    dp.clear();
+    dp.resize(n + 1);
+    for(int i = 0; i <= n; i++) dp[i] = 1e9;
+    dp[0] = 0;
+    for(int j = 1; j <= n; j++) {
+        for(int i = 1; i <= 100; i++) {
+            if(j >= i * i)
+            dp[j] = min(dp[j], dp[j - i*i] + 1);
+        }
+    }
+    #ifndef ONLINE_JUDGE
+    
+    #endif
+    cout << dp[n];
 }

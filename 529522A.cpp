@@ -77,20 +77,41 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
-    }
-}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
 
+    int q;
+    cin >> q;
+    multiset<int> stor;  // Use multiset instead of set to handle duplicates
 
+    while(q--) {
+        int t;
+        cin >> t;
+        if(t == 1) {
+            int a;
+            cin >> a;
+            stor.insert(a);
+        } else if(t == 2) {
+            int a;
+            cin >> a;
+            auto it = stor.find(a);
+            if(it != stor.end()) stor.erase(it);  // Erase one instance of 'a'
+        } else if(t == 3) {
+            if(!stor.empty()) {
+                cout << *stor.rbegin() << '\n';  // Maximum element
+            } else {
+                cout << -1 << '\n';
+            }
+        } else if(t == 4) {
+            if(!stor.empty()) {
+                cout << *stor.begin() << '\n';  // Minimum element
+            } else {
+                cout << -1 << '\n';
+            }
+        }
+    }
 
+    return 0;
 }

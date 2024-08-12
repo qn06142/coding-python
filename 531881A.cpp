@@ -77,20 +77,38 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
-    }
-}
 int main() {
+    #define int long long
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
 
+    int n, M;
+    cin >> n >> M;
 
+    vector<int> weights(n);
+    vector<int> values(n);
 
+    for (int i = 0; i < n; i++) {
+        int a, b;
+        cin >> a >> b;
+        weights[i] = a;
+        values[i] = b;
+    }
+
+    vector<vector<int>> dp(n + 1, vector<int>(M + 1, 0));
+
+    for (int i = 1; i <= n; i++) {
+        for (int w = 0; w <= M; w++) {
+            if (weights[i - 1] <= w) {
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1]);
+            } else {
+                dp[i][w] = dp[i - 1][w];
+            }
+        }
+    }
+
+    cout << dp[n][M] << endl;
+
+    return 0;
 }
