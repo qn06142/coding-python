@@ -77,20 +77,24 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-int a[(int) 1e5 + 5];
-int pref[(int) 1e5 + 5];
-int n;
-bool check(int x) {
-    set<int> set;
-    for(int i = 1; i <= n - x; i++) {
-        
-    }
-}
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-
-
-
+    int w, h;
+    cin >> w >> h;
+    vector < vector < int >> dp(w + 1, vector < int > (h + 1));
+    for (int i = 0; i <= w; i++) {
+        for (int j = 0; j <= h; j++) {
+            if (i == j) {
+                dp[i][j] = 0;
+            } else {
+                dp[i][j] = 1e9;
+                for (int k = 1; k < i; k++) {
+                    dp[i][j] = min(dp[i][j], dp[k][j] + dp[i - k][j] + 1);
+                }
+                for (int k = 1; k < j; k++) {
+                    dp[i][j] = min(dp[i][j], dp[i][k] + dp[i][j - k] + 1);
+                }
+            }
+        }
+    }
+    cout << dp[w][h] << endl;
 }

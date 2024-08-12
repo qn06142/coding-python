@@ -1,54 +1,65 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int n;
-    unsigned int c;
-    cin >> n >> c;
-
-    vector<pair<int, unsigned int>> ops(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> ops[i].first >> ops[i].second;
-    }
-
-    vector<unsigned int> result(n, 0);
-
-    for (int t = 0; t < 30; ++t) { // since Ai and c are less than 2^30
-        vector<int> f(2);
-        f[0] = 0; // initial value if bit is 0
-        f[1] = 1; // initial value if bit is 1
-        bool val = (c & (1 << t)) ? 1 : 0;
-
-        for (int i = 0; i < n; ++i) {
-            int Ti = ops[i].first;
-            unsigned int Ai = ops[i].second;
-            bool bitx = (Ai & (1 << t)) ? 1 : 0;
-            vector<int> tmp(2);
-
-            if (Ti == 1) {
-                tmp[0] = f[0] & bitx;
-                tmp[1] = f[1] & bitx;
-            } else if (Ti == 2) {
-                tmp[0] = f[0] | bitx;
-                tmp[1] = f[1] | bitx;
-            } else if (Ti == 3) {
-                tmp[0] = f[0] ^ bitx;
-                tmp[1] = f[1] ^ bitx;
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    
+    vector<int> a(n);
+    for (int &x : a) cin >> x;
+    
+    // Sort the array to apply two-pointer technique
+    sort(a.begin(), a.end());
+    
+    vector<int> freq(m + 1, 0);
+    int count = 0;
+    
+    int l = 0, r = 0, min_diff = INT_MAX;
+    
+    while (r < n) {
+        // Add the rightmost element to the team and update frequency/count
+        for (int j = 1; j * j <= a[r]; ++j) {
+            if (a[r] % j == 0) {
+                if (j <= m) {
+                    if (++freq[j] == 1) count++;
+                }
+                int div = a[r] / j;
+                if (div <= m && div != j) {
+                    if (++freq[div] == 1) count++;
+                }
             }
-
-            f[0] = tmp[0];
-            f[1] = tmp[1];
-            result[i] |= (f[val] << t);
-
-            val = f[val];
         }
+        
+        // Check if the team is proficient
+        while (count == m) {
+            min_diff = min(min_diff, a[r] - a[l]);
+            
+            // Remove the leftmost element from the team and update frequency/count
+            for (int j = 1; j * j <= a[l]; ++j) {
+                if (a[l] % j == 0) {
+                    if (j <= m && --freq[j] == 0) count--;
+                    int div = a[l] / j;
+                    if (div <= m && div != j && --freq[div] == 0) count--;
+                }
+            }
+            l++;
+        }
+        
+        r++;
     }
+    
+    cout << (min_diff == INT_MAX ? -1 : min_diff) << endl;
+}
 
-    for(int i = 0; i < n; i++) {
-        cout << result[i] << endl;
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
     }
-
+    
     return 0;
 }

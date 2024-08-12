@@ -5,11 +5,8 @@
 using namespace std;
 
 int main() {
-    ifstream infile("feast.in");
-    ofstream outfile("feast.out");
-
     int T, A, B;
-    infile >> T >> A >> B;
+    cin >> T >> A >> B;
     
     vector<bool> dp1(T + 1, false);
     vector<bool> dp2(T + 1, false);
@@ -44,10 +41,7 @@ int main() {
         }
     }
     
-    outfile << max_fullness << endl;
-    
-    infile.close();
-    outfile.close();
+    cout << max_fullness << endl;
     
     return 0;
 }

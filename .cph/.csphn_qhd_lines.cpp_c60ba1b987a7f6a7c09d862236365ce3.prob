@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_lines","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_lines.cpp","tests":[{"id":1723277616372,"input":"6\n2 3 1 5 6 4\n3 2 5 6 1 4","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_lines.cpp","group":"local","local":true}

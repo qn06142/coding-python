@@ -91,28 +91,36 @@ int main() {
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j <= m; j++) {
             cin >> mat[i][j];
+            mat[i][j] = ((mat[i][j] % k) + k) % k;
         }
     }
-
+    
+    vector<int> mod(k + 1, 0);
     long long ans = 0;
     for(int l = 1; l <= m; l++) {
-        vector<int> tmp(n + 1, 0);
+        vector<long long> tmp(n + 1, 0);
         for(int r = l; r <= m; r++) {
             for(int i = 1; i <= n; i++) {
                 tmp[i] += mat[i][r];
+                if(tmp[i] >= k) tmp[i] -= k;
             }
-            vector<int> mod(k + 1, 0);
             long long sum = 0;
             mod[0] = 1; // there's always one subarray with sum 0
 
             int count = 0;
             for(int i = 1; i <= n; i++) {
                 sum += tmp[i];
-                int mod_val = ((sum % k) + k) % k;
-                count += mod[mod_val];
-                mod[mod_val]++;
+                if(sum >= k) sum -= k;
+                count += mod[sum];
+                mod[sum]++;
             }
             ans += count;
+            sum = 0;
+            for(int i = 1; i <= n; i++) {
+                sum += tmp[i];
+                if(sum >= k) sum -= k;
+                mod[sum]--;
+            }
         }
     }
 

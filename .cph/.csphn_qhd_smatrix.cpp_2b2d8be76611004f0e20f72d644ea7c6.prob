@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_smatrix","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_smatrix.cpp","tests":[{"id":1723390063159,"input":"4 2 1000\n1001\n0101","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_smatrix.cpp","group":"local","local":true}

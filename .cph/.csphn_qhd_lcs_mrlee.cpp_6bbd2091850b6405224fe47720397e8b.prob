@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_lcs_mrlee","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_lcs_mrlee.cpp","tests":[{"id":1723275201859,"input":"abcdefghi123\nabc1def2ghi3","output":"10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_lcs_mrlee.cpp","group":"local","local":true}

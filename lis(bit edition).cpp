@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-int dp[(int) 3e4 + 5], a[(int) 3e4 + 5], bit[(int) 3e4 + 5];
+int dp[(int) 3e5 + 5], a[(int) 3e5 + 5], bit[(int) 3e5 + 5];
 int n;
 void update(int u, int v) {
     while(u <= n) {
