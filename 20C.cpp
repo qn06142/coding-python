@@ -77,44 +77,48 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-vector<int> indexes;
 
-void primecalc(int n) {
-    vector<bool> isprime(n + 1, true);
-    isprime[0] = isprime[1] = false;  // 0 and 1 are not prime numbers
+#define int long long
+int n, m;
 
-    for (int i = 2; i * i <= n; i++) {
-        if (isprime[i]) {
-            for (int j = i * i; j <= n; j += i) {
-                isprime[j] = false;
+vector<pair<int, int>> adj[(int) 1e5 + 5];
+int ans[(int) 1e5 + 5];
+void dijktra() {
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push(make_pair(0, 1)); // first is weight, second is ndoe
+    fill(ans, ans + (int) 1e5 + 4, LLONG_MAX);
+    ans[1] = 0;
+    while(!pq.empty()) {
+        auto topstor = pq.top();
+        int u = pq.top().second;
+        pq.pop();
+        if(topstor.first > ans[u]) {
+            continue;
+        }
+        for(auto i:adj[u]) {
+            int v = i.first;
+            int w = i.second;
+            if(ans[v] > ans[u] + w) {
+                ans[v] = ans[u] + w;
+                pq.push(make_pair(ans[v], v));
             }
         }
     }
-
-    for (int i = 2; i <= n; i++) {
-        if (isprime[i]) 
-            indexes.push_back(i);
-    }
+    
 }
-
-int main() {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int n;
-    cin >> n;
-    vector<int> a(n + 1), pref(n + 1);
+    cin >> n >> m;
+    for(int i = 1; i <= m; i++) {
+        int a, b, w;
+        cin >> a >> b >> w;
+        adj[a].push_back(make_pair(b, w));
+    }
+    dijktra();
+    //fix this
     for(int i = 1; i <= n; i++) {
-        cin >> a[i];
-        pref[i] = pref[i - 1] + a[i];
+        cout << ans[i] << ' ';
     }
-    primecalc(n);
-    int ans = INT_MIN;
-    int minpref = pref[indexes[0] - 1];
-    for(int i = 1; i < indexes.size(); i++) {
-        int ind = indexes[i];
-        ans = max(ans, pref[ind] - minpref);
-        minpref = min(minpref, pref[indexes[i] - 1]);
-    }
-    cout << ans;
 }

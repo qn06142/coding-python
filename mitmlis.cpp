@@ -77,44 +77,26 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-vector<int> indexes;
-
-void primecalc(int n) {
-    vector<bool> isprime(n + 1, true);
-    isprime[0] = isprime[1] = false;  // 0 and 1 are not prime numbers
-
-    for (int i = 2; i * i <= n; i++) {
-        if (isprime[i]) {
-            for (int j = i * i; j <= n; j += i) {
-                isprime[j] = false;
-            }
-        }
-    }
-
-    for (int i = 2; i <= n; i++) {
-        if (isprime[i]) 
-            indexes.push_back(i);
-    }
-}
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
     int n;
     cin >> n;
-    vector<int> a(n + 1), pref(n + 1);
+    vector<int> a(n + 1);
     for(int i = 1; i <= n; i++) {
         cin >> a[i];
-        pref[i] = pref[i - 1] + a[i];
     }
-    primecalc(n);
-    int ans = INT_MIN;
-    int minpref = pref[indexes[0] - 1];
-    for(int i = 1; i < indexes.size(); i++) {
-        int ind = indexes[i];
-        ans = max(ans, pref[ind] - minpref);
-        minpref = min(minpref, pref[indexes[i] - 1]);
+    int ans = 0;
+    for(int j = 1; j <= n; j++) {
+        int cnt1 = 0, cnt2 = 0;
+        for(int i = 1; i <= j - 1; i++) {
+            cnt1 += (a[i] < a[j]);
+        }
+        for(int i = j + 1; i <= n; i++) {
+            cnt2 += (a[j] < a[i]);
+        }
+        ans += cnt1 * cnt2;
     }
     cout << ans;
 }

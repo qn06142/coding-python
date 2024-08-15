@@ -1,65 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-void solve() {
-    int n, m;
-    cin >> n >> m;
-    
-    vector<int> a(n);
-    for (int &x : a) cin >> x;
-    
-    // Sort the array to apply two-pointer technique
-    sort(a.begin(), a.end());
-    
-    vector<int> freq(m + 1, 0);
-    int count = 0;
-    
-    int l = 0, r = 0, min_diff = INT_MAX;
-    
-    while (r < n) {
-        // Add the rightmost element to the team and update frequency/count
-        for (int j = 1; j * j <= a[r]; ++j) {
-            if (a[r] % j == 0) {
-                if (j <= m) {
-                    if (++freq[j] == 1) count++;
-                }
-                int div = a[r] / j;
-                if (div <= m && div != j) {
-                    if (++freq[div] == 1) count++;
-                }
-            }
-        }
-        
-        // Check if the team is proficient
-        while (count == m) {
-            min_diff = min(min_diff, a[r] - a[l]);
-            
-            // Remove the leftmost element from the team and update frequency/count
-            for (int j = 1; j * j <= a[l]; ++j) {
-                if (a[l] % j == 0) {
-                    if (j <= m && --freq[j] == 0) count--;
-                    int div = a[l] / j;
-                    if (div <= m && div != j && --freq[div] == 0) count--;
-                }
-            }
-            l++;
-        }
-        
-        r++;
-    }
-    
-    cout << (min_diff == INT_MAX ? -1 : min_diff) << endl;
+ 
+#define int long long
+#define ll long long
+#define ar array
+#define ld long double
+ 
+const int N = 100;
+const int X = 10005;
+const int B = 400;
+const int M = 200;
+const int INF = 1e15;
+const int LOG = 63;
+const int MOD = 1e9 + 7;
+ 
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx,bmi,bmi2,lzcnt,popcnt")
+ 
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+ 
+int f(int h,int w){
+	int a = h * (h + 1) / 2;
+	a %= MOD;
+	int b = w * (w + 1) / 2;
+	b %= MOD;
+	return (a * b) % MOD;
 }
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    
-    return 0;
+ 
+stack<ar<int, 2> > s;
+ 
+int ans;
+ 
+void push(int h,int w){
+	int sum = 0;
+	
+	while(s.size() && s.top()[0] > h){
+		sum += s.top()[1];
+		sum %= MOD;
+		ans += f(sum, s.top()[0]);
+		ans %= MOD;
+		ans -= f(sum - s.top()[1], s.top()[0]);
+		ans = (ans % MOD + MOD) % MOD;
+		s.pop();
+	}
+	ans -= f(sum, h);
+	ans = (ans % MOD + MOD) % MOD;
+	s.push(ar<int, 2>{h, sum + w});
+}
+ 
+signed main(){ios_base::sync_with_stdio(false);cin.tie(0);
+	int n;
+	cin>>n;
+	int h[n], w[n];
+	for(int i = 0;i < n;i++)cin>>h[i];
+	for(int i = 0;i < n;i++)cin>>w[i];
+	for(int i = 0;i < n;i++)push(h[i], w[i]);
+	push(0, 0);
+	cout<<ans;
+	
 }

@@ -77,44 +77,75 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-vector<int> indexes;
+class RMQ {
+public:
+    vector<vector<int>> range_min, range_max;
+    int n;
 
-void primecalc(int n) {
-    vector<bool> isprime(n + 1, true);
-    isprime[0] = isprime[1] = false;  // 0 and 1 are not prime numbers
+    RMQ(const vector<int>& arr) {
+        n = arr.size();
+        int logn = 32 - __builtin_clz(n);
+        range_min = vector<vector<int>>(logn, vector<int>(n));
+        range_max = vector<vector<int>>(logn, vector<int>(n));
+        
+        for (int i = 0; i < n; i++) {
+            range_min[0][i] = arr[i];
+            range_max[0][i] = arr[i];
+        }
 
-    for (int i = 2; i * i <= n; i++) {
-        if (isprime[i]) {
-            for (int j = i * i; j <= n; j += i) {
-                isprime[j] = false;
+        for (int j = 1; (1 << j) <= n; j++) {
+            for (int i = 0; i + (1 << j) - 1 < n; i++) {
+                range_min[j][i] = min(range_min[j-1][i], range_min[j-1][i + (1 << (j-1))]);
+                range_max[j][i] = max(range_max[j-1][i], range_max[j-1][i + (1 << (j-1))]);
             }
         }
     }
 
-    for (int i = 2; i <= n; i++) {
-        if (isprime[i]) 
-            indexes.push_back(i);
+    int get_min(int l, int r) {
+        int j = 31 - __builtin_clz(r - l + 1);
+        return min(range_min[j][l], range_min[j][r - (1 << j) + 1]);
+    }
+
+    int get_max(int l, int r) {
+        int j = 31 - __builtin_clz(r - l + 1);
+        return max(range_max[j][l], range_max[j][r - (1 << j) + 1]);
+    }
+};
+
+void solve() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        RMQ rmq(a);
+
+        for (int x = 1; x < n - 1; x++) {
+            int max1 = rmq.get_max(0, x - 1);
+            for (int y = 1; x + y < n; y++) {
+                int min2 = rmq.get_min(x, x + y - 1);
+                if (min2 != max1) continue;
+
+                int max3 = rmq.get_max(x + y, n - 1);
+                if (max3 == min2) {
+                    cout << "YES\n";
+                    cout << x << " " << y << " " << (n - x - y) << "\n";
+                    goto next_case;
+                }
+            }
+        }
+
+        cout << "NO\n";
+        next_case:;
     }
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n;
-    cin >> n;
-    vector<int> a(n + 1), pref(n + 1);
-    for(int i = 1; i <= n; i++) {
-        cin >> a[i];
-        pref[i] = pref[i - 1] + a[i];
-    }
-    primecalc(n);
-    int ans = INT_MIN;
-    int minpref = pref[indexes[0] - 1];
-    for(int i = 1; i < indexes.size(); i++) {
-        int ind = indexes[i];
-        ans = max(ans, pref[ind] - minpref);
-        minpref = min(minpref, pref[indexes[i] - 1]);
-    }
-    cout << ans;
+    solve();
+    return 0;
 }
