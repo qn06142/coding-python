@@ -77,44 +77,54 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-vector<int> indexes;
+#define int long long
+int a[(int) 100];
+int n;
 
-void primecalc(int n) {
-    vector<bool> isprime(n + 1, true);
-    isprime[0] = isprime[1] = false;  // 0 and 1 are not prime numbers
-
-    for (int i = 2; i * i <= n; i++) {
-        if (isprime[i]) {
-            for (int j = i * i; j <= n; j += i) {
-                isprime[j] = false;
-            }
-        }
+int mid;
+vector<int> cnt1, cnt2;
+void bacctracc1(int l, int r, int sum = 0) {
+    if(l > r) {
+        cnt1.push_back(sum);
+        return;
     }
-
-    for (int i = 2; i <= n; i++) {
-        if (isprime[i]) 
-            indexes.push_back(i);
-    }
+    bacctracc1(l + 1, r, sum + a[l]);
+    bacctracc1(l + 1, r, sum);
 }
-
-int main() {
+void bacctracc2(int l, int r, int sum = 0) {
+    if(l > r) {
+        cnt2.push_back(sum);
+        return;
+    }
+    bacctracc2(l + 1, r, sum + a[l]);
+    bacctracc2(l + 1, r, sum);
+}
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int n;
-    cin >> n;
-    vector<int> a(n + 1), pref(n + 1);
+    int m;
+    cin >> n >> m;
     for(int i = 1; i <= n; i++) {
         cin >> a[i];
-        pref[i] = pref[i - 1] + a[i];
     }
-    primecalc(n);
-    int ans = INT_MIN;
-    int minpref = pref[indexes[0] - 1];
-    for(int i = 1; i < indexes.size(); i++) {
-        int ind = indexes[i];
-        ans = max(ans, pref[ind] - minpref);
-        minpref = min(minpref, pref[indexes[i] - 1]);
+    mid = n / 2;
+    bacctracc1(1, mid);
+    bacctracc2(mid + 1, n);
+    sort(cnt1.begin(), cnt1.end());
+    sort(cnt2.begin(), cnt2.end());
+    int x = (int) cnt1.size(), y = (int) cnt2.size();
+
+    int l = 0, r = y - 1, r1 = y - 1;
+    long long ans = 0;
+    while(l < x) {
+        // << l << ' ' << r << ' ' << r1 << endl;
+        // << cnt1[l] << ' ' << cnt2[r] << ' ' << cnt2[r1] << endl;
+        // << r - r1 << endl << endl;
+        while(r >= 0 and cnt1[l] + cnt2[r] > m) r--;
+        while(r1 >= 0 and cnt1[l] + cnt2[r1] >= m) r1--;
+        ans += r - r1;
+        l++;
     }
     cout << ans;
 }

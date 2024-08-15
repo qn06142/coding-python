@@ -77,44 +77,77 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-vector<int> indexes;
+#define int long long
+const int INF = INT_MAX;
+int N, M, K;
+vector<vector<int>> adj;
+vector<vector<int>> dist;
+vector<int> special;
 
-void primecalc(int n) {
-    vector<bool> isprime(n + 1, true);
-    isprime[0] = isprime[1] = false;  // 0 and 1 are not prime numbers
-
-    for (int i = 2; i * i <= n; i++) {
-        if (isprime[i]) {
-            for (int j = i * i; j <= n; j += i) {
-                isprime[j] = false;
+void bfs(int start, int idx) {
+    queue<int> q;
+    vector<int> d(N + 1, INF);
+    d[start] = 0;
+    q.push(start);
+    
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        
+        for (int neighbor : adj[node]) {
+            if (d[neighbor] == INF) {
+                d[neighbor] = d[node] + 1;
+                q.push(neighbor);
             }
         }
     }
-
-    for (int i = 2; i <= n; i++) {
-        if (isprime[i]) 
-            indexes.push_back(i);
+    
+    for (int i = 0; i < K; ++i) {
+        dist[idx][i] = d[special[i]];
     }
 }
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n;
-    cin >> n;
-    vector<int> a(n + 1), pref(n + 1);
-    for(int i = 1; i <= n; i++) {
-        cin >> a[i];
-        pref[i] = pref[i - 1] + a[i];
+signed main() {
+    ifstream fin("OPERATION.INP");
+    ofstream fout("OPERATION.OUT");
+    fin >> N >> M >> K;
+    adj.resize(N + 1);
+    special.resize(K);
+    dist.resize(K, vector<int>(K));
+    
+    for (int i = 0; i < M; ++i) {
+        int u, v;
+        fin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
-    primecalc(n);
-    int ans = INT_MIN;
-    int minpref = pref[indexes[0] - 1];
-    for(int i = 1; i < indexes.size(); i++) {
-        int ind = indexes[i];
-        ans = max(ans, pref[ind] - minpref);
-        minpref = min(minpref, pref[indexes[i] - 1]);
+    
+    for (int i = 0; i < K; ++i) {
+        fin >> special[i];
     }
-    cout << ans;
+    
+    for (int i = 0; i < K; ++i) {
+        bfs(special[i], i);
+    }
+    
+    vector<int> dp(1 << K, INF);
+    dp[(1 << K) - 1] = 0;
+    
+    for (int mask = (1 << K) - 1; mask > 0; --mask) {
+        for (int i = 0; i < K; ++i) {
+            if ((mask >> i) & 1) {
+                for (int j = i + 1; j < K; ++j) {
+                    if ((mask >> j) & 1) {
+                        int new_mask = mask ^ (1 << i) ^ (1 << j);
+                        dp[new_mask] = min(dp[new_mask], dp[mask] + dist[i][j]);
+                    }
+                }
+            }
+        }
+    }
+    
+    fout << ((dp[0] == INT_MAX) ? -1 : dp[0]) << '\n';
+    fin.close();
+    fout.close();
+    return 0;
 }
