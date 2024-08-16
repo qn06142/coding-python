@@ -1,0 +1,1 @@
+{"name":"Local: dowry","url":"/run/media/wheatley/NewVolume/coding python/dowry.cpp","tests":[{"id":1723738833692,"input":"3 6 8\n3 10\n7 3\n8 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/dowry.cpp","group":"local","local":true}
