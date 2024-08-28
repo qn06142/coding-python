@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_knapsack1","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_knapsack1.cpp","tests":[{"id":1723879276212,"input":"4 15\n1 1\n6 10\n8 12\n10 16","output":"23"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_knapsack1.cpp","group":"local","local":true}

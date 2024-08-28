@@ -1,0 +1,1 @@
+{"name":"Local: dtksub","url":"/run/media/wheatley/NewVolume/coding python/dtksub.cpp","tests":[{"id":1724598414110,"input":"5 2\nxxxxx\n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/dtksub.cpp","group":"local","local":true}

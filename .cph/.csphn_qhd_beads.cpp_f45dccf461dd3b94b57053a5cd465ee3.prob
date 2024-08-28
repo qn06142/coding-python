@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_beads","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_beads.cpp","tests":[{"id":1723880070235,"input":"5\n4 4 5 3 1","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_beads.cpp","group":"local","local":true}

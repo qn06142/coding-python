@@ -1,35 +1,58 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-const int inf = INT_MAX;
-const long long INF = 1e18;
-const int N = 3e5 + 10;
-int n, a[N], b[N];
-int sta[N], head;
-long long f[N], mx[N];
-signed main() {
-    ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 
-    cin >> n;
-    for(int i = 1; i <= n; i++) cin >> a[i];
-    for(int i = 1; i <= n; i++) cin >> b[i];
-    for(int i = 0; i <= n; i++) f[i] = mx[i] = -INF;
-    for(int i = 1; i <= n; i++)
-    {
-        f[i] = f[i - 1] + b[i];
-        while(head && a[sta[head]] >= a[i])
-        {
-            mx[sta[head - 1]] = max(mx[sta[head - 1]], mx[sta[head]]);
-            head-- ;
-        }
-        f[i] = max(f[i], f[sta[head]]);
+long seg[1 << 18];
 
-        f[i] = max(f[i], mx[sta[head]] + b[i]);
-
-        if(head == 0) f[i] = max(f[i], 1ll * b[i]);
-
-        sta[++head] = i;
-        mx[i] = max(mx[i], f[i]);
-
+long build(long node, long beg, long en, bool toggle) {
+    if (beg == en) {
+        long temp;
+        cin >> temp;
+        seg[node] = temp;
+        return seg[node];
     }
-    cout << f[n] << '\n';
+    long mid = (beg + en) / 2;
+    long l = build(2 * node, beg, mid, !toggle);
+    long r = build(2 * node + 1, mid + 1, en, !toggle);
+
+    if (toggle)
+        seg[node] = l | r;
+    else
+        seg[node] = l ^ r;
+
+    return seg[node];
+}
+
+void update(long node, long l, long r, long index, long value, int toggle) {
+    if (l == r) {
+        seg[node] = value;
+        return;
+    }
+
+    long mid = (l + r) / 2;
+    if (index <= mid)
+        update(2 * node, l, mid, index, value, !toggle);
+    else
+        update(2 * node + 1, mid + 1, r, index, value, !toggle);
+
+    if (toggle)
+        seg[node] = seg[2 * node] | seg[2 * node + 1];
+    else
+        seg[node] = seg[2 * node] ^ seg[2 * node + 1];
+}
+
+int main() {
+    int n;
+    cin >> n;
+    long m;
+    cin >> m;
+    build(1, 1, 1 << n, n);
+
+    long p, b;
+    while (m--) {
+        cin >> p >> b;
+        update(1, 1, 1 << n, p, b, n);
+        cout << seg[1] << '\n';
+    }
+
+    return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: hades_viettle","url":"/run/media/wheatley/NewVolume/coding python/hades_viettle.cpp","tests":[{"id":1724464959733,"input":"4 3\n10 15\n4 7\n2 2\n5 1","output":"11"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_viettle.cpp","group":"local","local":true}

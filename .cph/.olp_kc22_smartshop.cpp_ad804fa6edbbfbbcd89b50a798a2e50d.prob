@@ -1,0 +1,1 @@
+{"name":"Local: olp_kc22_smartshop","url":"/run/media/wheatley/NewVolume/coding python/olp_kc22_smartshop.cpp","tests":[{"id":1724575347064,"input":"5 2\n4 1 7 10 9\n2 4\n1 10","output":"1\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/olp_kc22_smartshop.cpp","group":"local","local":true}

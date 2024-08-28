@@ -1,0 +1,1 @@
+{"name":"Local: csphn_1d_permutation","url":"/run/media/wheatley/NewVolume/coding python/csphn_1d_permutation.cpp","tests":[{"id":1723900625995,"input":"6\n2 1 0 1 1 0","output":"3 2 1 6 4 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_1d_permutation.cpp","group":"local","local":true}

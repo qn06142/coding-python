@@ -1,0 +1,1 @@
+{"name":"Local: csphn_1d_inversion","url":"/run/media/wheatley/NewVolume/coding python/csphn_1d_inversion.cpp","tests":[{"id":1723965465059,"input":"6\n3 2 1 6 4 5","output":"2 1 0 1 1 0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_1d_inversion.cpp","group":"local","local":true}

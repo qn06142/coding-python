@@ -78,39 +78,39 @@ using namespace std;
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
 
-int main() {
-    int n;
+using ll = long long;
+const int N = 1e6;
+ll n, a[N],b[N];
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     cin >> n;
-
-    vector<int> a(n), b(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-    }
-    for (int i = 0; i < n; ++i) {
-        cin >> b[i];
-    }
-
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-
-    int scoreT = 0;
-    int i = 0; 
-    int j = 0; 
-
-    while (i < n && j < n) {
-        if (a[i] > b[j]) {
-
-            scoreT++;
-            j++; 
+    for(int i = 1; i <= n; i++) cin >> a[i];
+    for(int i = 1; i <= n; i++) cin >> b[i];
+    sort(a + 1, a + n + 1);
+    sort(b + 1, b + n + 1);
+    int vua = 0,  tt = 0;
+    int i = 1, j = 1, na = n, nb = n;
+    while(i <= na && j <= nb)
+    {
+        if(a[na] > b[nb])
+        {
+            tt++;
+            na--;nb--;
         }
-        i++; 
+        else if(a[i] > b[j])
+        {
+            tt++;
+            i++; j++;
+        }
+         else
+        {
+            if(a[i] < b[nb]) vua++;
+            i++; nb--;
+        }
     }
 
-    int scoreV = n - scoreT;
-
-    int result = scoreT - scoreV;
-
-    cout << result << endl;
-
-    return 0;
+    cout << tt - vua;
 }
