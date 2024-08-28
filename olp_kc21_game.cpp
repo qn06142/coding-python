@@ -13,31 +13,35 @@ int main() {
         cin >> a[i];
     }
 
-    stack<int> s, s1;
+    stack<int> s;
 
+    // Compute left bounds where each a[i] is the minimum
     for (int i = 1; i <= n; i++) {
-        while (!s.empty() && a[s.top()] <= a[i]) {
+        while (!s.empty() && a[s.top()] >= a[i]) {
             s.pop();
         }
-        left_bound[i] = s.empty() ? 1 : s.top();
+        left_bound[i] = s.empty() ? 1 : s.top() + 1;
         s.push(i);
     }
 
+    while (!s.empty()) s.pop();  // Clear stack
+
+    // Compute right bounds where each a[i] is the minimum
     for (int i = n; i >= 1; i--) {
-        while (!s1.empty() && a[s1.top()] <= a[i]) {
-            s1.pop();
+        while (!s.empty() && a[s.top()] > a[i]) {
+            s.pop();
         }
-        right_bound[i] = s1.empty() ? n : s1.top();
-        s1.push(i);
+        right_bound[i] = s.empty() ? n : s.top() - 1;
+        s.push(i);
     }
 
     long long cnt = 0;
 
+    // Calculate the total candies needed
     for (int i = 1; i <= n; i++) {
         int l = left_bound[i];
         int r = right_bound[i];
-
-        cnt += r - l - 1;
+        cnt += (long long)(i - l) * (r - i + 1) * a[i];
     }
 
     cout << cnt << endl;

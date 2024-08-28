@@ -1,0 +1,1 @@
+{"name":"Local: csphn_eureka","url":"/run/media/wheatley/NewVolume/coding python/csphn_eureka.cpp","tests":[{"id":1724487548674,"input":"5\n12 18 4 2 -1 -1 10 8 3 3 -1 -1 6 4 -1 -1","output":"45"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_eureka.cpp","group":"local","local":true}

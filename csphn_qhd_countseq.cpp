@@ -1,55 +1,67 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
 const int MOD = 1e9 + 7;
 
-vector<int> mobius(int n) {
-    vector<int> mu(n + 1, 1);
-    vector<int> primes;
-    vector<bool> is_prime(n + 1, true);
-
-    for (int i = 2; i <= n; ++i) {
-        if (is_prime[i]) {
-            primes.push_back(i);
-            mu[i] = -1;
+int power2(int k) {
+    int ans = 1;
+    int a = 2;
+    while (k > 0) {
+        if (k % 2 == 1) {
+            ans = (ans * a) % MOD;
         }
-        for (int p : primes) {
-            if (i * p > n) break;
-            is_prime[i * p] = false;
-            if (i % p == 0) {
-                mu[i * p] = 0;
-                break;
-            } else {
-                mu[i * p] = mu[i] * mu[p];
-            }
-        }
+        a = (a * a) % MOD;
+        k /= 2;
     }
-    return mu;
+    return ans;
 }
 
-int main() {
+vector<int> d;
+void calc(int s) {
+    d.clear();
+    int i;
+    for(i = 1; i * i < s; i++) {
+        if(s % i == 0) {
+            d.push_back(i);
+            if(i != s / i)
+            d.push_back(s / i);
+        }
+    }
+    if(i * i == s) d.push_back(i);
+    sort(d.begin(), d.end());
+}
+int solve(int S) {
+
+    vector<int> dp(d.size());
+    
+    for (int i = 0; i < (int) d.size(); i++) {
+        int x = d[i];
+        dp[i] = power2(x - 1);
+        for(int j = 0; j < i; j++) {
+            if(x % d[j] == 0) {
+                if(x % d[j] == 0) {
+                    dp[i] = (dp[i] - dp[j]) % MOD;
+                }
+            }
+        }
+    }
+    
+    return (dp[d.size() - 1] + MOD) % MOD;
+}
+
+signed main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    
     int t;
     cin >> t;
-    vector<int> mu = mobius(1000000);
     while (t--) {
-        int s;
-        cin >> s;
-        vector<int> dp(s + 1, 0);
-        dp[0] = 1;
-
-        for (int i = 1; i <= s; ++i) {
-            for (int j = i; j <= s; ++j) {
-                dp[j] = (dp[j] + dp[j - i]) % MOD;
-            }
-        }
-
-        int result = 0;
-        for (int d = 1; d <= s; ++d) {
-            if (s % d == 0) {
-                result = (result + mu[d] * dp[s / d]) % MOD;
-                if (result < 0) result += MOD;
-            }
-        }
-        cout << result << endl;
+        int S;
+        cin >> S;
+        calc(S);
+        cout << solve(S) << '\n';
     }
+    
     return 0;
 }

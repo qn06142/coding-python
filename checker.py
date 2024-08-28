@@ -5,12 +5,14 @@ import string
 def generate_test_case():
     # Generate a random test case
     # For simplicity, let's assume the test case is a string of random letters
-    length = 3  # Random length between 1 and 100
-    test = '\n'
-    test += ' '.join(str(random.randint(0, 10 ** 9)) for i in range(0, length))
-    test += '\n'
-    test += ' '.join(str(random.randint(0, 10 ** 9)) for i in range(0, length))
-    return str(length) + test
+    length = random.randint(5, 10)
+    a = random.randint(1, 10 ** 1)
+    b = random.randint(a, 10 ** 1)
+    test = ' '.join(str(i) for i in (length, a)) + '\n'
+    for i in range(0, length):
+        test += ' '.join(str(i) for i in (random.randint(1, 10 ** 1), random.randint(1, 10 ** 1)))
+        test += '\n'
+    return test
 def run_program(executable, input_data):
     # Run the executable with the given input data
     process = subprocess.Popen([executable], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -22,19 +24,22 @@ def run_program_py(executable, input_data):
     stdout, stderr = process.communicate(input=input_data.encode())
     return stdout.decode().strip()
 def main():
-    executable1 = './knapsackmitm'
-    executable2 = './hades_parkjisung'
-    
+    executable1 = './hades_viettle1'
+    executable2 = './hades_viettle'
+    tests = 0
     while True:
         test_case = generate_test_case()
+        print(test_case)
         output1 = run_program(executable1, test_case)
         output2 = run_program(executable2, test_case)
-        print("PASSED")
+
+        tests += 1
         if output1 != output2:
             print(f"Test case: {test_case}")
             print(f"Output of correct: {output1}")
             print(f"Output of {executable2}: {output2}")
             break
+        print("PASSED", tests)
 
 if __name__ == "__main__":
     main()

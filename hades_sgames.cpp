@@ -78,39 +78,40 @@ using namespace std;
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
 
+int b[(int)1e5 + 5], c[(int)1e5 + 5];
+
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+
     int n;
     cin >> n;
 
-    vector<int> b(n);
-    vector<int> c(n);
-
-    for (int i = 0; i < n; ++i) {
+    for (int i = 1; i <= n; i++) {
         cin >> b[i];
     }
-
-    for (int i = 0; i < n; ++i) {
+    for (int i = 1; i <= n; i++) {
         cin >> c[i];
     }
 
-    sort(b.begin(), b.end());
-    sort(c.begin(), c.end());
+    sort(c + 1, c + 1 + n);
 
-    int i = 0, j = 0;
-    int minValue = INT_MAX;
+    int ans = INT_MAX;
 
-    while (i < n && j < n) {
-        int value = b[i] + c[j];
-        minValue = min(minValue, abs(value));
-
-        if (value < 0) {
-            ++i;
-        } else {
-            ++j;
+    for (int i = 1; i <= n; i++) {
+        int target = -b[i];
+        auto pos = lower_bound(c + 1, c + 1 + n, target);
+        
+        if (pos != c + 1 + n) {
+            ans = min(ans, abs(*pos + b[i]));
+        }
+        if (pos != c + 1) {
+            --pos;
+            ans = min(ans, abs(*pos + b[i]));
         }
     }
 
-    cout << minValue << endl;
-
+    cout << ans;
     return 0;
 }

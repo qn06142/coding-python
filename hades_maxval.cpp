@@ -77,42 +77,26 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
+int a[(int) 2e5 + 5];
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
     int n;
     cin >> n;
-    vector<int> A(n);
-
-    for (int i = 0; i < n; ++i) {
-        cin >> A[i];
+    int maxval = INT_MIN;
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+        maxval = max(maxval , a[i]);
     }
-
-    sort(A.begin(), A.end());
-
-    int max_remainder = 0;
-
-    for (int i = 0; i < n; ++i) {
-        int a_i = A[i];
-
-        int low = i + 1, high = n - 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (A[mid] >= a_i) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
-        }
-
-        if (high >= i + 1) {
-            int a_j = A[high];
-            int remainder = a_j % a_i;
-            if (remainder > max_remainder) {
-                max_remainder = remainder;
-            }
+    int ans = 0;
+    sort(a + 1, a + 1 + n);
+    for(int i = 1; i <= n; i++) {
+        for(int j = 0; j <= maxval + a[i]; j += a[i]) {
+            int x = *(lower_bound(a + 1, a + 1 + n, j) - 1);
+            if(x < a[i]) continue;
+            ans = max(ans, x % a[i]);
         }
     }
-
-    cout << max_remainder << endl;
-
-    return 0;
+    cout << ans;
 }

@@ -1,37 +1,40 @@
 #include <iostream>
 #include <string>
-#include <vector>
 using namespace std;
 
+long long hashs[(int)1e6 + 5];
+long long powmod[(int)1e6 + 5];
 const long long mod = 1e9 + 7;
 const long long base = 373;
-vector<long long> hashs, powmod;
 
-void calcpow(int n) {
-    powmod.resize(n + 1);
+void calcpow() {
     powmod[0] = 1;
-    for(int i = 1; i <= n; i++) {
-        powmod[i] = (base * powmod[i - 1]) % mod;
+    for (long long i = 1; i <= 1e6; i++) {
+        powmod[i] = (powmod[i - 1] * base) % mod;
     }
 }
 
-void calchash(const string &S, int n) {
-    hashs.resize(n + 1);
-    for(int i = 1; i <= n; i++) {
+string S;
+long long n;
+
+void calchash() {
+    for (long long i = 1; i <= n; i++) {
         hashs[i] = (hashs[i - 1] * base + S[i - 1]) % mod;
     }
 }
 
-long long gethash(int l, int r) {
-    long long hash_value = (hashs[r + 1] - (hashs[l] * powmod[r - l + 1]) % mod + mod) % mod;
+long long calchash(long long l, long long r) {
+    long long hash_value = (hashs[r] - hashs[l - 1] * powmod[r - l + 1] % mod + mod) % mod;
     return hash_value;
 }
 
-bool is_palindrome(const string &S, int len) {
-    for(int i = 0; i <= S.size() - len; i++) {
-        int j = i + len - 1;
-        int mid = (i + j) / 2;
-        if(gethash(i, mid) == gethash(j - mid + i, j)) {
+bool is_palindrome(int len) {
+    for (int i = 0; i <= n - len; i++) {
+        int l = i + 1;
+        int r = i + len;
+        int rev_l = n - r + 1;
+        int rev_r = n - l + 1;
+        if (calchash(l, r) == calchash(rev_l, rev_r)) {
             return true;
         }
     }
@@ -39,26 +42,21 @@ bool is_palindrome(const string &S, int len) {
 }
 
 int main() {
-    int n;
-    string S;
     cin >> n >> S;
+    calcpow();
+    calchash();
 
-    calcpow(n);
-    calchash(S, n);
-
-    int l = 1, r = n, result = 1;
-
-    while(l <= r) {
-        int mid = (l + r) / 2;
-        if(is_palindrome(S, mid)) {
-            result = mid;
-            l = mid + 1;
+    int low = 1, high = n, ans = 1;
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (is_palindrome(mid)) {
+            ans = mid;
+            low = mid + 1;
         } else {
-            r = mid - 1;
+            high = mid - 1;
         }
     }
 
-    cout << result << endl;
-
+    cout << ans << endl;
     return 0;
 }

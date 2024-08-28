@@ -12,19 +12,19 @@ int main() {
     int n, m;
     cin >> n >> m;
     int ans = 0;
-    memset(mat, 0xfffff, sizeof(mat));
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j <= m; j++) {
             cin >> mat[i][j];
         }
     }
 
-    vector<int> heights(m + 1, 0);
+    m--;
+    n--;
+    vector<int> heights(m +21, 0);
     #ifndef ONLINE_JUDGE
     cerr << n << ' ' << m << endl;;
     #endif
-    for(int i_ = 1; i_ <= n - 1; i_++) {
-        m--;
+    for(int i_ = 1; i_ <= n; i_++) {
         for(int j = 1; j <= m; j++) {
             if((mat[i_][j] <= mat[i_][j + 1] and mat[i_][j] <= mat[i_ + 1][j] and mat[i_ + 1][j] <= mat[i_ + 1][j + 1] and mat[i_][j  + 1] <= mat[i_ + 1][j + 1])) {
                 heights[j]++;
@@ -38,9 +38,11 @@ int main() {
         }
         cerr << '\n';
         #endif
+        cerr << "test" << endl;
+
         stack<int> stacc1, stacc2;
         vector<int> r(m + 1), l(m + 1);
-        
+        cerr << "test" << endl;
         for(int j = 1; j <= m; j++) {
             while(!stacc1.empty() && heights[stacc1.top()] >= heights[j]) {
                 stacc1.pop();
@@ -58,10 +60,12 @@ int main() {
         }
 
         for(int j = 1; j <= m; j++) {
+            if(heights[j] > 0)
             ans = max(ans, (heights[j] + 1) * (r[j] - l[j] + 2));
         }
-        m++;
     }
+    m ++;
+    n ++;
     for(int i = 1; i <= n; i++) {
         int tt = 1;
         for(int j = 2; j <= m; j++) {
@@ -74,9 +78,9 @@ int main() {
         }
     }
 
-    for(int j = 1; j <= n; j++) {
+    for(int j = 1; j <= m; j++) {
         int tt = 1;
-        for(int i = 2; i <= m; i++) {
+        for(int i = 2; i <= n; i++) {
             if(mat[i][j] >= mat[i-1][j]) {
                 tt++;
                 ans = max(ans, tt);

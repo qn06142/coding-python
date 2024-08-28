@@ -1,0 +1,1 @@
+{"name":"Local: csphn_partition21","url":"/run/media/wheatley/NewVolume/coding python/csphn_partition21.cpp","tests":[{"id":1724487190459,"input":"8 8\n1 1 1 1 1 1 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_partition21.cpp","group":"local","local":true}

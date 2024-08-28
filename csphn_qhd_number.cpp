@@ -77,50 +77,55 @@ using namespace std;
 -------+++++-+++++++--+-----...-----++----+--###################################--------+-#+++++++#######++#####++++#++++++++++++++++++++
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
-pair<int, char> dp[(int) 3e3 + 5][(int) 3e3 + 5];
-pair<int, char> res = {0, 'a'};
-string solve(string X, string Y) {
-    int m = (int) X.size();
-    int n = (int) Y.size();
-    X += ' ';
-    Y += ' ';
-    for (int i = m; i >= 1; i--) {
-        for (int j = n; j >= 1; j--) {
-            if (X[i-1] == Y[j-1]) {
-                dp[i][j].first = dp[i+1][j+1].first + 1;
-                dp[i][j].second = X[i-1];
-                if(X[i-1] != '0') {
-                    res = max(res, dp[i][j]);
-                }
+const int maxn = 3001;
+int m, n;
+string x, y;
+pair<int, char> dp[maxn][maxn];
+void init() {
+    for(int i = 0; i <= m; i++) {
+        dp[i][n] = {0, 'a'};
+    }
+    for(int j = 0; j <= n; j++) {
+        dp[m][j] = {0, 'a'};
+    }
+}
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    cin >> x >> y;
+    m = x.size();
+    n = y.size();
+    for(int i = m - 1; i >= 0; i--) {
+        for(int j = n - 1; j >= 0; j--) {
+            if(x[i] == y[j]) {
+                dp[i][j] = {dp[i + 1][j + 1].first, x[i]};
             } else {
-                dp[i][j] = max(dp[i+1][j],dp[i][j+1]);
+                dp[i][j] = max(dp[i + 1][j], dp[i][j + 1]);
             }
         }
     }
-
-    string lcs;
-    char c = res.second;
-    int i = 1, j = 1;
-    cout << c;
-    while(X[i - 1] != c) i++;
-    while(Y[j - 1] != c) j++;
-    i ++;
-    j ++;
-    while(dp[i][j].first > 0) {
-        assert(i <= m and j <= n);
-        c = dp[i][j].second;
+    pair<int, char> maxpair = {0, 'a'};
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            if(dp[i][j].second != '0' and dp[i][j] > maxpair) {
+                maxpair = dp[i][j];
+            }
+        }
+    }
+    if(maxpair.first == 01) {
+        cout << 0;
+        return 0;
+    }
+    int len = maxpair.first;
+    char c = maxpair.second;
+    int i = 0, j = 0;
+    while(len-- >= 0) {
         cout << c;
-        while(X[i - 1] != c) i++;
-        while(Y[j - 1] != c) j++;
+        while(x[i] != c) i++;
+        while(y[j] != c) j++;
         i ++;
         j ++;
+        c = dp[i][j].second;
     }
-    return lcs;
-}
-
-int main() {
-    string X, Y;
-    cin >> X >> Y;
-    cout << solve(X, Y) << endl;
-    return 0;
 }
