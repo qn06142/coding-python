@@ -1,0 +1,1 @@
+{"name":"Local: hades_pay","url":"/run/media/wheatley/NewVolume/coding python/hades_pay.cpp","tests":[{"id":1725119733755,"input":"5 2\n2 3 1 4 6\n","output":"10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_pay.cpp","group":"local","local":true}

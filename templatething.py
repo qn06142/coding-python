@@ -30,7 +30,9 @@ tokens1 = template.split(sep='\n')
 
 # Wrap each token with '*/' and '/*'
 with open("templatestor1.txt", "w") as f:
-    f.write('\n'.join("*/" + i + "/*" for i in tokens1))
+    #f.write('\n'.join("*/" + i + "/*" for i in tokens1)) // unoptimal
+    f.write('\n'.join(i  for i in tokens1))
+
 
 with open("templatestor1.txt", 'r') as f:
     templatepreped = f.read()
@@ -42,10 +44,11 @@ complete = False
 for ind, i in enumerate(tokens):
     if not i.count('#') == len(i):
         continue
-    toadd = ''
-    while j < len(templatetokens) and len(toadd + templatetokens[j]) <= len(i):
+    toadd = '*/'
+    while j < len(templatetokens) and len(toadd + templatetokens[j]) + 2 <= len(i):
         toadd += templatetokens[j]
         j += 1
+    toadd += '/*'
     tokens[ind] = toadd + i[len(toadd):]
     if(toadd[-2:] != "/*" and toadd):
         print(toadd)
@@ -56,10 +59,10 @@ for ind, i in enumerate(tokens):
         complete = True
         break
 if j - len(templatetokens):
-    raise ValueError
+    raise ValueError("comment block too short")
 
 # Output the final result
 result = ''.join(tokens)
 print(result)
 with open("finaltemplate.cpp", "w") as f:
-    f.write("#include<bits/stdc++.h>\n" + result[4:] + "*/")
+    f.write("#include<bits/stdc++.h>\n/*" + result[:] + "*/")

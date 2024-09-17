@@ -1,0 +1,1 @@
+{"name":"Local: hades_maxnum","url":"/run/media/wheatley/NewVolume/coding python/hades_maxnum.cpp","tests":[{"id":1725003826575,"input":"7 3\n","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_maxnum.cpp","group":"local","local":true}

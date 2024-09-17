@@ -1,0 +1,1 @@
+{"name":"Local: hades_love","url":"/run/media/wheatley/NewVolume/coding python/hades_love.cpp","tests":[{"id":1725628722352,"input":"2 100 3\n2 4 5","output":"4 8 10 16 20 25"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/hades_love.cpp","group":"local","local":true}

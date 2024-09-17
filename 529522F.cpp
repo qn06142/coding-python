@@ -1,36 +1,30 @@
 #include <iostream>
-#include <vector>
 #include <set>
+#include <vector>
+
 using namespace std;
 
 int main() {
-    int n, L, S;
-    cin >> n >> L >> S;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
+    int n, L;
+    cin >> n >> L;
+    vector<long long> a(n + 1);
+    vector<long long> prefix(n + 1, 0);
+
+    for (int i = 1; i <= n; i++) {
         cin >> a[i];
+        prefix[i] = prefix[i - 1] + a[i];  
     }
 
-    multiset<int> sums;
-    int current_sum = 0;
-    int max_sum = 0;
+    long long result = -1e18;  
+    set<long long> s;
 
-    // Duyệt qua mảng
-    for (int i = 0; i < n; i++) {
-        current_sum += a[i];
+    for (int i = L; i <= n; i++) {
 
-        // Nếu i >= L - 1, bắt đầu tính toán tổng cho cửa sổ có độ dài từ L đến S
-        if (i >= L - 1) {
-            sums.insert(current_sum); // Thêm tổng của cửa sổ hiện tại vào multiset
-            if (i >= S) {
-                current_sum -= a[i - S]; // Giảm tổng khi cửa sổ trượt qua khỏi S phần tử
-                sums.erase(sums.find(current_sum)); // Xóa tổng cũ của cửa sổ khỏi multiset
-            }
-            max_sum = max(max_sum, *sums.rbegin()); // Cập nhật tổng lớn nhất
-        }
+        s.insert(prefix[i - L]);
+
+        result = max(result, prefix[i] - *s.begin());
     }
 
-    cout << max_sum << endl;
-
+    cout << result << endl;
     return 0;
 }

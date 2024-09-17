@@ -1,42 +1,47 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-// Function to check if the median is possible or not.
-bool good(int arr[], int N, int K, int median) {
-    vector<int> pre(N + 1, 0);
-    for (int i = 1; i <= N; i++) {
-        pre[i] = pre[i - 1] + (arr[i - 1] >= median ? 1 : -1);
-    }
+bool check(const vector<int>& a, int N, int K, int median) {
+    vector<int> b(N + 1, 0);
+    for (int i = 1; i <= N; ++i) {
 
-    int mn = 0;
-    for (int i = K; i <= N; i++) {
-        if (pre[i] - mn > 0) return true;
-        mn = min(mn, pre[i - K + 1]);
+        b[i] = b[i - 1] + (a[i - 1] <= median ? 1 : -1);
+    }
+    int min_prefix = 0;
+    for (int i = K; i <= N; ++i) {
+
+        if (b[i] - min_prefix >= 0) return true;
+        min_prefix = min(min_prefix, b[i - K + 1]);
     }
     return false;
 }
 
-// Function to find the minimum median of a subarray having length at least K
-int minMedian(int arr[], int N, int K) {
-    int l = 1, r = N, result = 1;
-    while (l <= r) {
-        int mid = (l + r) / 2;
-        if (good(arr, N, K, mid)) {
-            result = mid;
-            r = mid - 1;
-        } else {
-            l = mid + 1;
-        }
-    }
-    return result;
-}
-
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
     int N, K;
     cin >> N >> K;
-    int arr[N];
-    for (int i = 0; i < N; i++) cin >> arr[i];
+    vector<int> a(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> a[i];
+    }
 
-    cout << minMedian(arr, N, K) << endl;
+    int low = 1, high = N, result = N; 
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (check(a, N, K, mid)) {
+            result = mid;
+            high = mid - 1;  
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    cout << result << "\n";
     return 0;
 }

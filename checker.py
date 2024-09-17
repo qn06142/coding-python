@@ -5,13 +5,9 @@ import string
 def generate_test_case():
     # Generate a random test case
     # For simplicity, let's assume the test case is a string of random letters
-    length = random.randint(5, 10)
-    a = random.randint(1, 10 ** 1)
-    b = random.randint(a, 10 ** 1)
-    test = ' '.join(str(i) for i in (length, a)) + '\n'
-    for i in range(0, length):
-        test += ' '.join(str(i) for i in (random.randint(1, 10 ** 1), random.randint(1, 10 ** 1)))
-        test += '\n'
+    length = random.randint(100000, 100000)
+    test = ' '.join(str(i) for i in (length, )) + '\n'
+    test += ' '.join(str(random.randint(-10 ** 4, 10 ** 4)) for i in range(0, length))
     return test
 def run_program(executable, input_data):
     # Run the executable with the given input data
@@ -24,12 +20,12 @@ def run_program_py(executable, input_data):
     stdout, stderr = process.communicate(input=input_data.encode())
     return stdout.decode().strip()
 def main():
-    executable1 = './hades_viettle1'
-    executable2 = './hades_viettle'
+    executable1 = './hades_bgpos1'
+    executable2 = './hades_bgpos'
     tests = 0
     while True:
         test_case = generate_test_case()
-        print(test_case)
+        #print(test_case)
         output1 = run_program(executable1, test_case)
         output2 = run_program(executable2, test_case)
 

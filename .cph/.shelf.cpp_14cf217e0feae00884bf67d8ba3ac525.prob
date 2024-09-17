@@ -1,0 +1,1 @@
+{"name":"Local: shelf","url":"/run/media/wheatley/NewVolume/coding python/shelf.cpp","tests":[{"id":1726372683251,"input":"4\n7 11 4\n2 8 2\n3 10 8\n4 7 6","output":"26"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/shelf.cpp","group":"local","local":true}

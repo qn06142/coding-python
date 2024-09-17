@@ -1,0 +1,1 @@
+{"name":"Local: countpairssumdiveq","url":"/run/media/wheatley/NewVolume/coding python/countpairssumdiveq.cpp","tests":[{"id":1725076276070,"input":"10","output":"0"},{"id":1725076454604,"input":"300","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/countpairssumdiveq.cpp","group":"local","local":true}
