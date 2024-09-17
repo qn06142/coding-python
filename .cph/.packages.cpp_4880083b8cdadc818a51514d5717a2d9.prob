@@ -1,0 +1,1 @@
+{"name":"Local: packages","url":"/run/media/wheatley/NewVolume/coding python/packages.cpp","tests":[{"id":1726297946596,"input":"3\n6 14\n8 4 6 1 7 2\n8 9\n8 7 6 5 4 3 2 1\n9 9\n5 5 5 2 3 4 4 4 4","output":"3\n4\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/packages.cpp","group":"local","local":true}

@@ -1,44 +1,58 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <climits>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int main() {
-    int n;
-    cin >> n;
-    vector<int> weights(2 * n);
-    
-    for(int i = 0; i < 2 * n; ++i) {
-        cin >> weights[i];
+void solve(int tc) {
+    int n, m;
+    cin >> n >> m;
+
+    vector<pair<int, int>> a(m);        
+    vector<int> op(n + 1);              
+    vector<vector<int>> del(n + 1);     
+
+    for (auto &e : a) {
+        cin >> e.first >> e.second;
+        op[e.first]++;                  
+        del[e.second].emplace_back(e.first);  
     }
-    
-    sort(weights.begin(), weights.end());
-    
-    int min_instability = INT_MAX;
-    
-    for(int i = 0; i < 2 * n; ++i) {
-        for(int j = i + 1; j < 2 * n; ++j) {
-            vector<int> remaining_weights;
-            
-            for(int k = 0; k < 2 * n; ++k) {
-                if (k != i && k != j) {
-                    remaining_weights.push_back(weights[k]);
-                }
-            }
-            
-            int current_instability = 0;
-            
-            for(int k = 0; k < remaining_weights.size(); k += 2) {
-                current_instability += abs(remaining_weights[k] - remaining_weights[k + 1]);
-            }
-            
-            min_instability = min(min_instability, current_instability);
+
+    multiset<int> cur;                  
+    vector<int> dp(n + 1);              
+
+    for (int i = 1; i <= n; ++i) {
+        dp[i] = dp[i - 1];              
+
+        for (int j = 0; j < op[i]; ++j) {
+            cur.insert(i);
+        }
+
+        if (!cur.empty()) {
+            dp[i] = max(dp[i], dp[*cur.begin() - 1] + int(cur.size()));
+        }
+
+        for (int e : del[i]) {
+            cur.erase(cur.find(e));
         }
     }
-    
-    cout << min_instability << endl;
-    
+
+    cout << dp[n];
+}
+
+bool multi = true;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0); cout.tie(0);
+
+    int t = 1;
+    if (multi) {
+        cin >> t;                        
+    }
+
+    for (int i = 1; i <= t; ++i) {
+        solve(i);                        
+        cout << "\n";                    
+    }
+
     return 0;
 }
