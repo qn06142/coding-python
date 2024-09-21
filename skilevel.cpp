@@ -133,118 +133,96 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-#pragma GCC target("arch=lunarlake")
-#pragma GCC optimize("Ofast,fast-math,unroll-loops")
-const int MAXN = 505;
-const int dx[4] = {-1, 1, 0, 0};
-const int dy[4] = {0, 0, -1, 1};
 
-int m, n, T;
-int height[MAXN][MAXN];
-int start[MAXN][MAXN];
-int parent[MAXN * MAXN];
-int sz[MAXN * MAXN];  
-
-int find(int x) {
-    if (x != parent[x]) {
-        parent[x] = find(parent[x]);  
-    }
-    return parent[x];
+int root[(int) 3e5 + 5], f[(int) 3e5 + 5], s[(int) 3e5 + 5];
+int m, n, t;
+void add_set(int u) {
+    root[u] = u;
 }
-
-void unite(int x, int y) {
-    x = find(x), y = find(y);
-    if (x != y) {
-        if (sz[x] < sz[y]) swap(x, y);
-        parent[y] = x;
-        sz[x] += sz[y];
+int get_root(int u) {
+    if(root[u] == u) {
+        return u;
+    }
+    //debug(u);
+    return (root[u] = get_root(root[u]));
+}
+void unite(int u, int v) {
+    int a, b;
+    a = get_root(u);
+    b = get_root(v);
+    if(a != b) {
+        root[a] = b;
+        s[b] += s[a];
+        f[b] += f[a];
     }
 }
-
-bool valid_coords(int x, int y) {
-    return x >= 1 && x <= m && y >= 1 && y <= n;
+int getcoord(int x, int y) {
+    return (x - 1) * n + y;
 }
-
-int get_index(int x, int y) {
-    return (x - 1) * n + y;  
+const int dx[] = {0, 1};
+const int dy[] = {1, 0};
+struct connect {
+    int a, b, diff;
+};
+bool cmp(const connect &a, const connect &b) {
+    return a.diff < b.diff;
 }
-
+int a[505][505];
+bool isstart[505][505];
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-
-    cin >> m >> n >> T;
-
-    vector<tuple<int, int, int, int, int>> edges;
-
-    for (int i = 1; i <= m; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            cin >> height[i][j];
+    cin >> m >> n >> t;
+    for(int i = 1; i <= m; i++) {
+        for(int j = 1; j <= n; j++) {
+            cin >> a[i][j];
         }
     }
-
-    vector<pair<int, int>> start_points;
-    for (int i = 1; i <= m; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            cin >> start[i][j];
-            if (start[i][j] == 1) {
-                start_points.emplace_back(i, j);
-            }
+    for(int i = 1; i <= m; i++) {
+        for(int j = 1; j <= n; j++) {
+            cin >> isstart[i][j];
         }
     }
-
-    for (int i = 1; i <= m * n; ++i) {
-        parent[i] = i;
-        sz[i] = 1;
-    }
-
-    for (int i = 1; i <= m; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            for (int k = 0; k < 4; ++k) {
-                int ni = i + dx[k];
-                int nj = j + dy[k];
-                if (valid_coords(ni, nj)) {
-                    int diff = abs(height[i][j] - height[ni][nj]);
-                    edges.emplace_back(diff, i, j, ni, nj);
+    vector<connect> stor;
+    for(int i = 1; i <= m; i++) {
+        for(int j = 1; j <= n; j++) {
+            for(int x = 0; x < 2; x++) {
+                if(i + dx[x] <= m and j + dy[x] <= n) {
+                    connect tmp;
+                    tmp.a = getcoord(i, j);
+                    tmp.b = getcoord(i + dx[x], j + dy[x]);
+                    tmp.diff = abs(a[i][j] - a[i + dx[x]][j + dy[x]]);
+                    
+                    stor.push_back(tmp);
                 }
             }
         }
     }
-
-    sort(edges.begin(), edges.end());
-
-    int total_difficulty = 0;
-
-    for (auto &[x, y] : start_points) {
-        int l = 0, r = 1e9 + 5, res = -1;
-
-        while (l <= r) {
-            int mid = (l + r) / 2;
-
-            for (int i = 1; i <= m * n; ++i) {
-                parent[i] = i;
-                sz[i] = 1;
-            }
-
-            for (auto &[diff, i1, j1, i2, j2] : edges) {
-                if (diff > mid) break;
-                unite(get_index(i1, j1), get_index(i2, j2));
-            }
-
-            int start_idx = get_index(x, y);
-            if (sz[find(start_idx)] >= T) {
-                res = mid;
-                r = mid - 1;  
-            } else {
-                l = mid + 1;  
-            }
+    sort(stor.begin(), stor.end(), cmp);
+    for(int i = 1; i <= m; i++) {
+        for(int j = 1; j <= n; j++) {
+            add_set(getcoord(i, j));
+            if(isstart[i][j])
+            f[getcoord(i, j)] = 1;
+            
+            s[getcoord(i, j)] = 1;
         }
-
-        total_difficulty += res;
     }
-
-    cout << total_difficulty << '\n';
-
-    return 0;
+    
+    long long ans = 0;
+    for(connect a:stor) {
+        int x = get_root(a.a);
+        int y = get_root(a.b);
+        debug(x, y);
+        debug(f[x], f[y]);
+        debug(s[x], s[y]);
+        debug(a.diff);
+        if(s[x] + s[y] >= t and x != y) {
+            if(s[x] < t) ans += 1LL * a.diff * f[x];
+            if(s[y] < t) ans += 1LL * a.diff * f[y];
+        }
+        unite(x, y);
+    }
+    cout << ans;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: fibarr","url":"/run/media/wheatley/NewVolume/coding python/fibarr.cpp","tests":[{"id":1726588290859,"input":"2\n7\n1 4 3 9 10 13 7\n9\n0 2 8 5 2 1 4 13 23","output":"1 3 13 \n2 8 5 2 1 13 \n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/fibarr.cpp","group":"local","local":true}

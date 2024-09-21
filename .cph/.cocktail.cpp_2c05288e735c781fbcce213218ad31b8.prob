@@ -1,0 +1,1 @@
+{"name":"Local: cocktail","url":"/run/media/wheatley/NewVolume/coding python/cocktail.cpp","tests":[{"id":1726901738735,"input":"5 500\n1 100 250 400 1000","output":"3"},{"id":1726901801527,"input":"1 9\n8","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/cocktail.cpp","group":"local","local":true}
