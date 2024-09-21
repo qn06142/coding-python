@@ -1,0 +1,1 @@
+{"name":"Local: paint2","url":"/run/media/wheatley/NewVolume/coding python/paint2.cpp","tests":[{"id":1726905330030,"input":"10\n1 c\n1 b\n1 a\n1 c\n1 d\n2 a b\n1 c\n1 a\n1 b\n2 b d","output":"cddcdcad"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/paint2.cpp","group":"local","local":true}

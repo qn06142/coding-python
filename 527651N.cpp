@@ -133,11 +133,52 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-int divs[(int) 1e6]
-int main() {
+
+#define int long long
+vector<int> sieve(int limit) {
+    vector<bool> is_prime(limit + 1, true);
+    vector<int> primes;
+    is_prime[0] = is_prime[1] = false;
+
+    for (int i = 2; i <= limit; ++i) {
+        if (is_prime[i]) {
+            primes.push_back(i);
+            for (int j = i * i; j <= limit; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+    return primes;
+}
+
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+
+    const int LIMIT = 1e7;
+    vector<int> primes = sieve(LIMIT);
+
     int q;
     cin >> q;
+    while (q--) {
+        int n;
+        cin >> n;
+        bool found = false;
+
+        for (int prime : primes) {
+            if (prime > sqrt(n)) break;
+            if (n % prime == 0) {
+                cout << (prime == n ? -1 : n / prime) << endl;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            cout << -1 << endl;
+        }
+    }
+
+    return 0;
 }

@@ -24,7 +24,7 @@ void dfs(int u, int p = 0){
 int main(){
     scanf("%d %d", &N, &M);
     for(int i = 0; i < M; i++){
-        scanf("%d %d", &a, &b);
+        scanf("%d %d", &a, &b);\
         G[a].push_back(b);
         G[b].push_back(a);
     }

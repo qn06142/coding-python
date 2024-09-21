@@ -58,6 +58,7 @@ for ind, i in enumerate(tokens):
     if j >= len(templatetokens):
         complete = True
         break
+print( ''.join(tokens))
 if j - len(templatetokens):
     raise ValueError("comment block too short")
 

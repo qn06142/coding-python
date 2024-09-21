@@ -1,0 +1,1 @@
+{"name":"Local: rectarea","url":"/run/media/wheatley/NewVolume/coding python/rectarea.cpp","tests":[{"id":1726905900964,"input":"3\n0 2 3\n1 4 4\n1 5 2","output":"17"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/rectarea.cpp","group":"local","local":true}
