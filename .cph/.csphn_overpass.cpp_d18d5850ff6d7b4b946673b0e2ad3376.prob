@@ -1,0 +1,1 @@
+{"name":"Local: csphn_overpass","url":"/run/media/wheatley/NewVolume/coding python/csphn_overpass.cpp","tests":[{"id":1727576973363,"input":"7\nLLLBRRB","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_overpass.cpp","group":"local","local":true}

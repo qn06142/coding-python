@@ -144,29 +144,56 @@
 #define debugArr(...)
 #endif
 using namespace std;
-#include <iostream>
-using namespace std;
-
-int dp[5][5];
-
-int main() {
-    int n;
-    cin >> n;
-
-    for (int i = 0; i <= n; i++) {
-        dp[0][i] = 1;
-        dp[i][i] = 1;
-    }
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= i; j++) {
-            debug(i, j);
-            dp[i][j] = dp[i][j - 1];  
-            if (i >= j) {
-                dp[i][j] += dp[i - j][j];  
-            }
+std::ostream&
+operator<<( std::ostream& dest, __int128_t value )
+{
+    std::ostream::sentry s( dest );
+    if ( s ) {
+        __uint128_t tmp = value < 0 ? -value : value;
+        char buffer[ 128 ];
+        char* d = std::end( buffer );
+        do
+        {
+            -- d;
+            *d = "0123456789"[ tmp % 10 ];
+            tmp /= 10;
+        } while ( tmp != 0 );
+        if ( value < 0 ) {
+            -- d;
+            *d = '-';
+        }
+        int len = std::end( buffer ) - d;
+        if ( dest.rdbuf()->sputn( d, len ) != len ) {
+            dest.setstate( std::ios_base::badbit );
         }
     }
-    debug(dp);
-    cout << dp[n][n] << endl;  
+    return dest;
+}
+#define int __int128_t
+const int MAX_N = 1005;
+int dp[MAX_N + 1][MAX_N + 1];
+
+signed main() {
+    long long tmp;
+    int n;
+    cin >> tmp;
+    n = tmp;
+    for (int i = 0; i <= n; ++i) {
+        dp[i][0] = 0; 
+        dp[i][i] = 1;  
+    }
+    
+    for (int i = 1; i <= n; ++i) {
+        for (int k = 0; k < i; ++k) {
+            dp[i][k] = dp[i-1][k-1] + dp[i-k][k];
+        }
+    }
+    
+    int result = 0;
+    for (int k = 1; k <= n; ++k) {
+        result += dp[n][k];
+    }
+    
+    cout << result;
     return 0;
 }

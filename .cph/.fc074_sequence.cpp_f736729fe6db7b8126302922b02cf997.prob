@@ -1,0 +1,1 @@
+{"name":"Local: fc074_sequence","url":"/run/media/wheatley/NewVolume/coding python/fc074_sequence.cpp","tests":[{"id":1727108246214,"input":"5 6\n1 5 2 4 3","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/fc074_sequence.cpp","group":"local","local":true}
