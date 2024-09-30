@@ -1,0 +1,1 @@
+{"name":"Local: similar","url":"/run/media/wheatley/NewVolume/coding python/similar.cpp","tests":[{"id":1727508820267,"input":"2\n8\n1 5 8 7 11 14 7 6\n8\n8 7 9 7 8 8 10 8","output":"3\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/similar.cpp","group":"local","local":true}

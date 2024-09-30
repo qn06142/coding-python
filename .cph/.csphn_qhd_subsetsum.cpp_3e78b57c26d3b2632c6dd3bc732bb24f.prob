@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_subsetsum","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_subsetsum.cpp","tests":[{"id":1727575705742,"input":"6 99\n11 44 33 55 77 88","output":"YES\n3\n1 3 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_subsetsum.cpp","group":"local","local":true}

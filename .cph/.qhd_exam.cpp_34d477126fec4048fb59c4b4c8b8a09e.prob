@@ -1,0 +1,1 @@
+{"name":"Local: qhd_exam","url":"/run/media/wheatley/NewVolume/coding python/qhd_exam.cpp","tests":[{"id":1727576080074,"input":"3\n1\n2\n5","output":"1\n2\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/qhd_exam.cpp","group":"local","local":true}
