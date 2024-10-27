@@ -1,0 +1,1 @@
+{"name":"Local: countunidig","url":"/run/media/wheatley/NewVolume/coding python/countunidig.cpp","tests":[{"id":1729855105044,"input":"111 333 2","output":"13531\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/countunidig.cpp","group":"local","local":true}

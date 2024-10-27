@@ -1,0 +1,1 @@
+{"name":"Local: votes","url":"/run/media/wheatley/NewVolume/coding python/votes.cpp","tests":[{"id":1728181990228,"input":"5\nX 0 X 0 X\nX 0 0 X X\n0 0 X 0 0\n0 X 0 X 0\n0 0 X X 0","output":"2 3\n3 4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/votes.cpp","group":"local","local":true}

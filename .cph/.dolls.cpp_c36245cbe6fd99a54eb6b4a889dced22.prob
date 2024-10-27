@@ -1,0 +1,1 @@
+{"name":"Local: dolls","url":"/run/media/wheatley/NewVolume/coding python/dolls.cpp","tests":[{"id":1728789601305,"input":"8 2\n8 4 2 1 1 3 5 9","output":"18"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/dolls.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: strmaker","url":"/run/media/wheatley/NewVolume/coding python/strmaker.cpp","tests":[{"id":1729928889679,"input":"1 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0","output":"cbc"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/strmaker.cpp","group":"local","local":true}

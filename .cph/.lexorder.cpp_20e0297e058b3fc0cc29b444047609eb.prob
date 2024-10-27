@@ -1,0 +1,1 @@
+{"name":"Local: lexorder","url":"/run/media/wheatley/NewVolume/coding python/lexorder.cpp","tests":[{"id":1728725880223,"input":"4 2\n1 4 2 3","output":"2 1 3 4"},{"id":1728731040396,"input":"5 1\n5 4 3 2 1","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/lexorder.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: VISITORS","url":"/run/media/wheatley/NewVolume/coding python/VISITORS.cpp","tests":[{"id":1729934045841,"input":"5\n3 -1 -2 1 6","output":"11"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/VISITORS.cpp","group":"local","local":true}

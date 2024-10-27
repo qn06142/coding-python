@@ -1,0 +1,90 @@
+```c++
+#include<bits/stdc++.h>
+
+#define int long long
+#define pb push_back
+#define fi first
+#define se second
+using namespace std;
+using ll = long long;
+using ld = long double;
+using ull = unsigned long long;
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+const int maxN = 1e6 + 5;
+const int mod = 1e9 + 7;
+const ll oo = 1e18;
+int n, a[maxN];
+int res = 0;
+int cnt[60];
+void ReadInput()
+{
+    cin >> n;
+    for(int i=1; i<=n; i++)
+        cin >> a[i];
+}
+void DnC(int l, int r)
+{
+    if(l >= r) return;
+    int mid = (l + r) / 2;
+    int _max = -oo, _min = oo, pmax = mid, pmin = mid;
+    memset(cnt, 0, sizeof cnt);
+    int mn1 = oo, mn2 = oo;
+    for(int i=mid+1; i<=r; i++)
+    {
+        _max = max(_max, a[i]);
+        _min = min(_min, a[i]);
+        while(pmax >= l && a[pmax] <= _max)
+        {
+            mn1 = min(mn1, a[pmax]);
+            cnt[__builtin_popcountll(mn1)]++;
+            pmax--;
+
+        }
+        while(pmin >= l && a[pmin] >= _min)
+        {
+            mn2 = min(mn2, a[pmin]);
+            cnt[__builtin_popcountll(mn2)]--;
+            pmin--;
+        }
+        if(__builtin_popcountll(_max) == __builtin_popcountll(_min)) res += mid - max(pmax, pmin);
+        if(pmax <= pmin) res += cnt[__builtin_popcountll(_max)];
+    }
+    memset(cnt, 0, sizeof cnt);
+    _max = -oo, _min = oo, pmax = mid + 1, pmin = mid + 1;
+    mn1 = mn2 = oo;
+    for(int i=mid; i>=l; i--)
+    {
+        _max = max(_max, a[i]);
+        _min = min(_min, a[i]);
+        while(pmax <= r && a[pmax] < _max)
+        {
+            mn1 = min(mn1, a[pmax]);
+            cnt[__builtin_popcountll(mn1)]++;
+            pmax++;
+        }
+        while(pmin <= r && a[pmin] > _min)
+        {
+            mn2 = min(mn2, a[pmin]);
+            cnt[__builtin_popcountll(mn2)]--;
+            pmin++;
+        }
+        if(__builtin_popcountll(_max) == __builtin_popcountll(_min)) res += min(pmax, pmin) - mid - 1;
+        if(pmax >= pmin) res += cnt[__builtin_popcountll(_max)];
+    }
+    DnC(l, mid);
+    DnC(mid + 1, r);
+}
+void Solve()
+{
+    DnC(1, n);
+    cout << res + n;
+}
+int32_t main()
+{
+    //freopen("sol.inp", "r", stdin);
+   // freopen("sol.out", "w", stdout);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ReadInput();
+    Solve();
+}```

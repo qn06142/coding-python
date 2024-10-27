@@ -1,0 +1,1 @@
+{"name":"Local: csphn_present","url":"/run/media/wheatley/NewVolume/coding python/csphn_present.cpp","tests":[{"id":1728788181035,"input":"5 4\n1 3 5 7 9\n2 4 6 8","output":"17"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_present.cpp","group":"local","local":true}

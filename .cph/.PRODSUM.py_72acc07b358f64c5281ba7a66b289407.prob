@@ -1,0 +1,1 @@
+{"name":"Local: PRODSUM","url":"/run/media/wheatley/NewVolume/coding python/PRODSUM.py","tests":[{"id":1729929849488,"input":"4\n4 3 2 5","output":"39"},{"id":1729929857997,"input":"4\n1 2 3 4","output":"30"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/PRODSUM.py","group":"local","local":true}

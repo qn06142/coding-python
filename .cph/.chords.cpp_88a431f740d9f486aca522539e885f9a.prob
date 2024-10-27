@@ -1,0 +1,1 @@
+{"name":"Local: chords","url":"/run/media/wheatley/NewVolume/coding python/chords.cpp","tests":[{"id":1727948981164,"input":"6\n1 5\n10 2\n3 7\n4 11\n6 8\n9 12","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/chords.cpp","group":"local","local":true}
