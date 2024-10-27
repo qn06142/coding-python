@@ -1,0 +1,1 @@
+{"name":"Local: magicnumber","url":"/run/media/wheatley/NewVolume/coding python/magicnumber.py","tests":[{"id":1729180427011,"input":"Abc16d ef192gh 21","output":"7\n0 3 2 0 0 0 1 0 0 1\n16\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/magicnumber.py","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: SUMDIV","url":"/run/media/wheatley/NewVolume/coding python/SUMDIV.py","tests":[{"id":1729931720328,"input":"9 12","output":""},{"id":1729931729269,"input":"7 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/SUMDIV.py","group":"local","local":true}

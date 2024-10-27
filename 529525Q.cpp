@@ -151,7 +151,7 @@ int main() {
         for(int j = 1; j < i; j++) {
             if(a[i][2] > a[j][2] and a[i][1] > a[j][1]) {
                 dp1[i] = max(dp1[j] + 1, dp1[i]);
-                dp2[i] = max(dp2[j] + a[j][3], dp2[i]);
+                dp2[i] = max(dp2[j] + a[i][3], dp2[i]);
             }
         }
     }

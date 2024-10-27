@@ -1,0 +1,1 @@
+{"name":"Local: primepair","url":"/run/media/wheatley/NewVolume/coding python/primepair.cpp","tests":[{"id":1729926734719,"input":"20 6","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/primepair.cpp","group":"local","local":true}

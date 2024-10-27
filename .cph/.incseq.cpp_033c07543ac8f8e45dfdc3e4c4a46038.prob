@@ -1,0 +1,1 @@
+{"name":"Local: incseq","url":"/run/media/wheatley/NewVolume/coding python/incseq.cpp","tests":[{"id":1728735519407,"input":"7\n11 33 22 77 66 55 88","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/incseq.cpp","group":"local","local":true}

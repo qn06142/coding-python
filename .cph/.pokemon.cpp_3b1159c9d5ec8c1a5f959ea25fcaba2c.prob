@@ -1,0 +1,1 @@
+{"name":"Local: pokemon","url":"/run/media/wheatley/NewVolume/coding python/pokemon.cpp","tests":[{"id":1729327473961,"input":"1\n3 4 10","output":"26"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/pokemon.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: bridge","url":"/run/media/wheatley/NewVolume/coding python/bridge.cpp","tests":[{"id":1729498052404,"input":"4\n6 7 6 5","output":"29"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/bridge.cpp","group":"local","local":true}

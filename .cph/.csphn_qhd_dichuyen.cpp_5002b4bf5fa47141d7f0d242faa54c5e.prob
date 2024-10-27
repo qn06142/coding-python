@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_dichuyen","url":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_dichuyen.cpp","tests":[{"id":1729496221029,"input":"4 4\n1 2 3 4\n2 3 -2 -1\n8 -1 -6 1\n0 2 18 9","output":"23"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/csphn_qhd_dichuyen.cpp","group":"local","local":true}

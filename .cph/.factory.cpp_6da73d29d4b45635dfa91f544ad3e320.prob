@@ -1,0 +1,1 @@
+{"name":"Local: factory","url":"/run/media/wheatley/NewVolume/coding python/factory.cpp","tests":[{"id":1729846072722,"input":"5\n13 6\n15 1\n11 7\n12 2\n10 3","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/factory.cpp","group":"local","local":true}

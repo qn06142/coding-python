@@ -1,0 +1,1 @@
+{"name":"Local: SDNUM","url":"/run/media/wheatley/NewVolume/coding python/SDNUM.cpp","tests":[{"id":1729859495946,"input":"2  3","output":"48"},{"id":1729911753014,"input":"35 971","output":"235885738"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/SDNUM.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: rewrite","url":"/run/media/wheatley/NewVolume/coding python/rewrite.py","tests":[{"id":1729502781597,"input":"1592\n1142\n","output":"2 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/run/media/wheatley/NewVolume/coding python/rewrite.py","group":"local","local":true}
