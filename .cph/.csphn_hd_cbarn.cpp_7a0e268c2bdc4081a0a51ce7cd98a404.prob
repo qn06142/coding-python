@@ -1,0 +1,1 @@
+{"name":"Local: csphn_hd_cbarn","url":"/mnt/NewVolume/coding-python/csphn_hd_cbarn.cpp","tests":[{"id":1731556622718,"input":"6\n3\n2\n1\n0\n0\n0","output":"27"},{"id":1731556635733,"input":"3\n2\n1\n0","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_hd_cbarn.cpp","group":"local","local":true}

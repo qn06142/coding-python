@@ -1,0 +1,1 @@
+{"name":"Local: csphn_garden","url":"/mnt/NewVolume/coding-python/csphn_garden.cpp","tests":[{"id":1732069413276,"input":"3 3\n5 2 3\n1 4 2\n1 1 3","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_garden.cpp","group":"local","local":true}

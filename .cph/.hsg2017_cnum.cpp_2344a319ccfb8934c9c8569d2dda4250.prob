@@ -1,0 +1,1 @@
+{"name":"Local: hsg2017_cnum","url":"/home/wheatley/coding-python/hsg2017_cnum.cpp","tests":[{"id":1732379715022,"input":"3\n1 10\n89 89\n1 1000000","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hsg2017_cnum.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: B_Dãy_ngoặc_online","url":"/home/wheatley/coding-python/B_Dãy_ngoặc_online.cpp","tests":[{"id":1732373289028,"input":"()(()--)))-()---\n","output":"0111211333334333"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/B_Dãy_ngoặc_online.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: dpbitmask_rabbit","url":"/home/wheatley/coding-python/dpbitmask_rabbit.cpp","tests":[{"id":1732327164343,"input":"3\n0 10 20\n10 0 -100\n20 -100 0 \n","output":"20\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dpbitmask_rabbit.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: bowling","url":"/mnt/NewVolume/coding-python/bowling.cpp","tests":[{"id":1731145853995,"input":"9 2\n1 2 6 3 4 5 9 7 8","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/bowling.cpp","group":"local","local":true}

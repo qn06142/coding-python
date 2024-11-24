@@ -1,0 +1,1 @@
+{"name":"Local: blackjack","url":"/mnt/NewVolume/coding-python/blackjack.cpp","tests":[{"id":1731145539107,"input":"6 20\n7 9 6 2 1 5","output":"20\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/blackjack.cpp","group":"local","local":true}

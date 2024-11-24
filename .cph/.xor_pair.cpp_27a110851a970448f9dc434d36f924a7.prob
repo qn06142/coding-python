@@ -1,0 +1,1 @@
+{"name":"Local: xor_pair","url":"/mnt/NewVolume/coding-python/xor_pair.cpp","tests":[{"id":1731117960980,"input":"5\n7 8 9 14 3 \n","output":"4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/xor_pair.cpp","group":"local","local":true}

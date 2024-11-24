@@ -1,0 +1,1 @@
+{"name":"Local: string_subtr","url":"/mnt/NewVolume/coding-python/string_subtr.cpp","tests":[{"id":1731145380920,"input":"2\n01010","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/string_subtr.cpp","group":"local","local":true}

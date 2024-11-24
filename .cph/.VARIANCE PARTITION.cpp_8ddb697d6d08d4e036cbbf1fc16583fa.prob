@@ -1,0 +1,1 @@
+{"name":"Local: VARIANCE PARTITION","url":"/mnt/NewVolume/coding-python/VARIANCE PARTITION.cpp","tests":[{"id":1731318241748,"input":"6 3\n7 4 6 1 2 10","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/VARIANCE PARTITION.cpp","group":"local","local":true}

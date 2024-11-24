@@ -1,0 +1,1 @@
+{"name":"Local: bitmask_sati","url":"/home/wheatley/coding-python/bitmask_sati.cpp","tests":[{"id":1732329731158,"input":"4\n99 9 58 72\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/bitmask_sati.cpp","group":"local","local":true}

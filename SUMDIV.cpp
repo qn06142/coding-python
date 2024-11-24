@@ -1,40 +1,44 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
+
 using namespace std;
 
-const long long MOD = 1e9 + 7;
+long long sum_of_first_n(long long n) {
+    return n * (n + 1) / 2;
+}
 
-long long sumOfDivisorsInRange(long long L, long long R) {
-    long long result = 0;
-    for (long long d = 1; d * d <= R; ++d) {
-        // Count multiples of `d` in the range [L, R]
-        long long firstMultiple = (L + d - 1) / d * d;
-        long long lastMultiple = (R / d) * d;
+long long solve(long long L, long long R) {
+    long long s = 0;
+    long long hi = 1e16; 
+    long long lim = min(R - L + 1, (long long)sqrtl(R) + 1);
 
-        if (firstMultiple <= lastMultiple) {
-            // Number of multiples of `d` in the range [L, R]
-            long long count = (lastMultiple - firstMultiple) / d + 1;
-            result = (result + count * d) % MOD;
+    if (L <= R - L + 1) {
+        return sum_of_first_n(R) - sum_of_first_n(L - 1);
+    }
+
+    for (long long i = 1; i <= sqrtl(R); ++i) {
+        long long st = max(lim, (L + i - 1) / i); 
+        long long ed = min(R / i, hi);           
+
+        if ((L +i - 1) / i <= R / i) {
+            s += i;
         }
 
-        // Handle the counterpart divisor, R/d
-        if (d != R / d) {
-            long long dd = R / d;
-            firstMultiple = (L + dd - 1) / dd * dd;
-            lastMultiple = (R / dd) * dd;
-
-            if (firstMultiple <= lastMultiple) {
-                long long count = (lastMultiple - firstMultiple) / dd + 1;
-                result = (result + count * dd) % MOD;
+        if (ed >= st) {
+            s += sum_of_first_n(ed) - sum_of_first_n(st - 1);
+            if (ed == i) {
+                s -= i; 
             }
+            hi = min(hi, st - 1);
         }
     }
-    return result;
+    return s;
 }
 
 int main() {
     long long L, R;
     cin >> L >> R;
-    cout << sumOfDivisorsInRange(L, R) << endl;
+    cout << solve(L, R) << endl;
     return 0;
 }

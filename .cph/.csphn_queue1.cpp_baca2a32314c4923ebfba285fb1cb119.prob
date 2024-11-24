@@ -1,0 +1,1 @@
+{"name":"Local: csphn_queue1","url":"/home/wheatley/coding-python/csphn_queue1.cpp","tests":[{"id":1732379223825,"input":"9\n5\n6 3\n9 6\n3 8\n4 7\n2 1","output":"2 9\n0 1\n7 8\n5 7\n6 4\n9 5\n4 3\n3 0\n1 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_queue1.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: xor_pp","url":"/mnt/NewVolume/coding-python/xor_pp.cpp","tests":[{"id":1731422411316,"input":"3\n1 2 4","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/xor_pp.cpp","group":"local","local":true}

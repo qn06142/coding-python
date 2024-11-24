@@ -1,0 +1,1 @@
+{"name":"Local: seqxor","url":"/mnt/NewVolume/coding-python/seqxor.cpp","tests":[{"id":1731123032185,"input":"6\n3 1 5 3 2 6\n","output":"31\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/seqxor.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: bitmask_select1","url":"/mnt/NewVolume/coding-python/bitmask_select1.cpp","tests":[{"id":1731728852903,"input":"3\n-1 -4 7 9\n9 5 8 7\n3 -6 9 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/bitmask_select1.cpp","group":"local","local":true}
