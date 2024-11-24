@@ -1,0 +1,1 @@
+{"name":"Local: pokemon1","url":"/mnt/NewVolume/coding-python/pokemon1.py","tests":[{"id":1730259379815,"input":"2 5","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/pokemon1.py","group":"local","local":true}

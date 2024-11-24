@@ -1,0 +1,1 @@
+{"name":"Local: convolutmulsubarray","url":"/mnt/NewVolume/coding-python/convolutmulsubarray.cpp","tests":[{"id":1730275238835,"input":"5\n-1 6 -1 3 0\n1 1 1 1 1","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/convolutmulsubarray.cpp","group":"local","local":true}

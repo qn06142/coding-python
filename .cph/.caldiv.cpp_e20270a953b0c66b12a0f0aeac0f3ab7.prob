@@ -1,0 +1,1 @@
+{"name":"Local: caldiv","url":"/mnt/NewVolume/coding-python/caldiv.cpp","tests":[{"id":1730264303196,"input":"4 6","output":"49"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/caldiv.cpp","group":"local","local":true}

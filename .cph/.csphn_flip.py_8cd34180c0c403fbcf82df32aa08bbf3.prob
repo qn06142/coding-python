@@ -1,0 +1,1 @@
+{"name":"Local: csphn_flip","url":"/mnt/NewVolume/coding-python/csphn_flip.py","tests":[{"id":1730535223017,"input":"2\nHTTH\nTHTT\nHHHT\nHHTH\nHTHT\nTHTH\nHTHT\nTHTH","output":"3\n-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_flip.py","group":"local","local":true}

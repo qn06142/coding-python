@@ -1,0 +1,1 @@
+{"name":"Local: hieuphanso","url":"/mnt/NewVolume/coding-python/hieuphanso.py","tests":[{"id":1730259099526,"input":"1 6\n5 12\n","output":"-1 4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/hieuphanso.py","group":"local","local":true}

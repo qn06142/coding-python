@@ -3,7 +3,7 @@ MOD = 10**9 + 7
 def digit_dp(pos, tight, lastdig, inc, num, memo):
     if pos == len(num):
         return 1
-    
+
     if (pos, tight, lastdig, inc) in memo:
         return memo[(pos, tight, lastdig, inc)]
 
@@ -34,13 +34,11 @@ def count_in_range(L, R):
     countL = count_girl_numbers(str(L - 1))
     return (countR - countL + MOD) % MOD
 
-# Reading input
 from sys import stdin
 input_line1 = stdin.read().strip().split()
 a = int(input_line1[0])
 b = int(input_line1[1])
-L = int(input_line1[2])  # Convert L directly to integer
-R = int(input_line1[3])  # Convert R directly to integer
+L = int(input_line1[2])
+R = int(input_line1[3])
 
-# Output the result
 print(count_in_range(L, R))
