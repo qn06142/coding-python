@@ -1,0 +1,1 @@
+{"name":"Local: csphn_intersect_point","url":"/mnt/NewVolume/coding-python/csphn_intersect_point.cpp","tests":[{"id":1731139415408,"input":"3\n2 3 7 3\n3 1 3 5\n6 2 6 6","output":"2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_intersect_point.cpp","group":"local","local":true}

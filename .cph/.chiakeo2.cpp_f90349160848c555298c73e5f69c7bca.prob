@@ -1,0 +1,1 @@
+{"name":"Local: chiakeo2","url":"/mnt/NewVolume/coding-python/chiakeo2.cpp","tests":[{"id":1731805357386,"input":"24","output":"1000"},{"id":1731805360802,"input":"2023","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/chiakeo2.cpp","group":"local","local":true}

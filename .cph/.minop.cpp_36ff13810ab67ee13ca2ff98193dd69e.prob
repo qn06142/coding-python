@@ -1,0 +1,1 @@
+{"name":"Local: minop","url":"/mnt/NewVolume/coding-python/minop.cpp","tests":[{"id":1731405856379,"input":"4 2\n2 6 4 0\n2 4\n","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/minop.cpp","group":"local","local":true}

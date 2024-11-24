@@ -1,0 +1,1 @@
+{"name":"Local: josephus","url":"/home/wheatley/coding-python/josephus.cpp","tests":[{"id":1732348418028,"input":"7 3","output":"3 6 2 7 5 1 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/josephus.cpp","group":"local","local":true}

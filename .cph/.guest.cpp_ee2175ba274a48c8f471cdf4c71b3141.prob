@@ -1,0 +1,1 @@
+{"name":"Local: guest","url":"/mnt/NewVolume/coding-python/guest.cpp","tests":[{"id":1731743962094,"input":"10\n2 9\n3 7\n4 8\n0 10\n4 2\n5 11\n6 6\n6 4\n4 6\n9 6","output":"36"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/guest.cpp","group":"local","local":true}

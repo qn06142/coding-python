@@ -1,0 +1,1 @@
+{"name":"Local: 527649D","url":"/mnt/NewVolume/coding-python/527649D.cpp","tests":[{"id":1730950426694,"input":"4 3 6","output":"3 4"},{"id":1730964955218,"input":"1000000 1000000 1000000","output":"312500 9072\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/527649D.cpp","group":"local","local":true}

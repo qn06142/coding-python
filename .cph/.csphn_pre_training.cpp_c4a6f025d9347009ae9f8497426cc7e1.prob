@@ -1,0 +1,1 @@
+{"name":"Local: csphn_pre_training","url":"/mnt/NewVolume/coding-python/csphn_pre_training.cpp","tests":[{"id":1732272168077,"input":"UEOAI\n","output":"15.000000\n"},{"id":1732272177726,"input":"YBI\n","output":"3.666667\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_pre_training.cpp","group":"local","local":true}

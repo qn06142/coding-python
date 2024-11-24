@@ -1,0 +1,1 @@
+{"name":"Local: c11seq","url":"/mnt/NewVolume/coding-python/c11seq.cpp","tests":[{"id":1731137241523,"input":"4 2 4\n1 2 3 4\n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/c11seq.cpp","group":"local","local":true}

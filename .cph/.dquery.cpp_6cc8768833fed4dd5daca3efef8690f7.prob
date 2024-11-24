@@ -1,0 +1,1 @@
+{"name":"Local: dquery","url":"/mnt/NewVolume/coding-python/dquery.cpp","tests":[{"id":1731137070188,"input":"5\n1 1 2 1 3\n3\n1 5\n2 4\n3 5\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/dquery.cpp","group":"local","local":true}

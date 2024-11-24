@@ -1,0 +1,1 @@
+{"name":"Local: xorall","url":"/mnt/NewVolume/coding-python/xorall.cpp","tests":[{"id":1731117695781,"input":"3\n1 2 3\n","output":""},{"id":1731117704066,"input":"1\n5\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/xorall.cpp","group":"local","local":true}

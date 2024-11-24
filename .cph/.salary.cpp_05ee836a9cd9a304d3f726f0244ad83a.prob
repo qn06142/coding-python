@@ -1,0 +1,1 @@
+{"name":"Local: salary","url":"/mnt/NewVolume/coding-python/salary.cpp","tests":[{"id":1731744669757,"input":"6 7\n5\n4 1\n3 2\n7 3\n2 3\n3 5\np 3 2\np 2 4\nu 3\nu 6\np 5 -2\nu 6\nu 1","output":"7\n9\n7\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/salary.cpp","group":"local","local":true}

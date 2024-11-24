@@ -1,0 +1,1 @@
+{"name":"Local: traiphai","url":"/mnt/NewVolume/coding-python/traiphai.cpp","tests":[{"id":1731805661958,"input":"6\n15\n","output":"5"},{"id":1731805974922,"input":"3\n10","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/traiphai.cpp","group":"local","local":true}
