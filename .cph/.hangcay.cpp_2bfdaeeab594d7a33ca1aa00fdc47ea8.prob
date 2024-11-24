@@ -1,0 +1,1 @@
+{"name":"Local: hangcay","url":"/mnt/NewVolume/coding-python/hangcay.cpp","tests":[{"id":1730273845703,"input":"8 2\n2 2\n5 1","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/hangcay.cpp","group":"local","local":true}

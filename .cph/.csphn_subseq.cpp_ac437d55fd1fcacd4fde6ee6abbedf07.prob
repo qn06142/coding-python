@@ -1,0 +1,1 @@
+{"name":"Local: csphn_subseq","url":"/mnt/NewVolume/coding-python/csphn_subseq.cpp","tests":[{"id":1730560992246,"input":"8 3\n-20\n90\n-30\n-20\n80\n-70\n-60\n125","output":"120\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_subseq.cpp","group":"local","local":true}

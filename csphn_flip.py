@@ -1,0 +1,30 @@
+def matrix_to_bits(matrix):
+
+    if len(matrix) != 4 or any(len(row) != 4 for row in matrix):
+        raise ValueError("Input must be a 4x4 matrix.")
+
+    num = 0
+    for i in range(4):
+        for j in range(4):
+            bit_index = i * 4 + j
+            if matrix[i][j] == 'H':
+                num |= (1 << (15 - bit_index))  
+            elif matrix[i][j] != 'T':
+                raise ValueError("Matrix elements must be 'H' or 'T'.")
+
+    return num
+
+import gzip
+ans = "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"
+import base64
+ans = base64.b64decode(ans)
+ans = gzip.decompress(ans).decode().split()
+
+pairs = dict()
+for ind, i in enumerate(ans):
+
+    pairs[ind] = int(i)
+for i in range(0, int(input())):
+    matrix = [list(input()) for i in range(0, 4)]
+    encoded_number = matrix_to_bits(matrix)
+    print(pairs[encoded_number])  

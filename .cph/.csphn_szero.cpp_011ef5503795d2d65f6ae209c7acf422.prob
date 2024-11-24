@@ -1,0 +1,1 @@
+{"name":"Local: csphn_szero","url":"/mnt/NewVolume/coding-python/csphn_szero.cpp","tests":[{"id":1730546033164,"input":"9\n2 7 5 -3 -2 4 -9 -2 1","output":"7"},{"id":1730546045215,"input":"4\n1 2 3 4","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_szero.cpp","group":"local","local":true}

@@ -1,28 +1,40 @@
 #include <iostream>
-#include <vector>
+#include <cmath>
 using namespace std;
 
-const int MAX_SIZE = 1e7; 
-bool is_divisor[MAX_SIZE + 1] = {false};
+const long long MOD = 1e9 + 7;
+
+long long sumOfDivisorsInRange(long long L, long long R) {
+    long long result = 0;
+    for (long long d = 1; d * d <= R; ++d) {
+        // Count multiples of `d` in the range [L, R]
+        long long firstMultiple = (L + d - 1) / d * d;
+        long long lastMultiple = (R / d) * d;
+
+        if (firstMultiple <= lastMultiple) {
+            // Number of multiples of `d` in the range [L, R]
+            long long count = (lastMultiple - firstMultiple) / d + 1;
+            result = (result + count * d) % MOD;
+        }
+
+        // Handle the counterpart divisor, R/d
+        if (d != R / d) {
+            long long dd = R / d;
+            firstMultiple = (L + dd - 1) / dd * dd;
+            lastMultiple = (R / dd) * dd;
+
+            if (firstMultiple <= lastMultiple) {
+                long long count = (lastMultiple - firstMultiple) / dd + 1;
+                result = (result + count * dd) % MOD;
+            }
+        }
+    }
+    return result;
+}
+
 int main() {
     long long L, R;
     cin >> L >> R;
-
-
-    for (long long i = 1; i <= MAX_SIZE; i++) {
-
-        for (long long j = max(i, (L + i - 1) / i * i); j <= R; j += i) {
-            is_divisor[i] = true; 
-        }
-    }
-
-    long long sum = 0;
-    for (int i = 1; i <= MAX_SIZE; i++) {
-        if (is_divisor[i]) {
-            sum += i;
-        }
-    }
-
-    cout << sum << endl;
+    cout << sumOfDivisorsInRange(L, R) << endl;
     return 0;
 }

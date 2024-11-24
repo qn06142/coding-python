@@ -1,0 +1,1 @@
+{"name":"Local: voi21_noel","url":"/mnt/NewVolume/coding-python/voi21_noel.cpp","tests":[{"id":1730215910489,"input":"3 1\n1 5 6 3 4 2\n","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/voi21_noel.cpp","group":"local","local":true}

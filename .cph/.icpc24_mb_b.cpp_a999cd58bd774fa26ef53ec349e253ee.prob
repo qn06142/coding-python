@@ -1,0 +1,1 @@
+{"name":"Local: icpc24_mb_b","url":"/mnt/NewVolume/coding-python/icpc24_mb_b.cpp","tests":[{"id":1730455280441,"input":"7\n2300 7 10\n2000 13 40\n2800 13 40\n2100 11 50\n2500 6 20\n2600 9 15\n2000 17 50","output":"90"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/icpc24_mb_b.cpp","group":"local","local":true}

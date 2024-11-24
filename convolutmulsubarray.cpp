@@ -1,44 +1,36 @@
-#include <iostream>
-#include <algorithm>
-#include <climits>
+#include<bits/stdc++.h>
 
 using namespace std;
-
-const int MAXN = 5005;
-int a[MAXN], b[MAXN];
-int max_convolution(int n) {
-    int max_convolution_sum = INT_MIN;
-
-    for (int k = 1; k <= n; ++k) {
-
-        int current_convolution_sum = 0;
-        for (int i = 0; i < k; ++i) {
-            current_convolution_sum += a[i] * b[i];
-        }
-        max_convolution_sum = max(max_convolution_sum, current_convolution_sum);
-
-        for (int i = k; i < n; ++i) {
-            current_convolution_sum += a[i] * b[i] - a[i - k] * b[i - k];
-            max_convolution_sum = max(max_convolution_sum, current_convolution_sum);
-        }
-    }
-
-    return max_convolution_sum;
-}
-
-int main() {
+#define int long long
+int a[(int) 5005], b[(int) 5005], dp[(int) 5005][(int) 5005];
+signed main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     int n;
     cin >> n;
-
-    for (int i = 0; i < n; ++i) {
+    for(int i = 1; i <= n; i++) {
         cin >> a[i];
     }
-    for (int i = 0; i < n; ++i) {
+    for(int i = 1; i <= n; i++) {
         cin >> b[i];
     }
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            dp[i][j] = LLONG_MIN;
+        }
+    }
+    dp[0][0] = 0;
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            dp[i][j] = max(dp[i - 1][j - 1] + a[i] * b[j], a[i] * b[j]);
+        }
+    }
+    int ans = LLONG_MIN;
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            ans = max(ans, dp[i][j]);
+        }
+    }
+    cout << ans;
 
-    int result = max_convolution(n);
-    cout << result << endl;
-
-    return 0;
 }

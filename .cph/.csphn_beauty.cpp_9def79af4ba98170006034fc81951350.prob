@@ -1,0 +1,1 @@
+{"name":"Local: csphn_beauty","url":"/mnt/NewVolume/coding-python/csphn_beauty.cpp","tests":[{"id":1730546396432,"input":"6\n-4 3 -2 -6 7 2","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/NewVolume/coding-python/csphn_beauty.cpp","group":"local","local":true}
