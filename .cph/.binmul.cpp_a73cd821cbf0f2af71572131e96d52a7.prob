@@ -1,0 +1,1 @@
+{"name":"Local: binmul","url":"/home/wheatley/coding-python/binmul.cpp","tests":[{"id":1734226735387,"input":"1\n4 8 13\n","output":"6"},{"id":1734226761982,"input":"1\n1000000000000000000 1000000000000000000 1000000000000000000","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/binmul.cpp","group":"local","local":true}

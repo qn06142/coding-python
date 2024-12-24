@@ -1,0 +1,1 @@
+{"name":"Local: csphn_swindow","url":"/home/wheatley/coding-python/csphn_swindow.cpp","tests":[{"id":1734767928071,"input":"This is the first task\nis\n4","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_swindow.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: soldier","url":"/home/wheatley/coding-python/soldier.cpp","tests":[{"id":1733133956908,"input":"4 10\n4 1 6 2\n","output":"1010"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/soldier.cpp","group":"local","local":true}

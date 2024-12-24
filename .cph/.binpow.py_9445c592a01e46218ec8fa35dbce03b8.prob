@@ -1,0 +1,1 @@
+{"name":"Local: binpow","url":"/home/wheatley/coding-python/binpow.py","tests":[{"id":1734228057058,"input":"3\n3 4\n2 8 \n123 123\n","output":"81\n256\n921450052\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/binpow.py","group":"local","local":true}

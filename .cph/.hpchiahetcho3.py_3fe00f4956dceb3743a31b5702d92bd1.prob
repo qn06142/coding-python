@@ -1,0 +1,1 @@
+{"name":"Local: hpchiahetcho3","url":"/home/wheatley/coding-python/hpchiahetcho3.py","tests":[{"id":1734616543224,"input":"5  2\n123  4  5  7  10\n3  2\n","output":"1\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hpchiahetcho3.py","group":"local","local":true}

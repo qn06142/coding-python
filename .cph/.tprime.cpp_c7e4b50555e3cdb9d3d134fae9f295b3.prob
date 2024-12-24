@@ -1,0 +1,1 @@
+{"name":"Local: tprime","url":"/home/wheatley/coding-python/tprime.cpp","tests":[{"id":1734616218495,"input":"3\n4\n6\n7\n","output":"YES\nNO\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tprime.cpp","group":"local","local":true}

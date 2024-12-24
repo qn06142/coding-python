@@ -1,56 +1,61 @@
-#pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAX = 1e7 + 100;
-#define int long long
-
-int prime[MAX];
-long c[MAX], f[MAX];
-long long pref[MAX];
-long t, n, m;
+const int MAX = 1e7;
+bool prime[MAX];
+int freq[MAX];
+int f[MAX];
+int pref[MAX];
 
 void sieve() {
-    for (int i = 2; i <= MAX; i++) {
-        if (!prime[i]) {
-            for (int j = i; j <= MAX; j += i) {
-                prime[j] = i;
+    memset(prime, 1, sizeof prime);
+    prime[0] = prime[1] = 0;
+    for (int i = 2; i * i < MAX; i++) {
+        if (prime[i]) {
+            for (int j = i * i; j < MAX; j += i) {
+                prime[j] = 0;
             }
         }
     }
 }
 
-signed main() {
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
 
+    int n;
     cin >> n;
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
+        int t;
         cin >> t;
-        c[t]++;
+        freq[t]++;
     }
 
     sieve();
 
-    for (int i = 2; i <= MAX; i++) {
-        if (prime[i] == i) { // i is a prime number
-            for (int j = i; j <= MAX; j += i) {
-                f[i] += c[j];
+    for (int i = 2; i < MAX; i++) {
+        if (prime[i]) {
+            for (int j = i; j < MAX; j += i) {
+                f[i] += freq[j];
             }
         }
-    }
-
-    for (int i = 2; i <= MAX; i++) {
         pref[i] = pref[i - 1] + f[i];
     }
 
+    int m;
     cin >> m;
     while (m--) {
         int l, r;
         cin >> l >> r;
-        r = min((int)1e7, r);
-        l = min((int)1e7, l);
-        cout << pref[r] - pref[l - 1] << '\n';
+
+        r = min(r, MAX - 1);
+        if (l >= MAX) {
+            cout << "0\n";
+        } else {
+            l = max(l, 2);
+            cout << pref[r] - pref[l - 1] << '\n';
+        }
     }
+
+    return 0;
 }

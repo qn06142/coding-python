@@ -1,0 +1,1 @@
+{"name":"Local: right","url":"/home/wheatley/coding-python/right.cpp","tests":[{"id":1733276014363,"input":"4 5\n3\n1\n2\n6","output":"8\n6\n12\n21"},{"id":1733276035936,"input":"4 6\n4\n5\n1\n6","output":"10\n17\n7\n24"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/right.cpp","group":"local","local":true}

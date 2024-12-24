@@ -1,0 +1,1 @@
+{"name":"Local: gantronchuc","url":"/home/wheatley/coding-python/gantronchuc.py","tests":[{"id":1734676938683,"input":"13","output":"10"},{"id":1734676964524,"input":"29","output":"30"},{"id":1734676968222,"input":"5","output":"10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/gantronchuc.py","group":"local","local":true}

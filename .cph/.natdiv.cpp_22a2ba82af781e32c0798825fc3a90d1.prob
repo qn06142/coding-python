@@ -1,0 +1,1 @@
+{"name":"Local: natdiv","url":"/home/wheatley/coding-python/natdiv.cpp","tests":[{"id":1735016453412,"input":"2\n1 2\n4 5\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/natdiv.cpp","group":"local","local":true}

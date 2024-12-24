@@ -1,0 +1,1 @@
+{"name":"Local: bitweight","url":"/home/wheatley/coding-python/bitweight.cpp","tests":[{"id":1733319432620,"input":"4\n3\n120\n1105\n112345123451234512312312312345123123","output":"12\n362413817\n452410038\n875544530"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/bitweight.cpp","group":"local","local":true}

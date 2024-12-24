@@ -15,7 +15,7 @@
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-                "-Wno-error=c++-compat"
+                "-Wno-error=c++-compat",
             ],
             "options": {
                 "cwd": "${fileDirname}"

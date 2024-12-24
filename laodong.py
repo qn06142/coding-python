@@ -1,0 +1,5 @@
+input()
+a = sorted((int(i) for i in input().split()), reverse=True)
+input()
+b = sorted(int(i) for i in input().split())
+print(sum(i[0] * i[1] for i in zip(a, b[:len(a)])))

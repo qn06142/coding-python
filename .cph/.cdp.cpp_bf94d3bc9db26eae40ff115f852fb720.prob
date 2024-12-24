@@ -1,0 +1,1 @@
+{"name":"Local: cdp","url":"/home/wheatley/coding-python/cdp.cpp","tests":[{"id":1733627602359,"input":"3\n1 3\n2 4\n3 5","output":"4"},{"id":1733627615751,"input":"2\n5 8\n2 4","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cdp.cpp","group":"local","local":true}

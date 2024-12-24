@@ -1,0 +1,1 @@
+{"name":"Local: na_seq","url":"/home/wheatley/coding-python/na_seq.cpp","tests":[{"id":1734658892218,"input":"3 0 1\n1 -1 2\n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/na_seq.cpp","group":"local","local":true}

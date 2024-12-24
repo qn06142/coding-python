@@ -1,0 +1,1 @@
+{"name":"Local: transmitter","url":"/home/wheatley/coding-python/transmitter.cpp","tests":[{"id":1732789644239,"input":"4\n5\n1000\n12345\n987\n2","output":"498"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/transmitter.cpp","group":"local","local":true}

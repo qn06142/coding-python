@@ -1,0 +1,1 @@
+{"name":"Local: csphn_cfmx_brackets","url":"/home/wheatley/coding-python/csphn_cfmx_brackets.cpp","tests":[{"id":1734194960806,"input":"}{}(){","output":"Yes"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_cfmx_brackets.cpp","group":"local","local":true}

@@ -1,67 +1,49 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+#include <cmath>
+#include <map>
 using namespace std;
-#define int long long
-const int MOD = 1e9 + 7;
 
-int power2(int k) {
-    int ans = 1;
-    int a = 2;
-    while (k > 0) {
-        if (k % 2 == 1) {
-            ans = (ans * a) % MOD;
-        }
-        a = (a * a) % MOD;
-        k /= 2;
-    }
-    return ans;
-}
-
-vector<int> d;
-void calc(int s) {
-    d.clear();
-    int i;
-    for(i = 1; i * i < s; i++) {
-        if(s % i == 0) {
-            d.push_back(i);
-            if(i != s / i)
-            d.push_back(s / i);
+map<long long, int> factorize(long long x) {
+    map<long long, int> factors;
+    for (long long i = 2; i * i <= x; ++i) {
+        while (x % i == 0) {
+            factors[i]++;
+            x /= i;
         }
     }
-    if(i * i == s) d.push_back(i);
-    sort(d.begin(), d.end());
-}
-int solve(int S) {
-
-    vector<int> dp(d.size());
-    
-    for (int i = 0; i < (int) d.size(); i++) {
-        int x = d[i];
-        dp[i] = power2(x - 1);
-        for(int j = 0; j < i; j++) {
-            if(x % d[j] == 0) {
-                if(x % d[j] == 0) {
-                    dp[i] = (dp[i] - dp[j]) % MOD;
-                }
-            }
-        }
+    if (x > 1) {
+        factors[x] = 1;
     }
-    
-    return (dp[d.size() - 1] + MOD) % MOD;
+    return factors;
 }
 
-signed main() {
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    cout.tie(0);
-    
-    int t;
-    cin >> t;
-    while (t--) {
-        int S;
-        cin >> S;
-        calc(S);
-        cout << solve(S) << '\n';
+
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
     }
-    
+
+    map<long long, int> combined_factors;
+    for (int i = 0; i < n; ++i) {
+        map<long long, int> factors = factorize(a[i]);
+        for (const auto& [prime, exp] : factors) {
+            combined_factors[prime] = max(combined_factors[prime], exp);
+        }
+    }
+    long long c = 1;
+    for (const auto& [prime, exp] : combined_factors) {
+        cout << prime << "^" << exp << " ";
+    }
+    cout << "\n";
+
     return 0;
 }

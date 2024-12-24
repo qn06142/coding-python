@@ -1,0 +1,1 @@
+{"name":"Local: camera1","url":"/home/wheatley/coding-python/camera1.py","tests":[{"id":1733540948545,"input":"6\n3 1 7 2 5 7\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/camera1.py","group":"local","local":true}

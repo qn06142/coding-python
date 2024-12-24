@@ -1,0 +1,1 @@
+{"name":"Local: hsg2023_cntseq","url":"/home/wheatley/coding-python/hsg2023_cntseq.cpp","tests":[{"id":1734237115180,"input":"3\n1 2 3\n3\n1 2\n2 3\n3 3","output":"3\n5\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hsg2023_cntseq.cpp","group":"local","local":true}

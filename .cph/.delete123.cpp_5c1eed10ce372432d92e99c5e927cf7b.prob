@@ -1,0 +1,1 @@
+{"name":"Local: delete123","url":"/home/wheatley/coding-python/delete123.cpp","tests":[{"id":1734878785118,"input":"8\n1 2 1 2 3 1 2 3\n","output":"15"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/delete123.cpp","group":"local","local":true}

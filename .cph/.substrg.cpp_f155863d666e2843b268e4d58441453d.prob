@@ -1,0 +1,1 @@
+{"name":"Local: substrg","url":"/home/wheatley/coding-python/substrg.cpp","tests":[{"id":1734527191192,"input":"abacabadabacabdb\naba","output":"7\n1 3 5 7 9 11 14"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/substrg.cpp","group":"local","local":true}

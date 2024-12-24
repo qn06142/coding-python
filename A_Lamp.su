@@ -1,0 +1,5 @@
+/home/wheatley/coding-python/A_Lamp.cpp:10:5:int main()	2000160	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:1022:5:void std::fill(_ForwardIterator, _ForwardIterator, const _Tp&) [with _ForwardIterator = int*; _Tp = int]	48	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:233:5:constexpr const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = int]	16	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:997:5:void std::__fill_a(_FIte, _FIte, const _Tp&) [with _FIte = int*; _Tp = int]	48	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:947:5:typename __gnu_cxx::__enable_if<std::__is_scalar<_Tp>::__value, void>::__type std::__fill_a1(_ForwardIterator, _ForwardIterator, const _Tp&) [with _ForwardIterator = int*; _Tp = int]	16	static

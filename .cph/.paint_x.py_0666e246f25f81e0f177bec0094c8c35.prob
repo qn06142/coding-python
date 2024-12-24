@@ -1,0 +1,1 @@
+{"name":"Local: paint_x","url":"/home/wheatley/coding-python/paint_x.py","tests":[{"id":1732937655864,"input":"7 3 0\n1 3 4 5 7 9 10\n","output":"4"},{"id":1732937671897,"input":"5 1 1\n1 2 3 4 5\n","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/paint_x.py","group":"local","local":true}

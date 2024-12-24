@@ -1,0 +1,1 @@
+{"name":"Local: bonam","url":"/home/wheatley/coding-python/bonam.cpp","tests":[{"id":1734671369345,"input":"7 1 -1\n2 8 1 9 1 -1 8\n","output":"25\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/bonam.cpp","group":"local","local":true}

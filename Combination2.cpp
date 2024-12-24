@@ -29,6 +29,6 @@ long long nCr(long long n, long long r) {
 int main() {
     long long n, k;
     cin >> n >> k;
-    cout << nCr(n + k - 1, k - 1) << endl;
+    cout << nCr(n + k - 1, n) << endl;
     return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: chonggach","url":"/home/wheatley/coding-python/chonggach.cpp","tests":[{"id":1733619395154,"input":"3\n1 2 1","output":"3"},{"id":1733619404021,"input":"6\n0 0 0 0 0 0","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/chonggach.cpp","group":"local","local":true}

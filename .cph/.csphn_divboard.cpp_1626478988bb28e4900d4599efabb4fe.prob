@@ -1,0 +1,1 @@
+{"name":"Local: csphn_divboard","url":"/home/wheatley/coding-python/csphn_divboard.cpp","tests":[{"id":1733560459048,"input":"4 4\n1 2 3 4\n3 4 1 2\n1 1 1 4\n2 2 2 5","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_divboard.cpp","group":"local","local":true}

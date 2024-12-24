@@ -1,0 +1,1 @@
+{"name":"Local: csphn_rect_hsg2018","url":"/home/wheatley/coding-python/csphn_rect_hsg2018.py","tests":[{"id":1733922927428,"input":"2 2\n0 0\n0 1","output":"3 1\n1 0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_rect_hsg2018.py","group":"local","local":true}

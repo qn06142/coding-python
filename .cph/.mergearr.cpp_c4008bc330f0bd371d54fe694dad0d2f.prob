@@ -1,0 +1,1 @@
+{"name":"Local: mergearr","url":"/home/wheatley/coding-python/mergearr.cpp","tests":[{"id":1734593439812,"input":"3\n1 3 4\n1 2 3\n","output":"1 1 2 3 3 4 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/mergearr.cpp","group":"local","local":true}

@@ -1,0 +1,33 @@
+/usr/include/c++/14.2.1/bits/stl_bvector.h:88:5:std::_Bit_reference::_Bit_reference(std::_Bit_type*, std::_Bit_type)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:99:5:std::_Bit_reference::operator bool() const	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:195:5:std::_Bit_iterator_base::_Bit_iterator_base(std::_Bit_type*, unsigned int)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:200:5:void std::_Bit_iterator_base::_M_bump_up()	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:240:5:bool std::operator==(const _Bit_iterator_base&, const _Bit_iterator_base&)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:272:5:bool std::operator!=(const _Bit_iterator_base&, const _Bit_iterator_base&)	32	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:316:5:std::_Bit_iterator::_Bit_iterator(std::_Bit_type*, unsigned int)	48	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:326:5:std::_Bit_iterator::reference std::_Bit_iterator::operator*() const	80	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:334:5:std::_Bit_iterator::iterator& std::_Bit_iterator::operator++()	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:4:178:void __DEBUG_UTIL__::print(const char*)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:5:34:void __DEBUG_UTIL__::print(bool)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:5:188:void __DEBUG_UTIL__::print(char)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:6:161:void __DEBUG_UTIL__::print(short int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:7:167:void __DEBUG_UTIL__::print(short unsigned int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:95:8:void __DEBUG_UTIL__::print(int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:95:129:void __DEBUG_UTIL__::print(unsigned int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:96:125:void __DEBUG_UTIL__::print(long int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:97:8:void __DEBUG_UTIL__::print(long unsigned int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:97:133:void __DEBUG_UTIL__::print(long long int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:98:138:void __DEBUG_UTIL__::print(long long unsigned int)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:99:143:void __DEBUG_UTIL__::print(float)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:100:129:void __DEBUG_UTIL__::print(double)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:101:8:void __DEBUG_UTIL__::print(long double)	32	dynamic,bounded
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:101:139:void __DEBUG_UTIL__::print(std::string)	32	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:103:143:void __DEBUG_UTIL__::print(std::vector<bool>)	144	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:132:43:void __DEBUG_UTIL__::printer(const char*)	16	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:134:147:void __DEBUG_UTIL__::printerArr(const char*)	16	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:149:10:__int128 binpow(__int128, int)	80	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:161:10:__int128 calcrowpref(__int128, int)	80	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:165:10:__int128 calcrow(__int128, __int128, int)	96	static
+/home/wheatley/coding-python/csphn_bonus_dh20191.cpp:169:5:int main()	160	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:995:7:std::vector<bool, _Alloc>::iterator std::vector<bool, _Alloc>::begin() [with _Alloc = std::allocator<bool>]	128	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:1005:7:std::vector<bool, _Alloc>::iterator std::vector<bool, _Alloc>::end() [with _Alloc = std::allocator<bool>]	32	static

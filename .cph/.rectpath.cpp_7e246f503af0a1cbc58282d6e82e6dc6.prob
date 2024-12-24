@@ -1,0 +1,1 @@
+{"name":"Local: rectpath","url":"/home/wheatley/coding-python/rectpath.cpp","tests":[{"id":1732793889714,"input":"2\n1 1\n2 2","output":"2\n6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/rectpath.cpp","group":"local","local":true}

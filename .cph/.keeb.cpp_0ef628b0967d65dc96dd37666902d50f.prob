@@ -1,0 +1,1 @@
+{"name":"Local: keeb","url":"/home/wheatley/coding-python/keeb.cpp","tests":[{"id":1732587339631,"input":"6 3\naacabc\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/keeb.cpp","group":"local","local":true}

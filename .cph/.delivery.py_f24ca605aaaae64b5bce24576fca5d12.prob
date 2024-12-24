@@ -1,0 +1,1 @@
+{"name":"Local: delivery","url":"/home/wheatley/coding-python/delivery.py","tests":[{"id":1734236525774,"input":"10\n8\n2\n2\n2\n2\n2\n4\n4\n4\n4\n3\n3\n6\n6","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/delivery.py","group":"local","local":true}

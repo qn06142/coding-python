@@ -1,0 +1,1 @@
+for _ in range(int(input())): print(pow(*map(int, input().split()), mod = 10 ** 9 + 7), flush=False)

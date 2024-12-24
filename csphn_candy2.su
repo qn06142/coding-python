@@ -1,0 +1,4 @@
+/home/wheatley/coding-python/csphn_candy2.cpp:9:11:long long int modPow(long long int, long long int, long long int)	16	static
+/home/wheatley/coding-python/csphn_candy2.cpp:21:6:void prep()	32	static
+/home/wheatley/coding-python/csphn_candy2.cpp:33:11:long long int C(int, int)	16	static
+/home/wheatley/coding-python/csphn_candy2.cpp:38:5:int main()	48	static

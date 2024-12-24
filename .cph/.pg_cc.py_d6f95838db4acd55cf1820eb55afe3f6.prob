@@ -1,0 +1,1 @@
+{"name":"Local: pg_cc","url":"/home/wheatley/coding-python/pg_cc.py","tests":[{"id":1734580233604,"input":"3\n2 3 7\n9","output":""},{"id":1734580880343,"input":"6\n2 3 5 7 11 13\n6400","output":"9223306985706024960\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/pg_cc.py","group":"local","local":true}

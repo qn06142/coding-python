@@ -1,0 +1,1 @@
+a = list(print(*i, sep='\n') for i in tuple(((lambda x:(x[0]+x[1])%(10**9+7))(i),(lambda x:(x[0]-x[1])%(10**9+7))(i),(lambda x:x[0]*x[1]%(10**9+7))(i),(lambda x:(x[0] // x[1])%(10**9+7))(i)) for i in [tuple(map(int,input().split()))]))

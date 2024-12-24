@@ -1,0 +1,7 @@
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:20:4:ll mulmod(ll, ll, ll)	64	static
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:28:4:ll powmod(ll, ll, ll)	64	static
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:35:4:ll sumHor(ll, ll, ll)	96	static
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:45:4:ll sumVer(ll, ll, ll)	96	static
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:55:13:void readData()	16	static
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:59:13:void solve()	32	static
+/home/wheatley/coding-python/csphn_bonus_dh2019.cpp:71:5:int main()	16	static

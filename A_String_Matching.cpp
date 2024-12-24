@@ -98,7 +98,6 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-long long hashs[(int) 1e6 + 5];
 long long powmod[(int) 1e6 + 5];
 const long long mod = 1e9 + 7;
 const long long modsquared = (mod * mod);
@@ -115,6 +114,7 @@ string s;
 string subs;
 
 int n;
+long long hashs[(int) 1e6 + 5];
 void calchash() {
     for(int i = 1; i <= n; i++) {
         hashs[i] = (hashs[i - 1] * base + (int) s[i]) % mod;

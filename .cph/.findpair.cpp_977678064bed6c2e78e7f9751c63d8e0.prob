@@ -1,0 +1,1 @@
+{"name":"Local: findpair","url":"/home/wheatley/coding-python/findpair.cpp","tests":[{"id":1734602321622,"input":"6 16\n2 3 5 7 9 12\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/findpair.cpp","group":"local","local":true}

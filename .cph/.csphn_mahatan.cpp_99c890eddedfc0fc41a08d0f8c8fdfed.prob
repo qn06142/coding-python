@@ -1,0 +1,1 @@
+{"name":"Local: csphn_mahatan","url":"/home/wheatley/coding-python/csphn_mahatan.cpp","tests":[{"id":1733918224773,"input":"5 2\n50 5 25 6 17\n14 3 2 7 21\n99 10 1 2 80\n8 7 5 23 11\n10 0 78 1 9","output":"342"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_mahatan.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: cntdivs","url":"/home/wheatley/coding-python/cntdivs.cpp","tests":[{"id":1733312953109,"input":"2 3","output":"4"},{"id":1733312967855,"input":"5 4","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cntdivs.cpp","group":"local","local":true}

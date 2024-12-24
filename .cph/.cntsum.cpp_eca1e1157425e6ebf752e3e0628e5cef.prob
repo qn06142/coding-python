@@ -1,0 +1,1 @@
+{"name":"Local: cntsum","url":"/home/wheatley/coding-python/cntsum.cpp","tests":[{"id":1734226547104,"input":"10 \n","output":"4 18\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cntsum.cpp","group":"local","local":true}

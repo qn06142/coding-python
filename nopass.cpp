@@ -92,7 +92,34 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
+int mapping[(int) 1e6 + 5];
+int a[(int) 1e6 + 5];
+int b[(int) 1e6 + 5];
+int pos[(int) 1e6 + 5];
 
 int main() {
-    
+    cin.tie(0);
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        mapping[a[i]] = i; 
+    }
+    for (int i = 1; i <= n; i++) {
+        cin >> b[i];
+        pos[mapping[b[i]]] = i; 
+    }
+
+    int ans = 0;
+    int last = 0; 
+    for (int i = 1; i <= n; i++) {
+        if (pos[i] < last) { 
+            ans++;
+        } else {
+            last = pos[i]; 
+        }
+    }
+
+    cout << ans << '\n';
+    return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: divcnt","url":"/home/wheatley/coding-python/divcnt.cpp","tests":[{"id":1734917052350,"input":"2 10","output":"4 6 3"},{"id":1734918169158,"input":"999000000 1000000000","output":"1024 999999000 1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/divcnt.cpp","group":"local","local":true}

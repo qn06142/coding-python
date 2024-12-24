@@ -1,0 +1,1 @@
+{"name":"Local: csphn_triangle","url":"/home/wheatley/coding-python/csphn_triangle.cpp","tests":[{"id":1733917440032,"input":"3 4 2\n1 2 1 1\n2 1 3 4\n1 2 1 2","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_triangle.cpp","group":"local","local":true}
