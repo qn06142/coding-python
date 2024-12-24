@@ -156,36 +156,15 @@ signed main() {
         cin >> a[i];
     }
 
-    priority_queue<int, vector<int>, greater<int>> pq1; 
-    priority_queue<int> pq2; 
+    priority_queue<int> pq; 
 
     int ans = 0;
 
     for (int i = 1; i <= n; i++) {
-        int res = 0;
-
-        if (pq1.empty()) {
-            pq1.push(a[i]);  
-            continue;
-        }
-
-        res = max(res, pq1.top() - a[i]);
-
-        if (!pq2.empty() && pq2.top() - a[i] > res) {
-            res = max(res, pq2.top() - a[i]);
-        }
-
-        if (res == 0) {
-            pq1.push(a[i]);
-        } else if(!pq2.empty() && res == pq2.top() - a[i]) {
-            pq2.pop();
-            pq2.push(a[i]);
-        } else if(res == pq1.top() - a[i]) {
-            pq1.pop();             
-            pq2.push(a[i]);      
-        }
-
-        ans += res;
+        pq.push(a[i]);
+        pq.push(a[i]);
+        ans += pq.top() - a[i];
+        pq.pop();
     }
 
     cout << ans << endl;

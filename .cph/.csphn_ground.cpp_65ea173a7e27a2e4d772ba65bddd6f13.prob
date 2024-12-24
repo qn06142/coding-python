@@ -1,0 +1,1 @@
+{"name":"Local: csphn_ground","url":"/home/wheatley/coding-python/csphn_ground.cpp","tests":[{"id":1734944705028,"input":"5 6 3\n1 1 1 9 9 9\n1 4 4 4 1 9\n1 4 4 4 4 1\n9 4 4 6 4 1\n9 9 9 1 1 1","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_ground.cpp","group":"local","local":true}

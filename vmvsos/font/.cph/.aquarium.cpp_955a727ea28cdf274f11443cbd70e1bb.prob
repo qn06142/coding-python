@@ -1,0 +1,1 @@
+{"name":"Local: aquarium","url":"/home/wheatley/coding-python/vmvsos/font/aquarium.cpp","tests":[{"id":1734922600923,"input":"6 3\n9 2 11 3 5 8\n","output":"75\n"},{"id":1734922613255,"input":"4 4\n10 20 30 40\n","output":"100"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/vmvsos/font/aquarium.cpp","group":"local","local":true}

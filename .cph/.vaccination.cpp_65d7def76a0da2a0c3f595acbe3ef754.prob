@@ -1,0 +1,1 @@
+{"name":"Local: vaccination","url":"/home/wheatley/coding-python/vaccination.cpp","tests":[{"id":1732951541124,"input":"3 4\n6 10 1\n3\n9\n12\n4","output":"17\n5\n4\n12"},{"id":1732951549929,"input":"4 1\n36 49 55 64\n22","output":"38"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/vaccination.cpp","group":"local","local":true}

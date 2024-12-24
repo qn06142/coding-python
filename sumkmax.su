@@ -1,0 +1,81 @@
+/usr/include/c++/14.2.1/bits/predefined_ops.h:50:3:constexpr __gnu_cxx::__ops::_Iter_less_iter __gnu_cxx::__ops::__iter_less_iter()	16	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:63:5:__gnu_cxx::__ops::_Iter_less_val::_Iter_less_val(__gnu_cxx::__ops::_Iter_less_iter)	16	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:103:3:__gnu_cxx::__ops::_Val_less_iter __gnu_cxx::__ops::__val_less_iter()	16	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:108:3:__gnu_cxx::__ops::_Val_less_iter __gnu_cxx::__ops::__val_comp_iter(_Iter_less_iter)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:88:5:std::_Bit_reference::_Bit_reference(std::_Bit_type*, std::_Bit_type)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:99:5:std::_Bit_reference::operator bool() const	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:195:5:std::_Bit_iterator_base::_Bit_iterator_base(std::_Bit_type*, unsigned int)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:200:5:void std::_Bit_iterator_base::_M_bump_up()	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:240:5:bool std::operator==(const _Bit_iterator_base&, const _Bit_iterator_base&)	16	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:272:5:bool std::operator!=(const _Bit_iterator_base&, const _Bit_iterator_base&)	32	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:316:5:std::_Bit_iterator::_Bit_iterator(std::_Bit_type*, unsigned int)	48	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:326:5:std::_Bit_iterator::reference std::_Bit_iterator::operator*() const	80	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:334:5:std::_Bit_iterator::iterator& std::_Bit_iterator::operator++()	32	static
+/home/wheatley/coding-python/sumkmax.cpp:3:67:void __DEBUG_UTIL__::print(const char*)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:3:128:void __DEBUG_UTIL__::print(bool)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:3:182:void __DEBUG_UTIL__::print(char)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:4:42:void __DEBUG_UTIL__::print(short int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:4:130:void __DEBUG_UTIL__::print(short unsigned int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:4:184:void __DEBUG_UTIL__::print(int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:5:8:void __DEBUG_UTIL__::print(unsigned int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:5:56:void __DEBUG_UTIL__::print(long int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:5:130:void __DEBUG_UTIL__::print(long unsigned int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:5:183:void __DEBUG_UTIL__::print(long long int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:6:26:void __DEBUG_UTIL__::print(long long unsigned int)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:6:84:void __DEBUG_UTIL__::print(float)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:6:148:void __DEBUG_UTIL__::print(double)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:6:190:void __DEBUG_UTIL__::print(long double)	32	dynamic,bounded
+/home/wheatley/coding-python/sumkmax.cpp:7:26:void __DEBUG_UTIL__::print(std::string)	32	static
+/home/wheatley/coding-python/sumkmax.cpp:7:175:void __DEBUG_UTIL__::print(std::vector<bool>)	144	static
+/home/wheatley/coding-python/sumkmax.cpp:23:150:void __DEBUG_UTIL__::printer(const char*)	16	static
+/home/wheatley/coding-python/sumkmax.cpp:31:31:void __DEBUG_UTIL__::printerArr(const char*)	16	static
+/home/wheatley/coding-python/sumkmax.cpp:102:6:bool check(long long int)	64	static
+/home/wheatley/coding-python/sumkmax.cpp:111:8:int main()	176	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:995:7:std::vector<bool, _Alloc>::iterator std::vector<bool, _Alloc>::begin() [with _Alloc = std::allocator<bool>]	128	static
+/usr/include/c++/14.2.1/bits/stl_bvector.h:1005:7:std::vector<bool, _Alloc>::iterator std::vector<bool, _Alloc>::end() [with _Alloc = std::allocator<bool>]	32	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:4761:5:void std::sort(_RAIter, _RAIter) [with _RAIter = long long int*]	32	static
+/home/wheatley/coding-python/sumkmax.cpp:24:8:) [with T = long long int (&)[1010025]; V = {}]	48	static
+/home/wheatley/coding-python/sumkmax.cpp:24:8:) [with T = long long int&; V = {}]	48	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:2019:5:_FIter std::upper_bound(_FIter, _FIter, const _Tp&) [with _FIter = long long int*; _Tp = long long int]	48	static
+/home/wheatley/coding-python/sumkmax.cpp:24:8:) [with T = long long int&; V = {long long int&, long long int, long long int}]	80	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1900:5:void std::__sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	48	static
+/home/wheatley/coding-python/sumkmax.cpp:11:209:void __DEBUG_UTIL__::print(T&&) [with T = long long int (&)[1010025]]	80	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1980:5:_ForwardIterator std::__upper_bound(_ForwardIterator, _ForwardIterator, const _Tp&, _Compare) [with _ForwardIterator = long long int*; _Tp = long long int; _Compare = __gnu_cxx::__ops::_Val_less_iter]	128	static
+/home/wheatley/coding-python/sumkmax.cpp:24:8:) [with T = long long int&; V = {long long int&, long long int&}]	64	static
+/usr/include/c++/14.2.1/bit:371:5:constexpr int std::__bit_width(_Tp) [with _Tp = long unsigned int]	48	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:1544:5:constexpr _Tp std::__lg(_Tp) [with _Tp = long int]	32	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1876:5:void std::__introsort_loop(_RandomAccessIterator, _RandomAccessIterator, _Size, _Compare) [with _RandomAccessIterator = long long int*; _Size = long int; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1812:5:void std::__final_insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	48	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:97:7:bool __gnu_cxx::__ops::_Val_less_iter::operator()(_Value&, _Iterator) const [with _Value = const long long int; _Iterator = long long int*]	16	static
+/home/wheatley/coding-python/sumkmax.cpp:24:8:) [with T = long long int&; V = {long long int&}]	64	static
+/usr/include/c++/14.2.1/bit:201:5:constexpr int std::__countl_zero(_Tp) [with _Tp = long unsigned int]	16	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1863:5:void std::__partial_sort(_RandomAccessIterator, _RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	48	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1851:5:_RandomAccessIterator std::__unguarded_partition_pivot(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1770:5:void std::__insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	80	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1794:5:void std::__unguarded_insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h:184:5:constexpr void std::__advance(_RandomAccessIterator&, _Distance, random_access_iterator_tag) [with _RandomAccessIterator = long long int*; _Distance = long int]	16	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1589:5:void std::__heap_select(_RandomAccessIterator, _RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_heap.h:419:5:void std::__sort_heap(_RandomAccessIterator, _RandomAccessIterator, _Compare&) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	48	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:85:5:void std::__move_median_to_first(_Iterator, _Iterator, _Iterator, _Iterator, _Compare) [with _Iterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1829:5:_RandomAccessIterator std::__unguarded_partition(_RandomAccessIterator, _RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	48	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:44:7:constexpr bool __gnu_cxx::__ops::_Iter_less_iter::operator()(_Iterator1, _Iterator2) const [with _Iterator1 = long long int*; _Iterator2 = long long int*]	16	static
+/usr/include/c++/14.2.1/bits/move.h:127:5:constexpr typename std::remove_reference<_Tp>::type&& std::move(_Tp&&) [with _Tp = long long int&]	16	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:913:5:_BI2 std::move_backward(_BI1, _BI1, _BI2) [with _BI1 = long long int*; _BI2 = long long int*]	64	static
+/usr/include/c++/14.2.1/bits/stl_algo.h:1750:5:void std::__unguarded_linear_insert(_RandomAccessIterator, _Compare) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Val_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_heap.h:340:5:void std::__make_heap(_RandomAccessIterator, _RandomAccessIterator, _Compare&) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	80	static
+/usr/include/c++/14.2.1/bits/stl_heap.h:254:5:void std::__pop_heap(_RandomAccessIterator, _RandomAccessIterator, _RandomAccessIterator, _Compare&) [with _RandomAccessIterator = long long int*; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	64	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:155:5:void std::iter_swap(_ForwardIterator1, _ForwardIterator2) [with _ForwardIterator1 = long long int*; _ForwardIterator2 = long long int*]	32	static
+/usr/include/c++/14.2.1/bits/cpp_type_traits.h:607:5:_Iterator std::__miter_base(_Iterator) [with _Iterator = long long int*]	16	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:823:5:_OI std::__copy_move_backward_a(_II, _II, _OI) [with bool _IsMove = true; _II = long long int*; _OI = long long int*]	64	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:97:7:bool __gnu_cxx::__ops::_Val_less_iter::operator()(_Value&, _Iterator) const [with _Value = long long int; _Iterator = long long int*]	16	static
+/usr/include/c++/14.2.1/bits/stl_heap.h:224:5:void std::__adjust_heap(_RandomAccessIterator, _Distance, _Distance, _Tp, _Compare) [with _RandomAccessIterator = long long int*; _Distance = long int; _Tp = long long int; _Compare = __gnu_cxx::__ops::_Iter_less_iter]	96	static
+/usr/include/c++/14.2.1/bits/move.h:214:5:std::_Require<std::__not_<std::__is_tuple_like<_Tp> >, std::is_move_constructible<_Tp>, std::is_move_assignable<_Tp> > std::swap(_Tp&, _Tp&) [with _Tp = long long int]	48	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:316:5:_Iterator std::__niter_base(_Iterator) [with _Iterator = long long int*]	16	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:795:5:_BI2 std::__copy_move_backward_a1(_BI1, _BI1, _BI2) [with bool _IsMove = true; _BI1 = long long int*; _BI2 = long long int*]	48	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:353:5:_Iterator std::__niter_wrap(const _Iterator&, _Iterator) [with _Iterator = long long int*]	16	static
+/usr/include/c++/14.2.1/bits/move.h:127:5:constexpr typename std::remove_reference<_Tp>::type&& std::move(_Tp&&) [with _Tp = __gnu_cxx::__ops::_Iter_less_iter&]	16	static
+/usr/include/c++/14.2.1/bits/stl_heap.h:135:5:void std::__push_heap(_RandomAccessIterator, _Distance, _Distance, _Tp, _Compare&) [with _RandomAccessIterator = long long int*; _Distance = long int; _Tp = long long int; _Compare = __gnu_cxx::__ops::_Iter_less_val]	80	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:777:5:_BI2 std::__copy_move_backward_a2(_BI1, _BI1, _BI2) [with bool _IsMove = true; _BI1 = long long int*; _BI2 = long long int*]	48	static
+/usr/include/c++/14.2.1/bits/predefined_ops.h:68:7:bool __gnu_cxx::__ops::_Iter_less_val::operator()(_Iterator, _Value&) const [with _Iterator = long long int*; _Value = long long int]	16	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:762:2:static _Up* std::__copy_move_backward<_IsMove, true, std::random_access_iterator_tag>::__copy_move_b(_Tp*, _Tp*, _Up*) [with _Tp = long long int; _Up = long long int; bool _IsMove = true]	64	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:437:2:static void std::__copy_move<true, false, std::random_access_iterator_tag>::__assign_one(_Tp*, _Up*) [with _Tp = long long int; _Up = long long int]	32	static

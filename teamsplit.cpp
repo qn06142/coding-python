@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <minmax.h>
 using namespace std;
 const int maxn = 1e7 + 5;
 #define int long long

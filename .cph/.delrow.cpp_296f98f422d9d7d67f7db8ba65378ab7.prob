@@ -1,0 +1,1 @@
+{"name":"Local: delrow","url":"/home/wheatley/coding-python/delrow.cpp","tests":[{"id":1732499286886,"input":"5 4\nqwpt\nabcf\nbvoa\nabka\nbbhb","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/delrow.cpp","group":"local","local":true}

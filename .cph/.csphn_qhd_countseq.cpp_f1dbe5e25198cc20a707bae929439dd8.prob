@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_countseq","url":"/home/wheatley/coding-python/csphn_qhd_countseq.cpp","tests":[{"id":1734233952777,"input":"4 3\n3 4 5 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_qhd_countseq.cpp","group":"local","local":true}

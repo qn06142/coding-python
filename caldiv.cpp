@@ -1,103 +1,53 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define int long long
-#pragma GCC optimize("Ofast,fast-math,unroll-loops")
-#pragma GCC target("arch=alderlake")
 const int MOD = 1e9 + 7;
-
-long long binpow(long long a, long long b, long long m = MOD) {
-    a %= m;
-    long long res = 1;
-    while (b > 0) {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
+int p[(int)1e7 + 1], t[(int)1e7 + 1], num[(int)1e7 + 1];
+int fpow(int a, int b) {
+    int ans = 1;
+    while (b) {
+        if (b & 1) ans = 1LL * ans * a % MOD;
         b >>= 1;
+        a = 1LL * a * a % MOD;
     }
-    return res;
+    return ans;
 }
-int int_sqrt32(unsigned int x)
-{
-    int res=0;
-    int add= 0x8000;   
-    int i;
-    for(i=0;i<16;i++)
-    {
-        int temp=res | add;
-        unsigned int g2=temp*temp;      
-        if (x>=g2)
-        {
-            res=temp;           
-        }
-        add>>=1;
-    }
-    return res;
-}
-
-const int MAX_N = 1e7 + 5; 
-vector<int> prime; 
-unordered_set<int> primesquare; 
-bool is_prime[MAX_N + 5];
-void sieve(int n = 1e7 + 2) {
-    memset(is_prime, 1, sizeof is_prime);
-    is_prime[1] = false;
-
-    for (int p = 2; p * p <= n; p++) {
-        if (is_prime[p]) {
-            for (int i = p * p; i <= n; i += p) {
-                is_prime[i] = false;
-            }
-        }
-    }
-
-    for (int p = 2; p <= n; p++) {
-        if (is_prime[p]) {
-            prime.push_back(p);
-            primesquare.insert(p * p); 
-        }
-    }
-}
-
-int countdiv(int n) {
-    if (n == 1) return 1; 
-
-    int ans = 1; 
-
-    for (int p : prime) {
-        if (p * p * p > n) break; 
-
-        int cnt = 1; 
-        while (n % p == 0) { 
-            n /= p; 
-            cnt++; 
-        }
-
-        ans *= cnt; 
-    }
-
-    if (is_prime[n]) {
-        ans *= 2; 
-    } else if (primesquare.find(n) != primesquare.end()) {
-        ans *= 3; 
-    } else if (n != 1) {
-        ans *= 4; 
-    }
-
-    return ans; 
-}
-signed main() {
-    int l, r;
+int main() {
+    int l = 1, r = 1e7;
     cin >> l >> r;
-    sieve(r);
-    int ans = 0;
-    for (int i = l; i <= r; i++) {
-        int divcount = countdiv(i);
-        if (divcount & 1) {
-            ans += binpow(i, (divcount - 1) >> 1) * int_sqrt32(i) % MOD;
-        } else {
-            ans += binpow(i, divcount >> 1);
+    for (int i = 2; i <= r; ++i) {
+        if (p[i]) continue;
+        for (int j = i; j <= r; j += i) {
+            p[j] = i;
         }
-        ans %= MOD;
     }
-    cout << ans;
+    t[1] = 1;
+    num[1] = 1;
+    for (int i = 2; i <= r; ++i) {
+        int p1 = p[i], cur = i, cnt = 0;
+        int a = 1;
+        while (cur % p1 == 0) {
+            cur /= p1;
+            a *= p1;
+            ++cnt;
+        }
+        int b = i / a;
+        if (b == 1) {
+            t[i] = 1;
+            for (int j = 1; j <= cnt; ++j) {
+                b *= p1;
+                t[i] = 1LL * t[i] * b % MOD;
+            }
+            num[i] = cnt + 1;
+            continue;
+        }
+        t[i] = 1LL * fpow(t[a], num[b]) * fpow(t[b], num[a]) % MOD;
+        num[i] = num[a] * num[b];
+    }
+    int res = 0;
+    for (int i = l; i <= r; ++i) {
+        res = (res + t[i]) % MOD;
+    }
+    cout << res << '\n';
+    // cerr << "\nTime: " << setprecision(5) << fixed << (double)clock() / CLOCKS_PER_SEC << "ms\n";
+    return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: kmp","url":"/home/wheatley/coding-python/kmp.cpp","tests":[{"id":1734522058621,"input":"abababa","output":"0 0 1 2 3 4 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/kmp.cpp","group":"local","local":true}

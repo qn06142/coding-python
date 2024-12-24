@@ -1,0 +1,1 @@
+{"name":"Local: nopass","url":"/home/wheatley/coding-python/nopass.cpp","tests":[{"id":1732412992338,"input":"5\n33 11 22 44 55\n22 11 33 55 44","output":"3"},{"id":1732413004664,"input":"6\n6 5 4 3 2 1\n1 2 3 4 5 6","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/nopass.cpp","group":"local","local":true}

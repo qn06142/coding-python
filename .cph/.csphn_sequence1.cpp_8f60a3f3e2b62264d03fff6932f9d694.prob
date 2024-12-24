@@ -1,0 +1,1 @@
+{"name":"Local: csphn_sequence1","url":"/home/wheatley/coding-python/csphn_sequence1.cpp","tests":[{"id":1733844333449,"input":"5 6\n1 5 2 4 3","output":"3"},{"id":1733844662825,"input":"5 150\n30 9 24 1 120","output":"38"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_sequence1.cpp","group":"local","local":true}

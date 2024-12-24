@@ -1,5 +1,3 @@
-a = [0]*1005
-n = k =0
 from math import floor
 def check(x):
 	t = a[1] + x
@@ -26,9 +24,7 @@ def solve(l, r):
 			l = mid+1
 	return ans
 n = int(input())
-for i in range(0, n):
-	a[i+1] = int(input())
+a = [0] + sorted(int(input()) for i in range(0, n))
 k = int(input())
-a = [0] + sorted(a[1:n+1]) + a[n+1:]
-a[n+1] = 10 ** 6+a[1]
+a.append(a[1] + 10 ** 6)
 print(solve(1, 1e6))

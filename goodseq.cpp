@@ -160,8 +160,7 @@ void add(int l, int r) {
         l = min(i->first.first, l);
         r = max(i->first.second, r);
     }
-    debug(ans, tmp, sum);
-
+    debug(l, r);
     stor.erase(x, y);
     tmp = POW(tmp, mod - 2);
     ans *= tmp;
@@ -169,7 +168,7 @@ void add(int l, int r) {
     ans *= sum;
     ans %= mod;
     stor.insert({{l, r}, sum});
-    debug(ans, tmp, sum);
+    
 }
 signed main() {
     ios_base::sync_with_stdio(false);
@@ -186,6 +185,5 @@ signed main() {
         cin >> l >> r;
         add(l, r);
         cout << ans << '\n';
-        debug(stor);
     }
 }

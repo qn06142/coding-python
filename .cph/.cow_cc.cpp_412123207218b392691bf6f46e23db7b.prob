@@ -1,0 +1,1 @@
+{"name":"Local: cow_cc","url":"/home/wheatley/coding-python/cow_cc.cpp","tests":[{"id":1734140864809,"input":"5\n13 5 1 5 20\n","output":"2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cow_cc.cpp","group":"local","local":true}

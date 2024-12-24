@@ -92,33 +92,54 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-long double suff[(int) 5e5 + 5], pref[(int) 5e5 + 5];
-set<char> vowels = {'U', 'E', 'A', 'O', 'I', 'Y'};
-bool a[(int) 5e5 + 5];
+
+int n, q;
+char a[(int) 2e5 + 5];
+pair<char, short> queries[(int) 2e5 + 5];
+int check(int x, bool side) {
+    for(int i = 1; i <= q; i++) {
+        if(a[x] == queries[i].first) {
+            x += queries[i].second;
+        }
+        if(x == 0 or x == (n + 1)) break;
+    }
+    return x == (side ? 0 : (n + 1));
+}
 int main() {
-    string s;
-    cin >> s;
-    int n = s.size();
-    s = " " + s;
+    cin >> n >> q;
     for(int i = 1; i <= n; i++) {
-        if(vowels.find(s[i]) != vowels.end()) {
-            a[i] = 1;
+        cin >> a[i];
+    }
+    for(int i = 1; i <= q; i++) {
+        cin >> queries[i].first;
+        char c;
+        cin >> c;
+        queries[i].second = (c == 'L' ? -1 : 1);
+    }
+    int l, r, ans;
+    //locate left
+    l = 1; r = n, ans = 0;
+    while(l <= r) {
+        int mid = (l + r) / 2;
+        if(check(mid, 1)) {
+            l = mid + 1;
+            ans = mid;
+        } else {
+            r = mid - 1;
         }
     }
-    debugArr(a, n + 1);
-    for(int i = n; i >= 1; i--) {
-        suff[i] = suff[i + 1] + 1.0 / (long double) i;
+    int left = ans;
+    //locate right
+    l = 1; r = n, ans = n + 1;
+    while(l <= r) {
+        int mid = (l + r) / 2;
+        if(check(mid, 0)) {
+            r = mid - 1;
+            ans = mid;
+        } else {
+            l = mid + 1;
+        }
     }
-    for(int i = 1; i <= n; i++) {
-        pref[i] = pref[i - 1] + 1.0 / (long double) i;
-    }
-    long double ans = 0;
-    long double contrib = pref[n];
-    for(int i = 1; i <= n; i++) {
-        int k = min({i, n - i + 1});
-        ans += contrib * a[i];
-        contrib -= pref[i];
-        contrib += pref[n - i];
-    }
-    cout << fixed << setprecision(8) << ans << '\n';
+    debug(left, ans);
+    cout << max(0, ans - left - 1);
 }

@@ -1,0 +1,1 @@
+{"name":"Local: palin_cc","url":"/home/wheatley/coding-python/palin_cc.py","tests":[{"id":1734489068276,"input":"4 3","output":"3"},{"id":1734489104710,"input":"2 8","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/palin_cc.py","group":"local","local":true}

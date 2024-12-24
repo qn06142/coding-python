@@ -1,0 +1,1 @@
+{"name":"Local: lcs_21","url":"/home/wheatley/coding-python/lcs_21.cpp","tests":[{"id":1732934858110,"input":"1\n10 10\n841 18 862 68 20 224 963 321 102 471\n19 547 263 350 438 308 962 748 873 854","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lcs_21.cpp","group":"local","local":true}

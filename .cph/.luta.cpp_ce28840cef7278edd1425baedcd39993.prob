@@ -1,0 +1,1 @@
+{"name":"Local: luta","url":"/home/wheatley/coding-python/luta.cpp","tests":[{"id":1733624611226,"input":"4 1\n1 10\n21 5\n1 10\n100 100","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/luta.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: sumkmax","url":"/home/wheatley/coding-python/sumkmax.cpp","tests":[{"id":1732871871916,"input":"2 2 7\n3 6\n10 8","output":"205"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sumkmax.cpp","group":"local","local":true}

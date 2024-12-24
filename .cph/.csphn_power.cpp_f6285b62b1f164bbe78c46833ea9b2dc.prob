@@ -1,0 +1,1 @@
+{"name":"Local: csphn_power","url":"/home/wheatley/coding-python/csphn_power.cpp","tests":[{"id":1734198253491,"input":"4 3\n3 4 5 6","output":"30"},{"id":1734235009046,"input":"2 4\n32 27","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_power.cpp","group":"local","local":true}

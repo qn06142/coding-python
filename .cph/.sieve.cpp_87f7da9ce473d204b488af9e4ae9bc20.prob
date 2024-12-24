@@ -1,0 +1,1 @@
+{"name":"Local: sieve","url":"/home/wheatley/coding-python/sieve.cpp","tests":[{"id":1734833720118,"input":"10 \n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sieve.cpp","group":"local","local":true}

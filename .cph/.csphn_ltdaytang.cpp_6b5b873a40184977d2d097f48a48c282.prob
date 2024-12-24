@@ -1,0 +1,1 @@
+{"name":"Local: csphn_ltdaytang","url":"/home/wheatley/coding-python/csphn_ltdaytang.cpp","tests":[{"id":1733846105197,"input":"4 3\n1 1 0 2","output":"3"},{"id":1733846179422,"input":"8 4\n10 1 1 1 3 9 10 10","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_ltdaytang.cpp","group":"local","local":true}

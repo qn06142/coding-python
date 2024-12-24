@@ -129,11 +129,9 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #ifdef DEBUG
 #define debug(...) std::cerr << __LINE__ << ": [", __DEBUG_UTIL__::printer(#__VA_ARGS__, __VA_ARGS__)
 #define debugArr(...) std::cerr << __LINE__ << ": [", __DEBUG_UTIL__::printerArr(#__VA_ARGS__, __VA_ARGS__)
-#define stdfile
 #else
 #define debug(...)
 #define debugArr(...)
-#define stdfile freopen("itable.inp","r",stdin);freopen("itable.out","w",stdout);
 #endif
 const int maxn = 5e3 + 5;
 int ans[maxn][maxn], rows[maxn][maxn], cols[maxn][maxn]; 

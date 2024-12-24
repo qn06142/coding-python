@@ -1,0 +1,1 @@
+{"name":"Local: editor","url":"/home/wheatley/coding-python/editor.cpp","tests":[{"id":1734163318701,"input":"7 6\n1 -2 3 -4 5 -6 7\nA 3\nL\nQ\nL\nA -2\nQ\n","output":"7\n5"},{"id":1734171100355,"input":"1 3\n8\nD\n\nA -1\nQ","output":"7\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/editor.cpp","group":"local","local":true}

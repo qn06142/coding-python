@@ -1,0 +1,1 @@
+{"name":"Local: dp_chiakeo","url":"/home/wheatley/coding-python/dp_chiakeo.py","tests":[{"id":1734618007180,"input":"6 3\n1 2 4 3 7 10\n1 2 5 2\n2 1 6 1\n2 5 5 4\n","output":"1 2 1 2 2 1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dp_chiakeo.py","group":"local","local":true}

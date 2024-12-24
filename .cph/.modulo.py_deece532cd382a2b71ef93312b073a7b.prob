@@ -1,0 +1,1 @@
+{"name":"Local: modulo","url":"/home/wheatley/coding-python/modulo.py","tests":[{"id":1734224582518,"input":"6 3\n","output":"9\n3\n18\n2\n"},{"id":1734225946273,"input":"123456789 987654321\n","output":"111111103\n135802475\n259106859\n0\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/modulo.py","group":"local","local":true}

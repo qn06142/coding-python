@@ -1,0 +1,1 @@
+{"name":"Local: dividekcol","url":"/home/wheatley/coding-python/dividekcol.cpp","tests":[{"id":1734621765252,"input":"5 2\n1 2 2 1 2 \n","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dividekcol.cpp","group":"local","local":true}

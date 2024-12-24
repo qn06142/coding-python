@@ -1,0 +1,1 @@
+{"name":"Local: csphn_split","url":"/home/wheatley/coding-python/csphn_split.py","tests":[{"id":1733561539466,"input":"8\n10052024","output":"4"},{"id":1733561549033,"input":"11\n58493726150","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_split.py","group":"local","local":true}

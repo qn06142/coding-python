@@ -169,6 +169,7 @@ bool searchForRectangle(int rows, int cols,
     }
     return false;
 }
+// look on geeks for geeks lol
 bool check(int x) {
 
     vector<vector<int>> valid(n, vector<int>(m));

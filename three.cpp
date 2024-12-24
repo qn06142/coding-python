@@ -1,35 +1,37 @@
 #include <iostream>
-#include <algorithm>
-int a[10000005];
+#include <unordered_map>
 using namespace std;
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n, k;
+    cin.tie(0); cout.tie(0);
+
+    long long n, k;
     cin >> n >> k;
-
-
-    for (int i = 1; i <= n; ++i) {
-        string s;
-        cin >> s;
-        a[i] = count(s.begin(), s.end(), '3');
+    long long a[n];
+    for (long long i = 0; i < n; ++i) {
+        cin >> a[i];
     }
 
-    long long ans = 0, curr = 0, j = 1;
-    for (int i = 1; i <= n; ++i) {
-        curr += a[i];
-        while (curr >= k) {
-            curr -= a[j];
-            ++j;
-        }
-        if (i >= j) {
-            ans += i - j + 1;
-        }
+    unordered_map<long long, long long> count_prefix, count_suffix;
+    for (long long i = 0; i < n; ++i) {
+        count_suffix[a[i]]++;
     }
 
-    cout << ans << endl;
+    long long result = 0;
 
+    for (long long j = 0; j < n; ++j) {
+        count_suffix[a[j]]--;
+
+        if (a[j] % k == 0) {
+            long long ai = a[j] / k;
+            long long ak = a[j] * k;
+            result += count_prefix[ai] * count_suffix[ak];
+        }
+
+        count_prefix[a[j]]++;
+    }
+
+    cout << result << "\n";
     return 0;
 }

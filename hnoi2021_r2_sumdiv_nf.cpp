@@ -92,38 +92,6 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-#define int long long
-long long sum_of_first_n(long long n) {
-    return n * (n + 1) / 2;
-}
-
-long long solve(long long l, long long r) {
-    long long s = 0;
-    long long hi = 1e10; 
-    long long lim = min(r - l + 1, (long long)sqrt(r) + 1);
-
-    if (l <= r - l + 1) {
-        return sum_of_first_n(r) - sum_of_first_n(l - 1);
-    }
-
-    for (long long i = 1; i <= sqrt(r); ++i) {
-        long long st = max(lim, (l + i - 1) / i); 
-        long long ed = min(r / i, hi);           
-
-        if (l / i <= r / i) {
-            s += i;
-        }
-
-        if (ed >= st) {
-            s += sum_of_first_n(ed) - sum_of_first_n(st - 1);
-            if (ed == i) {
-                s -= i; 
-            }
-            hi = min(hi, st - 1);
-        }
-    }
-    return s;
-}
 #include <immintrin.h>
 using namespace std;
 #pragma GCC optimize("Ofast,O3,fast-math")
@@ -158,33 +126,29 @@ void print_m128i(__m128i v) {
 signed main() {
     long long l, r;
     cin >> l >> r;
-    if(r <= 2e8) {
-        long long ans = 0;
-        __m128i ind = _mm_setr_epi32(1, 2, 3, 4);
-        __m128i indinc = _mm_set1_epi32(4);
-        __m128i ones = _mm_set1_epi32(1);
-        for (int i = 1; i <= r; i += 4) {
-            __m128i a = _mm_set1_epi32(l);
-            a = _mm_add_epi32(a, ind);
-            a = _mm_sub_epi32(a, _mm_set1_epi32(1));
-            a = _mm_div_epi32(a, ind);
-            a = _mm_mullo_epi32(a, ind);
-            __m128i end_cond = _mm_cmpgt_epi32(a, _mm_set1_epi32(r));
-            int mask = _mm_movemask_ps(_mm_castsi128_ps(end_cond));
+    long long ans = 0;
+    __m128i ind = _mm_setr_epi32(1, 2, 3, 4);
+    __m128i indinc = _mm_set1_epi32(4);
+    __m128i ones = _mm_set1_epi32(1);
+    for (int i = 1; i <= r; i += 4) {
+        __m128i a = _mm_set1_epi32(l);
+        a = _mm_add_epi32(a, ind);
+        a = _mm_sub_epi32(a, _mm_set1_epi32(1));
+        a = _mm_div_epi32(a, ind);
+        a = _mm_mullo_epi32(a, ind);
+        __m128i end_cond = _mm_cmpgt_epi32(a, _mm_set1_epi32(r));
+        int mask = _mm_movemask_ps(_mm_castsi128_ps(end_cond));
 
-            for (int j = 0; j < 4; ++j) {
-                if (!(mask & (1 << j))) {
-                    ans += i + j;
-                }
+        for (int j = 0; j < 4; ++j) {
+            if (!(mask & (1 << j))) {
+                ans += i + j;
             }
-
-            ind = _mm_add_epi32(ind, indinc);
         }
 
-        cout << ans;  
-        return 0;
-    } else
-    cout << solve(l, r) << endl;
+        ind = _mm_add_epi32(ind, indinc);
+    }
+
+    cout << ans;
 
     return 0;
 }

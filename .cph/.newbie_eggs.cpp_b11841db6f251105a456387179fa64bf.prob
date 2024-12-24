@@ -1,0 +1,1 @@
+{"name":"Local: newbie_eggs","url":"/home/wheatley/coding-python/newbie_eggs.cpp","tests":[{"id":1734940842413,"input":"2 3\n10 30\n5 25","output":"30"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/newbie_eggs.cpp","group":"local","local":true}

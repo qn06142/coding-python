@@ -84,7 +84,7 @@ struct Fraction {
 
     Fraction(int a, int b) : numerator(a), denominator(b) {
 
-        int gcd__ = gcd(a, b);
+        int gcd__ = __gcd(a, b);
         numerator /= gcd__;
         denominator /= gcd__;
     }

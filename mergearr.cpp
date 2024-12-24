@@ -4,8 +4,9 @@ using namespace std;
 int a[(int) 1e5 + 5], b[(int) 1e5 + 5], c[(int) 2e5 + 5];
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
+    int m = n;
     
     for(int i = 0; i < n; i++) {
         cin >> a[i];

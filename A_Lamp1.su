@@ -1,0 +1,8 @@
+/usr/include/c++/14.2.1/bits/char_traits.h:358:7:static constexpr bool std::char_traits<char>::lt(const char_type&, const char_type&)	16	static
+/usr/include/c++/14.2.1/bits/char_traits.h:366:7:static constexpr int std::char_traits<char>::compare(const char_type*, const char_type*, std::size_t)	64	static
+/home/wheatley/coding-python/A_Lamp1.cpp:9:6:void backtrack(std::string, int, int)	176	static
+/home/wheatley/coding-python/A_Lamp1.cpp:43:5:int main()	112	static
+/usr/include/c++/14.2.1/bits/basic_string.h:3755:5:bool std::operator==(const __cxx11::basic_string<_CharT, _Traits, _Allocator>&, const __cxx11::basic_string<_CharT, _Traits, _Allocator>&) [with _CharT = char; _Traits = char_traits<char>; _Alloc = allocator<char>]	48	static
+/usr/include/c++/14.2.1/bits/stl_algobase.h:233:5:constexpr const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = int]	16	static
+/home/wheatley/coding-python/A_Lamp1.cpp:59:1:void __static_initialization_and_destruction_0()	16	static
+/home/wheatley/coding-python/A_Lamp1.cpp:59:1:cpp)	16	static

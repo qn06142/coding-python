@@ -1,0 +1,1 @@
+{"name":"Local: csphn_carpet_small","url":"/home/wheatley/coding-python/csphn_carpet_small.cpp","tests":[{"id":1733918924315,"input":"4 4 2\nH 2 2 3 4\nV 1 1 4 2","output":"13 14 3 4\n9 8 7 10\n5 12 11 6\n1 2 15 16"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_carpet_small.cpp","group":"local","local":true}

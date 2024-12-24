@@ -1,0 +1,1 @@
+{"name":"Local: csphn_lineup1","url":"/home/wheatley/coding-python/csphn_lineup1.cpp","tests":[{"id":1733014010578,"input":"6\n3 4 2 3 5 6","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_lineup1.cpp","group":"local","local":true}

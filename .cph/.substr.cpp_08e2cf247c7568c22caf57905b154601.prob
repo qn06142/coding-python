@@ -1,0 +1,1 @@
+{"name":"Local: substr","url":"/home/wheatley/coding-python/substr.cpp","tests":[{"id":1734520426532,"input":"ababaca\nabacababacaacababaca","output":"5 14"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/substr.cpp","group":"local","local":true}

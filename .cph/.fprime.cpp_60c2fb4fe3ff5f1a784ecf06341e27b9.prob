@@ -1,0 +1,1 @@
+{"name":"Local: fprime","url":"/home/wheatley/coding-python/fprime.cpp","tests":[{"id":1734833813950,"input":"2\n2\n9\n","output":"YES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/fprime.cpp","group":"local","local":true}

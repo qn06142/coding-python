@@ -1,0 +1,1 @@
+{"name":"Local: 2p_1","url":"/home/wheatley/coding-python/2p_1.cpp","tests":[{"id":1734596661092,"input":"5\n-4 -1 0 3 10","output":"0 1 9 16 100"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/2p_1.cpp","group":"local","local":true}

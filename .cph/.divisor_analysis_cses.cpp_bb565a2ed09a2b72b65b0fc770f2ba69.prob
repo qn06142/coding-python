@@ -1,0 +1,1 @@
+{"name":"Local: divisor_analysis_cses","url":"/home/wheatley/coding-python/divisor_analysis_cses.cpp","tests":[{"id":1734259141197,"input":"2 \n2 2\n3 1\n","output":"6 28 1728\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/divisor_analysis_cses.cpp","group":"local","local":true}

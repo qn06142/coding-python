@@ -147,7 +147,7 @@ int main() {
     __int128 ans = 0;
     const pair<__int128, __int128> tmp[] = {{a, b}, {c, a}, {b, c}};
     for(auto &&i : tmp) {
-        ans = max(ans, ((__int128_t) i.first * (__int128_t) i.second) % m);
+        ans = max(ans, ((__int128_t) i.first * (__int128_t) i.second));
     }
-    cout << (long long) ans << endl;
+    cout << (long long) (ans % m) << endl;
 }

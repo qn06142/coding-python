@@ -1,0 +1,1 @@
+{"name":"Local: sonhohon","url":"/home/wheatley/coding-python/sonhohon.cpp","tests":[{"id":1734597905571,"input":"6 7\n1 6 9 13 18 18\n2 3 8 13 15 21 25","output":"1 1 2 3 4 6 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sonhohon.cpp","group":"local","local":true}

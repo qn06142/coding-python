@@ -1,0 +1,1 @@
+{"name":"Local: holiday","url":"/home/wheatley/coding-python/holiday.cpp","tests":[{"id":1732930298485,"input":"3\n10 40 70\n20 50 80\n30 60 90\n","output":"210"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/holiday.cpp","group":"local","local":true}

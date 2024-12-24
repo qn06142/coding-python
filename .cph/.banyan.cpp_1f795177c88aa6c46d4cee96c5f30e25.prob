@@ -1,0 +1,1 @@
+{"name":"Local: banyan","url":"/home/wheatley/coding-python/banyan.cpp","tests":[{"id":1734451139914,"input":"6 5 2\n.**..\n**.*.\n..*.*\n**.*.\n****.\n*..**","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/banyan.cpp","group":"local","local":true}

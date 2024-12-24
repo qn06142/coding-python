@@ -1,0 +1,1 @@
+{"name":"Local: remainder","url":"/home/wheatley/coding-python/remainder.py","tests":[{"id":1732793337242,"input":"12 3 8","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/remainder.py","group":"local","local":true}

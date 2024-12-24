@@ -1,0 +1,1 @@
+{"name":"Local: valy","url":"/home/wheatley/coding-python/valy.cpp","tests":[{"id":1734142125089,"input":"4 100\n50 50\n19 20\n80 90\n21 25\n","output":"110\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/valy.cpp","group":"local","local":true}

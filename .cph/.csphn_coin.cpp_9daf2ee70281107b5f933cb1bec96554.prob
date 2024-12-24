@@ -1,0 +1,1 @@
+{"name":"Local: csphn_coin","url":"/home/wheatley/coding-python/csphn_coin.cpp","tests":[{"id":1733314096637,"input":"17 3\nOROOOOOROOOOORRRR ","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_coin.cpp","group":"local","local":true}

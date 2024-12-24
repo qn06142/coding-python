@@ -1,0 +1,1 @@
+{"name":"Local: palind","url":"/home/wheatley/coding-python/palind.cpp","tests":[{"id":1732952209566,"input":"135798642","output":"135808531"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/palind.cpp","group":"local","local":true}

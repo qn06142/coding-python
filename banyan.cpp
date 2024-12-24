@@ -93,41 +93,80 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debugArr(...)
 #endif
 
+const int oo = (int)1e9 + 5;
 const int maxn = 305;
-int mat[maxn][maxn];
+bool mat[maxn][maxn], mat1[maxn][maxn];
+int ansr[maxn][maxn][maxn], ansc[maxn][maxn][maxn];
 int n, m;
 int k;
-int dist[maxn][maxn][4];
-int get(int cnt, int a[], int x) {
-    int ans = 0;
-    int j = 1;
-    int sum = 0;
-    for(int i = 1; i <= x; i++) {
-        sum += a[i];
-        while(sum > cnt and j <= i) {
-            sum -= a[j];
-        }
-        if(sum <= cnt)
-        ans = max(ans, i - j + 1);
-    }
-    return ans;
+bool in(int x, int y) {
+	return x >= 1 && x <= n && y >= 1 && y <= m;
 }
+void rotat() {
+	memcpy(mat1, mat, sizeof mat);
+	for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
+            mat[m - j + 1][i] = mat1[i][j];
+        }
+    }
+	swap(n, m);
+}
+int getr(int i, int j, int k) {return ansr[i][j][k];}
+int getc(int i, int j, int k) {return ansc[m - j + 1][i][k];}
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
     cin >> n >> m >> k;
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j <= m; j++) {
             char c;
             cin >> c;
-            mat[i][j] = ('c' == '*');
+            mat[i][j] = (c == '*');
         }
     }
-    int ans = 0;
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= m; j++) {
-            for(int k_ = 0; k_ <= k; k_++) { // k_: spent for horizontal
-                
-            }
-        }
-    }
-    
+	deque<pair<int, int>> dq; // stores: {l, r}
+	for(int _ = 0; _ < 2; _++) {
+		for(int i = 1; i <= n; i++) {
+			for(int k_ = 0; k_ <= k; k_++) {
+				while (!dq.empty()) dq.pop_back();
+				int sum = 0;
+				int x = 0;
+				for(int j = 1; j <= m; j ++) {
+					
+					while(x < m and sum + mat[i][x + 1] <= k_) {
+						x++;
+						sum += mat[i][x];
+					}
+					while(!dq.empty() && dq.front().second < j) dq.pop_front();
+					while(!dq.empty() and dq.back().second - dq.back().first <= x - j) dq.pop_back();
+					dq.push_back({j, x});
+					ansr[i][j][k_] = dq.front().second - dq.front().first + 1;
+					sum -= mat[i][j];
+				}
+			}
+		}
+		rotat();
+		swap(ansr, ansc);
+	}
+	rotat();
+	rotat();
+	int ans = 0;
+	for(int i = 1; i <= n; i++) {
+		for(int j = 1; j <= m; j++) {
+			for(int k_ = 0; k_ <= k; k_++) {
+				if (mat[i][j]) {
+					if (k_) ans = max(ans, getr(i, j, k_) + getc(i, j, k - k_ + 1) - 1);
+				}
+				else ans = max(ans, getr(i, j, k_) + getc(i, j, k - k_) - 1);
+				// if (ans == 10) {
+				// 	cerr << "DB>> " << i << ' ' << j << " - " << k_ << '\n';
+				// 	debug(k_);
+				// 	debug(ansr[1][1][k_]);
+				// 	debug(ansc[m - j + 1][i]);
+				// 	return 0;
+				// }
+			}
+		}
+	}
+	cout << ans << '\n';
 }
