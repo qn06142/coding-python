@@ -1,0 +1,1 @@
+{"name":"Local: stp_happiness","url":"/home/wheatley/coding-python/stp_happiness.cpp","tests":[{"id":1736566202666,"input":"1\n2 6\n3 3\n7 4\n","output":"2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/stp_happiness.cpp","group":"local","local":true}

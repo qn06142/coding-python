@@ -126,6 +126,10 @@ int countdiv(int n) {
     return ans;
 }
 int a[(int) 1e6 + 5];
+<<<<<<< Updated upstream
+=======
+int divs[(int) 1e6 + 5];
+>>>>>>> Stashed changes
 signed main() {
     sieve(1e7);
     ios_base::sync_with_stdio(false);
@@ -134,11 +138,19 @@ signed main() {
     cin >> n >> k;
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
+<<<<<<< Updated upstream
+=======
+        divs[i] = countdiv(a[i]);
+>>>>>>> Stashed changes
     }
 
     int max_ = 0;
     for (int i = 1; i <= n; i++) {
+<<<<<<< Updated upstream
         max_ = max(max_, countdiv(a[i]));
+=======
+        max_ = max(max_, divs[i]);
+>>>>>>> Stashed changes
     }
 
     int left = 1, right = 1;
@@ -146,12 +158,20 @@ signed main() {
     int min_len = n + 1;
     while (right <= n) {
         debug(sum);
+<<<<<<< Updated upstream
         if (countdiv(a[right]) == max_) {
+=======
+        if (divs[right] == max_) {
+>>>>>>> Stashed changes
             sum += 1;
         }
         while (sum >= k) {
             min_len = min(min_len, right - left + 1);
+<<<<<<< Updated upstream
             if (countdiv(a[left]) == max_) {
+=======
+            if (divs[left] == max_) {
+>>>>>>> Stashed changes
                 sum -= 1;
             }
             left++;

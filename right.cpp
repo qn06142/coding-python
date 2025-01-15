@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include<bits/stdc++.h>
 using namespace std;
 namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const char *x)/**/{ cerr << x; }/*#########+++++*/void print(bool x)/**/{ cerr << (x ? "T" : "F"); }/**/void print(char x)/*##############################
@@ -246,3 +247,47 @@ int main() {
         cout << t[i] << '\n';
     }
 }
+=======
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+const int oo = (int)1e9 + 5;
+const int N = (int)1e5 + 5;
+int n, k, a[N], t[N];
+multiset<pair<int, int> > s;
+signed main() {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    #ifdef LOCAL
+	    // freopen("TEST.inp", "r", stdin);
+	    // freopen("TEST.out", "w", stdout);
+    #else
+    	// freopen("TEST.inp", "r", stdin);
+    	// freopen("TEST.out", "w", stdout);
+    #endif
+    cin >> n >> k;
+    for (int i = 1; i <= n; ++i) {
+    	cin >> a[i];
+    }
+    for (int i = 1; i <= n; ++i) {
+    	auto cur = s.lower_bound({a[i], 0});
+    	if (cur != s.begin()) {
+    		auto tmp = prev(cur);
+    		t[i] = (*tmp).second + a[i] - (*tmp).first + k;
+    		if ((*tmp).second + a[i] - (*tmp).first < t[i]) s.insert({a[i], t[i]});
+    	}
+    	else {
+    		t[i] = a[i] + k;
+    		s.insert({a[i], t[i]});
+    	}
+    	int a1 = a[i], t1 = t[i];
+    	while (cur != s.end() && t1 + (*cur).first - a1 >= (*cur).second) {
+    		++cur;
+    		s.erase(prev(cur));
+    	}
+    }
+    for (int i = 1; i <= n; ++i) {
+    	cout << t[i] << '\n';
+    }
+    return 0;
+}
+>>>>>>> Stashed changes

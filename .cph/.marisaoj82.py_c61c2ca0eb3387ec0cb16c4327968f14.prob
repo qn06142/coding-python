@@ -1,0 +1,1 @@
+{"name":"Local: marisaoj82","url":"/home/wheatley/coding-python/marisaoj82.py","tests":[{"id":1736759188871,"input":"5\n1\n2\n3\n4\n7","output":"1\n2\n3\n4\n-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/marisaoj82.py","group":"local","local":true}

@@ -1,0 +1,31 @@
+#description: OpenCV trace file
+#version: 1.0
+l,1,"/usr/src/debug/opencv/opencv/modules/core/src/utils/logtagmanager.cpp",72,"void cv::utils::logging::LogTagManager::assign(const std::string&, cv::utils::logging::LogTag*)",0x1
+#thread file: OpenCVTrace-000.txt
+l,2,"/usr/src/debug/opencv/opencv/modules/core/src/utils/logtagmanager.cpp",104,"cv::utils::logging::LogTag* cv::utils::logging::LogTagManager::get(const std::string&)",0x1
+l,3,"/usr/src/debug/opencv/opencv/modules/videoio/src/cap.cpp",74,"cv::VideoCapture::VideoCapture(const cv::String&, int)",0x1
+l,4,"/usr/src/debug/opencv/opencv/modules/videoio/src/cap.cpp",111,"virtual bool cv::VideoCapture::open(const cv::String&, int, const std::vector<int>&)",0x1
+l,5,"/usr/src/debug/opencv/opencv/modules/videoio/src/cap.cpp",420,"virtual bool cv::VideoCapture::read(cv::OutputArray)",0x1
+l,6,"/usr/src/debug/opencv/opencv/modules/videoio/src/cap.cpp",393,"virtual bool cv::VideoCapture::grab()",0x1
+l,7,"/usr/src/debug/opencv/opencv/modules/videoio/src/cap.cpp",404,"virtual bool cv::VideoCapture::retrieve(cv::OutputArray, int)",0x1
+l,8,"/usr/src/debug/opencv/opencv/modules/highgui/src/window.cpp",659,"int cv::waitKey(int)",0x1
+l,9,"/usr/src/debug/opencv/opencv/modules/highgui/src/window.cpp",643,"int cv::waitKeyEx(int)",0x1
+l,10,"/usr/src/debug/opencv/opencv/modules/imgproc/src/resize.cpp",4148,"void cv::resize(InputArray, OutputArray, Size, double, double, int)",0x1
+l,11,"/usr/src/debug/opencv/opencv/modules/imgproc/src/resize.cpp",3775,"void cv::hal::resize(int, const uchar*, size_t, int, int, uchar*, size_t, int, int, double, double, int)",0x1
+l,12,"/usr/src/debug/opencv/opencv/modules/imgproc/src/color.cpp",194,"void cv::cvtColor(InputArray, OutputArray, int, int)",0x1
+l,13,"/usr/src/debug/opencv/opencv/modules/imgproc/src/color_rgb.dispatch.cpp",188,"void cv::hal::cvtBGRtoBGR(const uchar*, size_t, uchar*, size_t, int, int, int, int, int, bool)",0x1
+l,14,"/usr/src/debug/opencv/opencv/modules/imgproc/src/canny.cpp",827,"void cv::Canny(InputArray, OutputArray, double, double, int, bool)",0x1
+l,15,"/usr/src/debug/opencv/opencv/modules/imgproc/src/canny.cpp",882,"IPP:ipp_Canny(src, Mat(), Mat(), dst, (float)low_thresh, (float)high_thresh, L2gradient, aperture_size)",0x10000
+l,16,"/usr/src/debug/opencv/opencv/modules/core/src/copy.cpp",618,"cv::Mat& cv::Mat::setTo(cv::InputArray, cv::InputArray)",0x1
+l,17,"/usr/src/debug/opencv/opencv/modules/core/src/parallel.cpp",506,"parallel_for",0x1
+l,18,"/usr/src/debug/opencv/opencv/modules/imgproc/src/canny.cpp",910,"global_hysteresis",0x0
+l,19,"/usr/src/debug/opencv/opencv/modules/imgproc/src/color_rgb.dispatch.cpp",274,"void cv::hal::cvtBGRtoGray(const uchar*, size_t, uchar*, size_t, int, int, int, int, bool)",0x1
+l,20,"/usr/src/debug/opencv/opencv/modules/imgproc/src/thresh.cpp",1676,"void cv::adaptiveThreshold(InputArray, OutputArray, double, int, int, int, double)",0x1
+l,21,"/usr/src/debug/opencv/opencv/modules/core/src/convert.dispatch.cpp",250,"void cv::Mat::convertTo(cv::OutputArray, int, double, double) const",0x1
+l,22,"/usr/src/debug/opencv/opencv/modules/imgproc/src/smooth.dispatch.cpp",615,"void cv::GaussianBlur(InputArray, OutputArray, Size, double, double, int)",0x1
+l,23,"/usr/src/debug/opencv/opencv/modules/imgproc/src/contours_new.cpp",635,"void cv::findContours(InputArray, OutputArrayOfArrays, OutputArray, int, int, Point)",0x1
+l,24,"/usr/src/debug/opencv/opencv/modules/core/src/copy.cpp",1024,"void cv::copyMakeBorder(InputArray, OutputArray, int, int, int, int, int, const Scalar&)",0x1
+l,25,"/usr/src/debug/opencv/opencv/modules/imgproc/src/thresh.cpp",1542,"double cv::threshold(InputArray, OutputArray, double, double, int)",0x1
+l,26,"/usr/src/debug/opencv/opencv/modules/core/src/copy.cpp",307,"void cv::Mat::copyTo(cv::OutputArray) const",0x1
+l,27,"/usr/src/debug/opencv/opencv/modules/core/src/copy.cpp",364,"IPP:((ippicviCopy_8u_C1R_L)(sptr, (int)src.step, dptr, (int)dst.step, ippiSizeL(sz.width, sz.height))) >= 0",0x10000
+l,28,"/usr/src/debug/opencv/opencv/modules/videoio/src/cap.cpp",100,"virtual cv::VideoCapture::~VideoCapture()",0x1

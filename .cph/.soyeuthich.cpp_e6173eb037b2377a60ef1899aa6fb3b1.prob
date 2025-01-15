@@ -1,0 +1,1 @@
+{"name":"Local: soyeuthich","url":"/home/wheatley/coding-python/soyeuthich.cpp","tests":[{"id":1736497927868,"input":"4 5\n1 2 4 5\n","output":"3"},{"id":1736497937493,"input":"2 3\n2 1\n","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/soyeuthich.cpp","group":"local","local":true}

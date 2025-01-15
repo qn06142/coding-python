@@ -1,0 +1,1 @@
+{"name":"Local: csphn_string","url":"/home/wheatley/coding-python/csphn_string.cpp","tests":[{"id":1736336473945,"input":"12 3\ncabacaqwerty\nerty\ncaba\ncaqw","output":"2 3 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_string.cpp","group":"local","local":true}

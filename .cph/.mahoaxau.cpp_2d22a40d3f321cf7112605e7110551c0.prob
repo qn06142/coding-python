@@ -1,0 +1,1 @@
+{"name":"Local: mahoaxau","url":"/home/wheatley/coding-python/mahoaxau.cpp","tests":[{"id":1735349360293,"input":"hnoi\n2\nabcdefghijklmnopqrstuvwxyz\npnudzgabijkyehlrqxfmsctovw\n","output":"nbyi"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/mahoaxau.cpp","group":"local","local":true}

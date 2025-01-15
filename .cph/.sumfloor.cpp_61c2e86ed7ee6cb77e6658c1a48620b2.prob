@@ -1,0 +1,1 @@
+{"name":"Local: sumfloor","url":"/home/wheatley/coding-python/sumfloor.cpp","tests":[{"id":1736348356448,"input":"3 10\n","output":"17\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sumfloor.cpp","group":"local","local":true}

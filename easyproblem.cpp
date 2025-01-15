@@ -52,7 +52,7 @@ signed main() {
         int xi = query.first.first;
         int yi = query.first.second;
         int si = query.second;
-        vector<int> f_copy = f; // Copy the array
+        vector<int> f_copy = f;
         int result = process_query(f_copy, xi, yi, si);
         cout << result << endl;
     }

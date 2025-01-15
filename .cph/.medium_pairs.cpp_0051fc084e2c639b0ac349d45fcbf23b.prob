@@ -1,0 +1,1 @@
+{"name":"Local: medium_pairs","url":"/home/wheatley/coding-python/medium_pairs.cpp","tests":[{"id":1735636655826,"input":"3\n152984\n1375\n17940","output":"125849\n1375\n14079"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/medium_pairs.cpp","group":"local","local":true}

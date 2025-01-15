@@ -1,0 +1,1 @@
+{"name":"Local: dseq","url":"/home/wheatley/coding-python/dseq.cpp","tests":[{"id":1736905931322,"input":" 5\n1 10 6 7 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dseq.cpp","group":"local","local":true}

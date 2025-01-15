@@ -1,0 +1,1 @@
+{"name":"Local: hnoi2022_r2_game","url":"/home/wheatley/coding-python/hnoi2022_r2_game.cpp","tests":[{"id":1736576836443,"input":"2 10\n2 6 2\n5 5 5\n","output":"15\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hnoi2022_r2_game.cpp","group":"local","local":true}

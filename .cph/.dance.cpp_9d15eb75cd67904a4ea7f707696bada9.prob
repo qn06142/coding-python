@@ -1,0 +1,1 @@
+{"name":"Local: dance","url":"/home/wheatley/coding-python/dance.cpp","tests":[{"id":1735220111907,"input":"5 2\n2 5 3 3 6","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dance.cpp","group":"local","local":true}

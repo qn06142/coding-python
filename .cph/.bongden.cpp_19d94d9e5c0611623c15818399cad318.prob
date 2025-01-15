@@ -1,0 +1,1 @@
+{"name":"Local: bongden","url":"/home/wheatley/coding-python/bongden.cpp","tests":[{"id":1736477906331,"input":"5\n1 2 2 2 3\n4 9 5 1 10\n","output":"24"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/bongden.cpp","group":"local","local":true}

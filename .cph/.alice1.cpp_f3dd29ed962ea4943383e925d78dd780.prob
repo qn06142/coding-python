@@ -1,0 +1,1 @@
+{"name":"Local: alice1","url":"/home/wheatley/coding-python/alice1.cpp","tests":[{"id":1735136050586,"input":"3 2\n1 2 1\n","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/alice1.cpp","group":"local","local":true}

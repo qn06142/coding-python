@@ -1,0 +1,1 @@
+{"name":"Local: rangeknapsack","url":"/home/wheatley/coding-python/rangeknapsack.cpp","tests":[{"id":1735702527538,"input":"4\n2 15\n2 20\n4 36\n1 4\n3\n1 2 4\n1 4 7\n3 4 2\n","output":"35\n60\n4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/rangeknapsack.cpp","group":"local","local":true}

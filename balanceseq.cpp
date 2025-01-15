@@ -94,10 +94,20 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #endif
 #define int long long
 const int maxn = 1e5 + 5;
+<<<<<<< Updated upstream
 int a[maxn], p[maxn];
 int rm[maxn];
 int calc(vector<int> &a, int l, int r) {
     return upper_bound(a.begin(), a.end(), r) - lower_bound(a.begin(), a.end(), l);
+=======
+int a[maxn], pref[maxn];
+int rm[maxn];
+map<int, vector<int>> indf;
+map<int, vector<int>> indb;
+#define all(x) x.begin(), x.end()
+int countrange(vector<int> &i, int l, int r) {
+    return upper_bound(all(i), r) - lower_bound(all(i), l);
+>>>>>>> Stashed changes
 }
 signed main() {
     ios_base::sync_with_stdio(false);
@@ -107,6 +117,7 @@ signed main() {
 
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
+<<<<<<< Updated upstream
         p[i] = p[i - 1] + a[i];
     }
 
@@ -130,5 +141,24 @@ signed main() {
         ans += cntl * cntr;
     }
     cout << ans << '\n';
+=======
+        pref[i] = pref[i - 1] + a[i];
+    }
+    map<pair<int, int>, int> cnt;
+
+    for(int i = 1; i <= n; i++) {
+        rm[i] = cnt[{pref[i - 1], pref[i]}];
+        cnt[{pref[i - 1], pref[i]}] = i;
+        indf[pref[i]].push_back(i);
+        indb[pref[i - 1]].push_back(i);
+    }
+    int ans = 0;
+    for(int i = 1; i <= n; i++) {
+        vector<int> &l = indb[pref[i]];
+        vector<int> &r = indf[pref[i - 1]];
+        ans += countrange(l, rm[i] + 1, i) * countrange(r, i, n);
+    }
+    cout << ans;
+>>>>>>> Stashed changes
     return 0;
 }

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include<bits/stdc++.h>
 using namespace std;
 namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const char *x)/**/{ cerr << x; }/*#########+++++*/void print(bool x)/**/{ cerr << (x ? "T" : "F"); }/**/void print(char x)/*##############################
@@ -121,3 +122,54 @@ int main() {
         cout << dp[n & 1][q] << '\n';
     }
 }
+=======
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e3;
+const int M = 1e4;
+const int oo = (int)1e9 + 5;
+int n, t, a[N + 1], d[M + 1], d1[M + 1];
+#define ceil(a, b) (((a) + (b) - 1) / (b))
+signed main() {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    #ifdef LOCAL
+        // freopen("TEST.inp", "r", stdin);
+        // freopen("TEST.out", "w", stdout);
+    #else
+        // freopen("TEST.inp", "r", stdin);
+        // freopen("TEST.out", "w", stdout);
+    #endif
+    cin >> n >> t;
+    // n = N;
+    // t = M;
+    for (int i = 1; i <= n; ++i) {
+        cin >> a[i];
+        // a[i] = M;
+    }
+    for (int i = 1; i <= n; ++i) {
+        int x = 1, ax = ceil(a[i], x);
+        for (int j = 0; j <= M; ++j) {
+            d[j] = oo;
+        }
+        while (1) {
+            for (int j = x + i - 1; j <= M - n + i; ++j) {
+                d[j] = min(d[j], d1[j - x] + ax);
+            }
+            if (x == a[i]) break;
+            x = ceil(a[i], ax - 1);
+            ax = ceil(a[i], x);
+        }
+        for (int j = 0; j <= M; ++j) {
+            d1[j] = d[j];
+        }
+    }
+    while (t--) {
+        int m;
+        cin >> m;
+        // m = M;
+        cout << d1[m] << '\n';
+    }
+    // cerr << "\nTime: " << (double)clock() / CLOCKS_PER_SEC << "ms\n";
+    return 0;
+}
+>>>>>>> Stashed changes

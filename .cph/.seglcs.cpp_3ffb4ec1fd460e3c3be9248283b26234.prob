@@ -1,0 +1,1 @@
+{"name":"Local: seglcs","url":"/home/wheatley/coding-python/seglcs.cpp","tests":[{"id":1736874492228,"input":"5 5 1\nabcde\nbcdea\n","output":"4"},{"id":1736875303627,"input":"2 3 1\ncb\nccf","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/seglcs.cpp","group":"local","local":true}

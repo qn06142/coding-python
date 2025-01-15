@@ -1,0 +1,1 @@
+{"name":"Local: demhn","url":"/home/wheatley/coding-python/demhn.cpp","tests":[{"id":1735952346001,"input":"HNHN\n2","output":"10\n"},{"id":1735955637328,"input":"HNNH\n2\n","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/demhn.cpp","group":"local","local":true}

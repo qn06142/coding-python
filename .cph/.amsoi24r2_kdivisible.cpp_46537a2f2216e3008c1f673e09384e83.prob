@@ -1,0 +1,1 @@
+{"name":"Local: amsoi24r2_kdivisible","url":"/home/wheatley/coding-python/amsoi24r2_kdivisible.cpp","tests":[{"id":1735115084558,"input":"4 3\n1 4 3 6\n11 2 4 21 \n","output":"6\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/amsoi24r2_kdivisible.cpp","group":"local","local":true}

@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream
 {"name":"Local: csphn_hk2_cau4chiaday","url":"/home/wheatley/coding-python/csphn_hk2_cau4chiaday.cpp","tests":[{"id":1734943128060,"input":"2\n10 6\n1 10 10 2 10 5 10 1 4 5\n10 16\n6 6 7 0 2 5 0 10 5 1","output":""},{"id":1734943137000,"input":"1\n8 17\n2 2 2 8 1 8 2 1","output":"12"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_hk2_cau4chiaday.cpp","group":"local","local":true}
+=======
+{"name":"Local: csphn_hk2_cau4chiaday","url":"/home/wheatley/coding-python/csphn_hk2_cau4chiaday.cpp","tests":[{"id":1734943128060,"input":"1\n8 17\n2 2 2 8 1 8 2 1","output":"12"},{"id":1734943137000,"input":"2\n10 6\n1 10 10 2 10 5 10 1 4 5\n10 16\n6 6 7 0 2 5 0 10 5 1","output":"-1\n23"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_hk2_cau4chiaday.cpp","group":"local","local":true}
+>>>>>>> Stashed changes

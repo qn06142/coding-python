@@ -1,0 +1,1 @@
+{"name":"Local: gcdxsum","url":"/home/wheatley/coding-python/gcdxsum.cpp","tests":[{"id":1736930055680,"input":"6 2\n4 4 4 3 1 3\n","output":"48"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/gcdxsum.cpp","group":"local","local":true}

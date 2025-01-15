@@ -1,0 +1,1 @@
+{"name":"Local: prehnoir2_2425_day2_sufarr","url":"/home/wheatley/coding-python/prehnoir2_2425_day2_sufarr.cpp","tests":[{"id":1735911840785,"input":"3\n3 7\n1 2 5\n1 5\n5\n4 8\n1 3 3 7\n","output":"Yes\nNo\nNo\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/prehnoir2_2425_day2_sufarr.cpp","group":"local","local":true}

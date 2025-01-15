@@ -1,0 +1,1 @@
+{"name":"Local: denlong","url":"/home/wheatley/coding-python/denlong.cpp","tests":[{"id":1736760856136,"input":"6 2 2\n1 9 3 2 3 5","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/denlong.cpp","group":"local","local":true}

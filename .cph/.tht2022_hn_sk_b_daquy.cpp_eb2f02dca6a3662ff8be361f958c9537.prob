@@ -1,0 +1,1 @@
+{"name":"Local: tht2022_hn_sk_b_daquy","url":"/home/wheatley/coding-python/tht2022_hn_sk_b_daquy.cpp","tests":[{"id":1735811981640,"input":"5 2\n2 3\n1 4\n4 3\n2 7\n5 1","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tht2022_hn_sk_b_daquy.cpp","group":"local","local":true}

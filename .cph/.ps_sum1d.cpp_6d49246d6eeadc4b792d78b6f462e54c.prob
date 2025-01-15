@@ -1,0 +1,1 @@
+{"name":"Local: ps_sum1d","url":"/home/wheatley/coding-python/ps_sum1d.cpp","tests":[{"id":1735435911872,"input":"5 3\n1 -2 3 -4 5\n1 2\n2 4\n1 5\n","output":"-1\n-3\n3\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/ps_sum1d.cpp","group":"local","local":true}

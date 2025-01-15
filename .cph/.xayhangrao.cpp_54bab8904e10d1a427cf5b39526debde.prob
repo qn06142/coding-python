@@ -1,0 +1,1 @@
+{"name":"Local: xayhangrao","url":"/home/wheatley/coding-python/xayhangrao.cpp","tests":[{"id":1736137788655,"input":"3 1\n3 5 4\n5 8 5\n3\n","output":""},{"id":1736785587158,"input":"3 2\n3 5 4\n5 8 5\n3 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/xayhangrao.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: palinmatrix","url":"/home/wheatley/coding-python/palinmatrix.cpp","tests":[{"id":1735401469626,"input":"4\nABCD\nBXZX\nCDXB\nWCBA\n","output":"12"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/palinmatrix.cpp","group":"local","local":true}

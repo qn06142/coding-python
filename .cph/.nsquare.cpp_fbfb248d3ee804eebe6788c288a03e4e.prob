@@ -1,0 +1,1 @@
+{"name":"Local: nsquare","url":"/home/wheatley/coding-python/nsquare.cpp","tests":[{"id":1735805646437,"input":"5 \n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/nsquare.cpp","group":"local","local":true}

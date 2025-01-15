@@ -1,0 +1,1 @@
+{"name":"Local: thaydoiso","url":"/home/wheatley/coding-python/thaydoiso.cpp","tests":[{"id":1735351416189,"input":"3\n4 4 12\n","output":"12"},{"id":1735351433484,"input":"5\n6 1 9 2 12\n","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/thaydoiso.cpp","group":"local","local":true}

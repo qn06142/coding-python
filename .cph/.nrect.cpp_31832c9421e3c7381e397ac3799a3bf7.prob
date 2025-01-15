@@ -1,0 +1,1 @@
+{"name":"Local: nrect","url":"/home/wheatley/coding-python/nrect.cpp","tests":[{"id":1736090807440,"input":"3\n57 120 87\n200 100 150\n2 141 135\n","output":"8\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/nrect.cpp","group":"local","local":true}
