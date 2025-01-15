@@ -1,0 +1,1 @@
+{"name":"Local: packingbin","url":"/home/wheatley/coding-python/packingbin.cpp","tests":[{"id":1736413011911,"input":"8 6\n4 2 5 3 5 4\n","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/packingbin.cpp","group":"local","local":true}

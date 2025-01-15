@@ -1,0 +1,1 @@
+{"name":"Local: shv_perm","url":"/home/wheatley/coding-python/shv_perm.cpp","tests":[{"id":1736565898466,"input":"4 3\n","output":"6\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/shv_perm.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: revbin","url":"/home/wheatley/coding-python/revbin.cpp","tests":[{"id":1735888208580,"input":"5\n10101\n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/revbin.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: csphn_sqrdiv","url":"/home/wheatley/coding-python/csphn_sqrdiv.cpp","tests":[{"id":1735637363015,"input":"3\n20 25\n11 100\n36 1000","output":"9\n140\n1552"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_sqrdiv.cpp","group":"local","local":true}

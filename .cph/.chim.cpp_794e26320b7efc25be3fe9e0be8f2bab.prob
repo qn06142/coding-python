@@ -1,0 +1,1 @@
+{"name":"Local: chim","url":"/home/wheatley/coding-python/chim.cpp","tests":[{"id":1735890324469,"input":"2\nFTFFTFF\n3 2\n0 1\n","output":"Yes\nNo\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/chim.cpp","group":"local","local":true}

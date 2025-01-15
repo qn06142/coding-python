@@ -1,0 +1,1 @@
+{"name":"Local: labyrinth","url":"/home/wheatley/coding-python/labyrinth.cpp","tests":[{"id":1736044770287,"input":"5 4 6\n1 2\n1 3\n2 4\n2 5\nX 1\nX 4\nY 1 4\nX 3\nX 2\nY 3 4","output":"NY"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/labyrinth.cpp","group":"local","local":true}

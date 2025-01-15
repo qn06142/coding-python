@@ -44,10 +44,18 @@ def generate_test_case():
     q = 5
     return generate_test_case1(n, s, q)
 def run_program(executable, input_data):
+<<<<<<< Updated upstream
     process = subprocess.Popen([executable], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate(input=input_data.encode())
     return stdout.decode().strip()
 
+=======
+    process = subprocess.Popen([executable] if type(executable) == str else executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate(input=input_data.encode())
+    return stdout.decode().strip()
+
+
+>>>>>>> Stashed changes
 def run_test_case(executable1, executable2, test_case):
     output1 = run_program(executable1, test_case)
     output2 = run_program(executable2, test_case)
@@ -75,8 +83,13 @@ def listen_for_quit():
             sys.stdout.write("\nQuitting...\n")
 
 def main():
+<<<<<<< Updated upstream
     executable1 = './csphn_pyramid1'
     executable2 = './csphn_pyramid'
+=======
+    executable1 = './luckust1'
+    executable2 = './luckust'
+>>>>>>> Stashed changes
     
     from multiprocessing import cpu_count
     n_cores = cpu_count()

@@ -1,0 +1,1 @@
+{"name":"Local: sumrange","url":"/home/wheatley/coding-python/sumrange.cpp","tests":[{"id":1735617946946,"input":"5\n1 4 2 -1 -2\n-2 -1 1 2 -1\n","output":"45\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sumrange.cpp","group":"local","local":true}

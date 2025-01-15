@@ -1,0 +1,1 @@
+{"name":"Local: hnoi2022_r1_ct","url":"/home/wheatley/coding-python/hnoi2022_r1_ct.cpp","tests":[{"id":1735903571037,"input":"5\n1 2 4 5 2\n","output":"7\n"},{"id":1735903579693,"input":"5\n9 8 4 5 13\n","output":"17"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hnoi2022_r1_ct.cpp","group":"local","local":true}

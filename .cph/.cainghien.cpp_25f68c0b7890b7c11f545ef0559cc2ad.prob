@@ -1,0 +1,1 @@
+{"name":"Local: cainghien","url":"/home/wheatley/coding-python/cainghien.cpp","tests":[{"id":1736131570825,"input":"3 4\n3 2\n1 1\n2 3\n","output":"18.849556\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cainghien.cpp","group":"local","local":true}

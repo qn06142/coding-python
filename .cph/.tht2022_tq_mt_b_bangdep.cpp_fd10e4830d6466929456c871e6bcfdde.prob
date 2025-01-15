@@ -1,0 +1,1 @@
+{"name":"Local: tht2022_tq_mt_b_bangdep","url":"/home/wheatley/coding-python/tht2022_tq_mt_b_bangdep.cpp","tests":[{"id":1735889297882,"input":"2 3\n3 3 3\n1 2 6","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tht2022_tq_mt_b_bangdep.cpp","group":"local","local":true}

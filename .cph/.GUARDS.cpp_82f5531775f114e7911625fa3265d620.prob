@@ -1,0 +1,1 @@
+{"name":"Local: GUARDS","url":"/home/wheatley/coding-python/GUARDS.cpp","tests":[{"id":1735312168805,"input":"5 2 1 9\n1 5\n4 9\n1 3\n1 7\n5 9","output":"4"},{"id":1735312810581,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/GUARDS.cpp","group":"local","local":true}

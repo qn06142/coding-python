@@ -28,7 +28,7 @@ def find_len(arr, n, m):
 	else:
 		return dp[0][0]
 
-arr = [int(i) for i in input()]
+arr = [int(i) for i in input().split()]
 n = len(arr)
 m = 3
 print(find_len(arr, n, m))

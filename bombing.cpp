@@ -92,6 +92,7 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
+<<<<<<< Updated upstream
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -100,11 +101,14 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 
 using namespace std;
 
+=======
+>>>>>>> Stashed changes
 struct Battery {
     int e, w, c;
 };
 
 bool canAchieve(double T, int n, int b, int maxWeight, const vector<Battery>& batteries) {
+<<<<<<< Updated upstream
     vector<vector<double>> dp(b + 1, vector<double>(2 * maxWeight + 1, -1e9));
     dp[0][0] = 0; // Base case: zero budget and zero weight
 
@@ -131,6 +135,22 @@ bool canAchieve(double T, int n, int b, int maxWeight, const vector<Battery>& ba
     return false;
 }
 
+=======
+    vector<pair<double, int>> a(n);
+    for(int i = 0; i < n; i++) {
+        a[i] = {batteries[i].e - batteries[i].w * T, batteries[i].c};
+    }
+    vector<double> dp(1e6);
+    for(int i = 0; i < n; i++) {
+        for(int w = b; w >= max(0, a[i].second); w--) {
+            dp[w] = max(dp[w], dp[w - a[i].second] + a[i].first);
+        }
+    }
+    return dp[b] >= (T * maxWeight);    
+}
+
+
+>>>>>>> Stashed changes
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
@@ -142,7 +162,11 @@ int main() {
     for (int i = 0; i < n; ++i) {
         cin >> batteries[i].e >> batteries[i].w >> batteries[i].c;
     }
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     double lo = 0, hi = 1e6, ans = 0;
     const double EPS = 1e-4;
 
@@ -158,7 +182,14 @@ int main() {
         }
     }
 
+<<<<<<< Updated upstream
     cout << fixed << setprecision(3) << ans << "\n";
 
     return 0;
 }
+=======
+    cout << fixed << setprecision(5) << ans << "\n";
+
+    return 0;
+}
+>>>>>>> Stashed changes

@@ -1,0 +1,1 @@
+{"name":"Local: median","url":"/home/wheatley/coding-python/median.cpp","tests":[{"id":1735283474387,"input":"5\n1 2 3 4 5","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/median.cpp","group":"local","local":true}

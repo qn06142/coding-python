@@ -1,0 +1,1 @@
+{"name":"Local: daykep","url":"/home/wheatley/coding-python/daykep.cpp","tests":[{"id":1736128359628,"input":"5\n1 2 4 3 5\n","output":"11\n"},{"id":1736128368058,"input":"8\n2 1 6 3 6 7 8 5\n","output":"18\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/daykep.cpp","group":"local","local":true}

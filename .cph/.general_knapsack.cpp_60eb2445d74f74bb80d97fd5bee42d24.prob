@@ -1,0 +1,1 @@
+{"name":"Local: general_knapsack","url":"/home/wheatley/coding-python/general_knapsack.cpp","tests":[{"id":1736569820637,"input":"3 8\n3 30\n4 50\n5 60\n","output":"90\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/general_knapsack.cpp","group":"local","local":true}

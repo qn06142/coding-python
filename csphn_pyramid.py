@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 def generate_test_case1(n, s, q):
     """
     Generate the test case string for the pyramid problem.
@@ -104,3 +105,82 @@ def main():
 
 if __name__ == "__main__":
     main()
+=======
+import sys
+
+def roll(i, n):
+    return (i + n - 1) % n + 1
+
+def char_map(c):
+    if 'A' <= c <= 'Z':
+        return ord(c) - ord('A')
+    return -1
+
+def get_offset(row):
+    return (row * (row - 1)) // 2 + 1
+
+def get_position(i, j):
+    offset = get_offset(i)
+    return offset + (j - 1) if i % 2 == 1 else offset + (i - j)
+
+def main():
+    input = sys.stdin.read
+    data = input().splitlines()
+    
+    n = int(data[0])
+    s = data[1].upper()
+    length = len(s)
+    q = int(data[2])
+    
+    prefix_mod = [[0] * (length + 1) for _ in range(26)]
+    
+    for i in range(length):
+        mapped_index = char_map(s[i])
+        if mapped_index != -1:
+            prefix_mod[mapped_index][i + 1] += 1
+            
+    for c in range(26):
+        for i in range(1, length + 1):
+            prefix_mod[c][i] += prefix_mod[c][i - 1]
+    results = []
+    for line in data[3:]:
+        t, *args = line.split()
+        args = list((int(args[0]), args[1]))
+        t = int(t)
+        if t == 1:
+            i = args[0]
+            target = args[1]
+            mapped_index = char_map(target)
+            if mapped_index == -1:
+                results.append(0)
+                continue
+            
+            offset = get_offset(i)
+            start = 1
+            end = i
+            
+            start_mod = roll(get_position(i, 1), length)
+            end_mod = roll(get_position(i, i), length)
+            if i % 2 == 0:
+                start_mod, end_mod = end_mod, start_mod
+            
+            full_repeats = (i - 1) // length
+            count = full_repeats * prefix_mod[mapped_index][length]
+            if start_mod <= end_mod:
+                count += prefix_mod[mapped_index][end_mod] - prefix_mod[mapped_index][start_mod - 1]
+            else:
+                count += prefix_mod[mapped_index][length] - prefix_mod[mapped_index][start_mod - 1]
+                count += prefix_mod[mapped_index][end_mod]
+            results.append(count)
+        
+        elif t == 2:
+            i, j = args
+            j = int(j)
+            pos = get_position(i, j)
+            result = s[(pos - 1) % length]
+            results.append(result)
+    print('\n'.join(map(str, results)))
+
+if __name__ == "__main__":
+    main()
+>>>>>>> Stashed changes

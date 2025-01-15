@@ -1,0 +1,65 @@
+Collecting moviepy==1.0.3
+  Downloading moviepy-1.0.3.tar.gz (388 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: numpy in /usr/lib/python3.13/site-packages (2.2.1)
+Requirement already satisfied: imageio in /usr/lib/python3.13/site-packages (2.36.1)
+Requirement already satisfied: decorator in ./.venv/lib/python3.13/site-packages (5.1.1)
+Requirement already satisfied: tqdm in /usr/lib/python3.13/site-packages (4.67.1)
+Requirement already satisfied: Pillow in /usr/lib/python3.13/site-packages (11.0.0)
+Requirement already satisfied: scipy in /usr/lib/python3.13/site-packages (1.14.1)
+Collecting pydub
+  Downloading pydub-0.25.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting audiofile
+  Downloading audiofile-1.5.1-py3-none-any.whl.metadata (4.9 kB)
+Requirement already satisfied: opencv-python in ./.venv/lib/python3.13/site-packages (4.10.0.84)
+Collecting decorator
+  Downloading decorator-4.4.2-py2.py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: imageio_ffmpeg>=0.2.0 in /usr/lib/python3.12/site-packages (from moviepy==1.0.3) (0.5.1)
+Requirement already satisfied: requests<3.0,>=2.8.1 in /usr/lib/python3.13/site-packages (from moviepy==1.0.3) (2.32.3)
+Requirement already satisfied: proglog<=1.0.0 in ./.venv/lib/python3.13/site-packages (from moviepy==1.0.3) (0.1.10)
+Collecting audeer (from audiofile)
+  Downloading audeer-2.2.1-py3-none-any.whl.metadata (4.1 kB)
+Collecting audmath>=1.3.0 (from audiofile)
+  Downloading audmath-1.4.1-py3-none-any.whl.metadata (3.6 kB)
+Collecting soundfile>=0.12.1 (from audiofile)
+  Downloading soundfile-0.13.0-py2.py3-none-manylinux_2_28_x86_64.whl.metadata (16 kB)
+Requirement already satisfied: setuptools in /usr/lib/python3.13/site-packages (from imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (75.2.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/lib/python3.13/site-packages (from requests<3.0,>=2.8.1->moviepy==1.0.3) (3.4.0)
+Requirement already satisfied: idna<4,>=2.5 in /usr/lib/python3.13/site-packages (from requests<3.0,>=2.8.1->moviepy==1.0.3) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/lib/python3.13/site-packages (from requests<3.0,>=2.8.1->moviepy==1.0.3) (1.26.20)
+Requirement already satisfied: cffi>=1.0 in /usr/lib/python3.13/site-packages (from soundfile>=0.12.1->audiofile) (1.17.1)
+Requirement already satisfied: pycparser in /usr/lib/python3.13/site-packages (from cffi>=1.0->soundfile>=0.12.1->audiofile) (2.22)
+Requirement already satisfied: packaging>=24 in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (24.2)
+Requirement already satisfied: more_itertools>=8.8 in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (10.5.0)
+Requirement already satisfied: jaraco.text>=3.7 in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (4.0.0)
+Requirement already satisfied: wheel>=0.43.0 in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (0.45.0)
+Requirement already satisfied: platformdirs>=2.6.2 in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (4.3.6)
+Requirement already satisfied: jaraco.collections in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (5.0.1)
+Requirement already satisfied: jaraco.functools in /usr/lib/python3.13/site-packages (from setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (4.1.0)
+Requirement already satisfied: jaraco.context>=4.1 in /usr/lib/python3.13/site-packages (from jaraco.text>=3.7->setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (5.3.0)
+Requirement already satisfied: autocommand in /usr/lib/python3.13/site-packages (from jaraco.text>=3.7->setuptools->imageio_ffmpeg>=0.2.0->moviepy==1.0.3) (2.2.2)
+Downloading decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+Downloading pydub-0.25.1-py2.py3-none-any.whl (32 kB)
+Downloading audiofile-1.5.1-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 20.1 MB/s eta 0:00:00
+Downloading audmath-1.4.1-py3-none-any.whl (23 kB)
+Downloading soundfile-0.13.0-py2.py3-none-manylinux_2_28_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 9.8 MB/s eta 0:00:00
+Downloading audeer-2.2.1-py3-none-any.whl (41 kB)
+Building wheels for collected packages: moviepy
+  Building wheel for moviepy (setup.py): started
+  Building wheel for moviepy (setup.py): finished with status 'done'
+  Created wheel for moviepy: filename=moviepy-1.0.3-py3-none-any.whl size=110712 sha256=cc79e072cfbdafdfe5b35fff4c5d2c7738194b485da9158cc8e6dcce1ba9150f
+  Stored in directory: /home/wheatley/.cache/pip/wheels/ee/0c/ac/4c0c65f1289060c39182ba74294d8b72d03600d619663e8935
+Successfully built moviepy
+Installing collected packages: pydub, decorator, audmath, audeer, soundfile, audiofile, moviepy
+  Attempting uninstall: decorator
+    Found existing installation: decorator 5.1.1
+    Uninstalling decorator-5.1.1:
+      Successfully uninstalled decorator-5.1.1
+  Attempting uninstall: moviepy
+    Found existing installation: moviepy 2.1.2
+    Uninstalling moviepy-2.1.2:
+      Successfully uninstalled moviepy-2.1.2
+Successfully installed audeer-2.2.1 audiofile-1.5.1 audmath-1.4.1 decorator-4.4.2 moviepy-1.0.3 pydub-0.25.1 soundfile-0.13.0

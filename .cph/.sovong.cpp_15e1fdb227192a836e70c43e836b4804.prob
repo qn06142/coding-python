@@ -1,0 +1,1 @@
+{"name":"Local: sovong","url":"/home/wheatley/coding-python/sovong.cpp","tests":[{"id":1735283065699,"input":"9 13","output":"2"},{"id":1735283079982,"input":"1 12","output":"10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sovong.cpp","group":"local","local":true}

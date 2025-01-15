@@ -1,0 +1,1 @@
+open("massachusetts.out", "w").write('\n'.join("Massachusetts" for i in range(0, int(open("massachusetts.inp", "r").read()))))

@@ -1,0 +1,1 @@
+{"name":"Local: tichlientiep","url":"/home/wheatley/coding-python/tichlientiep.py","tests":[{"id":1735347573324,"input":"12","output":"3"},{"id":1735347578829,"input":"19","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tichlientiep.py","group":"local","local":true}

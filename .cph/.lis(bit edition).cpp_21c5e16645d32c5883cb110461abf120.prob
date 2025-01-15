@@ -1,0 +1,1 @@
+{"name":"Local: lis(bit edition)","url":"/home/wheatley/coding-python/lis(bit edition).cpp","tests":[{"id":1735636771905,"input":"12\n1 2 3 8 9 4 5 6 2 6 9 10","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lis(bit edition).cpp","group":"local","local":true}

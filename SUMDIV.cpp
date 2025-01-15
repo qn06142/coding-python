@@ -37,6 +37,10 @@ long long solve(long long L, long long R) {
 }
 
 int main() {
+    #ifdef ONLINE_JUDGE
+    freopen("sumdiv.inp", "r", stdin);
+    freopen("sumdiv.out", "w", stdout);
+    #endif
     long long L, R;
     cin >> L >> R;
     cout << solve(L, R) << endl;

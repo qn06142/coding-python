@@ -93,6 +93,7 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debugArr(...)
 #endif
 #define int long long
+<<<<<<< Updated upstream
 pair<int, int> min_(pair<int, int> a, pair<int, int> b) {
     int x = a.first * a.second;
     int y = b.first * b.second;
@@ -104,10 +105,14 @@ bool comp(pair<int, int> a, pair<int, int> b) {
     int y = b.first * b.second;
     return x > y;
 }
+=======
+int dp[2005][2005];
+>>>>>>> Stashed changes
 signed main() {
     int n, m;
     cin >> n >> m;
     vector<int> a(n + 1);
+<<<<<<< Updated upstream
     
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
@@ -130,5 +135,28 @@ signed main() {
         stor.pop();
     }
     cout << ans;
+=======
+    vector<int> p(n + 1);
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    sort(a.begin() + 1, a.end());
+    for(int i = 1; i <= n; i++) {
+        p[i] = p[i - 1] + a[i];
+    }
+    memset(dp, 0x3f, sizeof dp);
+    dp[0][0] = 0;
+    for(int i = 1; i <+ n; i++) {
+        dp[i][1] = p[i] * i;
+    }
+    for(int i = 1; i <= n; i++) {
+        for(int k = 1; k <= m; k++) {
+            for(int j = 1; (j) * k <= i; j++) {
+                dp[i][k] = min(dp[i][k], dp[i - j][k - 1] + (p[i] - p[i - j]) * j);
+            }
+        }
+    }
+    cout << dp[n][m];
+>>>>>>> Stashed changes
     return 0;
 }

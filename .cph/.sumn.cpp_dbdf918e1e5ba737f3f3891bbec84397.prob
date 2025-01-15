@@ -1,0 +1,1 @@
+{"name":"Local: sumn","url":"/home/wheatley/coding-python/sumn.cpp","tests":[{"id":1735805966524,"input":"2\n1\n5","output":"1\n10"},{"id":1736736810951,"input":"1\n10","output":"27"},{"id":1736736887147,"input":"1\n1000000","output":"13970034"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sumn.cpp","group":"local","local":true}

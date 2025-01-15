@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include<bits/stdc++.h>
 using namespace std;
 namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const char *x)/**/{ cerr << x; }/*#########+++++*/void print(bool x)/**/{ cerr << (x ? "T" : "F"); }/**/void print(char x)/*##############################
@@ -170,10 +171,86 @@ int countDivisors(long long x, const vector<int>& primes) {
         count *= 2;
     }
     return count;
+=======
+#include "bits/stdc++.h"
+using namespace std;
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,sse,sse4.2")
+const int MAXN = 1e6 + 6;
+int smallestPrimeFactor[MAXN];
+int a, b;
+
+namespace Sub2 {
+    bool isValidInput() {
+        return b - a <= 10000;
+    }
+
+    void solve() {
+        int maxDivisors = 0, firstNumber = 1e9, count = 0;
+        for (int i = a; i <= b; ++i) {
+            int divisors = 0;
+            for (int j = 1; j * j <= i; ++j) {
+                if (i % j == 0) {
+                    ++divisors;
+                    if (j * j != i) ++divisors;
+                }
+            }
+            if (divisors > maxDivisors) {
+                maxDivisors = divisors;
+                count = 1;
+                firstNumber = i;
+            } else if (divisors == maxDivisors) {
+                ++count;
+            }
+        }
+        cout << maxDivisors << " " << firstNumber << " " << count;
+    }
+}
+
+namespace Sub3 {
+    void solve() {
+        vector<int> divisorCount(b - a + 2, 0);
+        int sqrtB = 2 * sqrtl(b);
+        int maxDivisors = 0, firstNumber = 1e9, count = 0;
+
+        for (int i = 1; i <= sqrtB; ++i) {
+            int start = (a + i - 1) / i * i;
+            for (int j = start; j <= b; j += i) {
+                ++divisorCount[j - a];
+                if (j / i > sqrtB) ++divisorCount[j - a];
+            }
+        }
+
+        for (int i = a; i <= b; ++i) {
+            if (divisorCount[i - a] > maxDivisors) {
+                maxDivisors = divisorCount[i - a];
+                firstNumber = i;
+                count = 1;
+            } else if (divisorCount[i - a] == maxDivisors) {
+                ++count;
+            }
+        }
+
+        cout << maxDivisors << " " << firstNumber << " " << count;
+    }
+}
+
+void preprocess() {
+    for (int i = 2; i * i < MAXN; ++i) {
+        if (smallestPrimeFactor[i]) continue;
+        for (int j = i * i; j < MAXN; j += i) {
+            smallestPrimeFactor[j] = i;
+        }
+    }
+    for (int i = 2; i < MAXN; ++i) {
+        if (!smallestPrimeFactor[i]) smallestPrimeFactor[i] = i;
+    }
+>>>>>>> Stashed changes
 }
 
 void solve() {
     cin >> a >> b;
+<<<<<<< Updated upstream
     
     vector<int> primes = sieve();
     segmentedSieve(a, b, primes);
@@ -197,11 +274,26 @@ void solve() {
     }
     debug(maxtime / (b - a +1));
     cout << q << " " << k << " " << t << endl;
+=======
+    if (Sub2::isValidInput()) {
+        Sub2::solve();
+    } else {
+        Sub3::solve();
+    }
+>>>>>>> Stashed changes
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
+<<<<<<< Updated upstream
     cin.tie(0);
     solve();
+=======
+    cin.tie(nullptr);
+
+    preprocess();
+    solve();
+
+>>>>>>> Stashed changes
     return 0;
 }

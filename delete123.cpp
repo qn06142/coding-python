@@ -92,6 +92,7 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
+<<<<<<< Updated upstream
 const int MOD = 1e9 + 7;
 
 int main() {
@@ -121,5 +122,52 @@ int main() {
     }
     debug(dp);
     cout << dp[n - 1][2] << "\n";
+=======
+#pragma GCC optimize("trapv")
+#define int long long
+const int MOD = 1e9 + 7;
+int n;
+int a[(int) 1e6 + 5];
+
+int dp[(int) 1e6 + 5][5];
+
+int recur(int i, int pre) {
+    if(i > n) {
+        return pre == 3;
+    }
+    if(dp[i][pre] != -1) return dp[i][pre];
+    int ans = 0;
+    ans += recur(i + 1, pre);
+    if(pre == 2) {
+        if(a[i] >= pre) {
+            ans += recur(i + 1, a[i]);
+        }
+    }
+    if(pre == 1) {
+        if(a[i] == 2) {
+            ans += recur(i + 1, a[i]);
+        }
+    }
+    if(pre == 3) {
+        //no
+    }
+    if(pre == 0) {
+        if(a[i] == 1)
+        ans += recur(i + 1, a[i]);
+    }
+    ans %= MOD;
+    return dp[i][pre] = ans;
+}
+
+signed main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    memset(dp, -1, sizeof dp);
+    cin >> n;
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    cout << recur(1, 0) % MOD;
+>>>>>>> Stashed changes
     return 0;
 }

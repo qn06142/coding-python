@@ -1,0 +1,1 @@
+{"name":"Local: snp_card","url":"/home/wheatley/coding-python/snp_card.cpp","tests":[{"id":1736565540261,"input":"5\n3 10\n6 4\n1 9\n5 8\n2 7\n","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/snp_card.cpp","group":"local","local":true}

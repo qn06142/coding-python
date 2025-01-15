@@ -1,0 +1,1 @@
+{"name":"Local: dominant_divide","url":"/home/wheatley/coding-python/dominant_divide.cpp","tests":[{"id":1735956903583,"input":"4  \n3 6 6 9  \n","output":"2"},{"id":1735956913145,"input":"6  \n1 2 1 2 1 2  \n","output":"4  \n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dominant_divide.cpp","group":"local","local":true}

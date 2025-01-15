@@ -1,0 +1,1 @@
+{"name":"Local: kdelete","url":"/home/wheatley/coding-python/kdelete.cpp","tests":[{"id":1736738183316,"input":"7 4","output":"711317\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/kdelete.cpp","group":"local","local":true}

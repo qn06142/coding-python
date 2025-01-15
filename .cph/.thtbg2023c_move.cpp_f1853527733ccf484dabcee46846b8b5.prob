@@ -1,0 +1,1 @@
+{"name":"Local: thtbg2023c_move","url":"/home/wheatley/coding-python/thtbg2023c_move.cpp","tests":[{"id":1736840063493,"input":"2 3 1\n...\n..#\n","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/thtbg2023c_move.cpp","group":"local","local":true}

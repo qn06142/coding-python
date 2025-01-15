@@ -1,0 +1,1 @@
+{"name":"Local: modkl","url":"/home/wheatley/coding-python/modkl.py","tests":[{"id":1735483224527,"input":"12 4 6\n","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/modkl.py","group":"local","local":true}

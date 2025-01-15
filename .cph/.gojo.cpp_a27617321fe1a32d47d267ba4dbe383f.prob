@@ -1,0 +1,1 @@
+{"name":"Local: gojo","url":"/home/wheatley/coding-python/gojo.cpp","tests":[{"id":1736087772159,"input":"3\n1 2 3\n","output":"4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/gojo.cpp","group":"local","local":true}
