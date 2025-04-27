@@ -1,0 +1,1 @@
+{"name":"Local: ngs2_bmilk","url":"/home/wheatley/coding-python/ngs2_bmilk.c","tests":[{"id":1745627084779,"input":"5 2 80000\n48000\n44000\n60000\n15000\n34000","output":"20000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/ngs2_bmilk.c","group":"local","local":true}

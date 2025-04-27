@@ -1,0 +1,1 @@
+{"name":"Local: differentdigit3","url":"/home/wheatley/coding-python/differentdigit3.c","tests":[{"id":1744900906680,"input":"105","output":"128"},{"id":1744900954059,"input":"1000000000","output":"6304201547"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/differentdigit3.c","group":"local","local":true}

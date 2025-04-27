@@ -1,0 +1,1 @@
+{"name":"Local: sadness","url":"/home/wheatley/coding-python/sadness.c","tests":[{"id":1742380388993,"input":"7\n9 10 6 7 6 10 7","output":"16"},{"id":1742380426878,"input":"6\n3 8 7 1 1 9","output":"18"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/sadness.c","group":"local","local":true}

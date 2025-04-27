@@ -2,136 +2,132 @@ import socket
 import cv2
 import numpy as np
 import math
-from vidgear.gears import CamGear
-import random
 import time
-host = '127.0.0.1'
-port = 8000
-while True:
-    try:
-        server_socket = socket.socket(socket.SO_REUSEADDR, socket.SOCK_STREAM)
-        server_socket.bind((host, port))
-        server_socket.listen(5)
-    except OSError:
-        print("no port, retrying")
-        time.sleep(1)
-    else:
-        print("got port, listening on", port)
-        break
+from vidgear.gears import CamGear
+
+# ─── Constants ────────────────────────────────────────────────────────────────
+HOST = '127.0.0.1'
+PORT = 8000
+TARGET_WIDTH, TARGET_HEIGHT = 160, 100
+COLOR_REDUCTION = 16
+DIFF_THRESHOLD = 20
+
+# ─── Utilities ────────────────────────────────────────────────────────────────
+def setup_server(host, port):
+    """Sets up the TCP server socket."""
+    while True:
+        try:
+            server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            server.bind((host, port))
+            server.listen(5)
+            print(f"Listening on {host}:{port}")
+            return server
+        except OSError:
+            print("Port unavailable, retrying...")
+            time.sleep(1)
+
 def clear_line(n=1):
+    """Clears the last n lines in the console."""
     LINE_UP = '\033[1A'
     LINE_CLEAR = '\x1b[2K'
-    for i in range(n):
-        print(LINE_UP, end=LINE_CLEAR)
-def colorReduce(image, div=64):
-    nl, nc = image.shape[:2]
-    
-    # Loop through each row
-    for j in range(nl):
-        # Loop through each column of the row
-        for i in range(nc):
-            # Process each pixel
-            image[j, i] = (image[j, i] // div) * div + div // 2
-    return image
+    print((LINE_UP + LINE_CLEAR) * n, end='')
 
-
-def resize_image_to_fit(img, target_width, target_height):
-    """Resize the image to fit the target aspect ratio."""
+def resize_image_to_fit(img, target_w, target_h):
+    """Resizes the image to fit within a target resolution."""
     h, w = img.shape[:2]
-    scale = min(target_height / h, target_width / w)
-    h, w = math.ceil(h * scale), math.ceil(w * scale)
-    return cv2.resize(img, (w, h))
-options = {"STREAM_RESOLUTION": "best"}
-path = "https://www.youtube.com/watch?v=PshZOi3VsJU"
-vid = CamGear(source=path, stream_mode="http" in path, backend=cv2.CAP_GSTREAMER, logging=True, **options).start()
-count = 0
-soc, addr = server_socket.accept()
-target_width, target_height = 160, 100
-frame = vid.read()
-ref = np.zeros(resize_image_to_fit(frame, target_width, target_height).shape)
-target_width, target_height = ref.shape[1], ref.shape[0]
-soc.sendall(f"RESO {target_width} {target_height / 2}".encode())
-def get_diff_pixels(ref_img, curr_img):
-    diff_mask = np.abs(ref_img.astype(np.int16) - curr_img.astype(np.int16)) >= 20
-    diff_indices = np.argwhere(np.any(diff_mask, axis=-1))  # Coordinates of differing pixels
-    diff_values = curr_img[diff_mask.any(axis=-1)]         # Pixel values at differing coordinates
+    scale = min(target_h / h, target_w / w)
+    new_size = (math.ceil(w * scale), math.ceil(h * scale))
+    return cv2.resize(img, new_size)
 
-    # Update reference image for these differing pixels
-    for (y, x), new_val in zip(diff_indices, diff_values):
-        ref_img[y, x] = new_val
+def colorcrush(r, g, b, reduction):
+    """Reduces color depth by a given factor."""
+    return tuple((v // reduction) * reduction for v in (r, g, b))
 
-    return diff_indices, diff_values, ref_img
-buff = ""
-colred = 16
-def colorcrush(r, g, b):
-    return tuple(math.floor(i / colred) * colred for i in (r, g, b))
-def rgbtohex(red, green, blue):
-    red = int(red)
-    green = int(green)
-    blue = int(blue)
-    red, green, blue = colorcrush(red, green, blue)
-    return (red) + (green * 256) + blue * 256 * 256
-def draw(x, y, col, count):
-    global buff
-    message = ('DRAW ' + ' '.join(str(i) for i in (x, y, col)))
-    buff += message
-def flushbuffer():
-    global buff
-    soc.sendall(buff.encode())
-    buff = ""
-    soc.sendall('FLSH'.encode())
-def waitflush():
-    stat = soc.recv(4)
-    if stat.decode() == "DONE":
-        return True
-    return False
-import time
-import cv2
-#
-#cur = time.time()
-#print("target: ", vid.framerate)
-#frame = vid.read()
-#
-#frame_resized = resize_image_to_fit(frame, target_width, target_height)
-#diff_indices, diff_values, ref = get_diff_pixels(ref, frame_resized)
-#
-#for (y, x), (col) in zip(diff_indices, list(rgbtohex(*i) for i in diff_values)):
-#    draw(x, y, col, count)
-#    count += 1
-#flushbuffer()
-#
-while True:
-    frame_start_time = time.time()
-    
-    frame = vid.read()
+def rgb_to_hex(r, g, b):
+    """Converts RGB to integer hex format."""
+    r, g, b = colorcrush(r, g, b, COLOR_REDUCTION)
+    return r + (g << 8) + (b << 16)
+
+def get_diff_pixels(ref, current, threshold=DIFF_THRESHOLD):
+    """Finds pixels that changed beyond a threshold."""
+    diff_mask = np.abs(ref.astype(np.int16) - current.astype(np.int16)) >= threshold
+    mask = np.any(diff_mask, axis=-1)
+    indices = np.argwhere(mask)
+    values = current[mask]
+    ref[mask] = values
+    return indices, values, ref
+
+# ─── Drawing Commands ─────────────────────────────────────────────────────────
+def draw(x, y, col, buff):
+    return buff + f"DRAW {x} {y} {col} "
+
+def flush_buffer(sock, buff):
+    sock.sendall(buff.encode())
+    sock.sendall(b"FLSH")
+    return ""
+
+def wait_flush_ack(sock):
+    return sock.recv(4).decode() == "DONE"
+
+# ─── Main Program ─────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    server_socket = setup_server(HOST, PORT)
+    conn, addr = server_socket.accept()
+
+    print(f"Connected by {addr}")
+
+    # Setup video stream
+    options = {"STREAM_RESOLUTION": "best"}
+    path = "https://www.youtube.com/watch?v=PshZOi3VsJU"
+    stream = CamGear(source=path, stream_mode="http" in path,
+                     backend=cv2.CAP_GSTREAMER, logging=True, **options).start()
+
+    # First frame and reference buffer
+    frame = stream.read()
     if frame is None:
-        break
+        print("Failed to read initial frame.")
+        exit(1)
 
-    frame_resized = resize_image_to_fit(frame, target_width, target_height)
-    diff_indices, diff_values, ref = get_diff_pixels(ref, frame_resized)
-    vals = list(zip(diff_indices, list(rgbtohex(*i) for i in diff_values)))
+    frame_resized = resize_image_to_fit(frame, TARGET_WIDTH, TARGET_HEIGHT)
+    TARGET_WIDTH, TARGET_HEIGHT = frame_resized.shape[1], frame_resized.shape[0]
+    ref = np.zeros_like(frame_resized)
 
-    for (y, x), (col) in vals:
-        draw(x, y, col, count)
-        count += 1
-    flushbuffer()
+    conn.sendall(f"RESO {TARGET_WIDTH} {TARGET_HEIGHT // 2}".encode())
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    buffer = ""
 
-    frame_end_time = time.time()
-    frame_processing_time = frame_end_time - frame_start_time
-    target_frame_time = 1.0 / vid.framerate
+    # Main loop
+    while True:
+        start_time = time.time()
+        frame = stream.read()
+        if frame is None:
+            break
 
-    # Wait for the remaining time if processing was faster than target frame time
-    time_to_wait = target_frame_time - frame_processing_time
-    if time_to_wait > 0:
-        time.sleep(time_to_wait)
+        frame_resized = resize_image_to_fit(frame, TARGET_WIDTH, TARGET_HEIGHT)
+        diff_indices, diff_values, ref = get_diff_pixels(ref, frame_resized)
 
-    actual_framerate = 1 / (time.time() - frame_start_time)
-    error_rate = actual_framerate - vid.framerate
+        for (y, x), rgb in zip(diff_indices, diff_values):
+            color_int = rgb_to_hex(*rgb)
+            buffer = draw(x, y, color_int, buffer)
 
-    clear_line(1)
-    print(f"Actual FPS: {actual_framerate:.2f}, Error Rate: {error_rate:.2f}")
-soc.sendall("END")
-soc.recv(3)
+        buffer = flush_buffer(conn, buffer)
+        wait_flush_ack(conn)
+
+        # Frame timing
+        elapsed = time.time() - start_time
+        target_frame = 1.0 / stream.framerate
+        time.sleep(max(0, target_frame - elapsed))
+
+        fps = 1.0 / (time.time() - start_time)
+        err = fps - stream.framerate
+
+        clear_line(1)
+        print(f"Actual FPS: {fps:.2f}, Error Rate: {err:.2f}")
+
+    # Cleanup
+    conn.sendall(b"END")
+    conn.recv(3)
+    stream.stop()
+    server_socket.close()
+    print("Server closed.")

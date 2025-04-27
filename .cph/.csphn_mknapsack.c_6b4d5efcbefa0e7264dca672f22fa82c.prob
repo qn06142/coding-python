@@ -1,0 +1,1 @@
+{"name":"Local: csphn_mknapsack","url":"/home/wheatley/coding-python/csphn_mknapsack.c","tests":[{"id":1743087623927,"input":"2 1\n5 10\n100 100\n11","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_mknapsack.c","group":"local","local":true}

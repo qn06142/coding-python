@@ -5,11 +5,11 @@
 
 using namespace std;
 
-int maximalRectangle(vector<vector<char>>& matrix) {
+int maximal_rectangle(vector<vector<char>>& matrix) {
     if (matrix.empty()) return 0;
     int m = matrix.size(), n = matrix[0].size();
     vector<int> height(n, 0);
-    int maxArea = 0;
+    int max_area = 0;
 
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -21,21 +21,21 @@ int maximalRectangle(vector<vector<char>>& matrix) {
         }
 
         stack<int> s;
-        int maxRect = 0;
+        int max_rect = 0;
         for (int j = 0; j <= n; ++j) {
             while (!s.empty() && (j == n || height[s.top()] >= height[j])) {
                 int h = height[s.top()];
                 s.pop();
                 int w = s.empty() ? j : j - s.top() - 1;
-                maxRect = max(maxRect, h * w);
+                max_rect = max(max_rect, h * w);
             }
             s.push(j);
         }
 
-        maxArea = max(maxArea, maxRect);
+        max_area = max(max_area, max_rect);
     }
 
-    return maxArea;
+    return max_area;
 }
 
 int main() {
@@ -47,6 +47,6 @@ int main() {
             cin >> matrix[i][j];
         }
     }
-    cout << maximalRectangle(matrix) << endl;
+    cout << maximal_rectangle(matrix) << endl;
     return 0;
 }

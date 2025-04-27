@@ -1,13 +1,6 @@
-<<<<<<< Updated upstream
-#include <iostream>
-#include <vector>
-#include <deque>
-#include <climits>
-using namespace std;
-#define int long long
 
-int maxsum(const vector<int>& a, int m) {
-=======
+#pragma GCC optimize("03,unroll-loops")
+#pragma GCC target("tune=native")
 #include<bits/stdc++.h>
 using namespace std;
 namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const char *x)/**/{ cerr << x; }/*#########+++++*/void print(bool x)/**/{ cerr << (x ? "T" : "F"); }/**/void print(char x)/*##############################
@@ -103,52 +96,7 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debugArr(...)
 #endif
 #define int long long
-const int maxn = 1e5 +5;
-int seg[maxn * 4];
-int lazy[maxn * 4];
-
-void propagate(int l, int r, int id) {
-    if(lazy[id] != 0) {
-        seg[id] += lazy[id];
-        if(l != r) {
-            lazy[id * 2] += lazy[id];
-            lazy[id * 2 + 1] += lazy[id];
-        }
-        lazy[id] = 0;
-    }
-}
-
-void update(int l, int r, int v, int tl, int tr, int id) {
-    propagate(tl, tr, id);
-    if(tl > r or l > tr) return;
-    if(l <= tl and tr <= r) {
-        lazy[id] += v;
-        propagate(tl, tr, id);
-        return;
-    }
-    int mid = (tl + tr) / 2;
-    update(l, r, v, l, mid, id * 2);
-    update(l, r, v, mid + 1, tr, id * 2 + 1);
-    seg[id] = min(seg[id * 2], seg[id * 2 + 1]);
-}
-
-int query(int l, int r, int tl, int tr, int id) {
-    propagate(tl, tr, id);
-    if(tl > r or l > tr) return 1e18;
-    if(l <= tl and tr <= r) {
-        return seg[id];
-    }
-    int mid = (tl + tr) / 2;
-    return min(
-        query(l, r, tl, mid, id * 2),
-        query(l, r, mid + 1, tr, id * 2 + 1)
-    );
-}
-
 int maxsum(const vector<int>& a, int m) {
-    memset(seg, 0, sizeof seg);
-    memset(lazy, 0, sizeof lazy);
->>>>>>> Stashed changes
     int n = a.size();
     vector<int> dp(n + 1, 1e18);
     vector<int> prefix(n + 1, 0);
@@ -159,7 +107,6 @@ int maxsum(const vector<int>& a, int m) {
 
     dp[0] = 0;
 
-<<<<<<< Updated upstream
     for (int i = 1; i <= n; ++i) {
         deque<pair<int, int>> dq; 
         for (int j = i; j >= 1; --j) {
@@ -174,30 +121,6 @@ int maxsum(const vector<int>& a, int m) {
         }
     }
 
-=======
-    deque<int> dq;
-    for (int i = 1; i <= n; ++i) {
-        while(!dq.empty() and a[dq.back()] < a[i]) {
-            int tmp = dq.back();
-            dq.pop_back();
-
-            int tmp1 = (dq.empty() ? 1 : dq.back() + 1);
-            update(tmp1, tmp, a[i] - a[tmp], 1, n, 1);
-        }
-        dq.push_back(i);
-        update(i, i, dp[i - 1] + a[i], 1, n, 1);
-        int pos = lower_bound(prefix.begin(), prefix.end(), prefix[i] - m) - prefix.begin();
-        if(pos < i) {
-            dp[i] = query(pos + 1, i, 1, n, 1);
-        }
-        for(int i = 1; i <= n; i++) {
-            cerr << query(i, i, 1, n, 1) << ' ';
-        }
-        cerr << '\n';
-        debug(i, pos);
-    }
-    debug(dp);
->>>>>>> Stashed changes
     return dp[n] == 1e18 ? -1 : dp[n];
 }
 

@@ -14,25 +14,25 @@ int main() {
         cin >> a[i];
     }
 
-    vector<int> L_array(N, 1);
-    vector<int> P_array(N, 1);
+    vector<int> dp1(N, 1);
+    vector<int> dp2(N, 1);
     
-    int maxLength = 1;
+    int ans = 1;
 
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < i; ++j) {
             if (i - j >= L) {
                 if (a[i] > a[j] && abs(a[i] - a[j]) >= U) {
-                    L_array[i] = max(L_array[i], P_array[j] + 1);
+                    dp1[i] = max(dp1[i], dp2[j] + 1);
                 } else if (a[i] < a[j] && abs(a[i] - a[j]) >= U) {
-                    P_array[i] = max(P_array[i], L_array[j] + 1);
+                    dp2[i] = max(dp2[i], dp1[j] + 1);
                 }
             }
         }
-        maxLength = max(maxLength, max(L_array[i], P_array[i]));
+        ans = max(ans, max(dp1[i], dp2[i]));
     }
 
-    cout << maxLength << endl;
+    cout << ans << endl;
 
     return 0;
 }

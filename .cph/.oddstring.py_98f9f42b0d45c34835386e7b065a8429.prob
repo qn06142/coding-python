@@ -1,0 +1,1 @@
+{"name":"Local: oddstring","url":"/home/wheatley/coding-python/oddstring.py","tests":[{"id":1745406072335,"input":"7\nabc\nxyz\nu\nabc\nxyz\nu\nabc","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/oddstring.py","group":"local","local":true}

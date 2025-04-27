@@ -10,20 +10,15 @@ def process_image(img, target_width, target_height):
     """Read the image, resize it to the target aspect ratio, apply edge detection, and find contours."""
 
     img_resized = resize_image_to_fit(img, target_width, target_height)
-    img_gray = img_resized
-    #img_gray = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
-    #img_gray = cv2.GaussianBlur(src=img_gray, ksize=(3, 5), sigmaX=0.5) 
-    img_gray = Image.fromarray(img_gray)
-    im_np = edge.canny.edge_image_with_canny(img_gray)
+    
+    im_np = edge.edge_image_with_lineart_anime(Image.fromarray(img_resized))
     im_np = np.asarray(im_np)
 
     if len(im_np.shape) == 3:  
         im_np = cv2.cvtColor(im_np, cv2.COLOR_RGB2GRAY)
 
-    thresh = cv2.adaptiveThreshold(
-        im_np, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 21, 15
-    )
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_TC89_L1)   
+    T, thresh = cv2.threshold(im_np, 1, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_TC89_KCOS)   
     return img_resized.shape, contours
 
 import math
@@ -81,10 +76,10 @@ def draw_line(canvas, line, frame, meancol):
     for i in range(1, len(line)):
         x = tuple(pixfy(coord) for coord in line[i - 1])
         y = tuple(pixfy1(coord) for coord in line[i])
-        #col = tuple(random.randint(0, 255) for _ in range(3))[::-1]
+        col = tuple(random.randint(0, 255) for _ in range(3))[::-1]
         
-        col = average(frame[line[i][1]][line[i][0]].tolist(), frame[line[i - 1][1]][line[i - 1][0]].tolist())
-        col = roundcol(col, meancol)
+        #col = average(frame[line[i][1]][line[i][0]].tolist(), frame[line[i - 1][1]][line[i - 1][0]].tolist())
+        #col = roundcol(col, meancol)
         #cv2.rectangle(canvas, x, y, col, cv2.FILLED)
         cv2.line(canvas, x, y, col, thickness=mul * mul)
         sz += 1
@@ -131,8 +126,8 @@ import faulthandler
 import signal
 faulthandler.register(signal.SIGUSR1.value)
 import collections
-canvas_width, canvas_height = 1024, 576
-num_workers = 16
+canvas_width, canvas_height = 500, 500
+num_workers = 3
 
 rng = np.random.default_rng()
 from scipy.ndimage import gaussian_filter
@@ -149,15 +144,20 @@ for _ in range(num_workers):
     workers.append(worker)
 from vidgear.gears import CamGear, WriteGear
 options = {"STREAM_RESOLUTION": "480p", "STREAM_PARAMS" : {"allow_file_urls" : True}}
-vid = CamGear(source='https://www.youtube.com/watch?v=QPZN8lxD7bc', stream_mode=True, backend=cv2.CAP_GSTREAMER, logging=True, **options).start()
+#vid = CamGear(source="/mnt/NewVolumne/lofi/sumeru lo-fi beats to do dailies with (genshin impact) [EQyTz7dS6yw].webm",
+#    stream_mode=False, backend=cv2.CAP_INTEL_MFX , logging=True).start()
+vid = cv2.VideoCapture("/mnt/NewVolumne/lofi/sumeru lo-fi beats to do dailies with (genshin impact) [EQyTz7dS6yw].webm")
 #if not vid.isOpened():
 #    print("uhh video weird")
 #    raise ValueError
-fps = vid.framerate
+try:
+    fps = vid.framerate
+except:
+    fps = vid.get(cv2.CAP_PROP_FPS)
 print("target:", fps)
 print("\n\n\n\n")
 output_params = {"-input_framerate" : fps}
-writer = WriteGear(output="Output.mp4", **output_params)
+#writer = WriteGear(output="Output.mp4", **output_params)
 begin = time.time()
 frametime = 1 / fps
 rate = frametime
@@ -167,8 +167,8 @@ timestamp = time.time()
 process_frame = 0
 errorrate = 0
 for _ in range(0, num_workers):
-    frame = vid.read()
-    if frame is None:
+    _, frame = vid.read()
+    if _ is False:
         break
 
     frame_queue.put((process_frame, frame))
@@ -189,6 +189,7 @@ while True:
             else:
                 rate = 1 / (fps + -(frame_index - (fps * (time.time() - begin))))
                 corrtype = 'fine'
+                
             dim, canvas, sz = processed_frames.pop(frame_index)
             clear_line(6)
             print("error:", errorrate)
@@ -199,11 +200,11 @@ while True:
             print(len(processed_frames), process_frame, frame_queue.qsize())
             #cv2.imshow("vid", resize_image_to_fit(canvas, 512, 268))
             cv2.imshow("vid", canvas)
-            writer.write(canvas)
+            #writer.write(canvas)
             frame_index += 1
             timestamp = time.time()
-            frame = vid.read()
-            if frame is None:
+            _, frame = vid.read()
+            if _ is False:
                 break
 
             frame_queue.put((process_frame, frame))
@@ -211,9 +212,7 @@ while True:
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-vid.stop()
-writer.close()
+#writer.close()
 
 cv2.destroyAllWindows()
 cnt = 0

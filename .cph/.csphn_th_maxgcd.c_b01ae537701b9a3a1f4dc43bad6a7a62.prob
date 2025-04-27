@@ -1,0 +1,1 @@
+{"name":"Local: csphn_th_maxgcd","url":"/home/wheatley/coding-python/csphn_th_maxgcd.c","tests":[{"id":1742823218972,"input":"3\n7 6 8","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_th_maxgcd.c","group":"local","local":true}

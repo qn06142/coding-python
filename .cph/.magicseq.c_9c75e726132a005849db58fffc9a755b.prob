@@ -1,0 +1,1 @@
+{"name":"Local: magicseq","url":"/home/wheatley/coding-python/magicseq.c","tests":[{"id":1741778576626,"input":"<<><","output":"1 2 4 3 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/magicseq.c","group":"local","local":true}

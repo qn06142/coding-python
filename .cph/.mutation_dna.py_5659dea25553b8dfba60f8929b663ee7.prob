@@ -1,0 +1,1 @@
+{"name":"Local: mutation_dna","url":"/home/wheatley/coding-python/mutation_dna.py","tests":[{"id":1742987219190,"input":"6 3\nATACAT\nACTATA\n1 3\n4 5\n3 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/mutation_dna.py","group":"local","local":true}

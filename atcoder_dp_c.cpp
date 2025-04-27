@@ -13,11 +13,4 @@ int main() {
         dp[i][2] = max(dp[i - 1][0] + c, dp[i - 1][1] + c);
     }
     cout << *max_element(dp[n], dp[n] + 3);
-    //print dp array
-    for(int i = 0; i <= n; i++) {
-        cout << "\n";
-        for(int j = 0; j < 3; j++) {
-            cout << dp[i][j] << " ";
-        }
-    }
 }

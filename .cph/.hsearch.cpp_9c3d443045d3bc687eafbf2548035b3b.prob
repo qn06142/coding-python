@@ -1,0 +1,1 @@
+{"name":"Local: hsearch","url":"/home/wheatley/coding-python/hsearch.cpp","tests":[{"id":1737650467342,"input":"aab \nabacaaab\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hsearch.cpp","group":"local","local":true}

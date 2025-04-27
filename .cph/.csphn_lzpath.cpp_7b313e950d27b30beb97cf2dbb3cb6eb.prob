@@ -1,0 +1,1 @@
+{"name":"Local: csphn_lzpath","url":"/home/wheatley/coding-python/csphn_lzpath.cpp","tests":[{"id":1739951873098,"input":"4\n1 10 2 2\n10 2 3 4\n1 3 6 2\n0 1 2 3","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_lzpath.cpp","group":"local","local":true}

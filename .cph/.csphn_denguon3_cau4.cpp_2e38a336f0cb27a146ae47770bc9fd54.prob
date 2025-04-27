@@ -1,0 +1,1 @@
+{"name":"Local: csphn_denguon3_cau4","url":"/home/wheatley/coding-python/csphn_denguon3_cau4.cpp","tests":[{"id":1739952841624,"input":"5 2\n2\n3\n5\n1\n4","output":"15"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_denguon3_cau4.cpp","group":"local","local":true}

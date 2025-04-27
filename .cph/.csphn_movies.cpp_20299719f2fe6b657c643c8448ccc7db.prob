@@ -1,0 +1,1 @@
+{"name":"Local: csphn_movies","url":"/home/wheatley/coding-python/csphn_movies.cpp","tests":[{"id":1739360605021,"input":"3\n3 5\n4 9\n5 8","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_movies.cpp","group":"local","local":true}

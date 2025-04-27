@@ -1,0 +1,1 @@
+{"name":"Local: lmh_fibistr","url":"/home/wheatley/coding-python/lmh_fibistr.c","tests":[{"id":1742633881671,"input":"3 A\n3 AB\n8 BABBAB","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_fibistr.c","group":"local","local":true}

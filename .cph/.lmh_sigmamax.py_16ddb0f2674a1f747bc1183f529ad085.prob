@@ -1,0 +1,1 @@
+{"name":"Local: lmh_sigmamax","url":"/home/wheatley/coding-python/lmh_sigmamax.py","tests":[{"id":1744449783170,"input":"5\n12\n122\n7557\n123456789\n987654321","output":"12 6\n120 16\n5040 60\n122522400 864\n735134400 1344\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_sigmamax.py","group":"local","local":true}

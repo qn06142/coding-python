@@ -1,0 +1,1 @@
+{"name":"Local: ngs_game2","url":"/home/wheatley/coding-python/ngs_game2.c","tests":[{"id":1745035120520,"input":"4\n9 3 5 4","output":"18"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/ngs_game2.c","group":"local","local":true}

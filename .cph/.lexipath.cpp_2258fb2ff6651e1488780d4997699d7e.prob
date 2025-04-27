@@ -1,0 +1,1 @@
+{"name":"Local: lexipath","url":"/home/wheatley/coding-python/lexipath.cpp","tests":[{"id":1741448427279,"input":"8 12 1 8\n1 2\n1 3\n2 3\n2 4\n3 1\n3 5\n3 7\n4 6\n6 2\n6 8\n7 8\n7 6 ","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lexipath.cpp","group":"local","local":true}

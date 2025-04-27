@@ -1,0 +1,1 @@
+{"name":"Local: hash_borderstring","url":"/home/wheatley/coding-python/hash_borderstring.cpp","tests":[{"id":1740233979640,"input":"abcababcab","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hash_borderstring.cpp","group":"local","local":true}

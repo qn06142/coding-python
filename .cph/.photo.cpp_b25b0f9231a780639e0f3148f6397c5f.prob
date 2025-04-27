@@ -1,0 +1,1 @@
+{"name":"Local: photo","url":"/home/wheatley/coding-python/photo.cpp","tests":[{"id":1737562005918,"input":"3 10\n2 3\n1 4\n2 1\n1 0","output":"2\n3 2 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/photo.cpp","group":"local","local":true}

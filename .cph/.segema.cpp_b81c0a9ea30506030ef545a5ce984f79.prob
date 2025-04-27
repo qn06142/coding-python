@@ -1,0 +1,1 @@
+{"name":"Local: segema","url":"/home/wheatley/coding-python/segema.cpp","tests":[{"id":1745407133762,"input":"3 1\n3 2 2","output":"1"},{"id":1745407141867,"input":"4 0\n-2 2 4 5","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/segema.cpp","group":"local","local":true}

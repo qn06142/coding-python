@@ -1,0 +1,1 @@
+{"name":"Local: lmh_editor","url":"/home/wheatley/coding-python/lmh_editor.c","tests":[{"id":1742633257506,"input":"3\neeeeeeeee\nabaabcabaabaabc\nxooxoxxooxox","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_editor.c","group":"local","local":true}

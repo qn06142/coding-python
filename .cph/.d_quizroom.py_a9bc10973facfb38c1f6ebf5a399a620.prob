@@ -1,0 +1,1 @@
+{"name":"Local: d_quizroom","url":"/home/wheatley/coding-python/d_quizroom.py","tests":[{"id":1742024802138,"input":"3 3\n8 9 4\n5 5 8\n2 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/d_quizroom.py","group":"local","local":true}

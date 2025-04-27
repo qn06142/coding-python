@@ -1,80 +1,81 @@
-#include <iostream>
-#include <vector>
-#include <set>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-int main() {
-    int T;
-    cin >> T;
-    while (T--) {
-        long long n, d, k, a, b;
-        cin >> n >> d >> k >> a >> b;
-
-        vector<int> sequence;
-        sequence.push_back(a);
-        sequence.push_back(b);
-
-        set<pair<int, int>> seen;
-        seen.insert({a, b});
-
-        int f1 = a, f2 = b;
-
-        while (true) {
-            int f_next = (f1 + f2) % d;
-            if (seen.count({f2, f_next})) {
-                break;
-            }
-            sequence.push_back(f_next);
-            seen.insert({f2, f_next});
-            f1 = f2;
-            f2 = f_next;
-        }
-
-        int period_start = 2; 
-        for (int i = 2; i < sequence.size(); ++i) {
-            if (sequence[i] == sequence[period_start] && sequence[i + 1] == sequence[period_start + 1]) {
-                period_start = i;
-                break;
-            }
-        }
-        int period_length = sequence.size() - period_start;
-
-        vector<int> cycle(sequence.begin() + period_start, sequence.end());
-
-        vector<int> count(d, 0);
-        for (int num : cycle) {
-            count[num]++;
-        }
-
-        long long full_cycles = (n - 2) / period_length;
-        int remainder = (n - 2) % period_length;
-
-        vector<long long> frequency(d, 0);
-        for (int i = 0; i < d; ++i) {
-            frequency[i] = count[i] * full_cycles;
-        }
-
-        for (int i = 0; i <= remainder; ++i) {
-            frequency[cycle[i]]++;
-        }
-
-        frequency[a]++;
-        frequency[b]++;
-
-        long long accumulated = 0;
-        int result = -1;
-        for (int i = 0; i < d; ++i) {
-            accumulated += frequency[i];
-            if (accumulated >= k) {
-                result = i;
-                break;
-            }
-        }
-
-        cout << result << endl;
+#define int long long
+const int MAXN = 7e5;
+int n, d, k, A, B;
+void solve() {
+    cin >> n >> d >> k >> A >> B;
+    if (n == 1) {
+        cout << A << '\n';
+        return;
     }
-
+    if (n <= MAXN) {
+        vector<int> v;
+        v.push_back(A);
+        v.push_back(B);
+        for (int i = 1; i <= n - 2; ++i) {
+            tie(A, B) = make_tuple(B, (A + B) % d);
+            v.push_back(B);
+        }
+        sort(v.begin(), v.end());
+        cout << v[k - 1] << '\n';
+        return;
+    }
+    map<pair<int, int>, int> mp;
+    map<int, int> cnt;
+    ++cnt[A];
+    ++cnt[B];
+    mp[{A, B}] = 1;
+    n -= 2;
+    pair<int, int> start = {-1, -1};
+    while (1) {
+        tie(A, B) = make_tuple(B, (A + B) % d);
+        if (mp.count({A, B})) {
+            start = {A, B};
+            break;
+        }
+        mp[{A, B}] = 1;
+        ++cnt[B];
+        --n;
+    }
+    int cycle_size = 0;
+    while (1) {
+        ++cnt[B];
+        tie(A, B) = make_tuple(B, (A + B) % d);
+        ++cycle_size;
+        --n;
+        if (pair<int, int>(A, B) == start) break;
+    }
+    int whole = n / cycle_size;
+    int remain = n % cycle_size;
+    cycle_size = 0;
+    while (1) {
+        ++cycle_size;
+        cnt[B] += whole + (cycle_size <= remain);
+        tie(A, B) = make_tuple(B, (A + B) % d);
+        if (pair<int, int>(A, B) == start) break;
+    }
+    for (auto &i : cnt) {
+        k -= i.second;
+        if (k <= 0) {
+            cout << i.first << '\n';
+            return;
+        }
+    }
+}
+signed main() {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    #ifdef LOCAL
+        // freopen("TEST.inp", "r", stdin);
+        // freopen("TEST.out", "w", stdout);
+    #else
+        // freopen("TEST.inp", "r", stdin);
+        // freopen("TEST.out", "w", stdout);
+    #endif
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }       
     return 0;
 }

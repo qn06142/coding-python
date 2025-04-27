@@ -7,24 +7,24 @@ using namespace std;
 
 int lis(const vector<int>& a, const vector<int>& b) {
     int n = a.size();
-    vector<int> bIndex(n);
-    map<int, int> bMap;
+    vector<int> bind(n);
+    map<int, int> bmap;
 
     for (int i = 0; i < n; ++i) {
-        bMap[b[i]] = i;
+        bmap[b[i]] = i;
     }
 
     for (int i = 0; i < n; ++i) {
-        bIndex[i] = bMap[a[i]];
+        bind[i] = bmap[a[i]];
     }
 
     vector<int> lis;
     for (int i = 0; i < n; ++i) {
-        auto it = lower_bound(lis.begin(), lis.end(), bIndex[i]);
+        auto it = lower_bound(lis.begin(), lis.end(), bind[i]);
         if (it == lis.end()) {
-            lis.push_back(bIndex[i]);
+            lis.push_back(bind[i]);
         } else {
-            *it = bIndex[i];
+            *it = bind[i];
         }
     }
 

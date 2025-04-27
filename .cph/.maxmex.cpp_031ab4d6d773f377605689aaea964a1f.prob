@@ -1,0 +1,1 @@
+{"name":"Local: maxmex","url":"/home/wheatley/coding-python/maxmex.cpp","tests":[{"id":1740585912066,"input":"7 3\n0\n2\n0\n1\n2\n10\n0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/maxmex.cpp","group":"local","local":true}

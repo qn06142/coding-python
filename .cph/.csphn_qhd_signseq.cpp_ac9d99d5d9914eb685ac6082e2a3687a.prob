@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_signseq","url":"/home/wheatley/coding-python/csphn_qhd_signseq.cpp","tests":[{"id":1743496586683,"input":"4 2 4\n3\n8\n2\n7","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_qhd_signseq.cpp","group":"local","local":true}

@@ -92,51 +92,76 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-
 const int MOD = 1e9 + 7;
 const int MAXN = 505;
 char grid[MAXN][MAXN];
-int dp[MAXN][MAXN][MAXN];
-int n;
-bool isvalid(int x, int y){
-    return 1 <= x and x <= n and 1 <= y and y <= n;
-}
-const int dx[] = {1, 0, -1, 0};
-const int dy[] = {0, 1, 0, -1};
-int recur(int x1, int x2, int k) {
-    int y1 = 1 + k - (x1 - 1);
-    int y2 = n - (k - (n - x2));
-    //cerr << "rec" << ' ' << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2 << '\n';
-    if(!isvalid(x1, y1) or !isvalid(x2, y2)) {
-        //cerr << "out\n";
-        return 0;
-    }
-    if(grid[x1][y1] != grid[x2][y2]) return 0;
-    
-    if(x1 == x2 and y1 == y2) {
-        return 1;
-    }
-    if((x1 == x2 - 1) and (y1 == y2)) return 1;
-    if((x1 == x2) and (y1 == y2 - 1)) return 1;
-    if(x1 > x2 or y1 > y2) return 0;
-    if(dp[x1][x2][k] != -1) return dp[x1][x2][k];
-    long long ans = 0;
-    ans += recur(x1, x2, k + 1);
-    ans += recur(x1 + 1, x2, k + 1);
-    ans += recur(x1, x2 - 1, k + 1);
-    ans += recur(x1 + 1, x2 - 1, k + 1);
-    ans %= ((int) 1e9 + 7);
-    return dp[x1][x2][k] = ans;
-}
-int main() {
-    cin >> n;
 
-    for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= n; ++j) {
+int main(){
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++){
+        for (int j = 1; j <= n; j++){
             cin >> grid[i][j];
         }
     }
-    memset(dp, -1, sizeof(dp));
-    cout << recur(1, n, 0) % ((int) 1e9 + 7);
+
+    vector<vector<int>> cur(n+2, vector<int>(n+2, 0));
+    vector<vector<int>> nxt(n+2, vector<int>(n+2, 0));
+
+    cur[1][n] = (grid[1][1] == grid[n][n]) ? 1 : 0;
+
+    for (int k = 0; k < n - 1; k++){
+
+        for (int i = 1; i <= n; i++) {
+            fill(nxt[i].begin(), nxt[i].end(), 0);
+        }
+
+        for (int x1 = 1; x1 <= n; x1++){
+            for (int x2 = 1; x2 <= n; x2++){
+                int ways = cur[x1][x2];
+                if (!ways) continue;
+
+                int y1 = k - (x1 - 1) + 1;       
+                int y2 = (2 * n - k) - x2;         
+
+                int dx1[2] = {0, 1}, dy1[2] = {1, 0};
+                int dx2[2] = {0, -1}, dy2[2] = {-1, 0};
+
+                for (int a = 0; a < 2; a++){
+                    int nx1 = x1 + dx1[a];
+                    int ny1 = y1 + dy1[a];
+                    for (int b = 0; b < 2; b++){
+                        int nx2 = x2 + dx2[b];
+                        int ny2 = y2 + dy2[b];
+
+                        if (nx1 < 1 || nx1 > n || ny1 < 1 || ny1 > n) continue;
+                        if (nx2 < 1 || nx2 > n || ny2 < 1 || ny2 > n) continue;
+
+                        if (grid[nx1][ny1] != grid[nx2][ny2]) continue;
+                        nxt[nx1][nx2] = (nxt[nx1][nx2] + ways) % MOD;
+                    }
+                }
+            }
+        }
+        cur.swap(nxt);
+    }
+
+    long long ans = 0;
+    for (int x1 = 1; x1 <= n; x1++){
+        for (int x2 = 1; x2 <= n; x2++){
+            int ways = cur[x1][x2];
+            if (!ways) continue;
+            int k = n - 1;
+            int y1 = k - (x1 - 1) + 1;       
+            int y2 = (2 * n - k) - x2;         
+            if ((x1 == x2 && y1 == y2) ||      
+                (x1 == x2 - 1 && y1 == y2) ||   
+                (x1 == x2 && y1 == y2 - 1)) {   
+                ans = (ans + ways) % MOD;
+            }
+        }
+    }
+
+    cout << ans % MOD;
     return 0;
 }
