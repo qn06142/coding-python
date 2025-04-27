@@ -136,7 +136,11 @@
     "vec2ub": "cpp",
     "vec2ui": "cpp",
     "vec2us": "cpp",
-    "image": "cpp"
+    "image": "cpp",
+    "queue": "cpp",
+    "stdlib.h": "c",
+    "__hash_table": "cpp",
+    "__tree": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",

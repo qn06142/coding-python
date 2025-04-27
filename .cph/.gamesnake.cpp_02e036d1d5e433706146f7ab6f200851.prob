@@ -1,0 +1,1 @@
+{"name":"Local: gamesnake","url":"/home/wheatley/coding-python/gamesnake.cpp","tests":[{"id":1742653796096,"input":"4 5\nP....\n.....\n+++..\n....C\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/gamesnake.cpp","group":"local","local":true}

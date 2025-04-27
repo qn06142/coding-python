@@ -1,0 +1,1 @@
+{"name":"Local: keepgcd","url":"/home/wheatley/coding-python/keepgcd.c","tests":[{"id":1741777832790,"input":"4\n5 11\n3 7\n511 998244353\n534 1000000007","output":"10\n6\n998244352\n1000000006"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/keepgcd.c","group":"local","local":true}

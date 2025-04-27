@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_number","url":"/home/wheatley/coding-python/csphn_qhd_number.cpp","tests":[{"id":1744295472765,"input":"123456781234\n567812345678","output":"56781234"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_qhd_number.cpp","group":"local","local":true}

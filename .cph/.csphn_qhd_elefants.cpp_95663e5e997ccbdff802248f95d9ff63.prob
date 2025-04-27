@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_elefants","url":"/home/wheatley/coding-python/csphn_qhd_elefants.cpp","tests":[{"id":1743691008972,"input":"9\n68 13\n60 21\n5 20\n10 40\n11 30\n60 20\n80 14\n60 12\n20 19","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_qhd_elefants.cpp","group":"local","local":true}

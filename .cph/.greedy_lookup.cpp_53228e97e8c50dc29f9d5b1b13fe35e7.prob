@@ -1,0 +1,1 @@
+{"name":"Local: greedy_lookup","url":"/home/wheatley/coding-python/greedy_lookup.cpp","tests":[{"id":1745505513578,"input":"5 5\nasada\n3 4 5 6 7\n9\n10\n11\n12\n13","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/greedy_lookup.cpp","group":"local","local":true}

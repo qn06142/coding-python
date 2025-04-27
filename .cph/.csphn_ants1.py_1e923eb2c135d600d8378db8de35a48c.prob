@@ -1,0 +1,1 @@
+{"name":"Local: csphn_ants1","url":"/home/wheatley/coding-python/csphn_ants1.py","tests":[{"id":1739000042602,"input":"4 2\n0 20 50 60\n70 150 200 200","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_ants1.py","group":"local","local":true}

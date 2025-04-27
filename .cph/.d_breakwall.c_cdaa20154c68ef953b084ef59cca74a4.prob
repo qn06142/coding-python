@@ -1,0 +1,1 @@
+{"name":"Local: d_breakwall","url":"/home/wheatley/coding-python/d_breakwall.c","tests":[{"id":1742907665522,"input":"3 4\n0 1 1 0\n1 0 1 0\n1 1 0 0","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/d_breakwall.c","group":"local","local":true}

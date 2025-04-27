@@ -1,0 +1,1 @@
+{"name":"Local: pf","url":"/home/wheatley/coding-python/pf.cpp","tests":[{"id":1738753930982,"input":"abacaba","output":"3\n1 4\n3 2\n7 1\n"},{"id":1738754647051,"input":"aaa","output":"3\n1 3\n2 2\n3 1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/pf.cpp","group":"local","local":true}

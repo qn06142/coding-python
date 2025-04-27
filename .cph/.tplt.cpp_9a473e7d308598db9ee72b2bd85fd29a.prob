@@ -1,0 +1,1 @@
+{"name":"Local: tplt","url":"/home/wheatley/coding-python/tplt.cpp","tests":[{"id":1742047543179,"input":"4 3\n1 2\n2 3\n3 4","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tplt.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: wpumps","url":"/home/wheatley/coding-python/wpumps.cpp","tests":[{"id":1739366842130,"input":"5\n4 2 8 1 1\n2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/wpumps.cpp","group":"local","local":true}

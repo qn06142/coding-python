@@ -1,0 +1,1 @@
+{"name":"Local: pq_lineup","url":"/home/wheatley/coding-python/pq_lineup.cpp","tests":[{"id":1745504823430,"input":"3 4\n1 2 4","output":"11"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/pq_lineup.cpp","group":"local","local":true}

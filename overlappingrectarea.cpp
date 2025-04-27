@@ -6,9 +6,13 @@ int main() {
     long long n;
     cin >> n;
     for(long long i = 1; i <= n; i++) {
-        cin >> a[i].first >> a[i].second;
+        cin >> a[i].first;
     }
-    sort(a + 1, a + n + 1, greater());
+    for(long long i = 1; i <= n; i++) {
+        cin >> a[i].second;
+    }
+    
+    sort(a + 1, a + n + 1, greater<pair<long long, long long>>());
     long long ans = 0;
     long long max_ = 0;
     for(long long i = 1; i <= n; i++) {

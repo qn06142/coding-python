@@ -14,7 +14,7 @@ int main() {
 
     for(int i = 1; i < n; ++i) {
 
-        if(h[i] < h[i-1]) {
+        if(h[i] < h[i-1] and h[i] > h[i + 1]) {
             ++count;
         }
     }

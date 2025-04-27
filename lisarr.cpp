@@ -23,7 +23,7 @@ int main() {
     int m = lis.size();
     cout << m << "\n";
     vector<int> seq(m);
-    for (int i = idx[m - 1]; i != -1; i = prev[i]) seq[--m] = a[i];
+    for (int i = idx[m - 1]; i != -1; i = prev[i]) seq[--m] = i + 1;
     for (int x : seq) cout << x << " ";
     cout << "\n";
 

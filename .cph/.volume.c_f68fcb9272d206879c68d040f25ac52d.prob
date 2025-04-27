@@ -1,0 +1,1 @@
+{"name":"Local: volume","url":"/home/wheatley/coding-python/volume.c","tests":[{"id":1741783538964,"input":"5\n0 11 11 1 1","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/volume.c","group":"local","local":true}

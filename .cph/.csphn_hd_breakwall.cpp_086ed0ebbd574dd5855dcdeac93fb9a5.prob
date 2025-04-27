@@ -1,0 +1,1 @@
+{"name":"Local: csphn_hd_breakwall","url":"/home/wheatley/coding-python/csphn_hd_breakwall.cpp","tests":[{"id":1737711318093,"input":"15 15 5 2\n2\n5\n10\n6\n4\n11\n3","output":"44"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_hd_breakwall.cpp","group":"local","local":true}

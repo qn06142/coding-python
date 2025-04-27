@@ -15,9 +15,9 @@ ll binpow(ll base, int exp) {
 }
 
 ll find_smallest_a(ll x) {
-    ll smallest_a = x; // Initialize with the maximum possible a (which is x when b = 1)
-    
-    for (int b = 2; b < 64; ++b) { // Iterate over possible b values
+    ll smallest_a = x; 
+
+    for (int b = 2; b < 64; ++b) { 
         ll lo = 1, hi = pow(x, 1.0 / b) + 1;
         while (lo <= hi) {
             ll mid = lo + (hi - lo) / 2;
@@ -34,7 +34,6 @@ ll find_smallest_a(ll x) {
     }
     return smallest_a;
 }
-
 
 int main() {
     int q;

@@ -1,0 +1,1 @@
+{"name":"Local: csphn_cfmx_oil","url":"/home/wheatley/coding-python/csphn_cfmx_oil.cpp","tests":[{"id":1739359461961,"input":"3 3 16\n1 3 5\n2 4 8\n6 9 7","output":"1 1 2 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_cfmx_oil.cpp","group":"local","local":true}

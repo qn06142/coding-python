@@ -1,0 +1,1 @@
+{"name":"Local: island","url":"/home/wheatley/coding-python/island.c","tests":[{"id":1742825601366,"input":"8\n3\n5\n2\n3\n1\n4\n2\n3","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/island.c","group":"local","local":true}

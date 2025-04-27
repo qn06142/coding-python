@@ -1,0 +1,1 @@
+{"name":"Local: lmh_inversion","url":"/home/wheatley/coding-python/lmh_inversion.cpp","tests":[{"id":1740825182853,"input":"5 1","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_inversion.cpp","group":"local","local":true}

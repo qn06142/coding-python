@@ -92,107 +92,92 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-int n;
-const int maxn = 1505;
-vector<pair<int, int>> coords[maxn * maxn];
-int fw[maxn][maxn];
-int bw[maxn][maxn];
-struct fenwick {
-    bool rev;
-    int n;
-    bool isvalid(int i) {
-        return 1 <= i and i < n;
-    }
-    vector<int> bit;
-    void prep() {
-        bit.resize(n);
-    }
-    fenwick(bool rev, int n) : rev(rev), n(n) {
-        prep();
-    }
-    int query(int i) {
-        int ans = 0;
-        while(isvalid(i)) {
-            if(rev) {
-                ans = max(ans, bit[i]);
-                i -= i & -i;
-            } else {
-                ans = max(ans, bit[i]);
-                i += i & -i;
-            }
-        }
-        return ans;
-    }
-    void update(int i, int v) {
-        while(isvalid(i)) {
-            if(rev) {
-                bit[i] = max(bit[i], v);
-                i += i & -i;
-            } else {
-                bit[i] = max(bit[i], v);
-                i -= i & -i;
-            }
-        }
-    }
-};
-void lis(int color) {
-    vector<pair<int, int>> a = coords[color];
-    
-    fenwick f(1, n + 5);
-    int n = a.size() - 1;
-    vector<int> dp(n + 5);
-    for(int i = 1; i <= n; i++) {
-        dp[i] = f.query(a[i].second) + 1;
-        f.update(a[i].second, dp[i]);
-    }
-    for(int i = 1; i <= n; i++) {
-        fw[a[i].first][a[i].second] = dp[i];
-    }
-}
-void lds(int color) {
-    vector<pair<int, int>> a = coords[color];
+#pragma GCC optimize("Ofast")
+#include <bits/stdc++.h>
+using namespace std;
 
-    fenwick f(0, n + 5);
-    int n = a.size() - 1;
-    vector<int> dp(n + 5);
-    for(int i = n; i >= 1; i--) {
-        dp[i] = f.query(a[i].second) + 1;
-        f.update(a[i].second, dp[i]);
-    }
-    for(int i = 1; i <= n; i++) {
-        bw[a[i].first][a[i].second] = dp[i];
+const int maxn = 1505;
+int n;
+vector<pair<int, int>> coords[maxn * maxn];
+int fw[maxn][maxn]; 
+int bw[maxn][maxn]; 
+int ans[maxn * 2];
+
+vector<int> fenwLis, fenwLds;
+
+inline void lis(int color) {
+    const auto &a = coords[color]; 
+    int m = a.size() - 1;
+    fill(fenwLis.begin(), fenwLis.end(), 0);
+    for (int i = 1; i <= m; i++) {
+        int pos = a[i].second;
+        int dp = 0;
+
+        for (int j = pos; j > 0; j -= j & -j)
+            dp = max(dp, fenwLis[j]);
+        dp++; 
+        fw[a[i].first][a[i].second] = dp;
+
+        for (int j = pos; j < (int)fenwLis.size(); j += j & -j)
+            fenwLis[j] = max(fenwLis[j], dp);
     }
 }
-int ans[maxn * 2];
+
+inline void lds(int color) {
+    const auto &a = coords[color];
+    int m = a.size() - 1;
+    fill(fenwLds.begin(), fenwLds.end(), 0);
+
+    for (int i = m; i >= 1; i--) {
+        int pos = a[i].second;
+        int dp = 0;
+
+        for (int j = pos; j < (int)fenwLds.size(); j += j & -j)
+            dp = max(dp, fenwLds[j]);
+        dp++;
+        bw[a[i].first][a[i].second] = dp;
+
+        for (int j = pos; j > 0; j -= j & -j)
+            fenwLds[j] = max(fenwLds[j], dp);
+    }
+}
+
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n;
+
+    fenwLis.resize(n + 5);
+    fenwLds.resize(n + 5);
+
     vector<int> stor;
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= n; j++) {
+    stor.reserve(n * n);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
             int x;
             cin >> x;
-            if(coords[x].empty()) {
+
+            if (coords[x].empty())
                 coords[x].push_back({0, 0});
-            }
             stor.push_back(x);
             coords[x].push_back({i, j});
         }
     }
     sort(stor.begin(), stor.end());
-    stor.resize(unique(stor.begin(), stor.end()) - stor.begin());
-    for(int i : stor) {
-        if(coords[i].empty()) continue;
-        lis(i);
-        lds(i);
+    stor.erase(unique(stor.begin(), stor.end()), stor.end());
+
+    for (int color : stor) {
+        lis(color);
+        lds(color);
     }
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= n; j++) {
+
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
             ans[fw[i][j] + bw[i][j] - 1]++;
-        }
-    }
-    for(int i = 1; i <= 2 * n - 1; i++) {
-        cout << ans[i] << '\n';
-    }
+
+    for (int i = 1; i <= 2 * n - 1; i++)
+        cout << ans[i] << "\n";
+
+    return 0;
 }

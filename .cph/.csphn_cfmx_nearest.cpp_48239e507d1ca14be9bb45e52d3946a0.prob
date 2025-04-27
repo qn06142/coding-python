@@ -1,0 +1,1 @@
+{"name":"Local: csphn_cfmx_nearest","url":"/home/wheatley/coding-python/csphn_cfmx_nearest.cpp","tests":[{"id":1739002508821,"input":"4\n0 0\n1 1\n0 1\n1 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_cfmx_nearest.cpp","group":"local","local":true}

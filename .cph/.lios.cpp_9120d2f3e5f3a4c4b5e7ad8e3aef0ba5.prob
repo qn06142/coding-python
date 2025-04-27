@@ -1,0 +1,1 @@
+{"name":"Local: lios","url":"/home/wheatley/coding-python/lios.cpp","tests":[{"id":1745407913133,"input":"5\nWATSON\nHOLMES\nGENIUS\nSMART\nCHEF","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lios.cpp","group":"local","local":true}

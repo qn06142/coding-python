@@ -1,0 +1,1 @@
+{"name":"Local: csphn_qhd_lis","url":"/home/wheatley/coding-python/csphn_qhd_lis.cpp","tests":[{"id":1743689596524,"input":"9\n5 -2 3 0 1 9 6 4 10","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_qhd_lis.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: d_archercoins","url":"/home/wheatley/coding-python/d_archercoins.c","tests":[{"id":1742027150545,"input":"6\n3 10 6 4 4 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/d_archercoins.c","group":"local","local":true}

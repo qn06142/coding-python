@@ -1,0 +1,1 @@
+{"name":"Local: strrep","url":"/home/wheatley/coding-python/strrep.cpp","tests":[{"id":1739358839102,"input":"3\nSOS\nSOSSOSSO\nSO\nSOSSOSSO\nOSS\nSOSSOSSO","output":"YES\nNO\nYES\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/strrep.cpp","group":"local","local":true}

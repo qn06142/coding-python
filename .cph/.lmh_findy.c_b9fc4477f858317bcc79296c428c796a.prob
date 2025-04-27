@@ -1,0 +1,1 @@
+{"name":"Local: lmh_findy","url":"/home/wheatley/coding-python/lmh_findy.c","tests":[{"id":1744445732768,"input":"5\n10\n121\n988027\n999999937\n1000000000","output":"25\n1210\n984068910\n999999936\n250000000000000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_findy.c","group":"local","local":true}
