@@ -1,31 +1,36 @@
 {
-  "configurations": [
-      {
-          "name": "Win32",
-          "includePath": [
-              "${workspaceFolder}/**"
-          ],
-          "defines": [
-              "_DEBUG",
-              "UNICODE",
-              "_UNICODE"
-          ],
-          "compilerPath": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
-          "cStandard": "c23",
-          "cppStandard": "gnu++20",
-          "intelliSenseMode": "gcc-x64"
-      },
-      {
-          "name": "Linux",
-          "includePath": [
-              "${workspaceFolder}/**"
-          ],
-          "defines": [],
-          "compilerPath": "/usr/bin/gcc",
-          "cStandard": "c23",
-          "cppStandard": "gnu++14",
-          "intelliSenseMode": "gcc-x64"
-      }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "true=1",
+                "false=0"
+            ],
+            "compilerPath": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+            "cStandard": "c23",
+            "cppStandard": "gnu++20",
+            "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "true=1",
+                "false=0"
+            ],
+            "compilerPath": null,
+            "cStandard": "c23",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
 }

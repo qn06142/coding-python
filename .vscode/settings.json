@@ -140,7 +140,19 @@
     "queue": "cpp",
     "stdlib.h": "c",
     "__hash_table": "cpp",
-    "__tree": "cpp"
+    "__tree": "cpp",
+    "string.h": "c",
+    "stddef.h": "c",
+    "inttypes.h": "c",
+    "stdarg.h": "c",
+    "stdbool.h": "c",
+    "flat_map": "cpp",
+    "flat_set": "cpp",
+    "stack": "cpp",
+    "ios": "cpp",
+    "locale": "cpp",
+    "immintrin.h": "c",
+    "__split_buffer": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
@@ -200,5 +212,6 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "C_Cpp.errorSquiggles": "enabled",
-  "mesonbuild.selectRootDir": false
+  "mesonbuild.selectRootDir": false,
+  "C_Cpp.default.compilerPath": "/usr/bin/clang"
 }

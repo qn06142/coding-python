@@ -1,0 +1,1 @@
+{"name":"Local: constest10_keorank","url":"/home/wheatley/coding-python/constest10_keorank.cpp","tests":[{"id":1747062885062,"input":"3\n1 3 9\n2 2 1\n2 2 4\n2 1 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/constest10_keorank.cpp","group":"local","local":true}

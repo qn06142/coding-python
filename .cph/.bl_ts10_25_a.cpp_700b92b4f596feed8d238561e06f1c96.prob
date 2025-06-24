@@ -1,0 +1,1 @@
+{"name":"Local: bl_ts10_25_a","url":"/home/wheatley/coding-python/bl_ts10_25_a.cpp","tests":[{"id":1748135695939,"input":"9 7 8\n","output":"45"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/bl_ts10_25_a.cpp","group":"local","local":true}

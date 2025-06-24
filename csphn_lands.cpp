@@ -27,14 +27,9 @@ int region_sum(int x1, int y1, int x2, int y2) {
 using namespace __gnu_pbds;
 int count_divisions() {
     int total_ways = 0;
-
-    // Iterate over all possible shared corners (i, j)
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
-            // Hashmap to store sums for one region
             gp_hash_table<int, int> cnt;
-
-            // Bottom-right as shared corner
             for (int x = 1; x <= i; x++) {
                 for (int y = 1; y <= j; y++) {
                     int s = region_sum(x, y, i, j);
@@ -47,9 +42,6 @@ int count_divisions() {
                     total_ways += cnt[s1];
                 }
             }
-
-
-            // Top-right as shared corner
             cnt.clear();
             for (int x = i; x <= n; x++) {
                 for (int y = 1; y <= j; y++) {

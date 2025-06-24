@@ -3,14 +3,13 @@ import cv2
 import numpy as np
 import math
 import time
-from vidgear.gears import CamGear
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 HOST = '127.0.0.1'
 PORT = 8000
-TARGET_WIDTH, TARGET_HEIGHT = 160, 100
-COLOR_REDUCTION = 16
-DIFF_THRESHOLD = 20
+TARGET_WIDTH, TARGET_HEIGHT = 200, 200
+COLOR_REDUCTION = 1
+DIFF_THRESHOLD = 0
 
 # ─── Utilities ────────────────────────────────────────────────────────────────
 def setup_server(host, port):
@@ -72,62 +71,74 @@ def wait_flush_ack(sock):
 
 # ─── Main Program ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
+    # 1) TCP setup
     server_socket = setup_server(HOST, PORT)
     conn, addr = server_socket.accept()
-
     print(f"Connected by {addr}")
 
-    # Setup video stream
-    options = {"STREAM_RESOLUTION": "best"}
-    path = "https://www.youtube.com/watch?v=PshZOi3VsJU"
-    stream = CamGear(source=path, stream_mode="http" in path,
-                     backend=cv2.CAP_GSTREAMER, logging=True, **options).start()
+    # 2) VideoCapture setup (HTTP or file)
+    path = "/mnt/NewVolumne/anime_wallpapers/【作業音⧸睡眠導入】優しい雨音でリラックス【 #holoscape 】 [FUESCIXKnY0].mp4"
+    cap = cv2.VideoCapture(path)
+    if not cap.isOpened():
+        print("Failed to open stream.")
+        exit(1)
 
-    # First frame and reference buffer
-    frame = stream.read()
-    if frame is None:
+    # Grab initial frame
+    ret, frame = cap.read()
+    if not ret or frame is None:
         print("Failed to read initial frame.")
         exit(1)
 
+    # Resize to target
     frame_resized = resize_image_to_fit(frame, TARGET_WIDTH, TARGET_HEIGHT)
     TARGET_WIDTH, TARGET_HEIGHT = frame_resized.shape[1], frame_resized.shape[0]
     ref = np.zeros_like(frame_resized)
 
-    conn.sendall(f"RESO {TARGET_WIDTH} {TARGET_HEIGHT // 2}".encode())
+    # Tell client the resolution (note dividing height by 2, per original)
+    conn.sendall(f"RESO {TARGET_WIDTH} {TARGET_HEIGHT}".encode())
 
     buffer = ""
+    fps_input = cap.get(cv2.CAP_PROP_FPS) or 30.0
+    print(f"Stream FPS (input): {fps_input:.2f}")
 
     # Main loop
     while True:
         start_time = time.time()
-        frame = stream.read()
-        if frame is None:
+
+        ret, frame = cap.read()
+        if not ret or frame is None:
             break
 
+        # Resize & diff
         frame_resized = resize_image_to_fit(frame, TARGET_WIDTH, TARGET_HEIGHT)
         diff_indices, diff_values, ref = get_diff_pixels(ref, frame_resized)
 
+        # Build draw commands
         for (y, x), rgb in zip(diff_indices, diff_values):
             color_int = rgb_to_hex(*rgb)
             buffer = draw(x, y, color_int, buffer)
 
+        # Send them
         buffer = flush_buffer(conn, buffer)
-        wait_flush_ack(conn)
+        if not wait_flush_ack(conn):
+            print("Client sync error.")
+            break
 
-        # Frame timing
+        # Framerate control
         elapsed = time.time() - start_time
-        target_frame = 1.0 / stream.framerate
-        time.sleep(max(0, target_frame - elapsed))
+        target_frame_time = 1.0 / fps_input
+        if elapsed < target_frame_time:
+            time.sleep(target_frame_time - elapsed)
 
-        fps = 1.0 / (time.time() - start_time)
-        err = fps - stream.framerate
-
+        # Stats
+        actual_fps = 1.0 / (time.time() - start_time)
+        err = actual_fps - fps_input
         clear_line(1)
-        print(f"Actual FPS: {fps:.2f}, Error Rate: {err:.2f}")
+        print(f"Actual FPS: {actual_fps:.2f}, Error Rate: {err:.2f}")
 
     # Cleanup
     conn.sendall(b"END")
     conn.recv(3)
-    stream.stop()
+    cap.release()
     server_socket.close()
     print("Server closed.")

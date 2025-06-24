@@ -1,0 +1,1 @@
+{"name":"Local: tn25_docsach","url":"/home/wheatley/coding-python/tn25_docsach.cpp","tests":[{"id":1748524915068,"input":"4 5 2 1\n2 2 4 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tn25_docsach.cpp","group":"local","local":true}

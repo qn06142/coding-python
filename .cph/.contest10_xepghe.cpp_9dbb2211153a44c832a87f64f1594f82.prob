@@ -1,0 +1,1 @@
+{"name":"Local: contest10_xepghe","url":"/home/wheatley/coding-python/contest10_xepghe.cpp","tests":[{"id":1746104397925,"input":"3\n0 3\n1 0\n1 0","output":"1"},{"id":1746104475043,"input":"5\n0 3\n1 0\n0 1\n2 0\n1 0","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/contest10_xepghe.cpp","group":"local","local":true}

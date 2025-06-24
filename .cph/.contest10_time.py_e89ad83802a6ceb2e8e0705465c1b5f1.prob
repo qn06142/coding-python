@@ -1,0 +1,1 @@
+{"name":"Local: contest10_time","url":"/home/wheatley/coding-python/contest10_time.py","tests":[{"id":1748684194322,"input":"3\nyeu\n6\nkanu\n9\nvl\n3","output":"e\nn\nl\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/contest10_time.py","group":"local","local":true}

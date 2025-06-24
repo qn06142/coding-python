@@ -1,0 +1,1 @@
+{"name":"Local: lmh_polygon","url":"/home/wheatley/coding-python/lmh_polygon.cpp","tests":[{"id":1746893498418,"input":"6 3\n1 2\n1 3\n1 4\n2 3\n2 4\n2 5\n3 5\n3 6\n5 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_polygon.cpp","group":"local","local":true}

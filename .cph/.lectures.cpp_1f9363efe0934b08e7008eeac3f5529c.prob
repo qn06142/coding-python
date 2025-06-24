@@ -1,0 +1,1 @@
+{"name":"Local: lectures","url":"/home/wheatley/coding-python/lectures.cpp","tests":[{"id":1746713776771,"input":"7 2\n9 1 5 4 7 2 9\n3 8 9 8 7 6 1\n8 8 2 7 3 7 7","output":"29 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lectures.cpp","group":"local","local":true}
