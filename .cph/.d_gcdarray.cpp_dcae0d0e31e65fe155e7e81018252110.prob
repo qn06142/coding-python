@@ -1,0 +1,1 @@
+{"name":"Local: d_gcdarray","url":"/home/wheatley/coding-python/d_gcdarray.cpp","tests":[{"id":1748076650262,"input":"5\n4 12 2 2 9","output":"5"},{"id":1748076665675,"input":"6\n2 10 4 2 4 6","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/d_gcdarray.cpp","group":"local","local":true}

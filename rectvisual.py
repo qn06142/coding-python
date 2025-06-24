@@ -3,40 +3,35 @@ import matplotlib.patches as patches
 
 def visualize_rectangles(rectangles):
     """
-    Visualize a set of rectangles in a 2D grid using matplotlib.
-    
-    rectangles: List of tuples (t, x, y) where:
-        t: starting x position
-        x: end x position (width of the rectangle)
-        y: height of the rectangle
+    Visualizes rectangles given as a list of (x, y, width, height) tuples.
     """
     fig, ax = plt.subplots()
-    
-    # Set the figure size
-    ax.set_xlim(0, 20)  # Change the limit to your expected range of x coordinates
-    ax.set_ylim(0, 15)  # Change the limit to your expected range of y coordinates
-    
-    # Plot each rectangle
-    for rect in rectangles:
-        t, x, y = rect
-        width = x - t
-        height = y
-        ax.add_patch(patches.Rectangle((t, 0), width, height, linewidth=1, edgecolor='r', facecolor='blue', alpha=0.3))
-        ax.text(t + width / 2, height / 2, f'({t},{x},{y})', ha='center', va='center', fontsize=10, color='black')
-    
-    # Labels and titles
-    plt.xlabel('X-axis (t, x)')
-    plt.ylabel('Y-axis (height)')
+
+    for x, y, width, height in rectangles:
+        rect = patches.Rectangle((x, y), width, height, linewidth=1, edgecolor='r', facecolor='none')
+        ax.add_patch(rect)
+
+    # Set the limits of the plot to encompass all rectangles
+    min_x = min(x for x, y, w, h in rectangles)
+    min_y = min(y for x, y, w, h in rectangles)
+    max_x = max(x + w for x, y, w, h in rectangles)
+    max_y = max(y + h for x, y, w, h in rectangles)
+
+    ax.set_xlim(min_x - 1, max_x + 1)  # Add a bit of padding
+    ax.set_ylim(min_y - 1, max_y + 1)
+    ax.set_aspect('equal', adjustable='box')  # Ensure the aspect ratio is equal
+
     plt.title('Rectangle Visualizer')
-    
+    plt.xlabel('X Axis')
+    plt.ylabel('Y Axis')
     plt.grid(True)
     plt.show()
 
-# Example usage:
-if __name__ == "__main__":
-    # Input the number of rectangles and their (t, x, y) coordinates
-    rectangles = [
-        tuple(int(i) for i in input().split()) for i in range(0, int(input()))
-    ]
-    
-    visualize_rectangles(rectangles)
+# Example Usage:
+rectangles = [
+    (1, 1, 5, 3),   # x, y, width, height
+    (2, 2, 4, 2),
+    (3, 3, 3, 1)
+]
+
+visualize_rectangles(rectangles)

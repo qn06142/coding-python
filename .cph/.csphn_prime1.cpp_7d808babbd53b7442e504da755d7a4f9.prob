@@ -1,0 +1,1 @@
+{"name":"Local: csphn_prime1","url":"/home/wheatley/coding-python/csphn_prime1.cpp","tests":[{"id":1748407107188,"input":"242 3","output":"28702"},{"id":1748407114043,"input":"123 1","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_prime1.cpp","group":"local","local":true}

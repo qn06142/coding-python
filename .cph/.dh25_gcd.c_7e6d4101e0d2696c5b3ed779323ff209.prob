@@ -1,0 +1,1 @@
+{"name":"Local: dh25_gcd","url":"/home/wheatley/coding-python/dh25_gcd.c","tests":[{"id":1746454034222,"input":"4\n4 5 8 20","output":""},{"id":1746454061845,"input":"4\n2 4 6 8","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/dh25_gcd.c","group":"local","local":true}

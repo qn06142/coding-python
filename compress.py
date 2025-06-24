@@ -1,88 +1,92 @@
-from vidgear.gears import CamGear
 import cv2
 import numpy as np
 import math
+import struct
+
 
 def resize_image_to_fit(img, target_width, target_height):
     """Resize the image to fit the target aspect ratio."""
     h, w = img.shape[:2]
     scale = min(target_height / h, target_width / w)
-    h, w = math.ceil(h * scale), math.ceil(w * scale)
-    return cv2.resize(img, (w, h))
-def colorReduce(image, div=64):
-    nl, nc = image.shape[:2]
-    
-    # Loop through each row
-    for j in range(nl):
-        # Loop through each column of the row
-        for i in range(nc):
-            # Process each pixel
-            image[j, i] = (image[j, i] // div) * div + div // 2
-    return image
-def rle_compress_columns(binary_image):
-    """Compress a 2D binary array using RLE column by column."""
-    rows, cols = binary_image.shape
-    rle_columns = []
-    for col in range(cols):
-        column = binary_image[:, col]
-        rle = []
-        prev_value = column[0]
-        count = 0
-        for value in column:
-            if value == prev_value:
-                count += 1
-            else:
-                rle.append((prev_value, count))
-                prev_value = value
-                count = 1
-        rle.append((prev_value, count))
-        rle_columns.append(rle)
-    return rle_columns
+    new_h, new_w = math.ceil(h * scale), math.ceil(w * scale)
+    return cv2.resize(img, (new_w, new_h))
 
-def rle_compress_frame(frame):
-    """Compress a 3-channel image using RLE for each channel."""
-    channels = cv2.split(frame)
-    return [rle_compress_columns(colorReduce(channel)) for channel in channels]
 
-def write_rle_to_file(file, rle_channels):
-    """Write RLE-compressed data interleaved as R, G, B on each line to the file."""
+def _encode_quadtree(img, x, y, size, rects):
+    """
+    Recursively decompose img[y:y+size, x:x+size] into uniform-color blocks.
+    """
+    block = img[y:y+size, x:x+size]
+    if np.all(block == block[0, 0]):
+        color = int(block[0, 0] == 255)
+        rects.append((x, y, size, size, color))
+    else:
+        half = size // 2
+        if half == 0:
+            color = int(block[0, 0] == 255)
+            rects.append((x, y, 1, 1, color))
+        else:
+            for dy in (0, half):
+                for dx in (0, half):
+                    _encode_quadtree(img, x + dx, y + dy, half, rects)
 
-    num_rows = len(rle_channels[0])  
 
-    for row_idx in range(num_rows):
-        for channel in rle_channels:
-            interleaved_row = list(f"{value} {length}" for value, length in channel[row_idx])
-            file.write(" ".join(interleaved_row) + "\n")
+def image_to_rectangles(image, thresh=127):
+    """
+    Convert a single-channel (grayscale) OpenCV image into quadtree rectangles.
+    Returns: list of (x, y, w, h, color).
+    """
+    _, binary = cv2.threshold(image, thresh, 255, cv2.THRESH_BINARY)
+    h, w = binary.shape
+    size = 1 << max(h, w).bit_length()
+    padded = np.zeros((size, size), dtype=binary.dtype)
+    padded[:h, :w] = binary
 
-options = {"STREAM_RESOLUTION": "240p"}
-vid = CamGear(source='/home/wheatley/Videos/March 7th.mp4', backend=cv2.CAP_GSTREAMER, logging=True, **options).start()
+    rects = []
+    _encode_quadtree(padded, 0, 0, size, rects)
+    return [r for r in rects if r[0] < w and r[1] < h]
 
-output_file = "test.txt"
-with open(output_file, "w") as f:
 
-    target_width, target_height = 160, 100
-    frame = vid.read()
+def compress_frame_to_rects(frame, thresh=127):
+    """
+    Split a BGR frame into per-channel quadtree rectangles.
+    Returns dict {'B': [...], 'G': [...], 'R': [...]}.
+    """
+    chans = cv2.split(frame)
+    return {name: image_to_rectangles(chans[i], thresh)
+            for i, name in enumerate(('B','G','R'))}
 
-    frame = resize_image_to_fit(frame, target_width, target_height)
-    target_width, target_height = frame.shape[1], frame.shape[0]
-    f.write(f"{target_height} {target_width}\n")
 
-    while True:
-        frame = vid.read()
-        if frame is None:
-            break
+def write_rects_binary(fp, rects_by_channel):
+    """
+    Write channels to binary file:
+      - 1 byte: 'R','G','B'
+      - 4 bytes: uint32 LE count
+      - per rect: uint16 x,y,w,h and uint8 color
+    """
+    for ch in ('R','G','B'):
+        rects = rects_by_channel[ch]
+        fp.write(ch.encode('ascii'))
+        fp.write(struct.pack('<I', len(rects)))
+        for x, y, w, h, c in rects:
+            fp.write(struct.pack('<HHHHB', x, y, w, h, c))
 
-        frame = resize_image_to_fit(frame, target_width, target_height)
 
-        compressed_frame = rle_compress_frame(frame)
+if __name__ == '__main__':
+    video_path = '/home/wheatley/badapple.mp4'
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise IOError(f"Cannot open video: {video_path}")
 
-        write_rle_to_file(f, compressed_frame)
-
-        resized_frame = resize_image_to_fit(frame, 1024, 576)
-        cv2.imshow("Video Stream", resized_frame)
-
-        if cv2.waitKey(25) & 0xFF == ord('q'):
-            break
-
-vid.stop()
-cv2.destroyAllWindows()
+    with open('rectangles.bin', 'wb') as f:
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            frame = resize_image_to_fit(frame, 160, 50)
+            rects = compress_frame_to_rects(frame)
+            write_rects_binary(f, rects)
+            cv2.imshow('Video Stream', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+    cap.release()

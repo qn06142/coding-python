@@ -1,0 +1,1 @@
+{"name":"Local: d_treegrowth","url":"/home/wheatley/coding-python/d_treegrowth.cpp","tests":[{"id":1748075171433,"input":"5 3\n4 3 2 2 2","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/d_treegrowth.cpp","group":"local","local":true}

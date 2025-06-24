@@ -1,0 +1,1 @@
+print(max([0] + [len(i) for i in ''.join('a' if input() == "ONLINE" else ' ' for j in range(int(input()))).split()]))

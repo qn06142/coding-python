@@ -1,0 +1,1 @@
+{"name":"Local: d_pawnsetup","url":"/home/wheatley/coding-python/d_pawnsetup.c","tests":[{"id":1748354399021,"input":"2 3","output":"4 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/d_pawnsetup.c","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: tn25_sohh","url":"/home/wheatley/coding-python/tn25_sohh.c","tests":[{"id":1748522905201,"input":"1 9","output":"21"},{"id":1748531962243,"input":"1 10000000","output":"27995776447498"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/tn25_sohh.c","group":"local","local":true}

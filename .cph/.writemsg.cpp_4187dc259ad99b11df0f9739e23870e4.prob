@@ -1,0 +1,1 @@
+{"name":"Local: writemsg","url":"/home/wheatley/coding-python/writemsg.cpp","tests":[{"id":1746714300302,"input":"12 11\nTHEOLDREDPEN\nOPENTHEDOOR","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/writemsg.cpp","group":"local","local":true}

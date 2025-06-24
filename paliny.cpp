@@ -37,9 +37,9 @@ long long get_suffix_hash(int l, int r) {
     return hash_value;
 }
 
-bool is_palindrome(int center, int len, bool odd) {
-    int l = center - len + 1;
-    int r = center + len - (odd ? 1 : 0);
+bool check(int cent, int len, bool odd) {
+    int l = cent - len + 1;
+    int r = cent + len - (odd ? 1 : 0);
 
     if (l >= 1 && r <= n && get_prefix_hash(l, r) == get_suffix_hash(l, r)) {
         return true;
@@ -47,15 +47,15 @@ bool is_palindrome(int center, int len, bool odd) {
     return false;
 }
 
-int max_palindrome_length() {
-    int max_len = 1;
+int solve() {
+    int ans = 1;
 
-    for (int center = 1; center <= n; center++) {
-        int low = 1, high = min((long long) center, n - center + 1);
+    for (int cent = 1; cent <= n; cent++) {
+        int low = 1, high = min((long long) cent, n - cent + 1);
         while (low <= high) {
             int len = (low + high) / 2;
-            if (is_palindrome(center, len, true)) {
-                max_len = max(max_len, (int) 2 * len - 1);
+            if (check(cent, len, true)) {
+                ans = max(ans, (int) 2 * len - 1);
                 low = len + 1;
             } else {
                 high = len - 1;
@@ -63,12 +63,12 @@ int max_palindrome_length() {
         }
     }
 
-    for (int center = 1; center < n; center++) {
-        int low = 1, high = min(center,(int) n - center);
+    for (int cent = 1; cent < n; cent++) {
+        int low = 1, high = min(cent,(int) n - cent);
         while (low <= high) {
             int len = (low + high) / 2;
-            if (is_palindrome(center, len, false)) {
-                max_len = max(max_len, (int) 2 * len);
+            if (check(cent, len, false)) {
+                ans = max(ans, (int) 2 * len);
                 low = len + 1;
             } else {
                 high = len - 1;
@@ -76,7 +76,7 @@ int max_palindrome_length() {
         }
     }
 
-    return max_len;
+    return ans;
 }
 
 int main() {
@@ -84,6 +84,5 @@ int main() {
     calcpow();
     calchash();
 
-    cout << max_palindrome_length() << endl;
-    return 0;
+    cout << solve() << endl;
 }

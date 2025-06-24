@@ -1,0 +1,1 @@
+{"name":"Local: csphn_knightp","url":"/home/wheatley/coding-python/csphn_knightp.cpp","tests":[{"id":1748359443707,"input":"3 3\n9 1 1\n1 1 8\n1 8 1","output":"19\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_knightp.cpp","group":"local","local":true}
