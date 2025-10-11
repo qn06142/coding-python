@@ -1,154 +1,92 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <unordered_map>
+#pragma GCC optimize("Ofast,unroll-loops")
+#include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
-struct Q {
-    int r, c, i;
-};
+struct Q { int r, c, idx; };
 
-int main(){
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    long long k;
+    ll k;
     int n;
     cin >> k >> n;
 
     vector<Q> qs(n);
-    for (int j = 0; j < n; j++){
-        cin >> qs[j].r >> qs[j].c;
-        qs[j].i = j;
+    for (int i = 0; i < n; i++) {
+        cin >> qs[i].r >> qs[i].c;
+        qs[i].idx = i;
     }
+    vector<ll> res(n, 0);
 
-    unordered_map<int, vector<int>> row;
-    unordered_map<int, vector<int>> col;
-    unordered_map<long long, vector<int>> diag;   
-    unordered_map<long long, vector<int>> adiag;    
+    auto process = [&](auto get_key, auto get_coord, auto make_diag_limit) {
 
-    for (auto &q : qs) {
-        row[q.r].push_back(q.c);
-        col[q.c].push_back(q.r);
-        long long d = (long long)q.r - q.c;
-        diag[d].push_back(q.r);
-        long long a = (long long)q.r + q.c;
-        adiag[a].push_back(q.r);
-    }
+        vector<tuple<ll,int,int>> V; 
+        V.reserve(n);
+        for (auto &q : qs) 
+            V.emplace_back(get_key(q), get_coord(q), q.idx);
 
-    for (auto &e : row)
-        sort(e.second.begin(), e.second.end());
-    for (auto &e : col)
-        sort(e.second.begin(), e.second.end());
-    for (auto &e : diag)
-        sort(e.second.begin(), e.second.end());
-    for (auto &e : adiag)
-        sort(e.second.begin(), e.second.end());
+        sort(V.begin(), V.end(), [](auto &a, auto &b){
+            if (get<0>(a) != get<0>(b)) return get<0>(a) < get<0>(b);
+            return get<1>(a) < get<1>(b);
+        });
 
-    vector<long long> res(n, 0);
+        int i = 0, sz = V.size();
+        while (i < sz) {
+            int j = i+1;
 
-    for (auto &q : qs) {
-        int r = q.r, c = q.c;
-        long long tot = 0;
+            while (j < sz && get<0>(V[j]) == get<0>(V[i])) ++j;
 
-        {
-            auto &vec = row[r];
-            int cnt = c - 1;
-            auto it = lower_bound(vec.begin(), vec.end(), c);
-            if (it != vec.begin()){
-                int prev = *(it - 1);
-                cnt = c - prev - 1;
+            ll bound_low, bound_high;
+            tie(bound_low, bound_high) = make_diag_limit(get<0>(V[i]));
+            for (int t = i; t < j; ++t) {
+                int coord = get<1>(V[t]);
+                int idx   = get<2>(V[t]);
+                ll prev = (t > i ? get<1>(V[t-1]) : bound_low);
+                ll next = (t < j-1 ? get<1>(V[t+1]) : bound_high);
+                res[idx] += (coord - prev - 1) + (next - coord - 1);
             }
-            tot += cnt;
+            i = j;
         }
+    };
 
-        {
-            auto &vec = row[r];
-            int cnt = k - c;
-            auto it = upper_bound(vec.begin(), vec.end(), c);
-            if (it != vec.end()){
-                int nxt = *it;
-                cnt = nxt - c - 1;
-            }
-            tot += cnt;
+    process(
+        [](auto &q){ return (ll)q.r; },
+        [](auto &q){ return q.c; },
+        [&](ll ){ return pair<ll,ll>{0, k+1}; }
+    );
+
+    process(
+        [](auto &q){ return (ll)q.c; },
+        [](auto &q){ return q.r; },
+        [&](ll ){ return pair<ll,ll>{0, k+1}; }
+    );
+
+    process(
+        [](auto &q){ return (ll)q.r - q.c; },
+        [](auto &q){ return q.r; },
+        [&](ll d){
+
+            ll low  = max(1LL, 1LL + d);
+            ll high = min(k, k + d);
+            return pair<ll,ll>{low - 1, high + 1};
         }
+    );
 
-        {
-            auto &vec = col[c];
-            int cnt = r - 1;
-            auto it = lower_bound(vec.begin(), vec.end(), r);
-            if (it != vec.begin()){
-                int prev = *(it - 1);
-                cnt = r - prev - 1;
-            }
-            tot += cnt;
+    process(
+        [](auto &q){ return (ll)q.r + q.c; },
+        [](auto &q){ return q.r; },
+        [&](ll a){
+
+            ll low  = max(1LL, a - k);
+            ll high = min(k, a - 1);
+            return pair<ll,ll>{low - 1, high + 1};
         }
+    );
 
-        {
-            auto &vec = col[c];
-            int cnt = k - r;
-            auto it = upper_bound(vec.begin(), vec.end(), r);
-            if (it != vec.end()){
-                int nxt = *it;
-                cnt = nxt - r - 1;
-            }
-            tot += cnt;
-        }
-
-        {
-            long long key = (long long)r - c;
-            auto &vec = diag[key];
-            int cnt = min(r - 1, c - 1);
-            auto it = lower_bound(vec.begin(), vec.end(), r);
-            if (it != vec.begin()){
-                int prev = *(it - 1);
-                cnt = r - prev - 1;
-            }
-            tot += cnt;
-        }
-
-        {
-            long long key = (long long)r - c;
-            auto &vec = diag[key];
-            int cnt = min((int)(k - r), (int)(k - c));
-            auto it = upper_bound(vec.begin(), vec.end(), r);
-            if (it != vec.end()){
-                int nxt = *it;
-                cnt = nxt - r - 1;
-            }
-            tot += cnt;
-        }
-
-        {
-            long long key = (long long)r + c;
-            auto &vec = adiag[key];
-            int cnt = min(r - 1, (int)(k - c));
-            auto it = lower_bound(vec.begin(), vec.end(), r);
-            if (it != vec.begin()){
-                int prev = *(it - 1);
-                cnt = r - prev - 1;
-            }
-            tot += cnt;
-        }
-
-        {
-            long long key = (long long)r + c;
-            auto &vec = adiag[key];
-            int cnt = min((int)(k - r), c - 1);
-            auto it = upper_bound(vec.begin(), vec.end(), r);
-            if (it != vec.end()){
-                int nxt = *it;
-                cnt = nxt - r - 1;
-            }
-            tot += cnt;
-        }
-
-        res[q.i] = tot;
-    }
-
-    for (int j = 0; j < n; j++){
-        cout << res[j] << "\n";
-    }
+    for (ll x : res) 
+        cout << x << '\n';
 
     return 0;
 }

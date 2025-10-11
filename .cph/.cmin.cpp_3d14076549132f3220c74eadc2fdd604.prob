@@ -1,0 +1,1 @@
+{"name":"Local: cmin","url":"/home/wheatley/coding-python/cmin.cpp","tests":[{"id":1755589158520,"input":"3\n1 2\n4 6\n3 1\n3\n2\n-10\n100\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cmin.cpp","group":"local","local":true}

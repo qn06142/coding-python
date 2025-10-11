@@ -1,0 +1,1 @@
+{"name":"Local: newi0_dnaseq","url":"/home/wheatley/coding-python/newi0_dnaseq.py","tests":[{"id":1759280394379,"input":"ATTCGGGA\n","output":""},{"id":1759280682263,"input":"AAAAAAAAAA","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/newi0_dnaseq.py","group":"local","local":true}

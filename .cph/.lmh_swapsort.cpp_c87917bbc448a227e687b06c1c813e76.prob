@@ -1,0 +1,1 @@
+{"name":"Local: lmh_swapsort","url":"/home/wheatley/coding-python/lmh_swapsort.cpp","tests":[{"id":1753670971498,"input":"5\n34 26 42 0 18","output":""},{"id":1757919783813,"input":"7\n5 3 0 1 1 4 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_swapsort.cpp","group":"local","local":true}

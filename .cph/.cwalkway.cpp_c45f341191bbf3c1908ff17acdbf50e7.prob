@@ -1,0 +1,1 @@
+{"name":"Local: cwalkway","url":"/home/wheatley/coding-python/cwalkway.cpp","tests":[{"id":1755593489050,"input":"10 5000\n1\n23\n45\n67\n101\n124\n560\n789\n990\n1019\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cwalkway.cpp","group":"local","local":true}

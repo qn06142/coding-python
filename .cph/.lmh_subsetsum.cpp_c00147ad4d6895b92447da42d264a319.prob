@@ -1,0 +1,1 @@
+{"name":"Local: lmh_subsetsum","url":"/home/wheatley/coding-python/lmh_subsetsum.cpp","tests":[{"id":1754880201368,"input":"6 99\n11 44 33 55 77 88","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_subsetsum.cpp","group":"local","local":true}

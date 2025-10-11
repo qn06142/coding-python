@@ -1,0 +1,1 @@
+{"name":"Local: lmh_books","url":"/home/wheatley/coding-python/lmh_books.cpp","tests":[{"id":1759565516966,"input":"5 182\n4 3 1 4 1\n3 6 17 19 26","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_books.cpp","group":"local","local":true}

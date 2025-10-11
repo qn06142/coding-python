@@ -1,0 +1,1 @@
+{"name":"Local: lmh_ccmax","url":"/home/wheatley/coding-python/lmh_ccmax.cpp","tests":[{"id":1753695580541,"input":"4 4 5\n1 1 1 1\n1 2\n2 4\n1 4\n2 3\nD 4\nC 3 5\nC 1 4\nD 2\nD 1","output":"3\n5\n6\n6\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_ccmax.cpp","group":"local","local":true}

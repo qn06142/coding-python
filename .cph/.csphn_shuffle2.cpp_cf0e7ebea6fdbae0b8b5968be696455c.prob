@@ -1,0 +1,1 @@
+{"name":"Local: csphn_shuffle2","url":"/home/wheatley/coding-python/csphn_shuffle2.cpp","tests":[{"id":1755080295921,"input":"9 2 3\n1 5 2\n5 4 6\n8 2 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_shuffle2.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+print('\n'.join(''.join(i if i in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' else ' ' for i in input()).split()))

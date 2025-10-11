@@ -1,0 +1,1 @@
+{"name":"Local: BUILDTREE","url":"/home/wheatley/coding-python/BUILDTREE.cpp","tests":[{"id":1757735942149,"input":"6 2\n3 5\n1 2 4\n1 3 2\n4 5 4","output":"99\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/BUILDTREE.cpp","group":"local","local":true}

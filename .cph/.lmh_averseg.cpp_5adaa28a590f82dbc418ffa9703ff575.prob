@@ -1,0 +1,1 @@
+{"name":"Local: lmh_averseg","url":"/home/wheatley/coding-python/lmh_averseg.cpp","tests":[{"id":1752458053618,"input":"5\n1 9 12\n4 6 5\n1 100 40\n90 20 50\n12 89 55","output":"1\n2\n5\n7\n9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_averseg.cpp","group":"local","local":true}

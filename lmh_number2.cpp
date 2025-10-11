@@ -1,3 +1,4 @@
+#pragma GCC optimize("Ofast")
 #include<bits/stdc++.h>
 using namespace std;
 namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const char *s)/**/{ cerr << s; }/*#########+++++*/void print(bool s)/**/{ cerr << (s ? "T" : "F"); }/**/void print(char s)/*##############################
@@ -92,71 +93,90 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-bool better(const string &a, const string &b) {
-    if(a.size() != b.size())
-        return a.size() < b.size();
-    return a < b;
-}
+#include <bits/stdc++.h>
+using namespace std;
 
-int main(){
-    
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     string X;
-    cin >> X;
+    if (!(cin >> X)) return 0;
     int n = X.size();
 
-    vector<vector<int>> nxt(n+1, vector<int>(10, -1));
-
-    for (int d = 0; d < 10; d++){
-        nxt[n][d] = -1;
+    vector<array<int,10>> nxt(n+1);
+    for (int d = 0; d < 10; ++d) nxt[n][d] = -1;
+    for (int i = n-1; i >= 0; --i) {
+        nxt[i] = nxt[i+1];
+        nxt[i][X[i]-'0'] = i;
     }
-    for (int i = n - 1; i >= 0; i--){
-        for (int d = 0; d < 10; d++){
-            nxt[i][d] = nxt[i+1][d];
+
+    const int INF = 1e9;
+
+    vector<int> dp1(n+1, INF), dp2(n+1, -1), dp3(n+1, -1);
+
+    dp1[n] = 1;
+    dp2[n] = 0;
+    dp3[n] = -1;
+
+    auto seq_less = [&](int d1, int pos1, int d2, int pos2) {
+        if (d1 != d2) return (bool) (d1 < d2);
+
+        while (true) {
+            if (pos1 == -1 && pos2 == -1) return false; 
+            if (pos1 == -1) return true;
+            if (pos2 == -1) return false;
+            int a = dp2[pos1];
+            int b = dp2[pos2];
+            if (a != b) return a < b;
+            pos1 = dp3[pos1];
+            pos2 = dp3[pos2];
         }
-        int cur = X[i] - '0';
-        nxt[i][cur] = i;
-    }
+        return false;
+    };
 
-    vector<string> dp(n+1, "");
-
-    dp[n] = "9"; 
-    for (int d = 0; d < 10; d++){
-        string cand = string(1, char('0' + d));
-        if(better(cand, dp[n]))
-            dp[n] = cand;
-    }
-
-    for (int i = n - 1; i >= 0; i--){
-
-        string best = string(n - i, '9'); 
-        for (int d = 0; d < 10; d++){
-            string cand;
-            if(nxt[i][d] == -1) {
-                cand = string(1, char('0' + d));
-            } else {
-                cand = string(1, char('0' + d)) + dp[nxt[i][d] + 1];
+    for (int i = n-1; i >= 0; --i) {
+        int len_ = INF, d_ = -1, next = -1;
+        for (int d = 0; d < 10; ++d) {
+            int pos = nxt[i][d];
+            int cand_len = (pos == -1 ? 1 : 1 + dp1[pos+1]);
+            int cand_next = (pos == -1 ? -1 : pos+1);
+            if (d_ == -1
+                || cand_len < len_
+                || (cand_len == len_ && seq_less(d, cand_next, d_, next)))
+            {
+                len_ = cand_len;
+                d_ = d;
+                next = cand_next;
             }
-            if(better(cand, best))
-                best = cand;
         }
-        dp[i] = best;
+        dp1[i] = len_;
+        dp2[i] = d_;
+        dp3[i] = next;
     }
 
-    string ans = string(n, '9');
-    for (int d = 1; d < 10; d++){
-        string cand;
-        if(nxt[0][d] == -1) {
-            cand = string(1, char('0' + d));
-        } else {
-            cand = string(1, char('0' + d)) + dp[nxt[0][d] + 1];
+    int len_ = INF, d_ = -1, next = -1;
+    for (int d = 1; d < 10; ++d) {
+        int pos = nxt[0][d];
+        int cand_len = (pos == -1 ? 1 : 1 + dp1[pos+1]);
+        int cand_next = (pos == -1 ? -1 : pos+1);
+        if (d_ == -1
+            || cand_len < len_
+            || (cand_len == len_ && seq_less(d, cand_next, d_, next)))
+        {
+            len_ = cand_len;
+            d_ = d;
+            next = cand_next;
         }
-        if(better(cand, ans))
-            ans = cand;
     }
 
-    cout << ans << "\n";
-    return 0;
+    string ans;
+    ans.push_back(char('0' + d_));
+    int p = next;
+    while (p != -1) {
+        ans.push_back(char('0' + dp2[p]));
+        p = dp3[p];
+    }
+
+    cout << ans;
 }

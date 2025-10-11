@@ -1,31 +1,3 @@
-def generate_test_case1(n, s, q):
-    """
-    Generate the test case string for the pyramid problem.
-
-    Args:
-        n (int): Number of rows in the pyramid.
-        s (str): The string to be repeated in the pyramid.
-        q (int): Number of queries.
-
-    Returns:
-        str: The test case as a single string.
-    """
-    test_case = [f"{n}", f"{s}", f"{q}"]
-    
-    for _ in range(q):
-        query_type = random.choice([1, 2])
-        if query_type == 1:
-            # Query type 1: "1 i x", where i is the row, x is a random character in s
-            i = random.randint(1, n)
-            x = random.choice(s)
-            test_case.append(f"1 {i} {x}")
-        else:
-            # Query type 2: "2 i j", where i is the row and j is a column in that row
-            i = random.randint(1, n)
-            j = random.randint(1, i)
-            test_case.append(f"2 {i} {j}")
-    
-    return "\n".join(test_case)
 import subprocess
 import random
 import string
@@ -43,10 +15,18 @@ def generate_test_case():
     s = ''.join(random.choice(string.ascii_lowercase) for i in range(0, random.randint(2, n)))
     q = 5
     return generate_test_case1(n, s, q)
-def run_program(executable, input_data):
+
+def run_program(executable, input_data, tle = True):
     process = subprocess.Popen([executable] if type(executable) == str else executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate(input=input_data.encode())
-    return stdout.decode().strip()
+    try:
+        stdout, stderr = process.communicate(input=input_data.encode())
+        if tle:
+            if process.poll() is None:
+                process.communicate(timeout=1)
+        return stdout.decode().strip()
+    except subprocess.TimeoutExpired:
+        process.kill()
+        return "123809213"
 
 
 def run_test_case(executable1, executable2, test_case):

@@ -1,0 +1,1 @@
+{"name":"Local: csphn_graph_palinpath","url":"/home/wheatley/coding-python/csphn_graph_palinpath.cpp","tests":[{"id":1751512942370,"input":"5 5\n3 1 a\n3 2 b\n1 4 x\n4 5 y\n5 2 x","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_graph_palinpath.cpp","group":"local","local":true}

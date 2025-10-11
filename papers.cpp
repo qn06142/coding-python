@@ -1,12 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef LOCAL
-#include "../headers/debug.h"
-#else
-#define debug(...) 42
-#endif
-
 const int mod = (int) 1e9 + 7;
 
 long long POW(long long a, long long b) {
@@ -19,26 +13,19 @@ long long POW(long long a, long long b) {
 
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-    #define TASK "papers"
-    if(fopen(TASK".inp", "r")) {
-        freopen(TASK".inp", "r", stdin);
-        freopen(TASK".out", "w", stdout);
-    }
-
     long long n, m; cin >> m >> n;
 
-    long long S = 0;
+    long long s = 0;
     for(int i = 1; i <= n; i++) {
         int x; cin >> x;
-        S += x;
+        s += x;
     }
-    S = m - S;
+    s = m - s;
 
-    if(S < 0) cout << 0;
+    if(s < 0) cout << 0;
     else {
         long long ans = 1;
-        for(int i = S + 1; i <= S + n - 1; i++) {
+        for(int i = s + 1; i <= s + n - 1; i++) {
             ans = (ans * i) % mod;
         }
         long long gt = 1;
@@ -46,6 +33,4 @@ int main() {
         ans = (ans * POW(gt, mod - 2)) % mod;
         cout << ans;
     }
-
-    return 0;
 } 

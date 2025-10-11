@@ -1,33 +1,33 @@
 from bisect import bisect_left
-def take_closest(myList, myNumber):
-    pos = bisect_left(myList, myNumber)
+def bsearch(a, x):
+    pos = bisect_left(a, x)
     if pos == 0:
         return 0
-    if pos == len(myList):
+    if pos == len(a):
         return -1
-    before = myList[pos - 1]
-    after = myList[pos]
-    if after - myNumber < myNumber - before:
+    before = a[pos - 1]
+    after = a[pos]
+    if after - x < x - before:
         return pos
     else:
         return pos - 1
-def solve(n, L, R, a):
+def solve(n, l, r, a):
     a.sort()
-    if R <= a[0]:
-        return L
-    if L >= a[n-1]:
-        return R
+    if r <= a[0]:
+        return l
+    if l >= a[n-1]:
+        return r
     from math import ceil
-    tmpL = (abs(L - a[take_closest(a, L)]), L)
-    tmpR = (abs(R - a[take_closest(a, R)]), R)
-    max_distance = (float('-inf'), None)
+    tmpL = (abs(l - a[bsearch(a, l)]), l)
+    tmpR = (abs(r - a[bsearch(a, r)]), r)
+    ans = (float('-inf'), None)
     for i in range(1, n):
-        x = ceil((a[i - 1] + a[i]) / 2)
-        if x in range(L, R):
-            max_distance = max(max_distance, (min(abs(x - a[i - 1]), abs(x - a[i])), x))
+        x = (a[i - 1] + a[i] + 1) // 2
+        if x in range(l, r):
+            ans = max(ans, (min(abs(x - a[i - 1]), abs(x - a[i])), x))
     
-    return max(max_distance, tmpL, tmpR)[1]
+    return max(ans, tmpL, tmpR)[1]
 
-n, L, R = (int(i) for i in input().split())
+n, l, r = (int(i) for i in input().split())
 a = [int(i) for i in input().split()]
-print(solve(n, L, R, a))
+print(solve(n, l, r, a))

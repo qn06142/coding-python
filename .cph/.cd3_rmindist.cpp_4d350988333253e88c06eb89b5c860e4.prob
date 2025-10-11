@@ -1,0 +1,1 @@
+{"name":"Local: cd3_rmindist","url":"/home/wheatley/coding-python/cd3_rmindist.cpp","tests":[{"id":1759563860044,"input":"3 2 3 4\n1 9\n1 1\n8 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cd3_rmindist.cpp","group":"local","local":true}

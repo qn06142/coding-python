@@ -6,50 +6,64 @@ import random
 import time
 import imgutils.edge as edge
 from PIL import Image
-def process_image(img, target_width, target_height):
-    """Read the image, resize it to the target aspect ratio, apply edge detection, and find contours."""
+def process_image(
+    img: np.ndarray, 
+    target_width: int, 
+    target_height: int):
 
     img_resized = resize_image_to_fit(img, target_width, target_height)
     
-    im_np = edge.edge_image_with_lineart_anime(Image.fromarray(img_resized))
-    im_np = np.asarray(im_np)
+    # Step 2: Apply specialized edge detection.
+    # The 'edge' library requires a PIL Image, so we convert from a NumPy array.
+    edge_detected_img = edge.edge_image_with_lineart_anime(Image.fromarray(img_resized))
+    edge_detected_np = np.asarray(edge_detected_img)
 
-    if len(im_np.shape) == 3:  
-        im_np = cv2.cvtColor(im_np, cv2.COLOR_RGB2GRAY)
+    # Step 3: Ensure the image is single-channel (grayscale) for contour detection.
+    # The edge detection might return an RGB image, so we convert if necessary.
+    if len(edge_detected_np.shape) > 2 and edge_detected_np.shape[2] == 3:
+        gray_image = cv2.cvtColor(edge_detected_np, cv2.COLOR_RGB2GRAY)
+    else:
+        gray_image = edge_detected_np
 
-    T, thresh = cv2.threshold(im_np, 1, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_TC89_KCOS)   
+    # Step 4: Create a binary mask from the grayscale image.
+    # cv2.THRESH_BINARY_INV makes the detected lines (objects) white and background black.
+    # cv2.THRESH_OTSU automatically calculates the optimal threshold value from the image.
+    # The first argument (the threshold value) is ignored when using OTSU, so we use '_' 
+    # to indicate it's an intentionally unused variable.
+    _, binary_mask = cv2.threshold(
+        gray_image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
+    )
+
+    # Step 5: Find contours in the binary mask.
+    # cv2.RETR_EXTERNAL retrieves only the outermost contours (ignores holes).
+    # cv2.CHAIN_APPROX_TC89_KCOS is an efficient algorithm for compressing contour points.
+    contours, _ = cv2.findContours(
+        binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_TC89_KCOS
+    )   
+    
     return img_resized.shape, contours
 
 import math
-def resize_image_to_fit(img, target_width, target_height):
-    """Resize the image to fit the target aspect ratio."""
-    h, w = img.shape[:2]
-    scale = min(target_height / h, target_width / w)
-    h = h * scale
-    w = w * scale
-    h = math.ceil(h)
-    w = math.ceil(w)
+import cv2
+import numpy as np
 
-    resized_img = cv2.resize(img, (w, h))
+def resize_image_to_fit(img: np.ndarray, target_width: int, target_height: int) -> np.ndarray:
+    # Get original image dimensions
+    original_h, original_w = img.shape[:2]
+
+    # Calculate the ratio to scale the image
+    # The image will be scaled down to fit completely inside the target dimensions.
+    ratio = min(target_width / original_w, target_height / original_h)
+
+    # Calculate new dimensions, ensuring they are integers
+    new_w = int(original_w * ratio)
+    new_h = int(original_h * ratio)
+
+    # Resize the image using the calculated dimensions
+    # cv2.INTER_AREA is recommended for shrinking images
+    resized_img = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_AREA)
+
     return resized_img
-
-def resize_points_to_rectangle(points, lower, upper, min_x, max_x, min_y, max_y):
-    """Resize points to fit within a rectangle defined by lower and upper."""
-    if not points:
-        return []
-
-    resized_points = []
-    stor = set()
-    for point in points:
-        resized_x = lower[0] + (point[0] - min_x) * (upper[0] - lower[0]) // max(1, (max_x - min_x))
-        resized_y = lower[1] + (point[1] - min_y) * (upper[1] - lower[1]) // max(1, (max_y - min_y))
-        if (resized_x, resized_y) not in stor:
-            resized_points.append((resized_x, resized_y))
-            stor.append((resized_x, resized_y))
-
-    return resized_points
-
 mul = 2
 colp = 1
 def pixfy(x):
@@ -76,9 +90,9 @@ def draw_line(canvas, line, frame, meancol):
     for i in range(1, len(line)):
         x = tuple(pixfy(coord) for coord in line[i - 1])
         y = tuple(pixfy1(coord) for coord in line[i])
-        col = tuple(random.randint(0, 255) for _ in range(3))[::-1]
+        #col = tuple(random.randint(0, 255) for _ in range(3))[::-1]
         
-        #col = average(frame[line[i][1]][line[i][0]].tolist(), frame[line[i - 1][1]][line[i - 1][0]].tolist())
+        col = average(frame[line[i][1]][line[i][0]].tolist(), frame[line[i - 1][1]][line[i - 1][0]].tolist())
         #col = roundcol(col, meancol)
         #cv2.rectangle(canvas, x, y, col, cv2.FILLED)
         cv2.line(canvas, x, y, col, thickness=mul * mul)
@@ -126,8 +140,8 @@ import faulthandler
 import signal
 faulthandler.register(signal.SIGUSR1.value)
 import collections
-canvas_width, canvas_height = 500, 500
-num_workers = 3
+canvas_width, canvas_height = 1000, 1000
+num_workers = 6
 
 rng = np.random.default_rng()
 from scipy.ndimage import gaussian_filter
@@ -146,7 +160,7 @@ from vidgear.gears import CamGear, WriteGear
 options = {"STREAM_RESOLUTION": "480p", "STREAM_PARAMS" : {"allow_file_urls" : True}}
 #vid = CamGear(source="/mnt/NewVolumne/lofi/sumeru lo-fi beats to do dailies with (genshin impact) [EQyTz7dS6yw].webm",
 #    stream_mode=False, backend=cv2.CAP_INTEL_MFX , logging=True).start()
-vid = cv2.VideoCapture("/mnt/NewVolumne/lofi/sumeru lo-fi beats to do dailies with (genshin impact) [EQyTz7dS6yw].webm")
+vid = cv2.VideoCapture("/run/media/wheatley/1d28986e-422c-47fc-8f9c-28e84ac03b0a/collection/51.Ningguang (audio update) 1080p.mp4")
 #if not vid.isOpened():
 #    print("uhh video weird")
 #    raise ValueError
@@ -173,61 +187,55 @@ for _ in range(0, num_workers):
 
     frame_queue.put((process_frame, frame))
     process_frame += 1
+try:
+    while True:
+        if not result_queue.empty():
+            idx, dim, canvas, size = result_queue.get()
+            processed_frames[idx] = (dim, canvas, size)
 
-while True:
-    if not result_queue.empty():
-        idx, dim, canvas, size = result_queue.get()
-        processed_frames[idx] = (dim, canvas, size)
+        if processed_frames[frame_index]:
+            if time.time() - timestamp > rate:
+                errorrate = frame_index - math.ceil(fps * (time.time() - begin))
+                corrtype = ''
+                if abs(errorrate) >= 2:
+                    rate = 1 / (fps + -errorrate * 100)
+                    corrtype = 'coarse'
+                else:
+                    rate = 1 / (fps + -(frame_index - (fps * (time.time() - begin))))
+                    corrtype = 'fine'
 
-    if processed_frames[frame_index]:
-        if time.time() - timestamp > rate:
-            errorrate = frame_index - math.ceil(fps * (time.time() - begin))
-            corrtype = ''
-            if abs(errorrate) >= 2:
-                rate = 1 / (fps + -errorrate * 100)
-                corrtype = 'coarse'
-            else:
-                rate = 1 / (fps + -(frame_index - (fps * (time.time() - begin))))
-                corrtype = 'fine'
-                
-            dim, canvas, sz = processed_frames.pop(frame_index)
-            clear_line(6)
-            print("error:", errorrate)
-            print(rate)
-            print(sz)
-            print("fps:", (frame_index + 1)/ (time.time() - begin))
-            print(corrtype)
-            print(len(processed_frames), process_frame, frame_queue.qsize())
-            #cv2.imshow("vid", resize_image_to_fit(canvas, 512, 268))
-            cv2.imshow("vid", canvas)
-            #writer.write(canvas)
-            frame_index += 1
-            timestamp = time.time()
-            _, frame = vid.read()
-            if _ is False:
-                break
+                dim, canvas, sz = processed_frames.pop(frame_index)
+                clear_line(6)
+                print("error:", errorrate)
+                print(rate)
+                print(sz)
+                print("fps:", (frame_index + 1)/ (time.time() - begin))
+                print(corrtype)
+                print(len(processed_frames), process_frame, frame_queue.qsize())
+                cv2.imshow("vid", resize_image_to_fit(canvas, 512, 268))
+                #cv2.imshow("vid", canvas)
+                #writer.write(canvas)
+                frame_index += 1
+                timestamp = time.time()
+                _, frame = vid.read()
+                if _ is False:
+                    break
 
-            frame_queue.put((process_frame, frame))
-            process_frame += 1
+                frame_queue.put((process_frame, frame))
+                process_frame += 1
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-#writer.close()
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+finally:
+    #writer.close()
 
-cv2.destroyAllWindows()
-cnt = 0
-
-while frame_queue.qsize() > 0:
-    print("waiting for frame queue", frame_queue.qsize())
-    frame_queue.get()
-    clear_line(1)
-for _ in workers:
-    frame_queue.put(None)  
-while result_queue.qsize() > 0:
-    result_queue.get()
-for worker in workers:
-    print("term:", cnt)
-    print(result_queue.qsize())
-    clear_line(2)
-    cnt += 1
-    worker.terminate()
+    cv2.destroyAllWindows()
+    cnt = 0
+    for _ in workers:
+        frame_queue.put(None)  
+    for worker in workers:
+        print("term:", cnt)
+        print(result_queue.qsize())
+        clear_line(2)
+        cnt += 1
+        worker.terminate()

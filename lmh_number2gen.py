@@ -11,7 +11,7 @@ import threading
 stop_flag = threading.Event()  # Flag to indicate stopping the program
 
 def generate_test_case():
-    return ''.join(str(random.choice(string.digits[:10])) for i in range(0, 10 ** 6))
+    return ''.join(str(random.choice(string.digits[:10])) for i in range(0, 10 ** 1))
 def run_program(executable, input_data):
     process = subprocess.Popen([executable] if type(executable) == str else executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate(input=input_data.encode())

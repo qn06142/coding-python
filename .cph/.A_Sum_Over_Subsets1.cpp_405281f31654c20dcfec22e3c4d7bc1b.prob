@@ -1,0 +1,1 @@
+{"name":"Local: A_Sum_Over_Subsets1","url":"/home/wheatley/coding-python/A_Sum_Over_Subsets1.cpp","tests":[{"id":1752741092938,"input":" 1 8\n477712 524080 402913 232823 501871 153303 592237 838769","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/A_Sum_Over_Subsets1.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: MSEQ","url":"/home/wheatley/coding-python/MSEQ.cpp","tests":[{"id":1757664386352,"input":"5\n2 1 3 2 1","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/MSEQ.cpp","group":"local","local":true}

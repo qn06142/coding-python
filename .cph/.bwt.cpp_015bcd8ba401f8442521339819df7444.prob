@@ -1,0 +1,1 @@
+{"name":"Local: bwt","url":"/home/wheatley/coding-python/bwt.cpp","tests":[{"id":1758770832130,"input":"BANANA@","output":"ANNB@AA"},{"id":1758772135649,"input":"YDRTYEESA@\nL@LA\nY@M\nSULBRTE@O\nDEMSEE@\nOS@\nRF@A\nY@WAA","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/bwt.cpp","group":"local","local":true}

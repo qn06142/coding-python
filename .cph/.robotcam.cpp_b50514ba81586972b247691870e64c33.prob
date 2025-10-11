@@ -1,0 +1,1 @@
+{"name":"Local: robotcam","url":"/home/wheatley/coding-python/robotcam.cpp","tests":[{"id":1760093087404,"input":"6\n1 1\n2 1\n1 2\n4 2\n5 3\n4 4","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/robotcam.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: csphn_graph_drive","url":"/home/wheatley/coding-python/csphn_graph_drive.cpp","tests":[{"id":1755704875834,"input":"5 6\n1 2 1 7\n2 3 2 8\n3 1 3 9\n1 4 4 10\n4 5 5 11\n5 1 6 12","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_graph_drive.cpp","group":"local","local":true}
