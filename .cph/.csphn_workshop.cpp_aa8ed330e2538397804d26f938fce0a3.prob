@@ -1,0 +1,1 @@
+{"name":"Local: csphn_workshop","url":"/home/wheatley/coding-python/csphn_workshop.cpp","tests":[{"id":1759919469185,"input":"2\n2 1\n3 2\n5 3\n1 2","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_workshop.cpp","group":"local","local":true}

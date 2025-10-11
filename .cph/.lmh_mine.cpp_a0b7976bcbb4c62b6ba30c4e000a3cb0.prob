@@ -1,0 +1,1 @@
+{"name":"Local: lmh_mine","url":"/home/wheatley/coding-python/lmh_mine.cpp","tests":[{"id":1757578726541,"input":"1\n4\n0 5 1\n1 7 2\n4 4 1\n7 15 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_mine.cpp","group":"local","local":true}

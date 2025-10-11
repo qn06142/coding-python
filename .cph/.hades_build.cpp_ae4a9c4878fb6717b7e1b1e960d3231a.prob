@@ -1,0 +1,1 @@
+{"name":"Local: hades_build","url":"/home/wheatley/coding-python/hades_build.cpp","tests":[{"id":1755524200773,"input":"5 1 1\n1 3 5 7 9","output":"12"},{"id":1755528122833,"input":"5 2 2\n1 3 5 7 9","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hades_build.cpp","group":"local","local":true}

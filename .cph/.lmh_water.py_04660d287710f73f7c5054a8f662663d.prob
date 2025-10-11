@@ -1,0 +1,1 @@
+{"name":"Local: lmh_water","url":"/home/wheatley/coding-python/lmh_water.py","tests":[{"id":1751600059221,"input":"5 7\n3 3 3 3 3 3 3\n3 1 1 1 1 1 3\n3 1 2 2 2 1 3\n3 1 1 1 1 1 3\n3 3 3 3 3 3 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_water.py","group":"local","local":true}

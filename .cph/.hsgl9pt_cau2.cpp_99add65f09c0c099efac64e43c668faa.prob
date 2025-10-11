@@ -1,0 +1,1 @@
+{"name":"Local: hsgl9pt_cau2","url":"/home/wheatley/coding-python/hsgl9pt_cau2.cpp","tests":[{"id":1759281154475,"input":"4 2\n3 3 3 3 ","output":"5"},{"id":1759281183766,"input":"6 3\n7 5 6 5 7 6 ","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/hsgl9pt_cau2.cpp","group":"local","local":true}

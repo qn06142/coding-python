@@ -98,6 +98,7 @@ int b[(int) 1e6 + 5];
 int pos[(int) 1e6 + 5];
 
 int main() {
+    ios_base::sync_with_stdio(false);
     cin.tie(0);
     int n;
     cin >> n;
@@ -120,6 +121,5 @@ int main() {
         }
     }
 
-    cout << ans << '\n';
-    return 0;
+    cout << ans;
 }

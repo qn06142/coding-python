@@ -1,40 +1,37 @@
-#include<bits/stdc++.h>
-#define endl "\n"
+#pragma GCC optimize("Ofast")
+#include <bits/stdc++.h>
 using namespace std;
-int n = 10;
-bool a[1000][1000];
-void printSolution(bool board[1000][1000])
-{
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++)
-            cout << " "<< board[i][j];
-        cout << endl;
+
+int n;
+vector<int> queen_pos;
+
+void printSolution() {
+    for (int r = 0; r < n; r++) {
+        for (int c = 0; c < n; c++) {
+            cout << (queen_pos[r] == c ? 1 : 0) << " ";
+        }
+        cout << "\n";
+    }
+    exit(0);
+}
+
+void solve(int row, long long col_mask, long long diag1_mask, long long diag2_mask) {
+    if (row == n) printSolution();
+    long long available = ((1LL << n) - 1) & ~(col_mask | diag1_mask | diag2_mask);
+    while (available) {
+        long long bit = available & -available; // rightmost set bit
+        available ^= bit;
+        int col = __builtin_ctzll(bit);
+        queen_pos[row] = col;
+        solve(row + 1,
+              col_mask | bit,
+              (diag1_mask | bit) << 1,
+              (diag2_mask | bit) >> 1);
     }
 }
 
-bool usedcol[1000], usedrow[1000], useddiag1[2000], useddiag2[2000];
-void bacctracc(int i) {
-	
-	for (int r = 1; r <= n; r++) {
-		for (int l = 1; l <= n; l++) {
-			if (!usedcol[l] && !usedrow[r] && !useddiag1[l-r+n] && !useddiag2[l+r]) {
-				a[r][l] = true;
-				if (i == n) {
-					printSolution(a);
-					cout << endl;
-					a[r][l] = false;
-				} else {
-					usedcol[l] =usedrow[r] =useddiag1[l-r+n] =useddiag2[l+r] = true;
-					bacctracc(i +1);
-					usedcol[l] =usedrow[r] =useddiag1[l-r+n] =useddiag2[l+r] = false;
-					a[r][l] = false;
-				}
-			}
-		}
-	}
-}
 int main() {
-	memset(a,false,sizeof(a));
-	cin >> n;
-	bacctracc(1);
+    cin >> n;
+    queen_pos.resize(n);
+    solve(0, 0, 0, 0);
 }

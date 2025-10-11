@@ -1,0 +1,1 @@
+{"name":"Local: csphn_cardrag","url":"/home/wheatley/coding-python/csphn_cardrag.cpp","tests":[{"id":1753776540227,"input":"3 4\n.N.W\nWWSS\nEWEW\n0 0","output":""},{"id":1753776738939,"input":"1 3\nEWE","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_cardrag.cpp","group":"local","local":true}

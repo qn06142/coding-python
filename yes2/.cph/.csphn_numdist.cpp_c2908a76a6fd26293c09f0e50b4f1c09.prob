@@ -1,0 +1,1 @@
+{"name":"Local: csphn_numdist","url":"/home/wheatley/coding-python/yes2/csphn_numdist.cpp","tests":[{"id":1754391862722,"input":"6\n1\n2\n3\n4\n5\n6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/yes2/csphn_numdist.cpp","group":"local","local":true}

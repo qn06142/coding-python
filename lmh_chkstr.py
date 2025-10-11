@@ -1,0 +1,1 @@
+for _ in range(int(input())): print(*('YES' if (sum(1 if k=='(' else -1 for k in j) == 0 and min(__import__('itertools').accumulate((1 if k=='(' else -1 for k in j)), default=0) >= 0 and sum(1 if i == '(' or i == ')' else 0 for i in j) == len(j)) else 'NO' for j in (input().strip(),)))

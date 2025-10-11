@@ -1,0 +1,1 @@
+{"name":"Local: csphn_maxdis","url":"/home/wheatley/coding-python/csphn_maxdis.py","tests":[{"id":1752462253517,"input":"4 3 8\n2 4 6 8","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_maxdis.py","group":"local","local":true}

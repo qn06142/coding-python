@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "launch,json": "jsonc",
     "sstream": "cpp",
     "regex": "cpp",
     "iostream": "cpp",
@@ -152,7 +153,10 @@
     "ios": "cpp",
     "locale": "cpp",
     "immintrin.h": "c",
-    "__split_buffer": "cpp"
+    "__split_buffer": "cpp",
+    "__verbose_abort": "cpp",
+    "*.ipp": "cpp",
+    "__bit_reference": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
@@ -213,5 +217,5 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "C_Cpp.errorSquiggles": "enabled",
   "mesonbuild.selectRootDir": false,
-  "C_Cpp.default.compilerPath": "/usr/bin/clang"
+  "C_Cpp.default.compilerPath": "/usr/bin/clang++"
 }

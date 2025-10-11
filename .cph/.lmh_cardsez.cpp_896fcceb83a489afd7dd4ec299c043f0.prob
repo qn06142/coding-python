@@ -1,0 +1,1 @@
+{"name":"Local: lmh_cardsez","url":"/home/wheatley/coding-python/lmh_cardsez.cpp","tests":[{"id":1758167756067,"input":"9 3\n1 5 2\n5 4 6\n8 2 1","output":"7 8 6 1 2 3 9 4 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_cardsez.cpp","group":"local","local":true}

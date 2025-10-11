@@ -1,4 +1,4 @@
-def longest_arithmetic_subarray(n, A):
+def las(n, A):
     if n < 2:
         return n
     longest = 2
@@ -15,5 +15,5 @@ def longest_arithmetic_subarray(n, A):
 
 n = int(input().strip())
 A = list(map(int, input().strip().split()))
-
-print(longest_arithmetic_subarray(n, A))
+A = [i + 10 ** 9 for i in A]
+print(las(n, A))

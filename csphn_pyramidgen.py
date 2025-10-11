@@ -40,8 +40,8 @@ stop_flag = threading.Event()  # Flag to indicate stopping the program
 
 def generate_test_case():
     n = random.randint(5, 10 ** 18)
-    s = ''.join(random.choice(string.ascii_uppercase) for i in range(0, random.randint(2, 100)))
-    q = 5
+    s = ''.join(random.choice(string.ascii_uppercase) for i in range(0, random.randint(2, 10 ** 2)))
+    q = 10 ** 2
     return generate_test_case1(n, s, q)
 def run_program(executable, input_data):
     process = subprocess.Popen([executable] if type(executable) == str else executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -75,15 +75,15 @@ def listen_for_quit():
             sys.stdout.write("\nQuitting...\n")
 
 def main():
-    executable1 = ['pypy3', 'csphn_pyramid.py']
-    executable2 = './csphn_pyramid'
+    executable1 = './csphn_pyramid'
+    executable2 = './csphn_pyramid1'
     
     from multiprocessing import cpu_count
     n_cores = cpu_count()
     sys.stdout.write(f'Number of Logical CPU cores: {n_cores}\n')
 
     tests_per_worker = 10  
-    num_workers = n_cores + 10    
+    num_workers = n_cores
     pool = multiprocessing.Pool(processes=num_workers)
 
     listener_thread = threading.Thread(target=listen_for_quit, daemon=True)  # Daemon thread for listening

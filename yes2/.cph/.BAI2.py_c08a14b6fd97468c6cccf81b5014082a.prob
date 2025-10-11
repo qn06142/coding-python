@@ -1,0 +1,1 @@
+{"name":"Local: BAI2","url":"/home/wheatley/coding-python/yes2/BAI2.py","tests":[{"id":1754356659740,"input":"7\n2 0 4 -1 6 -2 -3","output":""},{"id":1754356669781,"input":"3\n3 2 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/yes2/BAI2.py","group":"local","local":true}

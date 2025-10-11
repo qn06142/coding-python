@@ -1,0 +1,1 @@
+{"name":"Local: lmh_cwater","url":"/home/wheatley/coding-python/lmh_cwater.cpp","tests":[{"id":1755141245315,"input":"2\n15 24 3\n100 27 8","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_cwater.cpp","group":"local","local":true}

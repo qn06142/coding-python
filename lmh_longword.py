@@ -1,0 +1,1 @@
+print(len(max(input().split(), key = lambda x: len(x))))

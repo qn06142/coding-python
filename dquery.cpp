@@ -92,9 +92,9 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-const int N = 30007, Q = 200007, MAX = 1000007;
+const int N = 30007, Q = 200007, MAXN = 1000007;
 
-int n, q, ans[Q], last[MAX], bit[N];
+int n, q, ans[Q], last[MAXN], bit[N];
 struct Query {
     int u, v, id;
     bool operator<(const Query &q) const {
@@ -107,7 +107,7 @@ void update(int v) {
     for (; v <= n; v += v & -v) ++bit[v];
 }
 
-int querySum(int v) {
+int query(int v) {
     int res = 0;
     for (; v != 0; v -= v & -v) res += bit[v];
     return res;
@@ -133,8 +133,7 @@ int main() {
     for (int i = q; i >= 1; --i) {
         Query &Q = qry[i];
         while (a[p].first >= Q.u) update(a[p--].second);
-        ans[Q.id] = (Q.v - Q.u + 1) - (querySum(Q.v) - querySum(Q.u));
+        ans[Q.id] = (Q.v - Q.u + 1) - (query(Q.v) - query(Q.u));
     }
     for (int i = 1; i <= q; ++i) cout << ans[i] << '\n';
-    return 0;
 }

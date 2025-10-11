@@ -1,0 +1,1 @@
+{"name":"Local: ROBOT","url":"/home/wheatley/coding-python/ROBOT.cpp","tests":[{"id":1752288296432,"input":"3 5\n1 4 7 6\n3 1\n5 1\n2 2\n7 3\n9 3","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/ROBOT.cpp","group":"local","local":true}

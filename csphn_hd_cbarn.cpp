@@ -117,7 +117,6 @@ int main() {
         total_distance_squared += 1LL * dist * dist;
         total_distance += dist;
         debug(total_distance);
-
         cnt[dist]++;  
     }
 

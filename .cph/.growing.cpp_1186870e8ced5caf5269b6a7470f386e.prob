@@ -1,0 +1,1 @@
+{"name":"Local: growing","url":"/home/wheatley/coding-python/growing.cpp","tests":[{"id":1758698904636,"input":"8 10\n1 2 2 3 3 4 7\nA 6 2\nB 2 5\nC 3\nC 4\nA 5 1\nB 4 3\nC 7\nB 3 3\nC 6\nC 1","output":"7\n5\n8\n10\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/growing.cpp","group":"local","local":true}

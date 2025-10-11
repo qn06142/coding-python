@@ -1,0 +1,1 @@
+{"name":"Local: lmh_squirrel","url":"/home/wheatley/coding-python/lmh_squirrel.py","tests":[{"id":1759922883787,"input":"7\n88 55 66 77 22 33 1111","output":"4\n3 1 2 5\n2 3 6\n1 4\n1 7\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_squirrel.py","group":"local","local":true}

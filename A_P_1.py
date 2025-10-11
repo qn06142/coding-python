@@ -1,21 +1,15 @@
-def xor_queries(n, q, arr, queries):
+MOD = 10**9 + 7
 
-    prefix_xor = [0] * (n + 1)
-    for i in range(1, n + 1):
-        prefix_xor[i] = prefix_xor[i - 1] ^ arr[i - 1]
+def solve(k: int) -> int:
+    if k == 0:
+        return 0  
 
-    result = []
-    for a, b in queries:
-        xor_sum = prefix_xor[b] ^ prefix_xor[a - 1]
-        result.append(xor_sum)
+    exp_mod = (pow(2, k-1, MOD-1) - 1) % (MOD-1)
+    val = pow(16, exp_mod, MOD)
+    ans = (6 * val) % MOD
+    return ans
 
-    return result
-
-n, q = map(int, input().split())
-arr = list(map(int, input().split()))
-queries = [tuple(map(int, input().split())) for _ in range(q)]
-
-results = xor_queries(n, q, arr, queries)
-
-for res in results:
-    print(res)
+if __name__ == "__main__":
+    import sys
+    k = int(sys.stdin.read().strip())
+    print(solve(k))

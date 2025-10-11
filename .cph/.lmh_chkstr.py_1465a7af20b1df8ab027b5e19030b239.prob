@@ -1,0 +1,1 @@
+{"name":"Local: lmh_chkstr","url":"/home/wheatley/coding-python/lmh_chkstr.py","tests":[{"id":1758165041429,"input":"2\n(())()((()))\n((())","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_chkstr.py","group":"local","local":true}

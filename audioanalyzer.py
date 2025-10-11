@@ -15,7 +15,7 @@ y = np.random.randn(10000)
 # Plot 0 is for raw audio data
 li, = ax[0].plot(x, y)
 ax[0].set_xlim(0,1000)
-ax[0].set_ylim(-5000,5000)
+ax[0].set_ylim(-25565,25565)
 ax[0].set_title("Raw Audio Signal")
 # Plot 1 is for the FFT of the audio
 li2, = ax[1].plot(x, y)
@@ -39,7 +39,7 @@ audio = pyaudio.PyAudio()
 stream = audio.open(format=FORMAT,
                     channels=CHANNELS,
                     rate=RATE,
-                    input=True)#,
+                    input=True,)#,
                     #frames_per_buffer=CHUNK)
 
 global keep_going

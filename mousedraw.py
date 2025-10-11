@@ -1,142 +1,160 @@
+#!/usr/bin/env python3
+import time
 import cv2
 import numpy as np
-import time
 import uinput
-import ctypes
+import os
 
-# Define the keys for the uinput device
-keys = [
-    uinput.KEY_LEFTSHIFT,
-    uinput.KEY_SPACE,
+# --- Configure uinput device (adjust to your screen) ---
+# Format: (min, max, fuzz, flat) - fuzz/flat usually 0.
+ABS_X_RANGE = (0, 1920, 0, 0)
+ABS_Y_RANGE = (0, 1080, 0, 0)
+
+device = uinput.Device([
+    uinput.ABS_X + ABS_X_RANGE,
+    uinput.ABS_Y + ABS_Y_RANGE,
     uinput.BTN_LEFT,
     uinput.BTN_MIDDLE,
     uinput.BTN_RIGHT,
-    uinput.REL_X,
-    uinput.REL_Y,
-    uinput.REL_WHEEL,
-    uinput.REL_HWHEEL,
-    uinput.KEY_TAB,
-    uinput.KEY_ENTER
-]
+])
 
-# Create the uinput device for controlling the mouse
-device = uinput.Device(keys)
+time.sleep(0.5)
 
-# Allow the system to detect the new device
-time.sleep(1)
+def clamp(v, lo, hi):
+    return max(lo, min(hi, v))
 
-def process_image(image_path):
-    """Read the image, apply edge detection, and find contours."""
+def resize_with_padding(img, target_w, target_h, pad_color=0):
+    """
+    Resize 'img' to fit inside (target_w, target_h) while preserving aspect ratio.
+    Return (padded_image, pad_left, pad_top, scale).
+    Padding is added evenly on both sides (centered).
+    """
+    h, w = img.shape[:2]
+    if w == 0 or h == 0:
+        raise ValueError("Invalid image with zero width/height")
+
+    # compute scale to fit inside target while preserving aspect ratio
+    scale = min(target_w / w, target_h / h)
+    new_w = max(1, int(round(w * scale)))
+    new_h = max(1, int(round(h * scale)))
+
+    # choose interpolation: AREA for shrinking, CUBIC for enlarging
+    interp = cv2.INTER_AREA if scale < 1 else cv2.INTER_CUBIC
+    resized = cv2.resize(img, (new_w, new_h), interpolation=interp)
+
+    # compute symmetric padding
+    pad_left = (target_w - new_w) // 2
+    pad_right = target_w - new_w - pad_left
+    pad_top = (target_h - new_h) // 2
+    pad_bottom = target_h - new_h - pad_top
+
+    padded = cv2.copyMakeBorder(resized, pad_top, pad_bottom, pad_left, pad_right,
+                                borderType=cv2.BORDER_CONSTANT, value=pad_color)
+    return padded, pad_left, pad_top, scale
+
+def process_image_to_screen_coords(image_path, lower, upper, preview_out="/tmp/contours_preview.png"):
+    """
+    Load image, resize-with-padding into rectangle lower->upper (keeps aspect ratio),
+    detect contours, save a preview overlay image, and return contours as absolute coords.
+    """
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     if img is None:
         raise FileNotFoundError(f"Image not found at {image_path}")
-    kernel = np.array([
-        [1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1],
-        ], np.uint8)
-    img_dilated = cv2.dilate(img, kernel, iterations=1)
-    img = cv2.absdiff(img_dilated, img)
-    edges = cv2.Canny(img, threshold1=100, threshold2=200)
+
+    target_w = upper[0] - lower[0]
+    target_h = upper[1] - lower[1]
+    if target_w <= 0 or target_h <= 0:
+        raise ValueError("Invalid target rectangle (upper must be greater than lower)")
+
+    padded, pad_left, pad_top, scale = resize_with_padding(img, target_w, target_h, pad_color=0)
+
+    # edge enhancement similar to your original approach
+    kernel = np.ones((5, 5), np.uint8)
+    dil = cv2.dilate(padded, kernel, iterations=1)
+    diff = cv2.absdiff(dil, padded)
+
+    edges = cv2.Canny(diff, 100, 200)
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    return contours
 
-import ctypes
-def move_mouse(x : int, y : int):
-    x = ctypes.c_int(x)
-    y = ctypes.c_int(y)
-    device.emit(uinput.REL_X, -25000)
-    device.emit(uinput.REL_Y, -25000)
-    device.emit(uinput.REL_X, x)
-    device.emit(uinput.REL_Y, y)
+    # convert contours to absolute screen coordinates
+    abs_contours = []
+    for c in contours:
+        pts = []
+        for p in c:
+            px, py = int(p[0][0]), int(p[0][1])  # coords inside padded canvas
+            abs_x = lower[0] + px
+            abs_y = lower[1] + py
+            abs_x = int(clamp(abs_x, ABS_X_RANGE[0], ABS_X_RANGE[1]))
+            abs_y = int(clamp(abs_y, ABS_Y_RANGE[0], ABS_Y_RANGE[1]))
+            pts.append((abs_x, abs_y))
+        if len(pts) > 1:
+            abs_contours.append(pts)
+
+    # create a colored preview image (scale up to BGR so contours are visible)
+    preview_bgr = cv2.cvtColor(padded, cv2.COLOR_GRAY2BGR)
+    # shift contour internal coords back onto the padded canvas for drawing preview
+    draw_contours = []
+    for c in contours:
+        pts = np.array([[p[0][0] , p[0][1]] for p in c], dtype=np.int32)
+        draw_contours.append(pts)
+    cv2.drawContours(preview_bgr, draw_contours, -1, (0, 255, 0), 1)  # green lines
+
+    # write preview to disk
+    try:
+        os.makedirs(os.path.dirname(preview_out), exist_ok=True)
+        cv2.imwrite(preview_out, preview_bgr)
+        print(f"Saved contour preview to: {preview_out}")
+    except Exception as e:
+        print("Could not write preview image:", e)
+
+    return abs_contours
+
+def move_abs(x: int, y: int):
+    device.emit(uinput.REL_X, -10 ** 9, syn=False)
+    device.emit(uinput.REL_Y, -10 ** 9)
     time.sleep(0.01)
-def move_mouse_relative(x, y):
-    time.sleep(0.01)
-    x = ctypes.c_int(x)
-    y = ctypes.c_int(y)
-    device.emit(uinput.REL_X, x)
-    device.emit(uinput.REL_Y, y)
-    time.sleep(0.01)
-def resize_points_to_rectangle(points, lower, upper, min_x, max_x, min_y, max_y):
-    """Resize points to fit within a rectangle defined by lower and upper."""
-    if not points:
-        return []
-
-    resized_points = []
-    stor = set()
-    for point in points:
-        resized_x = lower[0] + (point[0] - min_x) * (upper[0] - lower[0]) // max(1, (max_x - min_x))
-        resized_y = lower[1] + (point[1] - min_y) * (upper[1] - lower[1]) // max(1, (max_y - min_y))
-        if (resized_x, resized_y) not in stor:
-            resized_points.append((resized_x, resized_y))
-            stor.add((resized_x, resized_y))
-
-    return resized_points
-
-def click(x: int, y: int, btn: int = 0, count: int = 1):
-    """Perform a mouse click at a specified position."""
-    move_mouse(x, y)
-    time.sleep(0.02)
-    for _ in range(count):
-        if btn == 0:
-            device.emit(uinput.BTN_LEFT, 1)
-            device.emit(uinput.BTN_LEFT, 0)
-        elif btn == 1:
-            device.emit(uinput.BTN_MIDDLE, 1)
-            device.emit(uinput.BTN_MIDDLE, 0)
-        elif btn == 2:
-            device.emit(uinput.BTN_RIGHT, 1)
-            device.emit(uinput.BTN_RIGHT, 0)
-        time.sleep(0.02)
-
-def drag_click_left(positions):
-    """Drag the mouse while holding the left button along a series of positions."""
+    device.emit(uinput.REL_X, int(x) //2, syn=False)
+    device.emit(uinput.REL_Y, int(y) //2)
+    # slight delay for kernel to process events
+def drag_click_left(positions, hold_delay=0.008, step_delay=0.004):
     if not positions:
         return
-    time.sleep(0.01)
-    move_mouse(*positions[0])
-    time.sleep(0.01)
+    move_abs(*positions[0])
+    time.sleep(hold_delay)
     device.emit(uinput.BTN_LEFT, 1)
-    time.sleep(0.01)
-    last = positions[0]
-    for i, cur in enumerate(positions[1:], start=1):
-        move_mouse_relative(cur[0] - last[0], cur[1] - last[1])
-        last = cur
-        time.sleep(0.02)
-    time.sleep(0.01)
+    time.sleep(hold_delay)
+    for p in positions[1:]:
+        move_abs(*p)
+        time.sleep(step_delay)
+    time.sleep(0.004)
     device.emit(uinput.BTN_LEFT, 0)
-from random import choice
-def move_mouse_based_on_contours(image_path):
-    """Move the mouse along the contours detected in an image."""
-    contours = process_image(image_path)
-    lines = []
-    flat = []
-    for contour in contours:
-        points = [point[0].tolist() for point in contour]
-        flat += points
-        lines.append(points)
-    min_x = min(point[0] for point in flat)
-    max_x = max(point[0] for point in flat)
-    min_y = min(point[1] for point in flat)
-    max_y = max(point[1] for point in flat)
-    lower, upper = (110, 110), (550, 300)
+    time.sleep(0.004)
 
-    resized_lines = [resize_points_to_rectangle(points, lower, upper, min_x, max_x, min_y, max_y) for points in lines]
-    resized_lines.sort(key = len, reverse=True)
-    #resized_lines = list(choice(resized_lines) for i in range(0, 500))
-    resized_lines = resized_lines[:50]
-    for line in resized_lines:
+def move_mouse_based_on_contours(image_path):
+    # rectangle on screen to "draw" into (change as needed)
+    lower, upper = (364, 223), (739, 498) 
+    contours = process_image_to_screen_coords(image_path, lower, upper, preview_out="/tmp/contours_preview.png")
+    if not contours:
+        print("No contours found.")
+        return
+
+    # sort and limit contours
+    contours.sort(key=len, reverse=False)
+    contours = contours[50:]
+
+    for line in contours:
+        # downsample if very long
+        if len(line) > 400:
+            idxs = np.linspace(0, len(line) - 1, 400).astype(int)
+            line = [line[i] for i in idxs]
         drag_click_left(line)
 
-
 if __name__ == "__main__":
-    image_path = "/mnt/NewVolume/anime_wallpapers/stablediff1.png"  # Replace with the path to your image file
-
+    time.sleep(1)
+    IMAGE_PATH = "/mnt/NewVolumne/anime_wallpapers/koishi.jpg"  # change as needed
     try:
-        move_mouse_based_on_contours(image_path)
+        move_mouse_based_on_contours(IMAGE_PATH)
     except FileNotFoundError as e:
         print(e)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print("Error:", e)
