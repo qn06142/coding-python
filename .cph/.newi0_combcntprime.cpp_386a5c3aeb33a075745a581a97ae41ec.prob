@@ -1,0 +1,1 @@
+{"name":"Local: newi0_combcntprime","url":"/home/wheatley/coding-python/newi0_combcntprime.cpp","tests":[{"id":1761039877740,"input":"1?\n","output":"4"},{"id":1761039886529,"input":"?\n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/newi0_combcntprime.cpp","group":"local","local":true}

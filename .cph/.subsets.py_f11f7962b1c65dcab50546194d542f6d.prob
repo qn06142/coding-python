@@ -1,0 +1,1 @@
+{"name":"Local: subsets","url":"/home/wheatley/coding-python/subsets.py","tests":[{"id":1761724592094,"input":"5 3","output":"1 2 3\n1 2 4\n1 2 5\n1 3 4\n1 3 5\n1 4 5\n2 3 4\n2 3 5\n2 4 5\n3 4 5\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/subsets.py","group":"local","local":true}

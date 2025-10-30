@@ -1,0 +1,1 @@
+{"name":"Local: newi0_dividecow","url":"/home/wheatley/coding-python/newi0_dividecow.cpp","tests":[{"id":1761035436928,"input":"5\n2 1 2 1 2 \n","output":"11212\n12122\n12221\n21112\n21211\n22121\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/newi0_dividecow.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: lmh_bpairs","url":"/home/wheatley/coding-python/lmh_bpairs.cpp","tests":[{"id":1760517353308,"input":"(())((()))","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_bpairs.cpp","group":"local","local":true}

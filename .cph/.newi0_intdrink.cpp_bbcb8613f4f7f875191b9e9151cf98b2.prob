@@ -1,0 +1,1 @@
+{"name":"Local: newi0_intdrink","url":"/home/wheatley/coding-python/newi0_intdrink.cpp","tests":[{"id":1760689591498,"input":"5\n3 10 8 6 11\n4\n1\n10\n3\n11\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/newi0_intdrink.cpp","group":"local","local":true}

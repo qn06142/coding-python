@@ -78,44 +78,40 @@ using namespace std;
 +------+++++--++++++++--+--.....----+-+----+#######++##+++#####################+--------+++++++++++############++++++++++++++++++++++++++
 */
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
     int n;
-    long long delta;
-    cin >> n >> delta;
+    long long d;
+    cin >> n >> d;
 
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
+    vector<int> a(n + 1);
+    for (int i = 1; i <= n; i++) {
         cin >> a[i];
     }
 
     deque<int> dq1, dq2;
-    int left = 0, maxLength = 0;
+    int l = 1, ans = 0;
 
-    for (int right = 0; right < n; ++right) {
-        while (!dq1.empty() && a[dq1.back()] <= a[right]) {
+    for (int i = 1; i <= n; i++) {
+        while (!dq1.empty() && a[dq1.back()] <= a[i]) {
             dq1.pop_back();
         }
-        dq1.push_back(right);
-        while (!dq2.empty() && a[dq2.back()] >= a[right]) {
+        dq1.push_back(i);
+        while (!dq2.empty() && a[dq2.back()] >= a[i]) {
             dq2.pop_back();
         }
-        dq2.push_back(right);
+        dq2.push_back(i);
 
-        while (a[dq1.front()] - a[dq2.front()] > delta) {
-            if (dq1.front() == left) {
+        while (a[dq1.front()] - a[dq2.front()] > d) {
+            if (dq1.front() == l) {
                 dq1.pop_front();
             }
-            if (dq2.front() == left) {
+            if (dq2.front() == l) {
                 dq2.pop_front();
             }
-            ++left;
+            ++l;
         }
 
-        maxLength = max(maxLength, right - left + 1);
+        ans = max(ans, i - l + 1);
     }
 
-    cout << maxLength << "\n";
-    return 0;
+    cout << ans << "\n";
 }

@@ -1,4 +1,1 @@
-A=input
-import itertools as B,math as C
-D,E=map(int,A().split())
-print(sum(D//C.prod(A)if len(A)%2==1 else-D//C.prod(A)for F in[list(int(A)for A in A().split())]for A in B.chain.from_iterable(B.combinations(F,A)for A in range(1,E+1))))
+(lambda: (a:=list(map(int,open(0).read().split()))) and (n:=a[0]) and (k:=a[1]) and (ps:=a[2:2+k]) and (L:=[1]) and [L.append(min((L[m&(m-1)]*ps[(m&-m).bit_length()-1])//__import__('math').gcd(L[m&(m-1)],ps[(m&-m).bit_length()-1]), n+1)) for m in range(1,1<<k)] and print(sum(( -1)**(m.bit_count()+1) * (n//L[m]) for m in range(1,1<<k))))()

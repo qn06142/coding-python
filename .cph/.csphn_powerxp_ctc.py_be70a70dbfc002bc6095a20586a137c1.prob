@@ -1,0 +1,1 @@
+{"name":"Local: csphn_powerxp_ctc","url":"/home/wheatley/coding-python/csphn_powerxp_ctc.py","tests":[{"id":1761034458084,"input":"123456789123456789 999999999999999999 1000000000000000000 ","output":"53858228890109891"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_powerxp_ctc.py","group":"local","local":true}

@@ -189,7 +189,7 @@ signed main() {
         	while (i <= n && !a[i]) ++i;
         	while (j <= n && a[j]) ++j;
         	if (i > n) break;
-        	if (i >= j && j <= n) {
+        	if (i >= j) {
         		ans = 0;
         		break;
         	}
@@ -203,7 +203,7 @@ signed main() {
 	        	++j;
 	        	--x;
 	        }
-        	if (x >= 0) ans = min(ans, cur);
+        	if (x <= 0) ans = min(ans, cur);
         	if (j > n) break;
         }
         cout << ans << '\n';

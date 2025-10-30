@@ -27,5 +27,4 @@ int main() {
             res = max(res, c1[i].second + c2[j].second);
     }
     cout << res/2 << '\n';
-    return 0;
 }

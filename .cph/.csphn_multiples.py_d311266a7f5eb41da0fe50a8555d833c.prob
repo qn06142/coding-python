@@ -1,0 +1,1 @@
+{"name":"Local: csphn_multiples","url":"/home/wheatley/coding-python/csphn_multiples.py","tests":[{"id":1761726154961,"input":"20 2\n2 5","output":"12"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_multiples.py","group":"local","local":true}

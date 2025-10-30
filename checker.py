@@ -11,7 +11,7 @@ import threading
 stop_flag = threading.Event()  # Flag to indicate stopping the program
 
 def generate_test_case():
-    n = random.randint(5, 10)
+    n = random.randint(5, 5)
     s = ''.join(random.choice(string.ascii_lowercase) for i in range(0, random.randint(2, n)))
     q = 5
     return generate_test_case1(n, s, q)

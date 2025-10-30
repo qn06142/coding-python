@@ -1,10 +1,10 @@
-def count_handshakes(n, directions):
-    right = 0
-    handshakes = 0
+def solve(n, s):
+    r = 0
+    shakes = 0
     for i in range(n):
-        if directions[i] == '>':
-            right += 1
-        elif directions[i] == '<':
-            handshakes += right
-    return handshakes
-print(count_handshakes(int(input()), input()))
+        if s[i] == '>':
+            r += 1
+        elif s[i] == '<':
+            shakes += r
+    return shakes
+print(solve(int(input()), input()))

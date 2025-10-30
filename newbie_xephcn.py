@@ -1,0 +1,1 @@
+print('\n'.join("YES" if all(a[i] == a[i + 1] for i in range(0, 4, 2))  else "NO" for j in range(int(input()))  for a in [sorted(map(int, input().split()))]))

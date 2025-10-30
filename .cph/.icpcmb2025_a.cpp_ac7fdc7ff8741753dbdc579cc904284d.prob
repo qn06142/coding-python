@@ -1,0 +1,1 @@
+{"name":"Local: icpcmb2025_a","url":"/home/wheatley/coding-python/icpcmb2025_a.cpp","tests":[{"id":1761451482383,"input":"4 3 5\nNNNNP\nNPNPN\nPNPPN\nNNNNN\nNNNNN\nNNNNN\nNNNNP\nNNPPN\nNNPPN\nPNNNN\nNNNNN\nNNPNN","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/icpcmb2025_a.cpp","group":"local","local":true}

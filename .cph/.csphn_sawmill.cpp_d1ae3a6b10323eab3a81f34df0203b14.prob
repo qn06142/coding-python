@@ -1,0 +1,1 @@
+{"name":"Local: csphn_sawmill","url":"/home/wheatley/coding-python/csphn_sawmill.cpp","tests":[{"id":1761099384168,"input":"9\n1 2\n2 1\n3 3\n1 1\n3 2\n1 6\n2 1\n1 2\n1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_sawmill.cpp","group":"local","local":true}

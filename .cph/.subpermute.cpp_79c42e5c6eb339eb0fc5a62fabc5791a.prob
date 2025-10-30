@@ -1,0 +1,1 @@
+{"name":"Local: subpermute","url":"/home/wheatley/coding-python/subpermute.cpp","tests":[{"id":1760603806694,"input":"2\n4 3\n3 2 1 2\n8 4\n4 2 3 3 1 3 2 4","output":"3 1 2\n1 3 2 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/subpermute.cpp","group":"local","local":true}

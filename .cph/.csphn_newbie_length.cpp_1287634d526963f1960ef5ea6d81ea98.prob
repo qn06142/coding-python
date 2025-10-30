@@ -1,0 +1,1 @@
+{"name":"Local: csphn_newbie_length","url":"/home/wheatley/coding-python/csphn_newbie_length.cpp","tests":[{"id":1761700358353,"input":"6.0 5.0 5.0 9.0","output":""},{"id":1761700415375,"input":"3.0 4.0 5.0 4.0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_newbie_length.cpp","group":"local","local":true}

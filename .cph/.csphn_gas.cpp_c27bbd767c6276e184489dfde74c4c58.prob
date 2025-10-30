@@ -1,0 +1,1 @@
+{"name":"Local: csphn_gas","url":"/home/wheatley/coding-python/csphn_gas.cpp","tests":[{"id":1760608263821,"input":"9 3\n1 7 2 9 3 6 8 5 4","output":"22"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_gas.cpp","group":"local","local":true}

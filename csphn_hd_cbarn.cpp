@@ -97,40 +97,39 @@ int main() {
     int n;
     cin >> n;
 
-    vector<int> cow_positions; 
+    vector<int> a; 
     for (int i = 0; i < n; i++) {
         int ci;
         cin >> ci;
         for (int j = 0; j < ci; j++) {
-            cow_positions.push_back(i);
+            a.push_back(i);
         }
     }
 
-    int cow_count = cow_positions.size();
-    sort(cow_positions.begin(), cow_positions.end());
+    int cows = a.size();
+    sort(a.begin(), a.end());
 
-    long long total_distance = 0, total_distance_squared = 0;
+    long long tot = 0, cand = 0;
     vector<int> cnt(n, 0);  
 
-    for (int i = 0; i < cow_count; i++) {
-        int dist = (i - cow_positions[i]+ n) % n;
-        total_distance_squared += 1LL * dist * dist;
-        total_distance += dist;
-        debug(total_distance);
+    for (int i = 0; i < cows; i++) {
+        int dist = (i - a[i]+ n) % n;
+        cand += 1LL * dist * dist;
+        tot += dist;
+        debug(tot);
         cnt[dist]++;  
     }
 
-    long long min_energy = total_distance_squared;
+    long long ans = cand;
     debug(cnt);
     for (int i = 1; i < n; i++) {
 
-        total_distance_squared += 2 * total_distance + n;
-        total_distance_squared -= 1LL * cnt[n - i] * n * n;
-        total_distance += n - cnt[n - i] * n;  
-        debug(total_distance);
-        min_energy = min(min_energy, total_distance_squared);
+        cand += 2 * tot + n;
+        cand -= 1LL * cnt[n - i] * n * n;
+        tot += n - cnt[n - i] * n;  
+        debug(tot);
+        ans = min(ans, cand);
     }
 
-    cout << min_energy << endl;
-    return 0;
+    cout << ans;
 }

@@ -1,0 +1,1 @@
+print('\n'.join(' '.join(str(i) for i in j) for j in __import__('itertools').combinations(*(range(1, i + 1) if ind == 0 else i for ind, i in enumerate(int(i) for i in input().split())))))
