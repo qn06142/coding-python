@@ -1,0 +1,1 @@
+print((input(), sum(abs(i - a[len(a)//2]) for a in [sorted(int(i) for i in input().split())] for i in a))[1])

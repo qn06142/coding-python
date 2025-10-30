@@ -1,0 +1,1 @@
+{"name":"Local: csphn_strwc","url":"/home/wheatley/coding-python/csphn_strwc.py","tests":[{"id":1761656372866,"input":"1\n7 3\na*cab*d","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/csphn_strwc.py","group":"local","local":true}

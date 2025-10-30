@@ -150,7 +150,7 @@ void place(const coord &tl, const coord &lr, const coord &p) {
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(0);
 
     int n, x, y;
     cin >> n >> x >> y;

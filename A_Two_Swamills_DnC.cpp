@@ -100,7 +100,6 @@ const ll INF = 1e18;
 int n;
 vector<ll> w, d, pos, W, P;
 vector<ll> f;
-vector<ll> dp1, dp2;
 
 void build_pos() {
     for(int i = 1; i <= n; ++i)

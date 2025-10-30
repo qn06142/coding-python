@@ -1,0 +1,1 @@
+{"name":"Local: lmh_weight","url":"/home/wheatley/coding-python/lmh_weight.cpp","tests":[{"id":1760600811136,"input":"3\n1 2 3","output":"4"},{"id":1760600834320,"input":"4\n3 1 7 2","output":"31"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_weight.cpp","group":"local","local":true}

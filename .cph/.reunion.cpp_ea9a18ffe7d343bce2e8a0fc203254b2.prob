@@ -1,0 +1,1 @@
+{"name":"Local: reunion","url":"/home/wheatley/coding-python/reunion.cpp","tests":[{"id":1761702740434,"input":"6 3 8\nL 1\nG 9\nL 7\nL 5\nG 6\nG 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/reunion.cpp","group":"local","local":true}

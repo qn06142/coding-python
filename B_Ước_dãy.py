@@ -1,0 +1,1 @@
+print(min(j if len(a) % j == 0 and a[:j] * (len(a) // j) == a else len(a) for k in [int(input())] for a in [[int(i) for i in input().split()]] for j in range(1, len(a) + 1)))

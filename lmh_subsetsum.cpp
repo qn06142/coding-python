@@ -1,5 +1,6 @@
 
 #include <bits/stdc++.h>
+#pragma GCC target("avx,avx2,sse")
 #include <immintrin.h> 
 using namespace std;
 int main() {

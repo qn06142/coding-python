@@ -145,18 +145,6 @@
 #endif
 using namespace std;
 
-template <typename Iter>
-std::string join(Iter begin, Iter end, std::string const& separator) {
-    std::ostringstream result;
-    if (begin != end) {
-        result << *begin++;
-    }
-    while (begin != end) {
-        result << separator << *begin++;
-    }
-    return result.str();
-}
-
 int n, l, r;
 vector<int> primes;
 set<long long> ans; 
@@ -186,7 +174,10 @@ int main() {
     if (ans.empty()) {
         cout << "none" << endl;
     } else {
-        cout << join(ans.begin(), ans.end(), ",") << endl;
+        for(int i : ans) {
+            cout << i ;
+            if(i != *ans.rbegin()) cout<< ',';
+        }
     }
 
     return 0;

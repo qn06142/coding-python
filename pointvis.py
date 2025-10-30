@@ -4,10 +4,10 @@ with open("pointvisinp", "r") as f:
     for i in range(int(f.readline())):
         x.append(0)
         y.append(0)
-        x[i], y[i] = [(int(i)) for i in f.readline().split(sep=',')]
+        x[i], y[i] = [(int(i)) for i in f.readline().split()]
 import matplotlib.pyplot as plt
 import numpy as np
-grid = np.zeros((71, 71), dtype=int)
+grid = np.zeros((10 ** 6, 10 ** 6), dtype=int)
 for x, y in zip(x, y):
     grid[y][x] = 1
 plt.imshow(grid, cmap='Greys', origin='lower')

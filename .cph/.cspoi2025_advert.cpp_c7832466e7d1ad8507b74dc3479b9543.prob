@@ -1,0 +1,1 @@
+{"name":"Local: cspoi2025_advert","url":"/home/wheatley/coding-python/cspoi2025_advert.cpp","tests":[{"id":1760494201812,"input":"10\n4\n1 3\n4 5\n7 8\n4 6","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cspoi2025_advert.cpp","group":"local","local":true}

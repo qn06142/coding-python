@@ -1,0 +1,1 @@
+{"name":"Local: lmh_minimum","url":"/home/wheatley/coding-python/lmh_minimum.cpp","tests":[{"id":1760607650828,"input":"5 3\n2 1 5 3 4","output":"1\n1\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_minimum.cpp","group":"local","local":true}

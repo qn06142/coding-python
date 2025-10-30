@@ -86,7 +86,6 @@ int main() {
     cin >> c;
     dq.push_back({k, c});
     for(int i = 1; i <= n; i++) {
-        
         ans += dq.front().second;
         if(--dq.front().first == 0) dq.pop_front();
         if(i == n) break;
@@ -97,7 +96,6 @@ int main() {
             dq.pop_back();
         }
         dq.push_back({dist, c});
-        //cout << ans << endl;
     }
     cout << ans;
 }

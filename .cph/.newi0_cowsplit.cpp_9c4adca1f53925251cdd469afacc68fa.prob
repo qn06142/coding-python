@@ -1,0 +1,1 @@
+{"name":"Local: newi0_cowsplit","url":"/home/wheatley/coding-python/newi0_cowsplit.cpp","tests":[{"id":1761095564395,"input":"5\n13 5 1 5 20\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/newi0_cowsplit.cpp","group":"local","local":true}

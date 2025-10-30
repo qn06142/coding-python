@@ -10,23 +10,23 @@ using namespace std;
 #define DEBUG_PRINT(x) 
 #endif
 int cnt[(int) 1e6 + 5];
-int countVisiblePairs(const vector<int>& heights) {
-    int n = heights.size();
+int solve(const vector<int>& a) {
+    int n = a.size();
     stack<int> st;
     int count = 0;
 
 
     for (int i = 0; i < n; i++) {
 
-        while (!st.empty() && heights[st.top()] < heights[i]) {
+        while (!st.empty() && a[st.top()] < a[i]) {
             if(i == 4) {
-                //cout << cnt[heights[st.top()]] << endl;
+                //cout << cnt[a[st.top()]] << endl;
             } 
-            if(cnt[heights[st.top()]] > 0) {
+            if(cnt[a[st.top()]] > 0) {
                 count ++;
                 //cout << "normal " << st.top() <<  ' ' << i << endl;
             }
-            cnt[heights[st.top()]] = 0;
+            cnt[a[st.top()]] = 0;
             st.pop();
         }
 
@@ -35,7 +35,7 @@ int countVisiblePairs(const vector<int>& heights) {
             count++;
         }
         st.push(i);
-        cnt[heights[i]]++;
+        cnt[a[i]]++;
     }
     
     return count;
@@ -44,12 +44,11 @@ int countVisiblePairs(const vector<int>& heights) {
 int main() {
     int n;
     cin >> n;
-    vector<int> heights(n);
+    vector<int> a(n);
     for (int i = 0; i < n; ++i) {
-        cin >> heights[i];
+        cin >> a[i];
     }
 
-    int result = countVisiblePairs(heights);
-    cout << result << endl;
-    return 0;
+    int ans = solve(a);
+    cout << ans;
 }

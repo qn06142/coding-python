@@ -1,0 +1,1 @@
+{"name":"Local: icpc_polygon_payloaduser","url":"/home/wheatley/coding-python/icpc_polygon_payloaduser.py","tests":[{"id":1760242397652,"input":"10 5","output":""},{"id":1760243237214,"input":"5 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/icpc_polygon_payloaduser.py","group":"local","local":true}
