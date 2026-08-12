@@ -92,88 +92,80 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-const ll INF = (ll)9e18;
 
-struct ConvexHullTrick {
-    struct Line {
-        ll m; 
-        ll c; 
-        ll eval(ll x) const {
-            return (ll)((__int128)m * x + c);
+struct Line {
+    long long m, c;
+    Line() : m(0), c(0) {}
+    Line(long long m, long long c) : m(m), c(c) {}
+    
+    long long eval(long long x) const {
+        return m * x + c;
+    }
+
+    bool operator<(const Line& fantasy) const {
+        if (m != fantasy.m) return m < fantasy.m;
+        return c < fantasy.c;
+    }
+};
+
+struct CHT {
+    vector<Line> hull;
+
+    bool bad(const Line& l1, const Line& l2, const Line& l3) {
+        return (__int128)(l1.c - l2.c) * (l3.m - l2.m) >= (__int128)(l2.c - l3.c) * (l2.m - l1.m);
+    }
+
+    void add(Line l3) {
+        while (!hull.empty() && hull.back().m == l3.m) {
+            if (l3.c <= hull.back().c) return;
+            hull.pop_back();
         }
-    };
-    deque<Line> dq;
 
-    bool bad(const Line &l1, const Line &l2, const Line &l3) {
-
-        __int128 c1 = l1.c, c2 = l2.c, c3 = l3.c;
-        __int128 m1 = l1.m, m2 = l2.m, m3 = l3.m;
-        return (c2 - c1) * (m1 - m3) >= (c3 - c1) * (m1 - m2);
+        while (hull.size() >= 2 && bad(hull[hull.size() - 2], hull.back(), l3)) {
+            hull.pop_back();
+        }
+        
+        hull.push_back(l3);
     }
 
-    void add(Line ln) {
-        while (dq.size() >= 2 && bad(dq[dq.size()-2], dq[dq.size()-1], ln)) dq.pop_back();
-        dq.push_back(ln);
-    }
-
-    ll query(ll x) {
-        while (dq.size() >= 2 && dq[0].eval(x) >= dq[1].eval(x)) dq.pop_front();
-        return dq.front().eval(x);
+    long long query(long long x) {
+        int l = 0, r = (int)hull.size() - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (hull[mid].eval(x) >= hull[mid + 1].eval(x)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return hull[l].eval(x);
     }
 };
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int N;
-    if (!(cin >> N)) return 0;
-    vector<pair<ll,ll>> v;
-    v.reserve(N);
-    for (int i = 0; i < N; ++i) {
-        ll a, b; 
-        cin >> a >> b;
-        v.emplace_back(a, b);
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    int n;
+    cin >> n;
+
+    vector<Line> lines(n);
+    for (int i = 0; i < n; i++) {
+        cin >> lines[i].m >> lines[i].c;
     }
 
-    sort(v.begin(), v.end(), [](const pair<ll,ll>& p1, const pair<ll,ll>& p2){
-        if (p1.first != p2.first) return p1.first < p2.first;
-        return p1.second > p2.second; 
-    });
+    sort(lines.begin(), lines.end());
 
-    vector<pair<ll,ll>> uniq;
-    uniq.reserve(N);
-    for (auto &p : v) {
-        if (uniq.empty() || uniq.back().first != p.first) uniq.push_back(p);
-        else uniq.back().second = max(uniq.back().second, p.second);
+    CHT cht;
+    for (int i = 0; i < n; i++) {
+        cht.add(lines[i]);
     }
 
-    vector<pair<ll,ll>> rects;
-    rects.reserve(uniq.size());
-    for (auto &p : uniq) {
-
-        while (!rects.empty() && rects.back().second <= p.second) rects.pop_back();
-        rects.push_back(p);
+    int m;
+    cin >> m;
+    while (m--) {
+        long long x;
+        cin >> x;
+        cout << cht.query(x) << "\n";
     }
-
-    int m = (int)rects.size();
-    if (m == 0) { cout << 0 << '\n'; return 0; }
-
-    vector<ll> dp(m+1, INF);
-    dp[0] = 0;
-    ConvexHullTrick cht;
-    for (int i = 1; i <= m; ++i) {
-
-        ConvexHullTrick::Line ln;
-        ln.m = rects[i-1].second; 
-        ln.c = dp[i-1];
-        cht.add(ln);
-
-        ll x = rects[i-1].first;
-        dp[i] = cht.query(x);
-    }
-
-    cout << dp[m];
 }

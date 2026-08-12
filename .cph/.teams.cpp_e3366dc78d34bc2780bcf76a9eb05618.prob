@@ -1,0 +1,1 @@
+{"name":"Local: teams","url":"/home/wheatley/coding-python/teams.cpp","tests":[{"id":1785985358790,"input":"8\n4 7 3 8 5 6 9 2\n15 3 20 11 8 30 6 25","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/teams.cpp","group":"local","local":true}

@@ -26,7 +26,7 @@
                 "true=1",
                 "false=0"
             ],
-            "compilerPath": "/usr/bin/g++-14",
+            "compilerPath": "/usr/bin/g++",
             "cStandard": "c23",
             "cppStandard": "c++20",
             "intelliSenseMode": "gcc-x64"

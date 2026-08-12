@@ -1,0 +1,1 @@
+{"name":"Local: lmh_kmatch","url":"/home/wheatley/coding-python/lmh_kmatch.cpp","tests":[{"id":1786353866241,"input":"8 4\n1 2 6\n1 3 9\n2 4 2\n2 5 5\n3 6 8\n6 7 4\n6 8 3\n1\n2\n3\n4","output":"9\n14\n18\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/lmh_kmatch.cpp","group":"local","local":true}

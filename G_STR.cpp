@@ -93,7 +93,13 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debugArr(...)
 #endif
 string s;
-
+const int maxn = 2005;
+const int maxs = 21;
+int dp[maxn][maxs][maxs];
 int main() {
     cin >> s;
+    int n;
+    n = s.size();
+    s = " " + s;
+
 }
