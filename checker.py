@@ -11,10 +11,21 @@ import threading
 stop_flag = threading.Event()  # Flag to indicate stopping the program
 
 def generate_test_case():
-    n = random.randint(5, 5)
-    s = ''.join(random.choice(string.ascii_lowercase) for i in range(0, random.randint(2, n)))
-    q = 5
-    return generate_test_case1(n, s, q)
+    n = random.randint(1, 3)
+    q = random.randint(1, 10)
+
+    lines = [f"{n} {q}"]
+    for v in range(2, n + 1):
+        u = random.randint(1, v - 1)
+        w = random.randint(0, 3)
+        lines.append(f"{u} {v} {w}")
+
+    for _ in range(q):
+        u = random.randint(1, n)
+        v = random.randint(1, n)
+        lines.append(f"{u} {v}")
+
+    return "\n".join(lines) + "\n"
 
 def run_program(executable, input_data, tle = True):
     process = subprocess.Popen([executable] if type(executable) == str else executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -22,11 +33,11 @@ def run_program(executable, input_data, tle = True):
         stdout, stderr = process.communicate(input=input_data.encode())
         if tle:
             if process.poll() is None:
-                process.communicate(timeout=1)
+                process.communicate(timeout=10)
         return stdout.decode().strip()
     except subprocess.TimeoutExpired:
         process.kill()
-        return "123809213"
+        return random.randint()
 
 
 def run_test_case(executable1, executable2, test_case):
@@ -56,8 +67,8 @@ def listen_for_quit():
             sys.stdout.write("\nQuitting...\n")
 
 def main():
-    executable1 = './luckust1'
-    executable2 = './luckust'
+    executable1 = './tree_gcd_queries'
+    executable2 = './tree_gcd_queries1'
     
     from multiprocessing import cpu_count
     n_cores = cpu_count()

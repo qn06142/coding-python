@@ -1,6 +1,14 @@
 import subprocess
 import random
 import string
+import multiprocessing
+import shutil
+import os
+import stat
+import sys
+import threading
+
+stop_flag = threading.Event()  # Flag to indicate stopping the program
 
 def generate_test_case():
     n = 10000
@@ -8,40 +16,73 @@ def generate_test_case():
     a = ''.join(random.choice(string.ascii_uppercase) for i in range(0, n))
     query = '\n'.join(random.choice(string.ascii_uppercase) + " " + random.choice(("L", "R")) for i in range(0, q))
     return f"{n} {q}\n{a}\n{query}"
-def run_program(executable, input_data):
-    # Run the executable with the given input data
-    process = subprocess.Popen([executable], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate(input=input_data.encode())
-    return stdout.decode().strip()
-def run_program_py(executable, input_data):
-    # Run the executable with the given input data
-    process = subprocess.Popen(executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate(input=input_data.encode())
-    return stdout.decode().strip()
+
+def run_program(executable, input_data, tle = True):
+    process = subprocess.Popen([executable] if type(executable) == str else executable, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        stdout, stderr = process.communicate(input=input_data.encode())
+        if tle:
+            if process.poll() is None:
+                process.communicate(timeout=10)
+        return stdout.decode().strip()
+    except subprocess.TimeoutExpired:
+        process.kill()
+        return random.randint()
+
+
+def run_test_case(executable1, executable2, test_case):
+    output1 = run_program(executable1, test_case)
+    output2 = run_program(executable2, test_case)
+    if output1 != output2:
+        sys.stdout.write(f"Test case: {test_case}\n")
+        return False
+    return True
+
+def worker(executable1, executable2, tests):
+    for _ in range(tests):
+        if stop_flag.is_set():  # Check if stop flag is set
+            return False
+        test_case = generate_test_case()
+        if not run_test_case(executable1, executable2, test_case):
+            return False
+    return True
+
+def listen_for_quit():
+    global stop_flag
+    sys.stdout.write("\nPress 'q' to quit.\n")
+    while not stop_flag.is_set():
+        char = sys.stdin.read(1)  # Read one character
+        if char.lower() == 'q':
+            stop_flag.set()
+            sys.stdout.write("\nQuitting...\n")
+
 def main():
-    executable1 = './csphn_pre_training1'
-    executable2 = './csphn_pre_training'
-    tests = 0
-    while True:
-        while True:
-            try:
-                test_case = generate_test_case()
-                break
-            except:
-                continue
-        #print(test_case)
-        output1 = run_program(executable1, test_case)
-        output2 = run_program(executable2, test_case)
-        print(len(output1))
-        for i in zip(output1, output2):
-            print(*i)
-        tests += 1
-        if output1 != output2:
-            print(f"Test case: {test_case}")
-            print(f"Output of correct: {output1}")
-            print(f"Output of {executable2}: {output2}")
-            break
-        print("PASSED", tests)
+    executable1 = './csphn_pre_training'
+    executable2 = './csphn_pre_training1'
+    
+    from multiprocessing import cpu_count
+    n_cores = cpu_count()
+    sys.stdout.write(f'Number of Logical CPU cores: {n_cores}\n')
+
+    tests_per_worker = 10  
+    num_workers = n_cores + 10    
+    pool = multiprocessing.Pool(processes=num_workers)
+
+    listener_thread = threading.Thread(target=listen_for_quit, daemon=True)  # Daemon thread for listening
+    listener_thread.start()
+    def cleanup():
+        pool.terminate()  # Stop all workers
+        pool.join()       # Ensure cleanup
+        sys.stdout.write("All workers terminated. Exiting...\n")
+        sys.exit(0)
+    test = 0
+    while not stop_flag.is_set():
+        test += 1
+        sys.stdout.write(f"number: {test * num_workers} \r")
+        sys.stdout.flush()
+        for i in pool.starmap(worker, [(executable1, executable2, tests_per_worker) for _ in range(num_workers)]):
+            if not i or stop_flag.is_set():
+                cleanup()
 
 if __name__ == "__main__":
     main()

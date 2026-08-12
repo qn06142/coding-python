@@ -1,0 +1,1 @@
+{"name":"Local: islands","url":"/home/wheatley/coding-python/islands.cpp","tests":[{"id":1785982643280,"input":"4 5\n5 2 5 5 9 12\n4 1 5 8 12\n3 6 6 15\n5 3 4 10 10 11\n5\n10\n12\n13\n1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/islands.cpp","group":"local","local":true}

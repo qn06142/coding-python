@@ -92,69 +92,124 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-struct Fenwick {
+
+const int maxn = 200005;
+
+int p[maxn], sz[maxn], w[maxn];
+
+int find(int x) {
+    return p[x] < 0 ? x : find(p[x]);
+}
+
+void unite(int u, int v, int t) {
+    u = find(u);
+    v = find(v);
+
+    if (u == v) return;
+
+    if (p[u] > p[v])
+        swap(u, v);
+
+    p[u] += p[v];
+    p[v] = u;
+    w[v] = t;
+}
+
+int get(int u, int v) {
+    int ans = 0;
+
+    while (u != v) {
+        if (w[u] < w[v]) {
+            ans = max(ans, w[u]);
+            u = p[u];
+        } else {
+            ans = max(ans, w[v]);
+            v = p[v];
+        }
+    }
+
+    return ans;
+}
+
+struct SegTree {
     int n;
-    vector<int> f;
-    Fenwick(int _n): n(_n), f(n+1, 0) {}
-    void update(int i, int delta) {
-        for (; i <= n; i += i & -i) f[i] += delta;
+    vector<int> st;
+
+    void init(vector<int> &a) {
+        n = a.size();
+        st.assign(2 * n, 0);
+
+        for (int i = 0; i < n; i++)
+            st[n + i] = a[i];
+
+        for (int i = n - 1; i; i--)
+            st[i] = max(st[i << 1], st[i << 1 | 1]);
     }
-    int query(int i) const {
-        int s = 0;
-        for (; i > 0; i -= i & -i) s += f[i];
-        return s;
-    }
-    int rquery(int l, int r) const {
-        if (l > r) return 0;
-        return query(r) - query(l - 1);
+
+    int query(int l, int r) {
+        int ans = 0;
+
+        for (l += n, r += n; l <= r; l >>= 1, r >>= 1) {
+            if (l & 1)
+                ans = max(ans, st[l++]);
+
+            if (!(r & 1))
+                ans = max(ans, st[r--]);
+        }
+
+        return ans;
     }
 };
 
-struct Query {
-    int l, r;
-    int k;
-    int idx;
-};
+void solve() {
+    int n, m, q;
+    cin >> n >> m >> q;
+
+    for (int i = 0; i < n; i++) {
+        p[i] = -1;
+        w[i] = INT_MAX;
+    }
+
+    for (int i = 1; i <= m; i++) {
+        int u, v;
+        cin >> u >> v;
+        --u;
+        --v;
+
+        unite(u, v, i);
+    }
+
+    vector<int> a(max(0, n - 1));
+
+    for (int i = 0; i + 1 < n; i++)
+        a[i] = get(i, i + 1);
+
+    SegTree st;
+    if (n > 1)
+        st.init(a);
+
+    while (q--) {
+        int l, r;
+        cin >> l >> r;
+        --l;
+        --r;
+
+        if (l == r)
+            cout << 0;
+        else
+            cout << st.query(l, r - 1);
+
+        cout << " \n"[q == 0];
+    }
+}
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(0);
 
-    int n;
-    cin >> n;
-    vector<pair<int,int>> arr(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> arr[i].first;
-        arr[i].second = i + 1; 
-    }
-    int q;
-    cin >> q;
-    vector<Query> queries(q);
-    for (int i = 0; i < q; ++i) {
-        cin >> queries[i].l >> queries[i].r >> queries[i].k;
-        queries[i].idx = i;
-    }
+    int t;
+    cin >> t;
 
-    sort(arr.begin(), arr.end(), greater<>());
-
-    sort(queries.begin(), queries.end(), [](const Query &a, const Query &b) {
-        return a.k > b.k;
-    });
-
-    Fenwick fenw(n);
-    vector<int> ans(q);
-    int ptr = 0;
-
-    for (const auto &qry : queries) {
-
-        while (ptr < n && arr[ptr].first > qry.k) {
-            fenw.update(arr[ptr].second, 1);
-            ptr++;
-        }
-        ans[qry.idx] = fenw.rquery(qry.l, qry.r);
-    }
-
-    for (int i = 0; i < q; ++i) {
-        cout << ans[i] << '\n';
-    }
+    while (t--)
+        solve();
 }

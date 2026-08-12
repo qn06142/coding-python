@@ -1,0 +1,1 @@
+{"name":"Local: cbarn","url":"/home/wheatley/coding-python/cbarn.cpp","tests":[{"id":1785314661058,"input":"6 2\n2\n5\n4\n2\n6\n2","output":"14"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/wheatley/coding-python/cbarn.cpp","group":"local","local":true}

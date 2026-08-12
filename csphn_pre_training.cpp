@@ -106,6 +106,8 @@ int check(int x, bool side) {
     return x == (side ? 0 : (n + 1));
 }
 int main() {
+    freopen("training.inp", "r", stdin);
+    freopen("training.out", "w", stdout);
     cin >> n >> q;
     for(int i = 1; i <= n; i++) {
         cin >> a[i];
@@ -117,7 +119,6 @@ int main() {
         queries[i].second = (c == 'L' ? -1 : 1);
     }
     int l, r, ans;
-    //locate left
     l = 1; r = n, ans = 0;
     while(l <= r) {
         int mid = (l + r) / 2;
@@ -129,7 +130,6 @@ int main() {
         }
     }
     int left = ans;
-    //locate right
     l = 1; r = n, ans = n + 1;
     while(l <= r) {
         int mid = (l + r) / 2;
