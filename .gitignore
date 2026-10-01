@@ -861,3 +861,5 @@ venv/lib/python3.12/site-packages/pip-24.2.dist-info/REQUESTED
 venv/lib/python3.12/site-packages/pip-24.2.dist-info/top_level.txt
 venv/lib/python3.12/site-packages/pip-24.2.dist-info/WHEEL
 *.mp4
+# NTFS alternate-data-stream leaks from downloaded files (Windows-incompatible name)
+*Zone.Identifier
