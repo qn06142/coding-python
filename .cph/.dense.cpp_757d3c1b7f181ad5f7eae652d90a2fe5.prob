@@ -1,0 +1,1 @@
+{"name":"Local: dense","url":"c:\\Users\\qn061\\coding-python\\dense.cpp","tests":[{"id":1792053288852,"input":"5 6\n2 1 1 2 3\n1 2 5\n2 3 4\n3 1 6\n3 4 1\n4 5 2\n1 5 1","output":"3\n1 2 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\qn061\\coding-python\\dense.cpp","group":"local","local":true}

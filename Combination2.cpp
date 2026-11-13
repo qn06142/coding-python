@@ -14,21 +14,20 @@ long long pow_mod(long long base, long long exp) {
     return res;
 }
 
-long long nCr(long long n, long long r) {
-    long long numerator = 1;
+long long comb(long long n, long long r) {
+    long long tmp = 1;
     for (long long i = 0; i < r; ++i)
-        numerator = (numerator * (n - i)) % MOD;
+        tmp = (tmp * (n - i)) % MOD;
 
-    long long denominator = 1;
+    long long tmp1 = 1;
     for (long long i = 1; i <= r; ++i)
-        denominator = (denominator * i) % MOD;
+        tmp1 = (tmp1 * i) % MOD;
 
-    return (numerator * pow_mod(denominator, MOD - 2)) % MOD;
+    return (tmp * pow_mod(tmp1, MOD - 2)) % MOD;
 }
 
 int main() {
     long long n, k;
-    cin >> n >> k;
-    cout << nCr(n + k - 1, n) << endl;
-    return 0;
+    cin >> k >> n;
+    cout << comb(n + k - 1, n);
 }

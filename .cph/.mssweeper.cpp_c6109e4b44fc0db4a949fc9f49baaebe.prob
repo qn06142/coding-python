@@ -1,0 +1,1 @@
+{"name":"Local: mssweeper","url":"c:\\Users\\qn061\\coding-python\\mssweeper.cpp","tests":[{"id":1794188837388,"input":"8 1\n1 4\n3 2\n7 9\n5 4\n9 5\n6 7\n9 1\n11 8","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\qn061\\coding-python\\mssweeper.cpp","group":"local","local":true}

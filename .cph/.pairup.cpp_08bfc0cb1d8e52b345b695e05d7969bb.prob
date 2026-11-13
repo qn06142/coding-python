@@ -1,0 +1,1 @@
+{"name":"Local: pairup","url":"c:\\Users\\qn061\\coding-python\\pairup.cpp","tests":[{"id":1794191119896,"input":"3\n0 0\n0 2\n2 0\n0 1\n1 0\n1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\qn061\\coding-python\\pairup.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: cattia","url":"c:\\Users\\qn061\\coding-python\\cattia.cpp","tests":[{"id":1792115834932,"input":"10 5\n2 -1 3 4 -2 1 -3 5 2 6\n1 2\n3 1\n2 4\n5 2\n3 6\n7 3\n8 5\n5 9\n10 7","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\qn061\\coding-python\\cattia.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: format","url":"c:\\Users\\qn061\\coding-python\\format.cpp","tests":[{"id":1792030951089,"input":"8 2 3\n4 9 5 1 8 2 7 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\qn061\\coding-python\\format.cpp","group":"local","local":true}

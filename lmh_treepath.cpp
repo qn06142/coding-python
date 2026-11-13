@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<bit>
 using namespace std;
 namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const char *x)/**/{ cerr << x; }/*#########+++++*/void print(bool x)/**/{ cerr << (x ? "T" : "F"); }/**/void print(char x)/*##############################
 */{ cerr << '\'' << x << '\''; }/**/void print(signed short int x)/**/{ cerr << x; }/*##############################++++++*/void print(unsigned short int x)/**/{ cerr << x; }/**/void print(signed int x)/**/{ cerr << x; }/*######
@@ -92,85 +93,138 @@ namespace __DEBUG_UTIL__/**/{/**/using namespace std;/**//**/void print(const ch
 #define debug(...)
 #define debugArr(...)
 #endif
-vector<int> get_path_edge_indices(int start_node, int end_node, int n, const vector<vector<pair<int, int>>>& adj) {
-    if (start_node == end_node) {
-        return {};
+static const int BUF_SZ = 1<<20;
+static char ibuf[BUF_SZ], *iptr = ibuf, *iend = ibuf;
+static inline char read_char() {
+    if (iptr == iend) {
+        iend = ibuf + fread(ibuf,1,BUF_SZ,stdin);
+        iptr = ibuf;
+        if (iptr == iend) return EOF;
     }
-    queue<pair<int, vector<int>>> q;
-    q.push({start_node, {}});
-    set<int> visited;
-    visited.insert(start_node);
-
-    while (!q.empty()) {
-        int current_node = q.front().first;
-        vector<int> path = q.front().second;
-        q.pop();
-
-        if (current_node == end_node) {
-            return path;
-        }
-
-        for (const auto& edge : adj[current_node]) {
-            int neighbor = edge.first;
-            int index = edge.second;
-            if (visited.find(neighbor) == visited.end()) {
-                visited.insert(neighbor);
-                vector<int> new_path = path;
-                new_path.push_back(index);
-                q.push({neighbor, new_path});
-            }
-        }
+    return *iptr++;
+}
+static inline bool read_int(int &x) {
+    char c; long long sign = 1; x = 0;
+    do { c = read_char(); if (c==EOF) return false; } while (c!='-' && (c<'0'||c>'9'));
+    if (c=='-') { sign = -1; c = read_char(); }
+    for (; c>='0' && c<='9'; c = read_char())
+        x = x*10 + (c - '0');
+    x *= sign;
+    return true;
+}
+static inline void write_int(long long x, char end = '\n') {
+    static char obuf[32]; int len=0;
+    if (x==0) obuf[len++]='0';
+    else {
+        if (x<0) { putchar('-'); x=-x; }
+        while (x){ obuf[len++] = '0' + (x%10); x/=10; }
     }
-    return {};
+    for (int i=len-1;i>=0;i--) putchar(obuf[i]);
+    putchar(end);
 }
 
-int main() {
+const int maxn = 2e5 + 5;
+vector<int> adj[maxn];
+int a[maxn];
+int dep[maxn];
+int up[maxn][20];
+int st[maxn];
+int tour[maxn];
+int t = 0;
+int lca(int u, int v) {
+    int l = st[u];
+    int r = st[v];
+    if (l > r) swap(l, r);
+
+    int k = bit_width((unsigned long) r - l + 1) - 1;
+    int node1 = up[l][k];
+    int node2 = up[r - (1 << k) + 1][k];
+
+    return (dep[node1] < dep[node2]) ? node1 : node2;
+}
+
+void dfs(int u, int p) {
+    st[u] = t;
+    tour[t++] = u;
+    for(int i : adj[u]) {
+        if(i != p) {
+            dep[i] = dep[u] + 1;
+            dfs(i, u);
+            tour[t++] = u;
+        }
+    }
+}
+void add(int u, int v, int x) {
+    int l = lca(u, v);
+    a[u] += x;
+    a[v] += x;
+    a[l] -= 2* x;
+}
+
+void dfs1(int u, int p) {
+    for(int v : adj[u]) {
+        if(v != p) {
+            dfs1(v, u);
+            a[u] += a[v];
+        }
+    }
+}
+
+void dfs2(int u, int p) {
+    for(int v : adj[u]) {
+        if(v != p) {
+            a[v] += a[u];
+            dfs2(v, u);
+        }
+    }
+}
+bool cmp(int a, int b) {
+    return dep[a] > dep[b];
+}
+signed main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     int n, m, q;
-    cin >> n >> m >> q;
-
-    vector<pair<int, int>> original_edges;
-    vector<vector<pair<int, int>>> adj(n + 1);
-    for (int i = 0; i < n - 1; ++i) {
-        int u, v;
-        cin >> u >> v;
-        original_edges.push_back({min(u, v), max(u, v)});
-        adj[u].push_back({v, i});
-        adj[v].push_back({u, i});
+    read_int(n);
+    read_int(m);
+    read_int(q);
+    for(int i = 1; i < n; i++) {
+        int a, b;
+        read_int(a);
+        read_int(b);
+        adj[a].push_back(b);
+        adj[b].push_back(a);
     }
-
-    vector<int> weights(n - 1, 0);
-
-    for (int k = 0; k < m; ++k) {
+    dfs(1, -1);
+    for(int i = 0; i < t; i++) {
+        up[i][0] = tour[i];
+    }
+    for(int j = 1; (1 << j) <= t; j++) {
+        for(int i = 0; i + (1 << j) <= t; i++) {
+            up[i][j] = (dep[up[i][j - 1]] < dep[up[i + (1 << (j - 1))][j - 1]] ? up[i][j - 1] : up[i + (1 << (j - 1))][j - 1]);
+        }
+    }
+    while(m--) {
         int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        vector<int> path_ab_indices = get_path_edge_indices(a, b, n, adj);
-        vector<int> path_cd_indices = get_path_edge_indices(c, d, n, adj);
-
-        set<int> set_ab(path_ab_indices.begin(), path_ab_indices.end());
-        set<int> set_cd(path_cd_indices.begin(), path_cd_indices.end());
-
-        for (int i = 0; i < n - 1; ++i) {
-            if (set_ab.count(i) && !set_cd.count(i)) {
-                weights[i]++;
-            }
+        read_int(a);
+        read_int(b);
+        read_int(c);
+        read_int(d);
+        add(a, b, 1);
+        vector<int> tmp = {lca(a, c), lca(a, d), lca(b, c), lca(b, d)};
+        debug(a, b, c, d);
+        debug(tmp);
+        sort(tmp.begin(), tmp.end(), cmp);
+        if(dep[tmp[1]] >= max(dep[lca(a, b)], dep[lca(c, d)])) {
+            add(tmp[0], tmp[1], -1);
         }
     }
-
-    vector<int> results;
-    for (int k = 0; k < q; ++k) {
-        int e, f;
-        cin >> e >> f;
-        vector<int> path_ef_indices = get_path_edge_indices(e, f, n, adj);
-        int total_weight = 0;
-        for (int index : path_ef_indices) {
-            total_weight += weights[index];
-        }
-        results.push_back(total_weight);
+    dfs1(1, -1);
+    dfs2(1, -1);
+    while(q--) {
+        int l, r;
+        read_int(l);
+        read_int(r);
+        write_int(a[l] + a[r] - a[lca(l, r)] * 2);
     }
-
-    for (int result : results) {
-        cout << result << endl;
-    }
-
-    return 0;
 }
